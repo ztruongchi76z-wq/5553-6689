@@ -1,0 +1,10 @@
+Công thức (8-1): dựng lại [Ke] = ke·Ae·[B]ᵀ[B] ; [K]·{H} = {Q} bằng đối tượng ngoặc (bản cũ có ký tự lỗi "\{}H\", "\{}Q\" và hiển thị sai).
+Công thức (2-1): ghép dấu gạch trên vào Z, V (2 chỗ) – trước đây hiển thị thành ô vuông.
+Mục 5.1.2: "kiểm tra thấm và ổn định ... ở mục 5.3 và 5.4" -> "mục 5.2 và 5.3".
+Mục 4.3: sửa "h ≈ hk = 4,24 / 4,29 m" (với Q = 162,7 m3/s thì hk = 4,76 m, không phải 4,29 m) -> nêu rõ là nghiệm dòng xiết của (4-1), kèm hk = 4,28 / 4,76 m.
+Dẫn số hình/bảng trong lời văn: 28 đoạn được bổ sung, 3 đoạn dẫn mới sau đề mục (mẫu Trường: "Khi đề cập đến các hình và bảng biểu, phải nêu rõ số").
+Bảng PL2: thêm ghi chú giải thích cột V lệch ≤ 0,07·10⁶ m³ so với Bảng PL1 (khác cách tích phân).
+Danh mục từ viết tắt: 19 -> 26 mục, xếp lại theo thứ tự A, B, C (thêm BT, CB/ĐB, MN, ng.đ, PA, SC, TB; chuyển TH về đúng vị trí).
+Bìa chính, bìa phụ: đổi độ rộng 2 ô tiêu đề (7 cm + 9 cm) để "BỘ NÔNG NGHIỆP VÀ MÔI TRƯỜNG" nằm trên một dòng (2 bảng).
+Tên đề tài trên bìa: ngắt thành 3 dòng cân đối (2 chỗ), tránh chữ "ĐỒNG" đứng riêng một dòng.
+Đã lưu /tmp/claude-0/-home-user-5553-6689/cba9ea07-80d7-5e5e-9d0a-d55d280c3e45/scratchpad/build/b1_hieu_chinh.docx – 9 nhóm thay đổi
