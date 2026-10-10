@@ -37,30 +37,56 @@ Nhật ký chi tiết: `thuyet_minh/nhat_ky_hieu_chinh.txt`; danh sách mục l�
   ổn định ngưỡng tràn và lực dính cần thiết 6,4 / 9,1 kPa (Bảng 4.4); lực đóng mở, hệ số ổn định trục vít
   (Bảng 6.3); Fr, độ sâu liên hiệp sau cống; áp lực đất lên cống; tổng lượng thấm toàn tuyến (15.894 m³/tháng);
   J_th lớp 5; T = B_b + 0,6A; tỷ số hiệu quả màng (Bảng 8.2–8.6); khối lượng đất đắp thêm của phương án Đ3.
+- **Đối chiếu TCVN 8216:2018 (bản gốc gửi ngày 10/10):** các trị số đồ án dùng đều đúng – [K] đập cấp II = 1,30 (cơ bản) /
+  1,17 (đặc biệt) (điều 5.2.2, Bảng 1; cấp III mới là 1,25 / 1,13, nên nhận xét "BCNCKT dùng 1,13" là đúng);
+  a = 0,7 / 0,5 / 0,2 m (điều 10.1.4, Bảng 3); gió P = 4 % ở MNDBT, 50 % ở MNLTK, ở MNLKT không xét sóng leo
+  (Bảng 4); có tường chắn sóng thì đỉnh đập ≥ MNLKT + 0,3 m và tường cao hơn đỉnh đập không quá 1,2 m (điều 10.1.5:
+  +78,85 − đỉnh tường +79,40 → 0,55 m, đạt); K bộ phận chống thấm ≤ 1·10⁻⁵ cm/s (điều 7.2.2); [J] cửa ra 0,85 cho đất
+  á sét, cấp II (điều 11.2.3, Bảng 6); màng phụt trong thân đập dày ≥ 1/10 cột nước, chỉ dùng cho đập cấp II trở
+  xuống (điều 10.4.2, mục 5); màng phụt vữa xi măng – sét trong nền đất T = H/J với J = 3 ÷ 4 (điều 9.2.3.2, công
+  thức 4 – khớp với [Jm] ≈ 3,6 mà TKCS dùng ở mục 8.2.2).
 - Cấu trúc tệp Word: trường, bookmark, liên kết cân đối; thứ tự thẻ trong rPr/pPr đúng lược đồ (tránh lỗi
   "unreadable content" khi mở bằng Word).
 
 ## 3. Cần sinh viên kiểm tra hoặc hỏi GVHD trước khi nộp (chưa sửa)
 
-1. **Giá trị tra TCVN 8216:2018** – [K] = 1,30 / 1,17 (Bảng 2.1) và a, a′, a″ = 0,7 / 0,5 / 0,2 m. Môi trường làm
-   việc không truy cập được văn bản gốc (thư viện pháp luật bị chặn), nên chưa xác nhận được. Kết luận của đồ án
-   **không đổi** (K_min = 1,36 lớn hơn mọi giá trị đang bàn; cao trình +78,85 m do điều kiện MNLKT + 0,3 m quyết định),
-   nhưng câu "[K] = 1,17 (không phải 1,13)" ở mục 2.1 và phần Kết luận đang *sửa* hồ sơ tư vấn nên phải tra
-   đúng Bảng 1. Một nguồn mô tả chú thích Bảng 3 là khi xét MNLKT lấy a = 0 và đỉnh đập cao hơn MNLKT tối thiểu
-   0,3 m – nếu đúng thì Z3 = +78,54 m, cao trình chọn vẫn là +78,85 m.
+1. **Ghi số điều TCVN 8216:2018 vào cột "Căn cứ" của Bảng 2.1** (các trị số đã đúng, xem mục 2): dòng 3 – Bảng 4;
+   dòng 4 – Bảng 3; dòng 5 – Bảng 1 (điều 5.2.2); dòng 8 – điều 7.2.2; dòng 9 – Bảng 6 (0,85). Trị số 2,0 (tiếp xúc tầng
+   lọc) không có trong TCVN 8216 (Bảng 7 chỉ cho gradien tới hạn J_th, [J] = J_th/[K]) – cần ghi rõ nguồn (TCVN 8422
+   hoặc hồ sơ [3]). Bảng 1 còn có điều kiện **"Thi công và sửa chữa": [K] = 1,24 (cấp II)** – nên có một câu ở mục
+   3.2 hoặc 7.1 nói rõ giai đoạn thi công sửa chữa (đào xử lý hố xói mái hạ lưu, tập kết vật liệu trên đỉnh) được
+   kiểm tra theo trị số này hoặc vì sao không chi phối.
 2. **Hướng gió tính sóng** – chương trình chỉ tính hướng Bắc (V4% = 13,8 m/s; D = 2.970 m), trong khi hướng Đông,
    Tây có V4% = 20,9 / 20,3 m/s. Cần bổ sung bảng đà gió theo các hướng thổi vào đập (đo trên bình đồ lòng hồ) và
    một câu giải thích vì sao hướng Bắc là bất lợi nhất. Hội đồng rất hay hỏi chỗ này.
 3. **Độ dốc đáy cống** – thuyết minh dùng i = 3 % (QTVH), tệp số liệu gốc ghi 3 ‰. Nếu bản vẽ cắt dọc cống ghi 3 ‰
    thì với Q = 10 m³/s độ sâu dòng đều h₀ = 1,96 m gần bằng chiều cao cống 2,0 m – không còn chảy không áp, mục 6.3
    phải viết lại. Cần đối chiếu bản vẽ cống.
-4. Ghi rõ số điều, số bảng của TCVN 8216:2018 cho tần suất gió (4 % / 50 %) và gradien cho phép (0,85 / 2,0).
+4. **Độ dư cao trình đỉnh đập chỉ 1 cm** (+78,85 so với yêu cầu +78,84). Điều 11.4.4 TCVN 8216:2018 yêu cầu với đập
+   cao trên 20 m phải kể chiều cao dự phòng lún ≥ 0,5 %H vào cao trình đỉnh khi nghiệm thu (với H ≈ 25 m là ≈ 0,12 m).
+   Điều này viết cho đập xây mới; đập Cà Giây đã lún ổn định hơn 20 năm và lớp đắp bù chỉ dày 0,3 ÷ 0,5 m, nên có thể
+   lập luận giữ +78,85 m – nhưng phải ghi rõ trong thuyết minh và bản vẽ: +78,85 m là cao trình **tối thiểu sau
+   lún**, dung sai cao độ mặt bê tông chỉ cho phép dương, lớp đất đắp bù đắp phòng lún. Nếu GVHD yêu cầu dự phòng thì
+   chọn +78,90 m (phải sửa đồng bộ Chương 3, 5, 7, kết luận và bản vẽ BV-03, BV-04).
 5. Các giả thiết đã ghi ở mục 6 của `HANDOFF.md` (k_h = 0,05; chỉ tiêu lớp II; bản đáy ngưỡng 1 m, f = 0,60;
    m = 0,35 cửa vào cống; G cửa van 20 kN; d chân ren 72 mm; mưa 30 phút = 30 % X_ngày; góc mũi phun 25°…).
 6. Bìa: cách ghi "KHOA CÔNG TRÌNH", "ĐỒ ÁN TỐT NGHIỆP KỸ SƯ", tên Bộ chủ quản, "TP. HỒ CHÍ MINH" – xác nhận với
    Bộ môn (Phân hiệu).
 7. Tờ nhiệm vụ ĐATN: đóng bản gốc có chữ ký vào trang thứ 3.
-8. **Lời cam đoan và việc dùng AI.** `00_START_note` (06/10) ghi nguyên tắc "Claude giảng phương pháp, kiểm tra bài
+8. **Tình huống kẹt van tràn sự cố với lũ P = 0,1 % (QTVH)**: Bảng 2.3 cho Zmax = +79,59 m, **cao hơn đỉnh tường
+   chắn sóng +79,40 m**, nhưng mục 4.1 (đoạn "Trường hợp cửa van tràn sự cố bị kẹt…") chỉ bàn trường hợp P = 0,2 %
+   (+79,14 m). Nên bổ sung một câu nêu trường hợp này (vượt tần suất kiểm tra của đập cấp II, là sự cố chồng sự cố)
+   để nhấn mạnh yêu cầu chạy thử cửa van, nguồn điện dự phòng và quy trình mở cửa thủ công trước mùa lũ.
+9. **Số máy đóng mở cống**: mục 3.4 và bảng tổng hợp giải pháp ghi "thay 2 máy đóng mở VĐ20", Bảng 7.1 ghi 2 bộ,
+   trong khi mô tả cống chỉ có một cửa van phẳng trong tháp van. Cần đối chiếu TKCS: nếu tháp van có 2 cửa (cửa sửa
+   chữa + cửa vận hành) thì ghi rõ ở mục 1.6.4 và Bảng 6.1; nếu không thì sửa số lượng.
+10. **Ổn định trượt ngưỡng tràn chính (Bảng 4.4)**: khi c = 0, K = 0,82 / 0,65 < [K]. Kết luận "bảo đảm ổn định"
+   đang dựa vào lực dính bê tông – đá chưa được kiểm chứng. Nên đổi cách viết thành có điều kiện (đạt nếu c ≥ 9,1 kPa,
+   phải xác minh bằng hồ sơ hoàn công hoặc khoan lấy lõi) và hỏi GVHD có đưa neo D25 thành hạng mục bắt buộc
+   (bổ sung vào Bảng 7.1) hay không.
+11. Cách ghi chuỗi dòng chảy: "44 năm (1981 – 2025)" là đúng vì là năm thủy văn 1981-1982 ÷ 2024-2025 (44 năm),
+   nhưng dễ bị hiểu là 45 năm dương lịch – nên ghi "44 năm thủy văn (1981-1982 ÷ 2024-2025)" ở mục 1.4.2 và 2.2.2.
+12. **Lời cam đoan và việc dùng AI.** `00_START_note` (06/10) ghi nguyên tắc "Claude giảng phương pháp, kiểm tra bài
    và chỉ lỗi, không viết hộ", nhưng bản thuyết minh hiện tại do trợ lý AI soạn ở phiên 09/10 (kể cả các câu "các
    bài toán được tác giả lập trình…", "khối lượng … được tác giả tính…"), trong khi Lời cam đoan khẳng định đồ án là
    của bản thân tác giả. Sinh viên nên tìm hiểu quy định của Trường, Bộ môn về sử dụng AI và khai báo nếu được yêu
@@ -80,3 +106,23 @@ Nhật ký chi tiết: `thuyet_minh/nhat_ky_hieu_chinh.txt`; danh sách mục l�
   python3 chen_muc_luc.py b1.docx DATN_TranQuocThanh_HoCaGiay.docx DATN_TranQuocThanh_HoCaGiay.pdf
   ```
   (cần LibreOffice có gói `libreoffice-math` – thiếu gói này công thức sẽ không hiện trong PDF).
+
+## 5. Nhận xét về các góp ý trong thư mục "Gop y" (Gemini, GPT, Qwen – 10/10)
+
+Các góp ý được đối chiếu với số liệu gốc và TCVN 8216:2018 trước khi đưa vào mục 3:
+
+| Góp ý | Đánh giá | Căn cứ |
+|---|---|---|
+| Chuỗi 1981–2025 là 45 năm, phải tính lại P = m/(n+1) | **Sai** – chuỗi có 44 năm thủy văn (1981-1982 ÷ 2024-2025); chỉ cần ghi rõ (mục 3, ý 11) | `tinh_toan/du_lieu/can_bang_nuoc.json` |
+| Kẹt van TSC: mực nước vượt tường chắn sóng | **Đúng một phần** – chỉ với lũ P = 0,1 % (QTVH): +79,59 > +79,40 (mục 3, ý 8) | Bảng 2.3 |
+| Đỉnh +78,85 chỉ dư 1 cm | **Đúng, cần giải trình** (mục 3, ý 4) | TCVN 8216:2018 điều 10.1.5, 11.4.4 |
+| Ngưỡng tràn chính phụ thuộc lực dính, nên neo bắt buộc | **Đúng về nguy cơ**; việc chọn neo bắt buộc do GVHD quyết (mục 3, ý 10) | Bảng 4.4 |
+| Độ dốc cống 3 % hay 3 ‰ | **Đúng** – trùng mục 3, ý 3 | — |
+| Bảng 7.1 ghi 2 bộ máy VĐ20 cho 1 cống | **Đúng, cần giải thích** (mục 3, ý 9) | Mục 3.4, 6.1, Bảng 7.1 |
+| [K] = 1,17 hay 1,13; a, tần suất gió | Đồ án **đúng** | TCVN 8216:2018 Bảng 1, 3, 4 |
+| "Bảng PL5 ghi trang 73 nhưng bảng kéo sang trang 74" | **Không phải lỗi** – danh mục ghi trang có tên bảng | — |
+| k_h = 0,05 cần căn cứ; TCVN 9386 loại trừ đập lớn | Đúng – đồ án đã ghi là giả thiết; hỏi GVHD tiêu chuẩn động đất áp dụng cho đập | mục 2.1 |
+| Thêm bài toán kiểm chứng chương trình Python, lưu đồ thuật toán | Nên làm nếu còn thời gian; đồ án đã có đối chứng với tư vấn (thấm 6,22 so với 5,71·10⁻⁶ m³/s/m; điều tiết lũ lệch < 0,1 m) | mục 2.3, 2.5 |
+| Khái toán kinh phí | Chỉ làm nếu nhiệm vụ ĐATN yêu cầu (đề cương coi dự toán là chuyên đề tùy chọn); cần đơn giá Lâm Đồng 2026 | — |
+| Báo cáo "Gpt deep research", "Qwen deep research" | Phần lớn là nội dung chung, nhiều chỗ không khớp công trình (ống áp lực, tháp điều áp, tràn xây bậc…) – không dùng | — |
+
