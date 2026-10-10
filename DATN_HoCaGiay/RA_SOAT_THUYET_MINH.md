@@ -132,3 +132,30 @@ Các góp ý được đối chiếu với số liệu gốc và TCVN 8216:2018 
 | Khái toán kinh phí | Chỉ làm nếu nhiệm vụ ĐATN yêu cầu (đề cương coi dự toán là chuyên đề tùy chọn); cần đơn giá Lâm Đồng 2026 | — |
 | Báo cáo "Gpt deep research", "Qwen deep research" | Phần lớn là nội dung chung, nhiều chỗ không khớp công trình (ống áp lực, tháp điều áp, tràn xây bậc…) – không dùng | — |
 
+
+## 6. Góp ý mới trong "Hugo/Gop y" (Tổng hợp, GPT plus, Báo cáo phản biện – chiều 10/10)
+
+Đã đối chiếu từng ý với bản PDF 89 trang. Các ý **đúng** dưới đây chưa sửa trong thuyết minh – SV tự sửa và hỏi GVHD
+những chỗ ghi "GVHD quyết".
+
+| # | Góp ý | Kiểm chứng | Việc cần làm |
+|---|---|---|---|
+| 1 | Cao trình cấu tạo đỉnh đập không khép kín | **Đúng về câu chữ.** Mục 5.1.3 ghi: đất đắp đến +78,60, BT dày 20 cm, đỉnh +78,85, dốc ngang 2 % về hạ lưu – thiếu lớp **cấp phối đá dăm đắp bù** dưới lớp nilon (chi tiết mặt đập TKCS, Hình 3.1: +78,75 = +78,50 + đá dăm ≈ 0,05 + BT 0,20). Bản vẽ BV-04 đã vẽ: đất +78,60 + đá dăm 0,05 + BT 0,20 = +78,85 tại mép thượng lưu (sát tường), dốc 2 % về hạ lưu còn +78,76 ở mép tấm (cách tường 4,3 m). Lưu ý TKCS làm mặt dốc 2 % về hai phía (đỉnh +78,75 cách tường 2,1 m), đồ án đổi sang dốc một phía | Bổ sung lớp đá dăm vào mục 3.2.1, 5.1.3 và khối lượng. Điều kiện đỉnh đập ≥ MNLKT + 0,3 = +78,84 chỉ thỏa ở mép thượng lưu (mép hạ lưu +78,76) – kiểm tra tại mép nào, có cần nâng thêm không: **GVHD quyết** |
+| 2 | Mô hình thấm, ổn định sau sửa chữa và mô hình chuyên đề vẫn dùng đỉnh +78,75 | **Đúng** (mục 5.1.2, 5.2, 8.3.1) | Chạy lại với +78,85 (sửa một số liệu trong `tinh_toan/so_lieu.py`) hoặc nêu định lượng sai khác, thay cho câu "không ảnh hưởng" |
+| 3 | Mức bảo đảm P = m/(n + 1) chưa có căn cứ | **Đúng một phần** – công thức tần suất kinh nghiệm dùng phổ biến, nhưng thuyết minh chưa dẫn nguồn | Dẫn nguồn cho công thức (ví dụ giáo trình điều tiết hồ chứa [13] hoặc giáo trình thủy văn công trình); nếu dùng m/n: 18/44 = 40,9 %, 39/44 = 88,6 %, 37/44 = 84,1 % – kết luận không đổi (TH1 không đạt, TH1A đạt, TH2 vẫn < 85 %) |
+| 4 | Z–W tại +75 m: Bảng 1.2 ghi 38,25, PL2 ghi 38,32 triệu m³ | **Đúng, đã tìm ra nguyên nhân**: Bảng 1.2 cộng dồn bước 1 m (từ +74), PL2 bước 0,5 m (qua +74,5, F = 6,13 km²); công thức chóp cụt cho hai kết quả lệch 0,07 triệu m³ (0,2 %) | Dùng một bảng cho mọi tính toán (nên dùng bước 0,5 m) và ghi chú; kiểm tra chương trình điều tiết lũ đang đọc bảng nào |
+| 5 | Mục 6.5: tải đất lên cống tăng 4,4 % "nằm trong hệ số an toàn" | **Đúng** – mức tăng tải không chứng minh khả năng chịu lực khi không có bản vẽ kết cấu | Chỉ nêu mức tăng tải; chuyển thành kiến nghị kiểm tra kết cấu khi có hồ sơ hoàn công, kết quả kiểm tra camera |
+| 6 | TCVN 4116:1985 (tài liệu [30]) đã hết hiệu lực | **Đúng** – đã có TCVN 4116:2023 "Công trình thủy lợi – Kết cấu bê tông và bê tông cốt thép thủy công – Yêu cầu thiết kế" thay thế (tra trên cơ sở dữ liệu VSQI, luatvietnam) | Thay [30] và câu viện dẫn ở mục 6.5 |
+| 7 | Kẹt van tràn sự cố: so với mặt đập +78,85 và tường +79,40 | **Đúng** – +79,14 (BCNCKT) và +79,18 (QTVH) đã cao hơn mặt đập; +79,59 (QTVH, P = 0,1 %) cao hơn cả tường. Thuyết minh (mục 4.1) xếp vào "sự cố chồng sự cố", nhưng ngầm coi tường chắn sóng giữ được nước | Bổ sung sau Bảng 2.3 một bảng phân loại: tổ hợp thiết kế / kiểm tra / khảo sát rủi ro; không coi tường giữ nước khi chưa kiểm tra chịu lực, chống thấm; giữ biện pháp vận hành (kiểm tra van, nguồn dự phòng). Đây là câu hội đồng dễ hỏi nhất (xem slide dự phòng) |
+| 8 | Thi công tháng 1 – 6 nhưng mùa mưa bắt đầu tháng 5 (mục 1.4.1) | **Đúng** | Thêm biện pháp cho tháng 5 – 6 (thoát nước, che phủ, ứng phó lũ sớm) hoặc dời hạng mục mái hạ lưu, mặt đập lên trước |
+| 9 | Ngưỡng cảnh báo "vượt giá trị dự báo trên 1,5 m" (mục 7.5) chưa có căn cứ | **Đúng** | Đổi thành: lập đường cơ sở sau sửa chữa theo mực nước hồ, cảnh báo theo độ lệch, tốc độ tăng, lưu lượng và độ đục nước thấm |
+| 10 | Mưa 30 phút = 30 % mưa ngày (mục 5.5) là giả thiết mạnh | **Đúng** | Thêm độ nhạy: theo (5-2) τ tỷ lệ với i^0,6, nên với 20 % / 40 % mưa ngày τ của ô 4 × 4 m là ≈ 1,4 / 2,2 Pa (so với 1,8 Pa) – SV tự tính lại và ghi vào mục 5.5 |
+| 11 | Kết luận động đất, ngưỡng tràn, thân cống viết như kết luận chắc chắn | **Đúng** | Viết "đạt với giả thiết k_h = 0,05", "đạt có điều kiện c ≥ 9,1 kPa", "chưa kiểm tra chịu lực" (trùng mục 3, ý 5, 10) |
+| 12 | "LỜI CÁM ƠN" | Nên thống nhất "LỜI CẢM ƠN" | Sửa tiêu đề trang |
+| 13 | Thêm Tóm tắt 200 – 300 từ; bảng kiểm chứng chương trình Python; bảng tổng hợp cuối Chương 2 | Hướng dẫn 2020 của Trường không bắt buộc Tóm tắt | Làm nếu GVHD đồng ý; bảng kiểm chứng nên làm (đã có số liệu đối chứng ở mục 2.3, 2.5) |
+| 14 | Spencer/Morgenstern–Price, Monte Carlo, HEC-RAS/PLAXIS, công khai GitHub, thay cống, neo D25 bắt buộc | Không ưu tiên | Không đưa vào trước khi xong các ý 1 – 11 |
+| 15 | Tệp "10. ĐC TTN 27.06.2023 - K64" là đề cương **Thực tập** tốt nghiệp | **Đúng** – không có quy định khổ, số tờ bản vẽ ĐATN | Hỏi GVHD xác nhận khổ giấy, số tờ (SV nhớ 6 – 8 tờ A0 – bộ bản vẽ đã chuyển sang A0) |
+
+**Câu hỏi hội đồng dễ hỏi** (đã đưa vào slide dự phòng): vì sao chuỗi 1981 – 2025 là 44 năm; vì sao P = m/(n + 1);
++78,60 + 0,20 sao ra +78,85; bỏ lực dính thì ngưỡng không đạt sao kết luận ổn định; k_h lấy ở đâu; vì sao chọn đỉnh
++78,85 khi kẹt van cho mực nước cao hơn.

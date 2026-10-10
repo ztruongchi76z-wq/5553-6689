@@ -167,13 +167,19 @@ def ve_cung(to, kn, h, c):
         to.chu_thich_mui_ten(p_day, (p_day[0] - 6, p_day[1] - 10), nhan, 2.3, rong=100)
 
 
-def ve(thu_muc):
-    to = To(3, 'MẶT CẮT NGANG ĐẬP HIỆN TRẠNG VÀ SAU SỬA CHỮA\nSƠ ĐỒ, KẾT QUẢ TÍNH THẤM VÀ ỔN ĐỊNH', '1/250', 'HCG-BV03')
+def mat_cat_ht(to):
+    """Các khối vẽ theo bố cục A1 (tỷ lệ 1/250); đặt lên A0 phóng 1,25 → 1/200."""
     kn1 = KhungNhin(32.0, 398.0, XL, ZDAY_VE, TL)
     ve_mat_cat(to, kn1, D.mat_cat(D.DINH_HT), 'HT', 'MẶT CẮT NGANG ĐẬP HIỆN TRẠNG (CỌC C16 – KM0+400)')
+
+
+def mat_cat_sc(to):
     kn2 = KhungNhin(32.0, 200.0, XL, ZDAY_VE, TL)
     ve_mat_cat(to, kn2, D.mat_cat(D.DINH_MO_HINH_SC), 'SC', 'MẶT CẮT NGANG ĐẬP SAU SỬA CHỮA – SƠ ĐỒ TÍNH',
                sau_sc=True)
+
+
+def phan_duoi(to):
     # chú giải đường
     x0, y0 = 600.0, 190.0
     to.text('KÝ HIỆU', (x0, y0), 3.5, 'LEFT', 'CHU_DAM', 'VN_DAM')
@@ -207,9 +213,16 @@ def ve(thu_muc):
           '1. Cao trình ghi bằng m, kích thước ghi bằng cm.\\P'
           '2. Mặt cắt tính toán tại cọc C16 (Km0+400), chiều cao đập lớn nhất; trục x = 0 tại tim đập.\\P'
           '3. Bề rộng chân khay, chiều dày đệm tiêu nước, mái lăng trụ là giả thiết (hồ sơ không có).\\P'
-          '4. Sơ đồ tính sau sửa chữa lấy đỉnh +78,75 (TKCS); đỉnh chọn +78,85 cao hơn 0,10 m, không ảnh hưởng kết quả.\\P'
+          '4. Sơ đồ tính sau sửa chữa lấy đỉnh +78,75 (TKCS); với đỉnh chọn +78,85 (cao hơn 0,10 m) cần tính kiểm tra lại.\\P'
           '5. Thấm: PTHH bão hòa – không bão hòa; ổn định: Bishop đơn giản, kh = 0,05 (Chương 2, 5).')
     to.mtext(gc, (25, 112), 2.4, rong=290)
+
+
+def ve(thu_muc):
+    to = To(3, 'MẶT CẮT NGANG ĐẬP HIỆN TRẠNG VÀ SAU SỬA CHỮA\nSƠ ĐỒ, KẾT QUẢ TÍNH THẤM VÀ ỔN ĐỊNH', '1/200', 'HCG-BV03')
+    b = to.dat(mat_cat_ht, f=1.25, neo='TL', xy=(30.0, 814.0))
+    b = to.dat(mat_cat_sc, f=1.25, neo='TL', xy=(30.0, b[1] - 30.0))
+    to.dat(phan_duoi, f=1.25, neo='TL', xy=(30.0, b[1] - 35.0))
     to.luu(thu_muc + '/BV03_MatCatNgangDap.dxf', thu_muc + '/BV03_MatCatNgangDap.pdf', thu_muc + '/BV03_MatCatNgangDap.png')
     return to
 

@@ -1,22 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-THƯ VIỆN DỰNG BẢN VẼ A1 CHO ĐATN HỒ CÀ GIÂY (ezdxf)
+THƯ VIỆN DỰNG BẢN VẼ A0 CHO ĐATN HỒ CÀ GIÂY (ezdxf)
 
 Quy ước:
-  - Mỗi tờ là một tệp DXF (AutoCAD 2018), vẽ trong Model ở đơn vị mm GIẤY (khung A1 841 × 594 mm,
+  - Mỗi tờ là một tệp DXF (AutoCAD 2018), vẽ trong Model ở đơn vị mm GIẤY (khung A0 1189 × 841 mm,
     tỷ lệ in 1:1). Mỗi hình chiếu có tỷ lệ riêng ghi ở tên hình; kích thước tự ghi theo cm thật
     (DIMLFAC = mẫu số tỷ lệ / 10), cao trình ghi theo m.
+  - Các hàm vẽ từng hình chiếu được viết theo bố cục A1 cũ; khi dựng tờ A0, mỗi hình chiếu/bảng là một
+    "khối" được đặt bằng To.dat(): đo khung bao, tịnh tiến và phóng đồng dạng hệ số f (chữ, nét, ký hiệu
+    phóng theo). Tỷ lệ ghi trong chữ "TỶ LỆ ..." của khối được đổi tự động (1/2500 ở f = 1,25 -> 1/2000);
+    f chỉ chọn sao cho tỷ lệ mới là tỷ lệ chuẩn.
   - Khung bản vẽ theo TCVN 7285:2003 (ISO 5457): lề trái 20 mm, các lề khác 10 mm; khung tên góc phải dưới.
   - Phông Arial (arial.ttf) – có sẵn trên Windows; bản PDF xem trước dùng Liberation Sans (cùng kích thước chữ).
 """
 import math
+import os
+import re
+from contextlib import contextmanager
 
 import ezdxf
+from ezdxf import bbox as _bbox
 from ezdxf import units
 from ezdxf.enums import TextEntityAlignment
 from ezdxf.math import Vec2
 
 A1 = (841.0, 594.0)
+A0 = (1189.0, 841.0)
+KHO = A0                      # khổ giấy của bộ bản vẽ
 LE_TRAI, LE = 20.0, 10.0
 DE_TAI = 'TÍNH TOÁN, THIẾT KẾ SỬA CHỮA NÂNG CẤP CỤM CÔNG TRÌNH ĐẦU MỐI HỒ CHỨA NƯỚC CÀ GIÂY – TỈNH LÂM ĐỒNG'
 TONG_SO_TO = 7
@@ -42,9 +52,12 @@ def so(v, nd=2, dau=False):
 
 
 class To:
-    """Một tờ bản vẽ A1."""
+    """Một tờ bản vẽ (mặc định A0)."""
 
-    def __init__(self, so_to, ten_ban_ve, ty_le_chung, ma):
+    def __init__(self, so_to, ten_ban_ve, ty_le_chung, ma, kho=None, khung=True):
+        self.W, self.H = kho or KHO
+        self._f, self._src, self._dst = 1.0, (0.0, 0.0), (0.0, 0.0)
+        self.k_chu = 1.0          # hệ số phóng chiều cao chữ (không phóng hình) – dùng khi tờ A0 còn chỗ
         self.doc = ezdxf.new('R2018', setup=True)
         self.doc.units = units.MM
         self.doc.header['$LWDISPLAY'] = 1
@@ -62,37 +75,98 @@ class To:
                            dimdsep=ord(','), dimzin=8))
         ds.set_arrows(blk='ARCHTICK')
         self.doc.header['$LTSCALE'] = 1.0
-        self.ve_khung()
+        if khung:
+            self.ve_khung()
+
+    # ------------------------------------------------------------------ khối (đặt + phóng đồng dạng)
+    def _p(self, p):
+        f, (sx, sy), (dx, dy) = self._f, self._src, self._dst
+        return (dx + (p[0] - sx) * f, dy + (p[1] - sy) * f)
+
+    def _kw(self, kw):
+        kw = dict(kw)
+        for k in ('const_width', 'ltscale'):
+            if k in kw:
+                kw[k] = kw[k] * self._f
+        return kw
+
+    def _doi_ty_le(self, s):
+        """Trong khối phóng f, đổi 1/N trong chữ 'TỶ LỆ ...' thành 1/(N/f); số lẻ thì đánh dấu '?' để soát."""
+        if self._f == 1.0 or 'TỶ LỆ' not in s.upper():
+            return s
+
+        def doi(m):
+            v = float(m.group(1).replace(',', '.')) / self._f
+            return '1/%d' % round(v) if abs(v - round(v)) < 1e-6 else m.group(0) + '?'
+        return re.sub(r'1/(\d+(?:[.,]\d+)?)', doi, s)
+
+    @contextmanager
+    def khoi(self, f, src, dst):
+        cu = (self._f, self._src, self._dst)
+        self._f, self._src, self._dst = float(f), tuple(src), tuple(dst)
+        try:
+            yield self
+        finally:
+            self._f, self._src, self._dst = cu
+
+    @staticmethod
+    def khung_bao(ham, *args, k_chu=1.0, **kw):
+        """Khung bao (xmin, ymin, xmax, ymax) của khối do ham(to, ...) vẽ, đo trên một tờ nháp không khung."""
+        nhap = To(0, '', '', '', khung=False)
+        nhap.k_chu = k_chu
+        ham(nhap, *args, **kw)
+        b = _bbox.extents(nhap.msp, fast=True)
+        return (b.extmin.x, b.extmin.y, b.extmax.x, b.extmax.y)
+
+    def dat(self, ham, *args, f=1.0, neo='TL', xy=(0.0, 0.0), khung=None, k_chu=None, **kw):
+        """Vẽ khối ham(to, ...) phóng f, điểm neo của khung bao ('TL','TR','BL','BR','TC','BC','C')
+        đặt tại xy. k_chu: hệ số chiều cao chữ riêng cho khối (vd 0,625 ở khối f = 2 để chữ chỉ phóng 1,25).
+        Trả về khung bao mới (xmin, ymin, xmax, ymax) trên tờ."""
+        kc = self.k_chu if k_chu is None else k_chu
+        x0, y0, x1, y1 = khung or To.khung_bao(ham, *args, k_chu=kc, **kw)
+        ax = {'L': x0, 'R': x1, 'C': (x0 + x1) / 2}[neo[1] if len(neo) > 1 else 'C']
+        ay = {'T': y1, 'B': y0, 'C': (y0 + y1) / 2}[neo[0]]
+        cu = self.k_chu
+        self.k_chu = kc
+        try:
+            with self.khoi(f, (ax, ay), xy):
+                ham(self, *args, **kw)
+        finally:
+            self.k_chu = cu
+        X0, Y0 = xy[0] + (x0 - ax) * f, xy[1] + (y0 - ay) * f
+        return (X0, Y0, X0 + (x1 - x0) * f, Y0 + (y1 - y0) * f)
 
     # ------------------------------------------------------------------ cơ bản
     def line(self, p1, p2, lop='NET_CHINH', **kw):
-        return self.msp.add_line(p1, p2, dxfattribs=dict(layer=lop, **kw))
+        return self.msp.add_line(self._p(p1), self._p(p2), dxfattribs=dict(layer=lop, **self._kw(kw)))
 
     def pline(self, pts, lop='NET_CHINH', dong=False, **kw):
-        return self.msp.add_lwpolyline(list(pts), close=dong, dxfattribs=dict(layer=lop, **kw))
+        return self.msp.add_lwpolyline([self._p(q) for q in pts], close=dong,
+                                       dxfattribs=dict(layer=lop, **self._kw(kw)))
 
     def rect(self, x, y, w, h, lop='NET_CHINH', **kw):
         return self.pline([(x, y), (x + w, y), (x + w, y + h), (x, y + h)], lop, dong=True, **kw)
 
     def circle(self, c, r, lop='NET_CHINH', **kw):
-        return self.msp.add_circle(c, r, dxfattribs=dict(layer=lop, **kw))
+        return self.msp.add_circle(self._p(c), r * self._f, dxfattribs=dict(layer=lop, **self._kw(kw)))
 
     def arc(self, c, r, a0, a1, lop='NET_CHINH', **kw):
-        return self.msp.add_arc(c, r, a0, a1, dxfattribs=dict(layer=lop, **kw))
+        return self.msp.add_arc(self._p(c), r * self._f, a0, a1, dxfattribs=dict(layer=lop, **self._kw(kw)))
 
     def text(self, s, p, h=2.5, can='LEFT', lop='CHU', style='VN', rot=0.0, **kw):
         al = {'LEFT': TextEntityAlignment.BOTTOM_LEFT, 'CENTER': TextEntityAlignment.BOTTOM_CENTER,
               'RIGHT': TextEntityAlignment.BOTTOM_RIGHT, 'MC': TextEntityAlignment.MIDDLE_CENTER,
               'ML': TextEntityAlignment.MIDDLE_LEFT, 'MR': TextEntityAlignment.MIDDLE_RIGHT,
               'TL': TextEntityAlignment.TOP_LEFT, 'TC': TextEntityAlignment.TOP_CENTER}[can]
-        t = self.msp.add_text(s, height=h, rotation=rot, dxfattribs=dict(layer=lop, style=style, **kw))
-        t.set_placement(p, align=al)
+        t = self.msp.add_text(self._doi_ty_le(s), height=h * self._f * self.k_chu, rotation=rot,
+                              dxfattribs=dict(layer=lop, style=style, **kw))
+        t.set_placement(self._p(p), align=al)
         return t
 
     def mtext(self, s, p, h=2.5, rong=100.0, lop='CHU', style='VN', cach_dong=1.25):
-        m = self.msp.add_mtext(s, dxfattribs=dict(layer=lop, style=style, char_height=h, width=rong,
-                                                  line_spacing_factor=cach_dong))
-        m.set_location(p, attachment_point=1)
+        m = self.msp.add_mtext(s, dxfattribs=dict(layer=lop, style=style, char_height=h * self._f * self.k_chu,
+                                                  width=rong * self._f, line_spacing_factor=cach_dong))
+        m.set_location(self._p(p), attachment_point=1)
         return m
 
     def hatch(self, pts, mau='ANSI31', ty_le=1.0, lop='HATCH', goc=0.0, mau_to=None):
@@ -100,18 +174,18 @@ class To:
         if mau == 'SOLID':
             h.set_solid_fill(color=mau_to if mau_to is not None else 8)
         else:
-            h.set_pattern_fill(mau, color=mau_to if mau_to is not None else 7, scale=ty_le, angle=goc)
-        h.paths.add_polyline_path(list(pts), is_closed=True)
+            h.set_pattern_fill(mau, color=mau_to if mau_to is not None else 7, scale=ty_le * self._f, angle=goc)
+        h.paths.add_polyline_path([self._p(q) for q in pts], is_closed=True)
         return h
 
     def dim(self, p1, p2, d, mau_so_ty_le, goc=0.0, text=None):
         """Kích thước thẳng giữa p1, p2 (mm giấy); đường kích thước cách p1 khoảng d theo pháp tuyến.
         Ghi số cm thật (DIMLFAC = mẫu số / 10)."""
-        p1, p2 = Vec2(p1), Vec2(p2)
+        p1, p2 = Vec2(self._p(p1)), Vec2(self._p(p2))
         u = Vec2.from_deg_angle(goc)
         n = Vec2(-u.y, u.x)
-        base = p1 + n * d
-        ov = dict(dimlfac=mau_so_ty_le / 10.0)
+        base = p1 + n * d * self._f
+        ov = dict(dimlfac=mau_so_ty_le / 10.0 / self._f, dimscale=self._f, dimtxt=2.5 * self.k_chu)
         dim = self.msp.add_linear_dim(base=base, p1=p1, p2=p2, angle=goc, dimstyle='KT', text=text or '<>',
                                       override=ov, dxfattribs=dict(layer='KICH_THUOC'))
         dim.render()
@@ -127,8 +201,8 @@ class To:
         if not nuoc:
             hh = self.msp.add_hatch(color=7, dxfattribs=dict(layer='NET_MANH'))
             hh.set_solid_fill(color=7)
-            hh.paths.add_polyline_path(tri, is_closed=True)
-        dai = max(len(s) * h * 0.62, 10)
+            hh.paths.add_polyline_path([self._p(q) for q in tri], is_closed=True)
+        dai = max(len(s) * h * self.k_chu * 0.62, 10)
         if ben == 'R':
             self.line((x - a, y + a * 1.2), (x + dai, y + a * 1.2), 'NUOC' if nuoc else 'NET_MANH')
             self.text(s, (x + 0.6, y + a * 1.2 + 0.6), h, 'LEFT', lop)
@@ -147,7 +221,7 @@ class To:
     def ten_hinh(self, s, cx, y, ty_le=None, h=5.0, can='CENTER'):
         """Tên hình chiếu gạch chân + tỷ lệ (can = 'CENTER' hoặc 'LEFT' – khi đó cx là mép trái)."""
         self.text(s, (cx, y), h, can, 'CHU_DAM', 'VN_DAM')
-        w = len(s) * h * 0.62
+        w = len(s) * h * self.k_chu * 0.62
         x1 = cx - w / 2 if can == 'CENTER' else cx
         self.line((x1, y - 1.2), (x1 + w, y - 1.2), 'CHU_DAM')
         if ty_le:
@@ -196,7 +270,7 @@ class To:
 
     # ------------------------------------------------------------------ khung
     def ve_khung(self):
-        W, H = A1
+        W, H = self.W, self.H
         self.rect(0, 0, W, H, 'NET_MANH')
         self.rect(LE_TRAI, LE, W - LE_TRAI - LE, H - 2 * LE, 'KHUNG', const_width=0.0)
         # khung tên 185 × 58 mm ở góc phải dưới
@@ -240,12 +314,13 @@ class To:
 
     # ------------------------------------------------------------------ xuất
     def luu(self, duong_dan_dxf, duong_dan_pdf=None, duong_dan_png=None):
+        os.makedirs(os.path.dirname(duong_dan_dxf) or '.', exist_ok=True)
         self.doc.saveas(duong_dan_dxf)
         if duong_dan_pdf or duong_dan_png:
-            xuat_hinh(self.doc, duong_dan_pdf, duong_dan_png)
+            xuat_hinh(self.doc, duong_dan_pdf, duong_dan_png, kho=(self.W, self.H))
 
 
-def xuat_hinh(doc, pdf=None, png=None, dpi_png=110):
+def xuat_hinh(doc, pdf=None, png=None, dpi_png=90, kho=None):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -253,7 +328,7 @@ def xuat_hinh(doc, pdf=None, png=None, dpi_png=110):
     from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
     from ezdxf.addons.drawing.config import (Configuration, BackgroundPolicy, ColorPolicy, LineweightPolicy,
                                              HatchPolicy)
-    W, H = A1
+    W, H = kho or KHO
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     ax = fig.add_axes([0, 0, 1, 1])
     cfg = Configuration(background_policy=BackgroundPolicy.WHITE, color_policy=ColorPolicy.COLOR,

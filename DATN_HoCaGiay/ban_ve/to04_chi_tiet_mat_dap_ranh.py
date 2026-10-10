@@ -62,8 +62,8 @@ def chi_tiet_A(to, x0, y0):
         to.line(kn(xx, zz), kn(xx + 0.04, zz + 0.09), 'NET_MANH')
     # cao trình
     to.cao_trinh(*kn(-0.15, D.TUONG_CS), D.TUONG_CS, ben='L')
-    to.cao_trinh(*kn(0.35, z_top(0.35)), D.DINH_SC, ben='R')
-    to.cao_trinh(*kn(3.6, z_top(3.6)), z_top(3.6), ben='R')
+    to.cao_trinh(*kn(0.05, z_top(0.05)), D.DINH_SC, ben='R', chu='%s (mép thượng lưu)' % so(D.DINH_SC, 2, True))
+    to.cao_trinh(*kn(xs - 0.05, z_top(xs)), z_top(xs), ben='L', chu='%s (mép tấm)' % so(z_top(xs), 2, True))
     to.cao_trinh(*kn(2.2, zc0), zc0, ben='R', chu='+78,35 (mặt đập hiện trạng)')
     to.cao_trinh(*kn(1.0, zboc), zboc, ben='R', chu='+78,20 (sau khi bóc)')
     to.text('i = 2%', kn(1.9, z_top(1.9) + 0.09), 2.8, 'CENTER', rot=-math.degrees(math.atan(i * 1.0)))
@@ -73,7 +73,7 @@ def chi_tiet_A(to, x0, y0):
     to.dim(kn(xs, 77.0), kn(4.5, 77.0), -8, TL)
     to.dim(kn(4.5, 77.0), kn(xa1, 77.0), -8, TL)
     to.dim(kn(xr0, 77.0), kn(xr0 + 0.40, 77.0), -8, TL)
-    to.dim(kn(4.5, z_top(xs)), kn(4.5, z_top(xs) + 0.25), 9, TL, goc=90)
+    to.dim(kn(4.5, z_top(xs)), kn(4.5, z_top(xs) + 0.25), -7, TL, goc=90)
     # chú thích lớp
     cts = [((2.8, z_top(2.8) - 0.1), (3.0, 80.9), 'Bê tông M250 đá 1×2 dày 20 cm, khe co giãn 5 m/khe chèn ma tít'),
            ((2.2, zdap + 0.03 - i * 2.2), (2.4, 80.5), 'Nilon tái sinh + cấp phối đá dăm đệm dày 5 cm'),
@@ -223,17 +223,15 @@ def xu_ly_ho_xoi(to, x0, y0):
     to.ten_hinh('CHI TIẾT XỬ LÝ HỐ XÓI MÁI HẠ LƯU', kn(3.0, 0)[0], kn(0, 1.3)[1], '1/50', h=4.0)
 
 
-def ve(thu_muc):
-    to = To(4, 'CHI TIẾT SỬA CHỮA MẶT ĐẬP\nVÀ HỆ THỐNG RÃNH THOÁT NƯỚC MÁI HẠ LƯU', 'Như hình vẽ', 'HCG-BV04')
-    chi_tiet_A(to, 40.0, 395.0)
-    mat_bang_go(to, 520.0, 525.0)
-    mat_cat_ranh(to, 495.0, 420.0, 'RÃNH DỌC 40×40', 0.40, 0.40, 0.10)
-    mat_cat_ranh(to, 565.0, 420.0, 'RÃNH XIÊN 20×20', 0.20, 0.20, 0.08)
-    mat_cat_ranh(to, 630.0, 420.0, 'RÃNH CƠ, ĐỈNH LĂNG TRỤ 40×40', 0.40, 0.40, 0.10)
-    mat_cat_ranh(to, 735.0, 420.0, 'RÃNH CHÂN ĐẬP 50×50', 0.50, 0.50, 0.25, tl=25, da_hoc=True, mai=1.0)
-    mat_bang_khai_trien(to, 100.0, 262.0)
-    xu_ly_ho_xoi(to, 300.0, 200.0)
-    # bảng khối lượng
+def cac_ranh(to):
+    """Bốn mặt cắt rãnh vẽ ở 1/25, đặt lên A0 phóng 1,25 → 1/20."""
+    mat_cat_ranh(to, 495.0, 420.0, 'RÃNH DỌC 40×40', 0.40, 0.40, 0.10, tl=25)
+    mat_cat_ranh(to, 560.0, 420.0, 'RÃNH XIÊN 20×20', 0.20, 0.20, 0.08, tl=25)
+    mat_cat_ranh(to, 620.0, 420.0, 'RÃNH CƠ, ĐỈNH LĂNG TRỤ 40×40', 0.40, 0.40, 0.10, tl=25)
+    mat_cat_ranh(to, 715.0, 420.0, 'RÃNH CHÂN ĐẬP 50×50', 0.50, 0.50, 0.25, tl=25, da_hoc=True, mai=1.0)
+
+
+def bang_khoi_luong(to):
     cot = [10, 96, 14, 22]
     hang = [['TT', 'Hạng mục', 'Đơn vị', 'Khối lượng'],
             ['1', 'Cào bóc mặt đập đá dăm láng nhựa (dày 15 cm)', 'm³', '740'],
@@ -250,6 +248,9 @@ def ve(thu_muc):
             ['12', 'Rãnh chân đập đá hộc xây VM100 50×50', 'm', '1.106'],
             ['13', 'Trồng cỏ mái hạ lưu (kể đất màu 10 cm)', 'm²', '36.357']]
     to.bang(480, 345, cot, hang, h=2.4, cao_dong=5.5, tieu_de='KHỐI LƯỢNG CHỦ YẾU – MẶT ĐẬP, MÁI HẠ LƯU (Bảng 7.1)')
+
+
+def ghi_chu(to):
     gc = ('GHI CHÚ:\\P'
           '1. Cao trình ghi bằng m, kích thước ghi bằng cm.\\P'
           '2. Phương án Đ3 (Chương 3): đắp bù đến +78,60, mặt BT đỉnh +78,85 (mép thượng lưu), dốc ngang 2% về hạ lưu;\\P'
@@ -259,6 +260,18 @@ def ve(thu_muc):
           '    và lăng trụ. Khả năng thoát của các rãnh lớn hơn nhiều lần lưu lượng thiết kế (Bảng 5.6).\\P'
           '5. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈ 6,6 Pa xuống ≈ 1,8 Pa (Bảng 5.5).')
     to.mtext(gc, (480, 255), 2.4, rong=170)
+
+
+def ve(thu_muc):
+    to = To(4, 'CHI TIẾT SỬA CHỮA MẶT ĐẬP\nVÀ HỆ THỐNG RÃNH THOÁT NƯỚC MÁI HẠ LƯU', 'Như hình vẽ', 'HCG-BV04')
+    a = to.dat(chi_tiet_A, 40.0, 395.0, f=1.25, neo='TL', xy=(30.0, 816.0))          # 1/25 -> 1/20
+    to.dat(mat_bang_khai_trien, 100.0, 262.0, f=2.0, k_chu=0.625, neo='TL', xy=(30.0, a[1] - 30.0))  # 1/500 -> 1/250
+    xr = a[2] + 40.0
+    g = to.dat(mat_bang_go, 520.0, 525.0, f=2.0, k_chu=0.625, neo='TL', xy=(xr, 816.0))              # 1/50 -> 1/25
+    r = to.dat(cac_ranh, f=1.25, neo='TL', xy=(xr, g[1] - 22.0))
+    h = to.dat(xu_ly_ho_xoi, 300.0, 200.0, f=2.0, k_chu=0.625, neo='TL', xy=(xr, r[1] - 28.0))       # 1/50 -> 1/25
+    b = to.dat(bang_khoi_luong, f=1.4, neo='TL', xy=(xr, h[1] - 25.0))
+    to.dat(ghi_chu, f=1.4, neo='TL', xy=(b[2] + 22.0, h[1] - 25.0))
     to.luu(thu_muc + '/BV04_ChiTietMatDap_Ranh.dxf', thu_muc + '/BV04_ChiTietMatDap_Ranh.pdf',
            thu_muc + '/BV04_ChiTietMatDap_Ranh.png')
     return to

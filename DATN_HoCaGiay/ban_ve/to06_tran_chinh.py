@@ -39,8 +39,8 @@ def mui_ten(to, p0, p1, lop='NET_CHINH', dai=2.5, **kw):
 
 
 # ====================================================================== cắt dọc
-CX = lambda x: 40.0 + (x + 14.0) * 4.0              # ngang 1/250
-CY = lambda z: 412.0 + (z - 66.0) * 10.0            # đứng 1/100
+CX = lambda x: 40.0 + (x + 14.0) * 4.0              # ngang 1/250 (phóng 1,25 → 1/200)
+CY = lambda z: 412.0 + (z - 66.0) * 8.0             # đứng 1/125 (đặt lên A0 phóng 1,25 → 1/100)
 R_MP, TH_MP = 5.0, math.radians(25.0)               # mũi phun (sơ đồ): bán kính, góc hắt giả thiết
 
 
@@ -51,8 +51,9 @@ def mui_phun_hh():
 
 
 def cat_doc(to):
-    to.ten_hinh('CẮT DỌC TRÀN CHÍNH – ĐƯỜNG MẶT NƯỚC VÀ NỘI DUNG SỬA CHỮA', 40, 576, None, h=4.5, can='LEFT')
-    to.text('TỶ LỆ: NGANG 1/250, ĐỨNG 1/100 (sơ đồ)', (40, 569.5), 3.0)
+    to.ten_hinh('CẮT DỌC TRÀN CHÍNH – ĐƯỜNG MẶT NƯỚC VÀ NỘI DUNG SỬA CHỮA', 40, CY(79.5) + 26.0, None, h=4.5,
+                can='LEFT')
+    to.text('TỶ LỆ: NGANG 1/250, ĐỨNG 1/125 (sơ đồ)', (40, CY(79.5) + 19.5), 3.0)
     # thước cao độ
     xr = 33.0
     to.line((xr, CY(66.0)), (xr, CY(79.5)), 'NET_CHINH')
@@ -65,7 +66,7 @@ def cat_doc(to):
     boi = [(xs0, 74.0), (xs0, 74.45), (-11.0, 74.38), (-9.0, 74.30), (-7.0, 74.18), (-5.05, 74.10), (-5.05, 74.0)]
     to.hatch([(CX(x), CY(z)) for x, z in boi], 'AR-SAND', 0.08)
     to.pline([(CX(x), CY(z)) for x, z in boi[1:-1]], 'NET_MANH', linetype='DASHED', ltscale=0.3)
-    to.chu_thich_mui_ten((CX(-10.0), CY(74.33)), (CX(-8.0), CY(72.0)), 'Nạo vét đến +74,00', h=1.8, rong=20)
+    to.chu_thich_mui_ten((CX(-10.0), CY(74.33)), (CX(-8.0), CY(71.0)), 'Nạo vét đến +74,00', h=1.8, rong=20)
     p = [(CX(x), CY(z)) for x, z in D.TC_NGUONG]
     to.hatch(p, 'AR-CONC', 0.03)
     to.pline(p, 'NET_CHINH', dong=True)
@@ -127,13 +128,13 @@ def cat_doc(to):
     # chú thích sửa chữa
     to.chu_thich_mui_ten((CX(25.0), CY(z_day(25.0)) + 0.6), (CX(30.0), CY(71.0)),
                          'Đục 2 ÷ 3 cm BT mài mòn, trát vữa XM – polime ≥ 40 MPa dày 3 cm (chi tiết B)', h=1.8, rong=110)
-    to.chu_thich_mui_ten((CX(12.0), CY(z_day(12.0)) - 1.0), (CX(15.0), CY(69.6)),
+    to.chu_thich_mui_ten((CX(12.0), CY(z_day(12.0)) - 1.0), (CX(15.0), CY(68.6)),
                          'Khe co giãn: thay vật liệu chèn bằng ma tít đàn hồi; thông lỗ thoát nước dưới bản đáy (chi tiết C)',
                          h=1.8, rong=124)
     to.chu_thich_mui_ten((CX(-1.5), CY(72.6)), (CX(4.0), CY(70.4)), 'Neo D25 (xem MC ngưỡng)', h=1.8, rong=34)
     to.text('KÊNH DẪN', (CX(-10.0), CY(75.3)), 2.0, 'CENTER')
     to.text('DỐC NƯỚC L = 60 m, i = 0,08', (CX(30.0), CY(z_day(30.0)) - 5.5), 2.2, 'CENTER', 'CHU_DAM', 'VN_DAM',
-            rot=-math.degrees(math.atan(T['i'] * 10 / 4)))
+            rot=-math.degrees(math.atan(T['i'] * 8 / 4)))
     # bảng số liệu
     y0, hd = CY(66.0) - 2.0, 6.0
     hang = [('x (m)', lambda r: so(r[0], 0)), ('B (m)', lambda r: so(r[1], 2)),
@@ -408,13 +409,14 @@ def ghi_chu(to, x, y):
 
 def ve(thu_muc):
     to = To(6, 'TRÀN XẢ LŨ CHÍNH – SỬA CHỮA DỐC NƯỚC\nKIỂM TRA THỦY LỰC VÀ ỔN ĐỊNH NGƯỠNG', 'Như hình vẽ', 'HCG-BV06')
-    cat_doc(to)
-    mat_bang(to)
-    mat_cat_11(to)
-    nguong(to, 50.0, 70.0)
-    chi_tiet(to, 250.0, 128.0)
-    cac_bang(to)
-    ghi_chu(to, 432.0, 340.0)
+    a = to.dat(cat_doc, f=1.25, neo='TL', xy=(30.0, 818.0))                       # 1/200, 1/100
+    b = to.dat(mat_bang, f=1.25, neo='TL', xy=(30.0, a[1] - 22.0))               # 1/200
+    c = to.dat(nguong, 50.0, 70.0, f=2.0, k_chu=0.625, neo='TL', xy=(30.0, b[1] - 22.0))     # 1/50 -> 1/25
+    xr = max(a[2], b[2], c[2]) + 30.0
+    m = to.dat(mat_cat_11, f=2.0, k_chu=0.625, neo='TL', xy=(xr, 818.0))         # 1/100 -> 1/50
+    t = to.dat(cac_bang, f=1.25, neo='TL', xy=(xr, m[1] - 22.0))
+    g = to.dat(ghi_chu, 432.0, 340.0, f=1.25, neo='TL', xy=(xr, t[1] - 20.0))
+    to.dat(chi_tiet, 250.0, 128.0, f=1.0, k_chu=1.25, neo='TL', xy=(xr, g[1] - 22.0))     # 1/10
     to.luu(thu_muc + '/BV06_TranChinh.dxf', thu_muc + '/BV06_TranChinh.pdf', thu_muc + '/BV06_TranChinh.png')
     return to
 

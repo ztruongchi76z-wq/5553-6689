@@ -2,17 +2,32 @@
 """BV-02: CẮT DỌC TIM ĐẬP – HIỆN TRẠNG VÀ SAU SỬA CHỮA.
 
 Số liệu: du_lieu_cat_doc_dap.py (số hóa từ bản vẽ TKCS "cắt dọc đỉnh đập": cọc, cao độ mặt đập hiện trạng, đường chân
-khay, ranh giới địa tầng, nước ngầm, hố khoan). Ngang 1/2000, đứng 1/200.
+khay, ranh giới địa tầng, nước ngầm, hố khoan). Tờ A0: ngang 1/1000 (từ lý trình 40 m), đứng 1/100.
 """
 import du_lieu_ban_ve as D
 import du_lieu_cat_doc_dap as C
 from bv_lib import To, so
 
-X0 = 98.0
-SX = lambda s: X0 + s * 0.5                       # 1/2000
+X0, S0, S1 = 96.0, 40.0, 1100.3                  # gốc giấy tại lý trình S0; vẽ từ S0 đến S1
+SX = lambda s: X0 + (s - S0) * 1.0                # 1/1000
 ZMIN, ZMAX = 50.0, 82.0
-SY = lambda z: 200.0 + (min(max(z, ZMIN), ZMAX) - ZMIN) * 10.0    # 1/100
+SY = lambda z: 470.0 + (min(max(z, ZMIN), ZMAX) - ZMIN) * 10.0    # 1/100
 S_DAP = C.CD_DAP
+
+
+def cat_s(pts):
+    """Cắt đường (s, z) theo khoảng lý trình [S0, S1]."""
+    out = []
+    pts = list(pts)
+    for i, (s, z) in enumerate(pts):
+        if S0 <= s <= S1:
+            if not out and i > 0 and pts[i - 1][0] < S0:
+                s0, z0 = pts[i - 1]
+                out.append((S0, z0 + (z - z0) * (S0 - s0) / (s - s0)))
+            out.append((s, z))
+        elif s > S1 and out:
+            break
+    return out
 
 
 def mui_ten(to, p0, p1, lop='NET_CHINH', dai=2.0, **kw):
@@ -24,8 +39,8 @@ def mui_ten(to, p0, p1, lop='NET_CHINH', dai=2.0, **kw):
 
 
 def cat_doc(to):
-    to.ten_hinh('CẮT DỌC TIM ĐẬP – HIỆN TRẠNG VÀ SAU SỬA CHỮA', 40, 576, None, h=4.5, can='LEFT')
-    to.text('TỶ LỆ: NGANG 1/2000, ĐỨNG 1/100', (40, 569.5), 3.0)
+    to.ten_hinh('CẮT DỌC TIM ĐẬP – HIỆN TRẠNG VÀ SAU SỬA CHỮA', 28, 814, None, h=5.0, can='LEFT')
+    to.text('TỶ LỆ: NGANG 1/1000, ĐỨNG 1/100', (28, 806.5), 3.5)
     # thước cao độ
     xr = X0 - 6.0
     to.line((xr, SY(ZMIN)), (xr, SY(ZMAX)), 'NET_CHINH')
@@ -41,12 +56,12 @@ def cat_doc(to):
                 1.8, 'LEFT', 'NUOC')
     # địa tầng, chân khay, nước ngầm
     for pl in C.CD_DIA_CHAT:
-        to.pline([(SX(s), SY(z)) for s, z in pl], 'DIA_CHAT', linetype='DASHED', ltscale=0.4)
-    to.pline([(SX(s), SY(z)) for s, z in C.CD_CHAN_KHAY], 'NET_CHINH', linetype='DASHED', ltscale=0.5)
+        to.pline([(SX(s), SY(z)) for s, z in cat_s(pl)], 'DIA_CHAT', linetype='DASHED', ltscale=0.4)
+    to.pline([(SX(s), SY(z)) for s, z in cat_s(C.CD_CHAN_KHAY)], 'NET_CHINH', linetype='DASHED', ltscale=0.5)
     for pl in C.CD_NUOC_NGAM:
-        to.pline([(SX(s), SY(z)) for s, z in pl], 'NUOC', linetype='DASHDOT', ltscale=0.4)
+        to.pline([(SX(s), SY(z)) for s, z in cat_s(pl)], 'NUOC', linetype='DASHDOT', ltscale=0.4)
     for ten, s, z in C.CD_TEN_LOP:
-        if ten == 'KT':
+        if ten == 'KT' or s < S0:
             continue
         r = 1.6 if len(ten) < 3 else 2.4
         to.circle((SX(s), SY(z)), r, 'NET_MANH')
@@ -56,7 +71,7 @@ def cat_doc(to):
     to.chu_thich_mui_ten((SX(560.0), SY(noi_suy(C.CD_NUOC_NGAM[0], 560.0))), (SX(540.0), SY(66.0)),
                          'Mực nước ngầm khi khảo sát', h=1.8, rong=44)
     # mặt đập / mặt đất hiện trạng
-    to.pline([(SX(s), SY(z)) for _, s, z in C.CD_COC], 'NET_CHINH')
+    to.pline([(SX(s), SY(z)) for s, z in cat_s([(s, z) for _, s, z in C.CD_COC])], 'NET_CHINH')
     # tràn sự cố
     s0, s1, z0, z1 = C.CD_TSC
     p = [(SX(s0), SY(z0)), (SX(s1), SY(z0)), (SX(s1), SY(z1)), (SX(s0), SY(z1))]
@@ -97,13 +112,13 @@ def cat_doc(to):
     to.line((SX(187.7), SY(79.6)), (SX(187.7), SY(80.6)), 'NUOC')
     to.text('T9', (SX(187.7), SY(80.8)), 1.9, 'CENTER', 'NUOC')
     to.text('Tuyến quan trắc thấm (giếng tự động)', (SX(680.0), SY(80.8)), 1.8, 'CENTER', 'NUOC')
-    to.chu_thich_mui_ten((SX(60.7), SY(76.0)), (SX(36.0), SY(73.0)), 'Tràn sự cố', h=1.9, rong=18)
+    to.chu_thich_mui_ten((SX(60.7), SY(76.0)), (SX(53.0), SY(72.5)), 'Tràn sự cố', h=1.9, rong=13)
     to.chu_thich_mui_ten((SX(88.0), SY(72.0)), (SX(130.0), SY(66.0)),
                          'Màng khoan phụt L = 50 m, đỉnh +77,00 (BV-05)', h=1.8, rong=68)
     to.text('Nhà quản lý', (SX(46.4), SY(80.2)), 1.8, 'CENTER')
     # kích thước chiều dài đập
     yk = SY(ZMAX) + 4.0
-    to.dim((SX(S_DAP[0]), yk), (SX(S_DAP[1]), yk), 0, 2000, text='Đập đất C23 – C2: L = 986,75 m')
+    to.dim((SX(S_DAP[0]), yk), (SX(S_DAP[1]), yk), 0, 1000, text='Đập đất C23 – C2: L = 986,75 m')
     # cao trình
     to.cao_trinh(SX(1060.0), SY(D.DINH_SC), 0, h=1.8, chu='+78,85')
 
@@ -117,8 +132,8 @@ def noi_suy(pts, s):
 
 
 def bang_so_lieu(to):
-    y0, hd = SY(ZMIN) - 3.0, 8.5
-    coc = C.CD_COC
+    y0, hd = SY(ZMIN) - 3.0, 10.5
+    coc = [c for c in C.CD_COC if c[1] >= S0]
     hang = [('Tên cọc', lambda i: coc[i][0]),
             ('Khoảng cách lẻ (m)', lambda i: so(coc[i][1] - coc[i - 1][1], 2) if i > 0 else ''),
             ('Khoảng cách cộng dồn (m)', lambda i: so(coc[i][1], 2)),
@@ -147,9 +162,9 @@ def bang_so_lieu(to):
             to.text(v, (x, 0.5 * (yt + yb)), 1.6, 'MC', rot=90)
     yb = y0 - len(hang) * hd
     to.line((xl, yb), (SX(1100.0) + 4.0, yb), 'BANG')
-    for x in (xl, SX(-3.0), SX(1100.0) + 4.0):
+    for x in (xl, X0 - 3.0, SX(1100.0) + 4.0):
         to.line((x, y0), (x, yb), 'BANG')
-    for _, s, _ in C.CD_COC:
+    for _, s, _ in coc:
         to.line((SX(s), SY(ZMIN)), (SX(s), y0), 'NET_MANH', linetype='DASHED', ltscale=0.2)
 
 
@@ -201,7 +216,7 @@ def chu_giai(to, x, y):
 def ghi_chu(to, x, y):
     gc = ('GHI CHÚ: \\P'
           '1. Cao trình ghi bằng m. Cọc, cao độ mặt đập hiện trạng, đường chân khay, địa tầng, hố khoan số hóa từ bản vẽ '
-          'TKCS (cắt dọc đỉnh đập, ngang 1/500, đứng 1/200). \\P'
+          'TKCS (cắt dọc đỉnh đập, ngang 1/500, đứng 1/200); hình vẽ từ lý trình 40 m (cọc DP, C27 không thể hiện). \\P'
           '2. Đỉnh đập sau sửa chữa +78,85 (mép thượng lưu) – cao hơn TKCS 0,10 m theo điều kiện MNLKT + 0,3 m khi có '
           'tường chắn sóng (TCVN 8216:2018, điều 10.1.5). Mặt đập hiện trạng +78,31 ÷ +78,50: phải nâng 0,35 ÷ 0,54 m. \\P'
           '3. Trình tự: bóc lớp mặt đá dăm láng nhựa hư hỏng → đắp bù đất đầm K ≥ 0,97 đến +78,60 → đá dăm đệm 5 cm, '
@@ -235,11 +250,13 @@ def bang_cao_trinh(to):
 
 def ve(thu_muc):
     to = To(2, 'CẮT DỌC TIM ĐẬP\nHIỆN TRẠNG VÀ SAU SỬA CHỮA', 'Như hình vẽ', 'HCG-BV02')
+    to.k_chu = 1.3
     cat_doc(to)
     bang_so_lieu(to)
-    chu_giai(to, 662.0, 560.0)
-    ghi_chu(to, 655.0, 345.0)
-    bang_cao_trinh(to)
+    to.k_chu = 1.0
+    b = to.dat(bang_cao_trinh, f=1.6, neo='TL', xy=(28.0, 370.0))
+    b2 = to.dat(ghi_chu, 655.0, 345.0, f=1.6, neo='TL', xy=(28.0, b[1] - 18.0))
+    to.dat(chu_giai, 662.0, 560.0, f=1.6, neo='TL', xy=(b[2] + 30.0, 370.0))
     to.luu(thu_muc + '/BV02_CatDocDap.dxf', thu_muc + '/BV02_CatDocDap.pdf', thu_muc + '/BV02_CatDocDap.png')
     return to
 

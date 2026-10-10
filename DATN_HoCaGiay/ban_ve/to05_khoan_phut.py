@@ -676,14 +676,17 @@ def chu_giai(to, x, y):
 
 def ve(thu_muc):
     to = To(5, 'MÀNG KHOAN PHỤT CHỐNG THẤM MANG TRÁI\nTRÀN SỰ CỐ – CHUYÊN ĐỀ', 'Như hình vẽ', 'HCG-BV05')
-    mat_bang(to)
-    cat_doc(to)
-    mat_cat(to)
-    so_do_ho_khoan(to, 26.0, 128.0)
-    cac_bang(to)
-    ghi_chu(to, 418.0, 400.0)
-    bieu_do(to, 436.0, 255.0)
-    chu_giai(to, 236.0, 152.0)
+    # cột trái: cắt dọc (ngang 1/200, đứng 1/100 -> 1/100, 1/50), mặt cắt (1/200 -> 1/100), sơ đồ hố khoan, ký hiệu
+    a = to.dat(cat_doc, f=2.0, k_chu=0.625, neo='TL', xy=(30.0, 818.0))
+    b = to.dat(mat_cat, f=2.0, k_chu=0.625, neo='TL', xy=(30.0, a[1] - 22.0))
+    c = to.dat(so_do_ho_khoan, 26.0, 128.0, f=1.25, neo='TL', xy=(30.0, b[1] - 22.0))
+    to.dat(chu_giai, 236.0, 152.0, f=1.25, neo='TL', xy=(c[2] + 35.0, b[1] - 22.0))
+    # cột phải: mặt bằng (1/200), bảng, biểu đồ, ghi chú
+    xr = max(a[2], b[2]) + 25.0
+    m = to.dat(mat_bang, f=1.0, k_chu=1.2, neo='TL', xy=(xr, 818.0))
+    t = to.dat(cac_bang, f=1.15, neo='TL', xy=(xr, m[1] - 20.0))
+    d = to.dat(bieu_do, 436.0, 255.0, f=1.25, neo='TL', xy=(xr, t[1] - 18.0))
+    to.dat(ghi_chu, 418.0, 400.0, f=1.25, neo='TL', xy=(xr, d[1] - 18.0))
     to.luu(thu_muc + '/BV05_KhoanPhut_ChuyenDe.dxf', thu_muc + '/BV05_KhoanPhut_ChuyenDe.pdf',
            thu_muc + '/BV05_KhoanPhut_ChuyenDe.png')
     return to

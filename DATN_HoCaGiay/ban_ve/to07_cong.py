@@ -26,13 +26,13 @@ def mui_ten(to, p0, p1, lop='NET_CHINH', dai=2.0, **kw):
 
 
 # ====================================================================== cắt dọc
-CX = lambda x: 40.0 + (x + 8.0) * 4.0                # ngang 1/250
-CY = lambda z: 425.0 + (z - 62.0) * 20.0             # đứng 1/50
+CX = lambda x: 40.0 + (x + 8.0) * 4.0                # ngang 1/250 (phóng 1,25 → 1/200)
+CY = lambda z: 425.0 + (z - 62.0) * 16.0             # đứng 1/62,5 (phóng 1,25 → 1/50)
 
 
 def cat_doc(to):
-    to.ten_hinh('CẮT DỌC CỐNG LẤY NƯỚC – ĐƯỜNG MẶT NƯỚC TRONG THÂN CỐNG', 40, 576, None, h=4.5, can='LEFT')
-    to.text('TỶ LỆ: NGANG 1/250, ĐỨNG 1/50 (sơ đồ)', (40, 569.5), 3.0)
+    to.ten_hinh('CẮT DỌC CỐNG LẤY NƯỚC – ĐƯỜNG MẶT NƯỚC TRONG THÂN CỐNG', 40, CY(68.5) + 21.0, None, h=4.5, can='LEFT')
+    to.text('TỶ LỆ: NGANG 1/250, ĐỨNG 1/62,5 (sơ đồ)', (40, CY(68.5) + 14.5), 3.0)
     xr = 33.0
     to.line((xr, CY(62.0)), (xr, CY(68.5)), 'NET_CHINH')
     for k in range(13):
@@ -61,7 +61,7 @@ def cat_doc(to):
     to.text('THÁP VAN', (CX(-0.8), CY(68.4) + 2.0), 2.0, 'CENTER')
     to.pline([(CX(-1.0), CY(C['Z_nguong'])), (CX(-0.6), CY(C['Z_nguong'])), (CX(-0.6), CY(C['Z_nguong'] + H)),
               (CX(-1.0), CY(C['Z_nguong'] + H))], 'NET_MANH', dong=True, linetype='DASHED', ltscale=0.2)
-    to.chu_thich_mui_ten((CX(-0.8), CY(66.2)), (CX(-5.0), CY(63.0)), 'Cửa van 1,8 × 2,0 m', h=1.8, rong=20)
+    to.chu_thich_mui_ten((CX(-0.8), CY(66.2)), (CX(-4.6), CY(62.6)), 'Cửa van 1,8 × 2,0 m', h=1.8, rong=20)
     # mực nước hồ
     to.muc_nuoc(CX(-8.0), CX(-1.6), CY(D.MN['MNC']), 'MNC', D.MN['MNC'], nhan_x=CX(-7.4))
     to.text('MNDBT +74,70, MNLTK +77,63: ngoài phạm vi hình vẽ', (CX(-8.0), CY(68.4) + 7.0), 1.8, 'LEFT', 'NUOC')
@@ -93,7 +93,7 @@ def cat_doc(to):
     to.cao_trinh(CX(1.2), CY(C['Z_nguong']), 0, h=1.8, chu='+65,60 ngưỡng')
     to.cao_trinh(CX(L - 1.2), CY(zr), 0, ben='L', h=1.8, chu='+63,59')
     to.text('i = 0,03 (QTVH; một số tài liệu ghi 3‰ – cần xác minh)', (CX(44.0), CY(z_day(44.0) - t) - 3.2), 1.8, 'CENTER',
-            rot=-math.degrees(math.atan(C['i'] * 20 / 4)))
+            rot=-math.degrees(math.atan(C['i'] * 16 / 4)))
     yk = CY(62.0) + 1.0
     to.dim((CX(0.0), yk), (CX(L), yk), 0, 250)
     to.dim((CX(-2.2), CY(C['Z_nguong'])), (CX(-2.2), CY(C['Z_nguong'] + H)), 0, 50, goc=90)
@@ -383,13 +383,14 @@ def ghi_chu(to, x, y):
 
 def ve(thu_muc):
     to = To(7, 'CỐNG LẤY NƯỚC – THAY MÁY ĐÓNG MỞ\nKIỂM TRA THỦY LỰC VÀ LỰC ĐÓNG MỞ', 'Như hình vẽ', 'HCG-BV07')
-    cat_doc(to)
-    mat_cat_ngang(to, 95.0, 200.0)
-    so_do_van(to, 250.0, 40.0)
-    bieu_do_Q(to, 48.0, 40.0)
-    cac_bang(to)
-    ghi_chu(to, 432.0, 405.0)
-    bieu_do_luc(to, 450.0, 130.0)
+    a = to.dat(cat_doc, f=1.25, neo='TL', xy=(30.0, 818.0))                         # 1/200, 1/50
+    m = to.dat(mat_cat_ngang, 95.0, 200.0, f=1.25, neo='TL', xy=(30.0, a[1] - 22.0))  # 1/25 -> 1/20
+    v = to.dat(so_do_van, 250.0, 40.0, f=1.25, neo='TL', xy=(m[2] + 30.0, a[1] - 22.0))
+    to.dat(bieu_do_Q, 48.0, 40.0, f=1.25, neo='TL', xy=(30.0, min(m[1], v[1]) - 22.0))
+    xr = max(a[2], v[2]) + 30.0
+    t = to.dat(cac_bang, f=1.25, neo='TL', xy=(xr, 818.0))
+    g = to.dat(ghi_chu, 432.0, 405.0, f=1.25, neo='TL', xy=(xr, t[1] - 20.0))
+    to.dat(bieu_do_luc, 450.0, 130.0, f=1.25, neo='TL', xy=(xr, g[1] - 22.0))
     to.luu(thu_muc + '/BV07_CongLayNuoc.dxf', thu_muc + '/BV07_CongLayNuoc.pdf', thu_muc + '/BV07_CongLayNuoc.png')
     return to
 

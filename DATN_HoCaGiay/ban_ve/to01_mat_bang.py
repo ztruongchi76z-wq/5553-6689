@@ -2,7 +2,8 @@
 """BV-01: MẶT BẰNG TỔNG THỂ CỤM ĐẦU MỐI – BỐ TRÍ CÁC HẠNG MỤC SỬA CHỮA, NÂNG CẤP.
 
 Nền: bình đồ TKCS (DWG khoan phụt mang tràn sự cố, hệ VN-2000), trích các lớp mái, tường, chân mái, đường, suối,
-tim tuyến vào du_lieu/binh_do_tkcs.json. Tỷ lệ 1/2500. Tim đập: DP (487477,39; 1255393,26) → C3 → C2 → DT, dài 1100 m;
+tim tuyến vào du_lieu/binh_do_tkcs.json. Vẽ ở tỷ lệ 1/2500 rồi đặt lên tờ A0 phóng 1,25 → 1/2000; hình trích
+vẽ ở 1/1250 phóng 1,25 → 1/1000. Tim đập: DP (487477,39; 1255393,26) → C3 → C2 → DT, dài 1100 m;
 đập đất từ C23 (lý trình 63,98) đến C2 (1050,73).
 """
 import json
@@ -16,6 +17,7 @@ K = 1000.0 / TL                                     # mm giấy / m
 GOC = (486700.0, 1255180.0)
 CUA_SO = (20.0, 20.0, 1980.0, 590.0)                # cửa sổ (m, tương đối gốc)
 X0, Y0 = 24.0, 340.0
+TL_TRICH, MO_RONG = 1000.0, (1.0, 1.0)             # tỷ lệ vẽ hình trích, hệ số mở rộng cửa sổ (ngang, đứng)
 DP = (487477.39, 1255393.26)
 C3 = (488520.49, 1255279.67)
 C2 = (488521.93, 1255279.51)
@@ -303,7 +305,7 @@ def chu_giai(to, x, y):
 def ghi_chu(to, x, y):
     gc = ('GHI CHÚ: \\P'
           '1. Hệ tọa độ VN-2000, cao độ Quốc gia; kích thước, cao trình ghi bằng m. Nền bình đồ trích từ hồ sơ TKCS '
-          '(tỷ lệ gốc 1/1000), thể hiện lại ở tỷ lệ 1/2500. \\P'
+          '(tỷ lệ gốc 1/1000), thể hiện lại ở tỷ lệ 1/2000. \\P'
           '2. Lý trình theo tim đập từ cọc DP; đập đất từ C23 (tường bên trái tràn sự cố, lý trình 63,98) đến C2 '
           '(1050,73), dài 986 m. Cao trình đỉnh đập sau sửa chữa +78,85 (mép thượng lưu), TKCS +78,75. \\P'
           '3. Vị trí tuyến quan trắc T1 ÷ T9 theo hồ sơ hiện trạng; vị trí mốc lún mới thể hiện sơ đồ, chuẩn xác khi '
@@ -313,9 +315,15 @@ def ghi_chu(to, x, y):
     to.mtext(gc, (x, y), 2.0, rong=222)
 
 
+def mo_rong(cs):
+    cx, cy = (cs[0] + cs[2]) / 2, (cs[1] + cs[3]) / 2
+    w, h = (cs[2] - cs[0]) * MO_RONG[0] / 2, (cs[3] - cs[1]) * MO_RONG[1] / 2
+    return (cx - w, cy - h, cx + w, cy + h)
+
+
 def trich_tsc(to):
-    T, trong = hinh_trich(to, 'HÌNH TRÍCH A – KHU VỰC TRÀN SỰ CỐ, NHÀ QUẢN LÝ, ĐẦU ĐẬP TRÁI', (487370.0, 1255265.0, 487730.0, 1255465.0),
-                          32.0, 24.0, 1000.0)
+    T, trong = hinh_trich(to, 'HÌNH TRÍCH A – KHU VỰC TRÀN SỰ CỐ, NHÀ QUẢN LÝ, ĐẦU ĐẬP TRÁI',
+                          mo_rong((487370.0, 1255265.0, 487730.0, 1255465.0)), 32.0, 24.0, TL_TRICH)
     # đập đất C23 → ...
     pts = [T(*tim(63.98 + 2.0 * i)) for i in range(140)]
     to.pline([q for q in pts if trong(q)], 'SUA_CHUA', const_width=0.5)
@@ -345,8 +353,9 @@ def trich_tsc(to):
 
 
 def trich_cong(to):
-    T, trong = hinh_trich(to, 'HÌNH TRÍCH B – KHU VỰC CỐNG LẤY NƯỚC, VAI PHẢI', (488405.0, 1255185.0, 488630.0, 1255385.0),
-                          412.0, 24.0, 1000.0)
+    T, trong = hinh_trich(to, 'HÌNH TRÍCH B – KHU VỰC CỐNG LẤY NƯỚC, VAI PHẢI',
+                          mo_rong((488405.0, 1255185.0, 488630.0, 1255385.0)),
+                          32.0 + 360.0 * MO_RONG[0] * 1000.0 / TL_TRICH + 20.0, 24.0, TL_TRICH)
     pts = [T(*tim(800.0 + 2.0 * i)) for i in range(126)]
     to.pline([q for q in pts if trong(q) and True], 'SUA_CHUA', const_width=0.5)
     for ten, ss in (('C5', 950.01), ('C4', 1000.01), ('C3', 1049.28), ('C2', 1050.73), ('C1', 1075.01), ('DT', 1100.0)):
@@ -364,19 +373,33 @@ def trich_cong(to):
 
 
 
-def ve(thu_muc):
-    to = To(1, 'MẶT BẰNG TỔNG THỂ CỤM ĐẦU MỐI\nBỐ TRÍ CÁC HẠNG MỤC SỬA CHỮA, NÂNG CẤP', '1/2500', 'HCG-BV01')
+def mat_bang_chinh(to):
     to.ten_hinh('MẶT BẰNG TỔNG THỂ CỤM CÔNG TRÌNH ĐẦU MỐI HỒ CÀ GIÂY', 24, 576, None, h=4.5, can='LEFT')
     to.text('TỶ LỆ: 1/2500', (330, 576), 3.0)
     nen(to)
     lop_phu(to)
     mui_bac(to, 795.0, 548.0)
     thuoc(to, 760.0, 331.0)
+
+
+def thong_tin(to):
     bang(to)
     chu_giai(to, 232.0, 322.0)
     ghi_chu(to, 412.0, 322.0)
+
+
+def hinh_trich_ab(to):
     trich_tsc(to)
     trich_cong(to)
+
+
+def ve(thu_muc):
+    global TL_TRICH, MO_RONG
+    TL_TRICH, MO_RONG = 1250.0, (1.5, 1.6)
+    to = To(1, 'MẶT BẰNG TỔNG THỂ CỤM ĐẦU MỐI\nBỐ TRÍ CÁC HẠNG MỤC SỬA CHỮA, NÂNG CẤP', '1/2000', 'HCG-BV01')
+    b = to.dat(mat_bang_chinh, f=1.25, neo='TL', xy=(28.0, 826.0))
+    b = to.dat(thong_tin, f=1.25, neo='TL', xy=(28.0, b[1] - 8.0))
+    to.dat(hinh_trich_ab, f=1.25, neo='TL', xy=(28.0, b[1] - 10.0))
     to.luu(thu_muc + '/BV01_MatBangTongThe.dxf', thu_muc + '/BV01_MatBangTongThe.pdf',
            thu_muc + '/BV01_MatBangTongThe.png')
     return to
