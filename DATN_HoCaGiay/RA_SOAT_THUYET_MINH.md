@@ -91,6 +91,12 @@ Nhật ký chi tiết: `thuyet_minh/nhat_ky_hieu_chinh.txt`; danh sách mục l�
    bài toán được tác giả lập trình…", "khối lượng … được tác giả tính…"), trong khi Lời cam đoan khẳng định đồ án là
    của bản thân tác giả. Sinh viên nên tìm hiểu quy định của Trường, Bộ môn về sử dụng AI và khai báo nếu được yêu
    cầu, đồng thời tự chạy lại, hiểu và giải thích được từng con số – hội đồng sẽ hỏi.
+13. **Khối lượng so sánh phương án màng trên BV-05 chưa có trong thuyết minh.** Bảng "So sánh phương án" của BV-05
+   (51 → 39 hố; tổng khoan 506 → 381 m, còn 300 m nếu nâng được đáy màng; tổng phụt 431 → 323 / 243 m) là ước tính
+   hình học theo bố trí hố trên bản vẽ, còn mục 8.6 chỉ ghi "đoạn 35 m giảm khoảng 1/3 khối lượng". Nếu muốn nêu các
+   con số này khi bảo vệ thì bổ sung một bảng vào mục 8.6 (và tự tính lại); nếu không, chỉ dùng cách nói của mục 8.6.
+14. Gradien tiếp xúc ống khói: hiện trạng phân vị 95 % ≤ 1,19 (mục 2.5), sau sửa chữa ≤ 0,93 (mục 5.3) – khi trả lời
+   hội đồng nói rõ đang dùng trạng thái nào (slide 8 dùng 1,19 là giá trị lớn hơn).
 
 ## 4. Lưu ý khi dùng tệp
 
