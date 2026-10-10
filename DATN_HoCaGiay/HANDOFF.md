@@ -12,7 +12,8 @@ Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_
 | Bộ bản vẽ | XONG – **7 tờ A0** (1189 × 841 mm) DXF + PDF trong `ban_ve/xuat/`, bản in gộp `BoBanVe_A0_DATN_HoCaGiay.pdf`; cách dựng lại xem `ban_ve/README.md` |
 | Slide bảo vệ | XONG – 20 slide + 1 slide dự phòng (câu hỏi dự kiến) trên Claude, có ghi chú thuyết trình; gói zip `Slide_BaoVe_DATN_HoCaGiay.zip` (PDF, PowerPoint dạng ảnh, PNG, nguồn) |
 | Dự toán | KHÔNG LÀM – chỉ lập khi Bộ môn yêu cầu; cần đơn giá địa phương và phần mềm dự toán, khối lượng lấy theo Bảng 7.1 |
-| GitHub | Đã đẩy nhánh `datn-ho-ca-giay` |
+| GitHub | Đã đẩy nhánh `datn-ho-ca-giay`; gói zip bản vẽ và slide trong `TAI_VE/`. **Kho đang để công khai (public)** – nên chuyển Private trước khi nộp |
+| Trang hồ sơ | https://claude.ai/artifact/DR7QbwjM6YeyffFn1vhxWN – một chỗ tải mọi tệp bản mới nhất (nút tải dẫn tới GitHub), ảnh từng tờ bản vẽ, danh sách 22 chỗ thuyết minh cần sửa có số trang |
 | Tờ nhiệm vụ ĐATN | SV đóng bản gốc có chữ ký |
 
 ## 2. Slide bảo vệ
