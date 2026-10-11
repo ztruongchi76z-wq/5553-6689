@@ -364,15 +364,17 @@ def cac_bang(to):
     y = to.bang(xL, 503, cot1, hang1, h=1.9, cao_dong=4.6, tieu_de='TRỊ SỐ THIẾT KẾ CÔNG TRÌNH THÁO LŨ (Bảng 4.1)')
     cot2 = [16, 16, 20, 22]
     hang2 = [['H0 (m)', 'ε', 'Q (m³/s)', 'q (m³/s/m)']] + [[a, b, c, d] for a, b, c, d in D.TC_BANG42]
-    to.bang(xL + 175, 503, cot2, hang2, h=1.9, cao_dong=4.6, tieu_de='KHẢ NĂNG THÁO (Bảng 4.2)')
+    to.bang(xL + 175, 503, cot2, hang2, h=1.9, cao_dong=4.6, tieu_de='KHẢ NĂNG THÁO (Bảng 4.3)')
     to.text('m = 0,45; n = 9; b = 2,4 m', (xL + 175, 503 - 8 * 4.6 - 3.0), 1.7)
     cot4 = [27, 10, 15, 15, 15, 15, 15, 14, 14, 13, 22]
     hang4 = [['Mực nước', 'c\n(kPa)', 'G\n(kN)', 'W nước\n(kN)', 'U\n(kN)', 'ΣV\n(kN)', 'ΣH\n(kN)', 'K trượt',
               '[K]', 'K lật', 'σ gót / mũi\n(kPa)']] + [list(r) for r in D.TC_BANG44]
     y = to.bang(xL, 445, cot4, hang4, h=1.9, cao_dong=4.6,
-                tieu_de='ỔN ĐỊNH NGƯỠNG TRÀN CHÍNH – DẢI RỘNG 1 m (Bảng 4.4)')
+                tieu_de='ỔN ĐỊNH NGƯỠNG TRÀN CHÍNH – DẢI RỘNG 1 m (Bảng 4.5)')
     to.text('K = (f·ΣV + c·B)/ΣH; f = 0,60; B = 5,05 m; [K] = Kn·nc = 1,15 (cơ bản), 1,035 (đặc biệt). c = 0: K < [K] '
             'khi tháo lũ → cần c ≥ 6,4 kPa (MNLTK), 9,1 kPa (MNLKT).', (xL, y - 3.2), 1.8)
+    to.text('Có neo D25 (2 hàng, a = 1,5 m, ngàm 2,0 m vào đá lớp II), c = 0: K = 2,23 (MNLTK), 1,81 (MNLKT) ≥ [K] '
+            '– đạt (Bảng 4.6).', (xL, y - 6.4), 1.8)
     cot5 = [18, 18, 30, 22, 18, 30]
     hang5 = [['Tần suất', 'Q (m³/s)', 'h đầu dốc (m)', 'h cuối dốc (m)', 'v cuối (m/s)', 'Tường yêu cầu (m)']] + \
             [list(r) for r in D.TSC_TL]

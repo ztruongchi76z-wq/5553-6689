@@ -208,11 +208,12 @@ def lop_phu(to):
     ghi(to, P(486860.0, 1255535.0), (X0 + 166.0, Y0 + 32.0),
         ['TRÀN CHÍNH 9 × 2,4 m – BV-06',
          'Xử lý mặt đáy dốc (1.210 m²), khe co giãn, nạo vét kênh dẫn',
-         'Giữ nguyên ngưỡng, trụ pin, tường bên, mũi phun'], rong=100)
+         'Khoan neo ngưỡng D25 vào đá lớp II (≈ 36 thanh)',
+         'Giữ nguyên trụ pin, tường bên, mũi phun'], rong=100)
     ghi(to, P(*tim(1033.0, 0.0)), (P(*tim(1033.0, 0))[0] - 70.0, Y0 + 205.0),
         ['CỐNG LẤY NƯỚC 1,8 × 2,0 m – BV-07',
          'Thay máy đóng mở VĐ20, gioăng, tấm trượt, giá đỡ trục vít',
-         'Kiểm tra thân cống bằng camera/robot'], rong=96)
+         'Kiểm tra thân cống bằng camera/robot; đo cao độ đáy cống'], rong=96)
     ghi(to, P(*tim(46.4, 40.0)), (P(*tim(46.4, 0))[0] + 30.0, Y0 + 205.0),
         ['NHÀ QUẢN LÝ – trạm trung tâm SCADA',
          'Trạm đo mưa, đo mực nước hồ, 2 camera, đường quản lý BT M250 3,35 km'], rong=104)
@@ -248,7 +249,7 @@ def bang(to):
                         'sửa hố xói, hệ rãnh BT, trồng cỏ mái hạ lưu; xử lý hố sụt vai trái; khơi thông lăng trụ'],
             ['Tràn chính', 'Giữ nguyên quy mô; sửa chữa bề mặt đáy dốc, khe co giãn; nạo vét kênh dẫn; khoan neo ngưỡng D25'],
             ['Tràn sự cố', 'Màng khoan phụt XM – sét mang trái (L = 50 m, 3 hàng TKCS; đề xuất 3 hàng 15 m + 2 hàng A, B); lát lại tấm BT mái'],
-            ['Cống lấy nước', 'Thay 2 máy đóng mở VĐ20; thay gioăng, tấm trượt; bổ sung giá đỡ trục vít; kiểm tra thân cống'],
+            ['Cống lấy nước', 'Thay 2 máy đóng mở VĐ20; thay gioăng, tấm trượt; bổ sung giá đỡ trục vít; kiểm tra thân cống, đo cao độ đáy cống'],
             ['Quan trắc, SCADA', '14 giếng quan trắc thấm tự động (T1, T3, T5, T7, T9), 9 mốc lún, trạm đo mưa,\n'
                                  'đo mực nước, camera, trạm trung tâm'],
             ['Đường quản lý', 'Bê tông hóa 3,35 km, mặt BT M250 rộng 4 m']]

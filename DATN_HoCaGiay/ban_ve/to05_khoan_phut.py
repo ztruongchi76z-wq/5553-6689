@@ -218,7 +218,7 @@ def mat_bang(to):
     to.text('CG7', (PX(D.KPD_CG7['s']) + 2.0, PY(18.6) - 2.6), 1.8)
     # phụt tiếp xúc dọc lưng tường bên
     to.chu_thich_mui_ten((PX(0.15), PY(12.4)), (PX(4.0), PY(7.9)),
-                         'Phụt tiếp xúc dọc lưng tường bên tràn bằng hố khoan nghiêng (mục 8.5)', h=1.9, rong=72)
+                         'Phụt tiếp xúc dọc lưng tường bên tràn bằng hố khoan nghiêng (mục 8.6)', h=1.9, rong=72)
     # cọc, hướng dòng chảy, ghi chú
     for ten, s in (('C23', 0.0), ('C22', D.KPD_C22), ('C22+13,97', L_MAN)):
         to.line((PX(s), PY(7.0)), (PX(s), PY(7.0) + 3.0), 'NET_CHINH')
@@ -615,10 +615,10 @@ def cac_bang(to):
              ['η / J ra – MNLTK +77,63*', eta('TK', 0), eta('HLH_TK', 0), eta('HLH_9229', 0)],
              ['η / J ra – MNLKT +78,54*', eta('TK', 1), eta('HLH_TK', 1), eta('HLH_9229', 1)],
              ['Điều kiện áp dụng', '–', 'Phụt thí nghiệm 2 hàng A, B', 'Như cột trước + ép nước'],
-             ['', '', 'đạt K ≤ 1E-05 cm/s (≈ 1 Lu)', 'lớp II đạt q ≤ 5 Lu']]
+             ['', '', 'đạt K ≤ 1E-05 cm/s (≈ 0,8 Lu)', 'lớp II đạt q ≤ 5 Lu']]
     y3 = 466.0
     yb = to.bang(x0, y3, cot3, hang3, h=2.0, cao_dong=4.6,
-                 tieu_de='SO SÁNH PHƯƠNG ÁN MÀNG TKCS VÀ PHƯƠNG ÁN HỢP LÝ HÓA (mục 8.5)')
+                 tieu_de='SO SÁNH PHƯƠNG ÁN MÀNG TKCS VÀ PHƯƠNG ÁN HỢP LÝ HÓA (mục 8.6)')
     to.text('Chiều dài khoan, phụt tính theo hình học cắt dọc (đỉnh phụt +77,00; khoan từ mặt đập hiện trạng) để so sánh; '
             'khối lượng thanh toán theo TKCS (Bảng 7.1).', (x0, yb - 3.5), 1.8)
     to.text('(*) η, J ra tại mặt cắt đại diện (thuộc đoạn 2 hàng); đoạn 3 hàng sát tràn giữ η = 54% (MNLTK), 52% (MNLKT).',
@@ -642,7 +642,7 @@ def ghi_chu(to, x, y):
           'đỉnh +77,00, đáy +70,0 ÷ +67,0; K màng ≤ 1E-05 cm/s. \\P'
           '3. Phương án hợp lý hóa (Chương 8): giữ 3 hàng A, B, C trên đoạn 15 m sát tràn (C01 ÷ C06); đoạn 15 ÷ 50 m '
           'chỉ phụt hai hàng kề nhau A, B (cách 1,5 m, hố so le; T = Bb + 0,6A = 1,5 + 1,8 = 3,3 m), bỏ hàng C. Chỉ áp '
-          'dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 1 Lu) ở hố kiểm tra KT1 và '
+          'dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 0,8 Lu) ở hố kiểm tra KT1 và '
           'ép nước lớp II cho q ≤ 5 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu không đạt thì phụt đủ 3 hàng như TKCS. \\P'
           '4. Đáy màng theo TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước '
           '(5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nước lớp II cho q ≤ 5 Lu, không sâu hơn đáy '
@@ -656,7 +656,7 @@ def ghi_chu(to, x, y):
           '7. Kết thúc đoạn phụt khi lượng tiêu hao vữa nhỏ hơn quy định trong thời gian quy định dưới áp lực thiết '
           'kế; lấp hố bằng vữa xi măng – sét. \\P'
           '8. Kiểm tra chất lượng: 3 hố KT ở vị trí xa hố phụt nhất (giữa hai hố cùng hàng; KT2, KT3 điều chỉnh theo '
-          'đoạn tiêu hao vữa lớn), thí nghiệm đổ nước, ép nước 9 đoạn; màng đạt khi K ≤ 1E-05 cm/s (≈ 1 Lu). \\P'
+          'đoạn tiêu hao vữa lớn), thí nghiệm đổ nước, ép nước 9 đoạn; màng đạt khi K ≤ 1E-05 cm/s (≈ 0,8 Lu). \\P'
           '9. Khoan phụt thi công trước khi đắp bù, đổ bê tông mặt đập (BV-04) và trước khi lát lại tấm BT mái tràn '
           'sự cố. \\P'
           '10. Quan trắc sau xử lý: giếng đo áp P1 (đoạn 3 hàng, cách hàng C 5 m), P2 (đoạn 2 hàng, cách hàng B 5 m), '

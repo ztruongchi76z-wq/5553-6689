@@ -87,7 +87,7 @@ def chi_tiet_A(to, x0, y0):
            ((2.2, zdap + 0.03 - i * 2.2), (2.4, 80.5), 'Nilon tái sinh + cấp phối đá dăm đệm dày 5 cm'),
            ((1.6, 78.40), (1.8, 80.1), 'Đất đắp bù (bãi VL lớp 1) đầm K ≥ 0,97 đến +78,60'),
            ((-0.15, 79.1), (0.05, 81.3), 'Tường chắn sóng hiện trạng – giữ nguyên'),
-           ((4.4, z_top(xs) + 0.2), (5.9, 80.3), 'Gờ chắn bánh BT M250 20×25 cm, đoạn 1,0 m cách 0,30 m'),
+           ((4.4, z_top(xs) + 0.2), (5.9, 80.3), 'Gờ chắn bánh BT M250 20×50 cm (nhô 25 cm), đoạn 1,0 m cách 0,30 m'),
            ((xr0 + 0.2, za1 - 0.2), (7.0, 79.2), 'Rãnh ngang đỉnh mái 20×20 cm, BT M200'),
            ((5.0, za0 - 0.18), (7.0, 78.6), 'Tấm lát BT M200 dày 10 cm, lót nilon'),
            ((3.9, 78.27), (7.0, 77.75), 'Bóc lớp đá dăm láng nhựa hư hỏng (~15 cm)')]

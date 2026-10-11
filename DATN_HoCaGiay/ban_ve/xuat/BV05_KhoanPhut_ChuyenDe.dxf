@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.2032523146
+2461325.2488194443
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.2032523146
+2461325.2488194443
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{5D0272B7-09D0-4CC0-B489-491EE6FB0582}
+{C1F73389-830D-485A-9C6C-A89B8F1F6C40}
   9
 $VERSIONGUID
   2
-{03BAFA26-7DF6-4289-9B30-497936EEB120}
+{18214906-D037-4127-8F3D-8ED1A5F39B61}
   9
 $EXTNAMES
 290
@@ -47339,7 +47339,7 @@ AcDbText
  40
 2.28
   1
-Phụt tiếp xúc dọc lưng tường bên tràn bằng hố khoan nghiêng (mục 8.5)
+Phụt tiếp xúc dọc lưng tường bên tràn bằng hố khoan nghiêng (mục 8.6)
   7
 VN
  11
@@ -54053,7 +54053,7 @@ AcDbText
  40
 4.0249999999999995
   1
-SO SÁNH PHƯƠNG ÁN MÀNG TKCS VÀ PHƯƠNG ÁN HỢP LÝ HÓA (mục 8.5)
+SO SÁNH PHƯƠNG ÁN MÀNG TKCS VÀ PHƯƠNG ÁN HỢP LÝ HÓA (mục 8.6)
   7
 VN_DAM
  72
@@ -56009,7 +56009,7 @@ AcDbText
  40
 2.3
   1
-đạt K ≤ 1E-05 cm/s (≈ 1 Lu)
+đạt K ≤ 1E-05 cm/s (≈ 0,8 Lu)
   7
 VN
  72
@@ -60163,19 +60163,19 @@ GHI CHÚ:\P1. Cao trình ghi bằng m, kích thước ghi bằng cm. Lý trình 
   3
 m; đỉnh +77,00, đáy +70,0 ÷ +67,0; K màng ≤ 1E-05 cm/s. \P3. Phương án hợp lý hóa (Chương 8): giữ 3 hàng A, B, C trên đoạn 15 m sát tràn (C01 ÷ C06); đoạn 15 ÷ 50 m chỉ phụt hai hàng kề nhau A, B (cách 1,5 m, hố so le; T = Bb + 0,6A = 1,5 + 1,8 = 3,3
   3
- m), bỏ hàng C. Chỉ áp dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 1 Lu) ở hố kiểm tra KT1 và ép nước lớp II cho q ≤ 5 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu không đạt thì phụt đủ 3 hàng như TKCS. \P4. Đáy màng theo 
+ m), bỏ hàng C. Chỉ áp dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 0,8 Lu) ở hố kiểm tra KT1 và ép nước lớp II cho q ≤ 5 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu không đạt thì phụt đủ 3 hàng như TKCS. \P4. Đáy màng the
   3
-TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước (5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nước lớp II cho q ≤ 5 Lu, không sâu hơn đáy TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trình 
+o TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước (5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nước lớp II cho q ≤ 5 Lu, không sâu hơn đáy TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trìn
   3
-tại đó q giảm còn 5 Lu, trừ 3 m. \P5. Trình tự: phụt thí nghiệm → đoạn 3 hàng: hàng C → A → B; đoạn 2 hàng: hàng B → A (hàng hạ lưu trước); trong mỗi hàng phụt hố thứ tự I trước, hố thứ tự II sau; phân đoạn phụt từ trên xuống, mỗi đoạn 2 ÷ 3 m (TCVN 
+h tại đó q giảm còn 5 Lu, trừ 3 m. \P5. Trình tự: phụt thí nghiệm → đoạn 3 hàng: hàng C → A → B; đoạn 2 hàng: hàng B → A (hàng hạ lưu trước); trong mỗi hàng phụt hố thứ tự I trước, hố thứ tự II sau; phân đoạn phụt từ trên xuống, mỗi đoạn 2 ÷ 3 m (TCV
   3
-8645:2011, TCVN 8644:2011). \P6. Vữa xi măng – bentonite trong đất, lớp 5, lớp I; vữa xi măng trong lớp II; vữa loãng trước, đặc dần. Áp lực phụt tăng dần theo độ sâu, không gây nứt tách đất đắp (TKCS: 0,75 ÷ 5,0 kG/cm²); theo dõi đẩy trồi mặt đập và
+N 8645:2011, TCVN 8644:2011). \P6. Vữa xi măng – bentonite trong đất, lớp 5, lớp I; vữa xi măng trong lớp II; vữa loãng trước, đặc dần. Áp lực phụt tăng dần theo độ sâu, không gây nứt tách đất đắp (TKCS: 0,75 ÷ 5,0 kG/cm²); theo dõi đẩy trồi mặt đập 
   3
- chuyển vị tường bên trong khi phụt. \P7. Kết thúc đoạn phụt khi lượng tiêu hao vữa nhỏ hơn quy định trong thời gian quy định dưới áp lực thiết kế; lấp hố bằng vữa xi măng – sét. \P8. Kiểm tra chất lượng: 3 hố KT ở vị trí xa hố phụt nhất (giữa hai hố
+và chuyển vị tường bên trong khi phụt. \P7. Kết thúc đoạn phụt khi lượng tiêu hao vữa nhỏ hơn quy định trong thời gian quy định dưới áp lực thiết kế; lấp hố bằng vữa xi măng – sét. \P8. Kiểm tra chất lượng: 3 hố KT ở vị trí xa hố phụt nhất (giữa hai 
   3
- cùng hàng; KT2, KT3 điều chỉnh theo đoạn tiêu hao vữa lớn), thí nghiệm đổ nước, ép nước 9 đoạn; màng đạt khi K ≤ 1E-05 cm/s (≈ 1 Lu). \P9. Khoan phụt thi công trước khi đắp bù, đổ bê tông mặt đập (BV-04) và trước khi lát lại tấm BT mái tràn sự cố. \
+hố cùng hàng; KT2, KT3 điều chỉnh theo đoạn tiêu hao vữa lớn), thí nghiệm đổ nước, ép nước 9 đoạn; màng đạt khi K ≤ 1E-05 cm/s (≈ 0,8 Lu). \P9. Khoan phụt thi công trước khi đắp bù, đổ bê tông mặt đập (BV-04) và trước khi lát lại tấm BT mái tràn sự c
   1
-P10. Quan trắc sau xử lý: giếng đo áp P1 (đoạn 3 hàng, cách hàng C 5 m), P2 (đoạn 2 hàng, cách hàng B 5 m), đầu đo trong lớp I; so sánh với mực nước dự báo; theo dõi thấm ở mái hạ lưu khi mực nước hồ vượt +74,0 m.
+ố. \P10. Quan trắc sau xử lý: giếng đo áp P1 (đoạn 3 hàng, cách hàng C 5 m), P2 (đoạn 2 hàng, cách hàng B 5 m), đầu đo trong lớp I; so sánh với mực nước dự báo; theo dõi thấm ở mái hạ lưu khi mực nước hồ vượt +74,0 m.
   7
 VN
  44
@@ -61283,7 +61283,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T04:52:41.249830+00:00
+1.4.4 @ 2026-10-11T05:58:18.215058+00:00
   0
 VISUALSTYLE
   5
@@ -67845,7 +67845,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T04:52:41.510806+00:00
+1.4.4 @ 2026-10-11T05:58:18.467035+00:00
   0
 ENDSEC
   0

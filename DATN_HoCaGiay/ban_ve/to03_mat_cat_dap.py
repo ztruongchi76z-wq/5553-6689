@@ -214,7 +214,7 @@ def phan_duoi(to):
           '2. Mặt cắt tính toán tại cọc C16 (Km0+400), chiều cao đập lớn nhất; trục x = 0 tại tim đập.\\P'
           '3. Bề rộng chân khay, chiều dày đệm tiêu nước, mái lăng trụ là giả thiết (hồ sơ không có).\\P'
           '4. Sơ đồ tính sau sửa chữa lấy đỉnh +78,85 (đồ án), giữ hệ số mái, bề rộng đỉnh và cơ như hiện trạng.\\P'
-          '5. Thấm: PTHH bão hòa – không bão hòa; ổn định: Bishop đơn giản, kh = 0,05 (Chương 2, 5); TH11, TH12: tổ hợp '
+          '5. Thấm: PTHH bão hòa – không bão hòa; ổn định: Bishop đơn giản, kiểm tra chéo Spencer (lệch ≤ 0,2%); kh = 0,05 – thiên an toàn so với agR = 0,0222g (Chương 2, 5); TH11, TH12: tổ hợp '
           'thi công (TC).')
     to.mtext(gc, (25, 112), 2.4, rong=290)
 

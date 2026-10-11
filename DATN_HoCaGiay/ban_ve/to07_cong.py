@@ -175,7 +175,7 @@ def mat_cat_ngang(to, x0, y0):
     to.dim(kn(-B / 2 - t, 0), kn(-B / 2, 0), -6.0, 25, text='40')
     to.text('Nắp, đáy, tường dày 40 (giả thiết)', (0.5 * (xa + xb), yb - 15.0), 2.0, 'CENTER')
     to.text('Nâng đỉnh +78,35 → +78,85: q tăng 10,3 kPa (4,4 %)', (0.5 * (xa + xb), yb - 19.0), 2.0, 'CENTER')
-    to.text('Đường bão hòa tại tim đập +65,7 ÷ +73,4 m: kể áp lực nước ngoài, đẩy nổi', (0.5 * (xa + xb), yb - 23.0),
+    to.text('Đường bão hòa tại tim đập +65,6 ÷ +73,0 m: kể áp lực nước ngoài, đẩy nổi', (0.5 * (xa + xb), yb - 23.0),
             2.0, 'CENTER')
 
 

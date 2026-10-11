@@ -23,7 +23,9 @@ xem từng trang PDF; đối chiếu hướng dẫn trình bày của Trường 
   TLTK: TCVN 9386-1/-5:2025, TCVN 4116:2023, QCVN 02:2022/BXD, Spencer (1967); "LỜI CẢM ƠN"; khai báo dùng AI (mục 1.7).
 - Không làm: khái toán chi tiết (thiếu đơn giá 2026 – chỉ dẫn vốn 48,69 tỷ theo BCNCKT), đưa link GitHub vào thuyết minh
   (kho đang công khai – nên chuyển Private).
-- Bản vẽ BV-01 ÷ BV-07 đã cập nhật đồng bộ; gói `TAI_VE/BanVe_A0_DATN_HoCaGiay.zip` dựng lại. Slide bảo vệ đã cập nhật
+- Bản vẽ BV-01 ÷ BV-07 đã cập nhật đồng bộ (rà lại chiều 11/10: BV-02 thêm gió Đông Bắc, kết luận đỉnh đập theo
+  điều 10.1.5; BV-06 số Bảng 4.3, 4.5 + dòng có neo; BV-07 đường bão hòa +65,6 ÷ +73,0; BV-05 mục 8.6, ≈ 0,8 Lu);
+  gói `TAI_VE/BanVe_A0_DATN_HoCaGiay.zip` dựng lại. Slide bảo vệ đã cập nhật
   (slide 8, 9, 10, 12, 13, 16, 17, 18, 19, 21: K = 1,349 / 1,496; neo ngưỡng; màng 2 hàng A, B, đáy theo 9.2.2.9;
   hình thấm sau sửa chữa q = 8,05·10⁻⁶); gói `TAI_VE/Slide_BaoVe_DATN_HoCaGiay.zip` dựng lại.
 
