@@ -1,0 +1,14 @@
+# Chương trình tính toán (Python 3) – bản 11/10/2026
+
+Mô hình sau sửa chữa dùng đỉnh +78,85 m (`so_lieu.py`, `Z_DINH_DAP_SC`). Kết quả JSON trong `ket_qua/`.
+
+| Tệp | Nội dung |
+|---|---|
+| so_lieu.py, dieu_tiet_lu.py, cao_trinh_dinh.py, tham_fem.py, on_dinh.py, chay_tham_on_dinh.py, chay_truot_nong.py, cong_va_tran_ket_cau.py, chuyen_de_khoan_phut.py, ve_hinh.py | Chương trình gốc (Bảng PL5) |
+| phan_tich_bo_sung.py | Spencer, lưới tâm mịn, tải trọng thi công (TH11, TH12) |
+| bo_sung_giai_tich.py | Hướng gió, độ nhạy m tràn, cống i = 3‰, neo ngưỡng, khung kín cống, mưa, m/n |
+| kt_hoi_tu.py | Hội tụ lưới PTHH, tham số α, độ nhạy k_h |
+| kt_hai_hang.py, kt_dinh.py | Màng 2 hàng A–B, đáy màng theo TCVN 8216:2018 mục 9.2.2.9, ảnh hưởng đỉnh +78,85 |
+
+Các tệp gốc còn lại (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py) nằm trong thư mục Drive "Hugo".
+Chạy: `python3 chay_tham_on_dinh.py` (cần numpy, scipy, triangle, matplotlib).

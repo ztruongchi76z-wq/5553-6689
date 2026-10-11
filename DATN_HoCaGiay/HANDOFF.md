@@ -41,3 +41,6 @@ Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_
 > Tôi là Trần Quốc Thanh, đang làm ĐATN "Tính toán, thiết kế sửa chữa nâng cấp cụm công trình đầu mối hồ chứa nước Cà Giây –
 > tỉnh Lâm Đồng". Nhánh GitHub `datn-ho-ca-giay` có thuyết minh, bộ bản vẽ A0 (`ban_ve/`) và `RA_SOAT_THUYET_MINH.md`;
 > đọc `HANDOFF.md` trước, giữ nguyên các kết quả đã tính, rồi giúp tôi: [ghi việc cần làm].
+
+## Cập nhật 11/10/2026
+Thuyết minh, bản vẽ, mã tính toán (`tinh_toan/`) đã tiếp thu góp ý – xem `RA_SOAT_THUYET_MINH.md` mục 0. Còn lại: cập nhật số liệu mới trên slide; SV tự kiểm tra, hỏi GVHD các điểm ghi trong mục 0.

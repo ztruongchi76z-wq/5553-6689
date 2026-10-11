@@ -16,190 +16,203 @@ xii    DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 6      1.3.2 Địa chất tuyến tràn, cống và mang tràn sự cố
 6      1.3.3 Địa chất thủy văn
 6      1.3.4 Vật liệu xây dựng
-6      1.4 Điều kiện khí tượng, thủy văn
-6      1.4.1 Đặc trưng khí hậu
+7      1.4 Điều kiện khí tượng, thủy văn
+7      1.4.1 Đặc trưng khí hậu
 7      1.4.2 Dòng chảy năm
-7      1.4.3 Dòng chảy lũ thiết kế
+8      1.4.3 Dòng chảy lũ thiết kế
 8      1.5 Điều kiện dân sinh, kinh tế
 8      1.6 Hiện trạng công trình đầu mối
 8      1.6.1 Đập đất
 9      1.6.2 Tràn xả lũ chính
 9      1.6.3 Tràn sự cố
 9      1.6.4 Cống lấy nước
-9      1.6.5 Hệ thống quan trắc, đường và nhà quản lý
-9      1.7 Nhiệm vụ và phương pháp thực hiện đồ án
-11     CHƯƠNG 2 ĐÁNH GIÁ AN TOÀN CÔNG TRÌNH HIỆN TRẠNG
-11     2.1 Cấp công trình và các chỉ tiêu thiết kế
-11     2.2 Đánh giá khả năng cấp nước của hồ
-11     2.2.1 Mực nước chết
-12     2.2.2 Phương pháp tính toán cân bằng nước toàn chuỗi
-12     2.2.3 Kết quả tính toán
-13     2.3 Tính toán điều tiết lũ với công trình tháo lũ hiện trạng
-13     2.3.1 Nguyên lý và phương pháp
-14     2.3.2 Kết quả điều tiết lũ
-16     2.4 Kiểm tra cao trình đỉnh đập
-16     2.4.1 Công thức tính toán
-16     2.4.2 Kết quả tính toán
-17     2.5 Đánh giá an toàn thấm và ổn định đập hiện trạng
-17     2.5.1 Mặt cắt và sơ đồ tính toán
-18     2.5.2 Phương pháp tính thấm
-19     2.5.3 Kết quả tính thấm hiện trạng
-20     2.5.4 Phương pháp kiểm tra ổn định mái
-20     2.5.5 Kết quả kiểm tra ổn định hiện trạng
-21     2.6 Đánh giá công trình tháo lũ và cống lấy nước
-22     2.7 Kết luận chương 2
-23     CHƯƠNG 3 LỰA CHỌN GIẢI PHÁP SỬA CHỮA, NÂNG CẤP
-23     3.1 Mục tiêu và yêu cầu
-23     3.2 Giải pháp cho đập đất
-23     3.2.1 Đỉnh đập
-24     3.2.2 Mái hạ lưu
-26     3.2.3 Mái thượng lưu, vai đập và thiết bị thoát nước
-26     3.3 Giải pháp cho công trình tháo lũ
-26     3.3.1 Tràn xả lũ chính
-26     3.3.2 Tràn sự cố – xử lý thấm mang tràn
-27     3.4 Giải pháp cho cống lấy nước
-27     3.5 Hệ thống quan trắc, giám sát và công trình phụ trợ
-27     3.6 Tổng hợp giải pháp được chọn
-29     CHƯƠNG 4 THIẾT KẾ SỬA CHỮA, NÂNG CẤP TRÀN XẢ LŨ
-29     4.1 Tính toán điều tiết lũ thiết kế
-29     4.2 Tính toán thủy lực tràn chính
-29     4.2.1 Khả năng tháo qua ngưỡng
-30     4.2.2 Nối tiếp sau ngưỡng – độ sâu co hẹp
-30     4.2.3 Đường mặt nước trên dốc nước
-31     4.2.4 Tiêu năng mũi phun
-32     4.3 Tính toán thủy lực tràn sự cố
-32     4.4 Cấu tạo chi tiết sửa chữa
-33     4.5 Kiểm tra ổn định ngưỡng tràn chính
-33     4.5.1 Sơ đồ và tải trọng
-33     4.5.2 Kết quả kiểm tra
-35     CHƯƠNG 5 THIẾT KẾ SỬA CHỮA, NÂNG CẤP ĐẬP ĐẤT
-35     5.1 Xác định kích thước cơ bản của đập
-35     5.1.1 Cao trình đỉnh đập
-35     5.1.2 Bề rộng đỉnh và mái đập
-35     5.1.3 Kết cấu mặt đập và thoát nước mặt đập
-36     5.2 Tính thấm qua đập sau sửa chữa
-37     5.3 Kiểm tra ổn định mái đập sau sửa chữa
-38     5.4 Ổn định trượt nông lớp mặt mái hạ lưu
-39     5.5 Thiết kế hệ thống thoát nước mái hạ lưu
-39     5.5.1 Hiệu quả chống xói của việc chia ô mái
-40     5.5.2 Kiểm tra khả năng thoát nước của rãnh
-41     5.5.3 Cấu tạo hệ thống rãnh và lớp phủ mái
-42     CHƯƠNG 6 THIẾT KẾ SỬA CHỮA, NÂNG CẤP CỐNG LẤY NƯỚC
-42     6.1 Phân tích hình thức và quy mô sửa chữa
-42     6.2 Nhiệm vụ và các thông số tính toán
-42     6.3 Tính toán thủy lực cống
-42     6.3.1 Khả năng tháo qua cửa vào
-43     6.3.2 Trạng thái chảy và đường mặt nước trong thân cống
-44     6.3.3 Kiểm tra tiêu năng sau cống
-44     6.4 Kiểm tra lực đóng mở cửa van và máy đóng mở
-45     6.5 Ngoại lực tác dụng lên mặt cắt ngang cống ngầm
-47     CHƯƠNG 7 TỔ CHỨC THI CÔNG, KHỐI LƯỢNG CHỦ YẾU, QUAN TRẮC VÀ QUẢN LÝ VẬN HÀNH
-47     7.1 Điều kiện và phương án tổ chức thi công
-47     7.2 Biện pháp thi công các hạng mục chủ yếu
-47     7.2.1 Công tác đất đập
-48     7.2.2 Công tác bê tông
-48     7.2.3 Công tác khoan phụt chống thấm
-48     7.2.4 Lắp đặt thiết bị
-49     7.3 Khối lượng các công tác chủ yếu
-50     7.4 Tiến độ thi công
-50     7.5 Quan trắc và quản lý vận hành sau sửa chữa
-51     7.6 An toàn lao động và bảo vệ môi trường
-52     CHƯƠNG 8 CHUYÊN ĐỀ KỸ THUẬT: ĐÁNH GIÁ HIỆU QUẢ VÀ HỢP LÝ HÓA MÀNG KHOAN PHỤT CHỐNG THẤM MANG TRÁI TRÀN SỰ CỐ
-52     8.1 Đặt vấn đề
-52     8.2 Cơ sở lý thuyết
-52     8.2.1 Mô hình toán và phương pháp phần tử hữu hạn
-53     8.2.2 Các tiêu chí thiết kế màng chống thấm
-54     8.3 Mô hình tính toán
-54     8.3.1 Hình học và địa tầng
-54     8.3.2 Vật liệu, lưới và điều kiện biên
-55     8.4 Kết quả tính toán với màng thiết kế
-57     8.5 Phân tích độ nhạy các thông số của màng
-57     8.5.1 Ảnh hưởng của chất lượng màng
-58     8.5.2 Ảnh hưởng của cao trình đáy màng
-58     8.5.3 Ảnh hưởng của tính thấm lớp đá II
-58     8.5.4 Ảnh hưởng của số hàng khoan và cao trình đỉnh màng
-59     8.6 Kiểm tra chiều dày màng và đề xuất hợp lý hóa
-61     8.7 Kết luận chuyên đề
-62     KẾT LUẬN VÀ KIẾN NGHỊ
-62     Kết luận
-63     Kiến nghị
-64     TÀI LIỆU THAM KHẢO
-67     PHỤ LỤC
-67     Phụ lục 1. Quan hệ đặc tính lòng hồ và khả năng tháo của công trình tháo lũ
-68     Phụ lục 2. Bảng tính điều tiết lũ theo thời gian
-70     Phụ lục 3. Kết quả tính ổn định mái đập sau sửa chữa
-72     Phụ lục 4. Kết quả tính thấm bổ sung
-73     Phụ lục 5. Chương trình tính toán của đồ án
+10     1.6.5 Hệ thống quan trắc, đường và nhà quản lý
+10     1.7 Nhiệm vụ và phương pháp thực hiện đồ án
+12     CHƯƠNG 2 ĐÁNH GIÁ AN TOÀN CÔNG TRÌNH HIỆN TRẠNG
+12     2.1 Cấp công trình và các chỉ tiêu thiết kế
+13     2.2 Đánh giá khả năng cấp nước của hồ
+13     2.2.1 Mực nước chết
+13     2.2.2 Phương pháp tính toán cân bằng nước toàn chuỗi
+14     2.2.3 Kết quả tính toán
+15     2.3 Tính toán điều tiết lũ với công trình tháo lũ hiện trạng
+15     2.3.1 Nguyên lý và phương pháp
+16     2.3.2 Kết quả điều tiết lũ
+17     2.4 Kiểm tra cao trình đỉnh đập
+17     2.4.1 Công thức tính toán
+18     2.4.2 Kết quả tính toán
+19     2.5 Đánh giá an toàn thấm và ổn định đập hiện trạng
+19     2.5.1 Mặt cắt và sơ đồ tính toán
+20     2.5.2 Phương pháp tính thấm
+20     2.5.3 Kết quả tính thấm hiện trạng
+21     2.5.4 Phương pháp kiểm tra ổn định mái
+22     2.5.5 Kết quả kiểm tra ổn định hiện trạng
+23     2.6 Đánh giá công trình tháo lũ và cống lấy nước
+24     2.7 Kết luận chương 2
+25     CHƯƠNG 3 LỰA CHỌN GIẢI PHÁP SỬA CHỮA, NÂNG CẤP
+25     3.1 Mục tiêu và yêu cầu
+25     3.2 Giải pháp cho đập đất
+25     3.2.1 Đỉnh đập
+26     3.2.2 Mái hạ lưu
+28     3.2.3 Mái thượng lưu, vai đập và thiết bị thoát nước
+28     3.3 Giải pháp cho công trình tháo lũ
+28     3.3.1 Tràn xả lũ chính
+29     3.3.2 Tràn sự cố – xử lý thấm mang tràn
+29     3.4 Giải pháp cho cống lấy nước
+30     3.5 Hệ thống quan trắc, giám sát và công trình phụ trợ
+30     3.6 Tổng hợp giải pháp được chọn
+31     CHƯƠNG 4 THIẾT KẾ SỬA CHỮA, NÂNG CẤP TRÀN XẢ LŨ
+31     4.1 Tính toán điều tiết lũ thiết kế
+32     4.2 Tính toán thủy lực tràn chính
+32     4.2.1 Khả năng tháo qua ngưỡng
+32     4.2.2 Nối tiếp sau ngưỡng – độ sâu co hẹp
+32     4.2.3 Đường mặt nước trên dốc nước
+34     4.2.4 Tiêu năng mũi phun
+34     4.3 Tính toán thủy lực tràn sự cố
+35     4.4 Cấu tạo chi tiết sửa chữa
+35     4.5 Kiểm tra ổn định ngưỡng tràn chính
+35     4.5.1 Sơ đồ và tải trọng
+36     4.5.2 Kết quả kiểm tra
+36     4.5.3 Kiểm tra ổn định khi có neo ngưỡng vào nền
+38     CHƯƠNG 5 THIẾT KẾ SỬA CHỮA, NÂNG CẤP ĐẬP ĐẤT
+38     5.1 Xác định kích thước cơ bản của đập
+38     5.1.1 Cao trình đỉnh đập
+38     5.1.2 Bề rộng đỉnh và mái đập
+38     5.1.3 Kết cấu mặt đập và thoát nước mặt đập
+39     5.2 Tính thấm qua đập sau sửa chữa
+40     5.3 Kiểm tra ổn định mái đập sau sửa chữa
+42     5.4 Ổn định trượt nông lớp mặt mái hạ lưu
+43     5.5 Thiết kế hệ thống thoát nước mái hạ lưu
+43     5.5.1 Hiệu quả chống xói của việc chia ô mái
+44     5.5.2 Kiểm tra khả năng thoát nước của rãnh
+45     5.5.3 Cấu tạo hệ thống rãnh và lớp phủ mái
+46     CHƯƠNG 6 THIẾT KẾ SỬA CHỮA, NÂNG CẤP CỐNG LẤY NƯỚC
+46     6.1 Phân tích hình thức và quy mô sửa chữa
+46     6.2 Nhiệm vụ và các thông số tính toán
+46     6.3 Tính toán thủy lực cống
+46     6.3.1 Khả năng tháo qua cửa vào
+47     6.3.2 Trạng thái chảy và đường mặt nước trong thân cống
+48     6.3.3 Kiểm tra tiêu năng sau cống
+48     6.4 Kiểm tra lực đóng mở cửa van và máy đóng mở
+50     6.5 Ngoại lực tác dụng lên mặt cắt ngang cống ngầm
+52     CHƯƠNG 7 TỔ CHỨC THI CÔNG, KHỐI LƯỢNG CHỦ YẾU, QUAN TRẮC VÀ QUẢN LÝ VẬN HÀNH
+52     7.1 Điều kiện và phương án tổ chức thi công
+52     7.2 Biện pháp thi công các hạng mục chủ yếu
+52     7.2.1 Công tác đất đập
+53     7.2.2 Công tác bê tông
+53     7.2.3 Công tác khoan phụt chống thấm
+54     7.2.4 Lắp đặt thiết bị
+54     7.3 Khối lượng các công tác chủ yếu
+55     7.4 Tiến độ thi công
+56     7.5 Quan trắc và quản lý vận hành sau sửa chữa
+57     7.6 An toàn lao động và bảo vệ môi trường
+58     CHƯƠNG 8 CHUYÊN ĐỀ KỸ THUẬT: ĐÁNH GIÁ HIỆU QUẢ VÀ HỢP LÝ HÓA MÀNG KHOAN PHỤT CHỐNG THẤM MANG TRÁI TRÀN SỰ CỐ
+58     8.1 Đặt vấn đề
+58     8.2 Cơ sở lý thuyết
+58     8.2.1 Mô hình toán và phương pháp phần tử hữu hạn
+59     8.2.2 Các tiêu chí thiết kế màng chống thấm
+60     8.3 Mô hình tính toán
+60     8.3.1 Hình học và địa tầng
+61     8.3.2 Vật liệu, lưới và điều kiện biên
+62     8.4 Kết quả tính toán với màng thiết kế
+63     8.5 Phân tích độ nhạy các thông số của màng
+64     8.5.1 Ảnh hưởng của chất lượng màng
+64     8.5.2 Ảnh hưởng của cao trình đáy màng
+64     8.5.3 Ảnh hưởng của tính thấm lớp đá II
+65     8.5.4 Ảnh hưởng của số hàng khoan và cao trình đỉnh màng
+66     8.6 Kiểm tra chiều dày màng và đề xuất hợp lý hóa
+68     8.7 Kết luận chuyên đề
+69     KẾT LUẬN VÀ KIẾN NGHỊ
+69     Kết luận
+70     Kiến nghị
+72     TÀI LIỆU THAM KHẢO
+75     PHỤ LỤC
+75     Phụ lục 1. Quan hệ đặc tính lòng hồ và khả năng tháo của công trình tháo lũ
+76     Phụ lục 2. Bảng tính điều tiết lũ theo thời gian
+78     Phụ lục 3. Kết quả tính ổn định mái đập sau sửa chữa
+80     Phụ lục 4. Kết quả tính thấm bổ sung
+81     Phụ lục 5. Chương trình tính toán của đồ án
+82     Phụ lục 6. Kiểm chứng chương trình tính và phân tích độ nhạy
 4      Hình 1.1 Đường đặc tính lòng hồ: a) Z ~ F; b) Z ~ W (so sánh số liệu hồ sơ và tính lại)
-13     Hình 2.1 Quá trình mực nước hồ cuối tháng khi điều tiết toàn chuỗi 44 năm (TH1 và TH1A)
-15     Hình 2.2 Quá trình lũ đến, lưu lượng xả và mực nước hồ – lũ BCNCKT P = 1% và P = 0,2%
-15     Hình 2.3 Quá trình lũ đến, lưu lượng xả và mực nước hồ – lũ QTVH P = 1% và P = 0,2%
-18     Hình 2.4 Sơ đồ vật liệu và lưới phần tử hữu hạn mặt cắt lòng sông
-19     Hình 2.5 Lưới dòng thấm và đường bão hòa hiện trạng – mực nước hồ MNLTK
-21     Hình 2.6 Cung trượt nguy hiểm nhất mái hạ lưu hiện trạng – TH4 (thoát nước bị tắc)
-24     Hình 3.1 Cấu tạo sửa chữa mặt đập (nguồn: TKCS [2])
-25     Hình 3.2 Mặt bằng bố trí hệ thống rãnh thoát nước mái hạ lưu (nguồn: TKCS [2])
-31     Hình 4.1 Đường mặt nước trên dốc tràn chính và chiều cao tường bên hiện trạng
-36     Hình 5.1 Lưới thấm và đường bão hòa sau sửa chữa – mực nước hồ MNLKT
-36     Hình 5.2 Lưới thấm và đường bão hòa khi thiết bị thoát nước bị tắc – MNDBT
-37     Hình 5.3 Cung trượt nguy hiểm mái hạ lưu sau sửa chữa – TH5 (MNDBT + động đất)
-38     Hình 5.4 Cung trượt nguy hiểm mái thượng lưu sau sửa chữa – TH8 (hạ mực nước từ MNDBT xuống MNC)
-43     Hình 6.1 Đường mặt nước trong thân cống lấy nước
-54     Hình 8.1 Mặt cắt ngang đại diện khoan phụt mang tràn sự cố (nguồn: TKCS [2])
-55     Hình 8.2 Mô hình phần tử hữu hạn mang trái tràn sự cố có màng khoan phụt
-56     Hình 8.3 Đường đẳng cột nước và đường bão hòa khi chưa có màng – MN hồ +78,54 m (MNLKT)
-56     Hình 8.4 Đường đẳng cột nước và đường bão hòa khi có màng thiết kế – MN hồ +78,54 m (MNLKT)
-58     Hình 8.5 Hiệu quả giảm lưu lượng thấm theo: a) hệ số thấm màng; b) cao trình đáy màng
-70     Hình PL1 Cung trượt nguy hiểm – TH1: MNDBT, thấm ổn định (Kmin = 1,670)
-70     Hình PL2 Cung trượt nguy hiểm – TH2: MNLTK, thấm ổn định (Kmin = 1,658)
-70     Hình PL3 Cung trượt nguy hiểm – TH3: MNLKT, thấm ổn định (Kmin = 1,653)
-71     Hình PL4 Cung trượt nguy hiểm – TH4: MNDBT, thiết bị thoát nước bị tắc (Kmin = 1,527)
-71     Hình PL5 Cung trượt nguy hiểm – TH6: MNDBT + mưa kéo dài (Kmin = 1,670)
-71     Hình PL6 Cung trượt nguy hiểm – TH7: MNDBT, thấm ổn định (mái TL) (Kmin = 2,292)
-72     Hình PL7 Cung trượt nguy hiểm – TH9: Rút nhanh từ MNLTK xuống MNDBT (Kmin = 2,091)
-72     Hình PL8 Cung trượt nguy hiểm – TH10: MNDBT + động đất (mái TL) (Kmin = 1,728)
-72     Hình PL9 Lưới thấm sau sửa chữa – MNDBT
-73     Hình PL10 Lưới thấm sau sửa chữa – MNLTK
-73     Hình PL11 Mang trái tràn sự cố chưa có màng – MNDBT
-73     Hình PL12 Mang trái tràn sự cố có màng thiết kế – MNDBT
+11     Hình 1.2 Trình tự thực hiện và kiểm chứng kết quả tính toán của đồ án
+14     Hình 2.1 Quá trình mực nước hồ cuối tháng khi điều tiết toàn chuỗi 44 năm (TH1 và TH1A)
+16     Hình 2.2 Quá trình lũ đến, lưu lượng xả và mực nước hồ – lũ BCNCKT P = 1% và P = 0,2%
+16     Hình 2.3 Quá trình lũ đến, lưu lượng xả và mực nước hồ – lũ QTVH P = 1% và P = 0,2%
+20     Hình 2.4 Sơ đồ vật liệu và lưới phần tử hữu hạn mặt cắt lòng sông
+21     Hình 2.5 Lưới dòng thấm và đường bão hòa hiện trạng – mực nước hồ MNLTK
+23     Hình 2.6 Cung trượt nguy hiểm nhất mái hạ lưu hiện trạng – TH4 (thoát nước bị tắc)
+26     Hình 3.1 Cấu tạo sửa chữa mặt đập (nguồn: TKCS [2])
+28     Hình 3.2 Mặt bằng bố trí hệ thống rãnh thoát nước mái hạ lưu (nguồn: TKCS [2])
+33     Hình 4.1 Đường mặt nước trên dốc tràn chính và chiều cao tường bên hiện trạng
+39     Hình 5.1 Lưới thấm và đường bão hòa sau sửa chữa – mực nước hồ MNLKT
+40     Hình 5.2 Lưới thấm và đường bão hòa khi thiết bị thoát nước bị tắc – MNDBT
+41     Hình 5.3 Cung trượt nguy hiểm mái hạ lưu sau sửa chữa – TH5 (MNDBT + động đất)
+41     Hình 5.4 Cung trượt nguy hiểm mái thượng lưu sau sửa chữa – TH8 (hạ mực nước từ MNDBT xuống MNC)
+47     Hình 6.1 Đường mặt nước trong thân cống lấy nước
+60     Hình 8.1 Mặt cắt ngang đại diện khoan phụt mang tràn sự cố (nguồn: TKCS [2])
+61     Hình 8.2 Mô hình phần tử hữu hạn mang trái tràn sự cố có màng khoan phụt
+62     Hình 8.3 Đường đẳng cột nước và đường bão hòa khi chưa có màng – MN hồ +78,54 m (MNLKT)
+62     Hình 8.4 Đường đẳng cột nước và đường bão hòa khi có màng thiết kế – MN hồ +78,54 m (MNLKT)
+64     Hình 8.5 Hiệu quả giảm lưu lượng thấm theo: a) hệ số thấm màng; b) cao trình đáy màng
+66     Hình 8.6 Phạm vi thay đổi hiệu quả giảm lưu lượng thấm η theo từng thông số của màng (MNLTK)
+78     Hình PL1 Cung trượt nguy hiểm – TH1: MNDBT, thấm ổn định (Kmin = 1,647)
+78     Hình PL2 Cung trượt nguy hiểm – TH2: MNLTK, thấm ổn định (Kmin = 1,629)
+78     Hình PL3 Cung trượt nguy hiểm – TH3: MNLKT, thấm ổn định (Kmin = 1,621)
+79     Hình PL4 Cung trượt nguy hiểm – TH4: MNDBT, thiết bị thoát nước bị tắc (Kmin = 1,497)
+79     Hình PL5 Cung trượt nguy hiểm – TH6: MNDBT + mưa kéo dài (Kmin = 1,646)
+79     Hình PL6 Cung trượt nguy hiểm – TH7: MNDBT, thấm ổn định (mái TL) (Kmin = 2,296)
+80     Hình PL7 Cung trượt nguy hiểm – TH9: Rút nhanh từ MNLTK xuống MNDBT (Kmin = 2,066)
+80     Hình PL8 Cung trượt nguy hiểm – TH10: MNDBT + động đất (mái TL) (Kmin = 1,733)
+80     Hình PL9 Lưới thấm sau sửa chữa – MNDBT
+81     Hình PL10 Lưới thấm sau sửa chữa – MNLTK
+81     Hình PL11 Mang trái tràn sự cố chưa có màng – MNDBT
+81     Hình PL12 Mang trái tràn sự cố có màng thiết kế – MNDBT
 2      Bảng 1.1 Thông số kỹ thuật chủ yếu của cụm công trình đầu mối hồ Cà Giây
 4      Bảng 1.2 Quan hệ Z ~ F ~ W lòng hồ Cà Giây (đoạn +64 ÷ +82 m)
 5      Bảng 1.3 Chỉ tiêu cơ lý chủ yếu của các lớp đất đắp và nền đập
 7      Bảng 1.4 Vận tốc gió lớn nhất theo hướng ứng với các tần suất (m/s)
-7      Bảng 1.5 Đặc trưng lũ thiết kế đến hồ Cà Giây
-11     Bảng 2.1 Các chỉ tiêu thiết kế áp dụng cho công trình cấp II
-12     Bảng 2.2 Kết quả điều tiết toàn chuỗi 44 năm hồ Cà Giây (MNDBT +74,70 m; MNC +67,50 m)
-14     Bảng 2.3 Kết quả điều tiết lũ với tràn hiện trạng (tràn chính 9 × 2,4 m; tràn sự cố 5 m)
-16     Bảng 2.4 Kết quả tính cao trình đỉnh đập theo ba trường hợp (lũ BCNCKT)
-17     Bảng 2.5 Tổng hợp cao trình đỉnh đập yêu cầu (m)
-19     Bảng 2.6 Kết quả tính thấm mặt cắt lòng sông – hiện trạng
-20     Bảng 2.7 Kết quả kiểm tra ổn định mái đập hiện trạng (Bishop, mặt cắt lòng sông)
-25     Bảng 3.1 So sánh phương án bảo vệ mái hạ lưu
-28     Bảng 3.2 Tổng hợp giải pháp sửa chữa, nâng cấp được lựa chọn
-29     Bảng 4.1 Các trị số thiết kế của công trình tháo lũ (lũ BCNCKT)
-29     Bảng 4.2 Khả năng tháo của tràn chính theo cột nước (m = 0,45; n = 9; b = 2,4 m)
-30     Bảng 4.3 Kết quả tính đường mặt nước trên dốc tràn chính
-33     Bảng 4.4 Kết quả kiểm tra ổn định ngưỡng tràn chính (dải rộng 1 m)
-36     Bảng 5.1 Kết quả tính thấm mặt cắt lòng sông sau sửa chữa
-37     Bảng 5.2 Kết quả kiểm tra ổn định mái đập sau sửa chữa (Bishop)
-39     Bảng 5.3 Hệ số ổn định cung trượt nông mái hạ lưu theo chiều sâu tầng bão hòa do mưa
-39     Bảng 5.4 Hệ số ổn định lớp mặt dày 1 m theo mô hình mái dốc vô hạn
-40     Bảng 5.5 Đặc trưng dòng chảy tràn trên mái hạ lưu theo chiều dài đường chảy
-40     Bảng 5.6 Kiểm tra khả năng thoát nước các loại rãnh mái hạ lưu
-42     Bảng 6.1 Thông số tính toán cống lấy nước
-43     Bảng 6.2 Kết quả tính đường mặt nước trong thân cống (b = 1,8 m; i = 0,03)
-44     Bảng 6.3 Lực đóng mở cửa van cống và kiểm tra máy VĐ20
-49     Bảng 7.1 Khối lượng các công tác chủ yếu
-50     Bảng 7.2 Tiến độ thi công dự kiến (6 tháng, từ tháng 1 đến tháng 6)
-50     Bảng 7.3 Nội dung và tần suất quan trắc, kiểm tra đề xuất
-54     Bảng 8.1 Hệ số thấm bão hòa các vật liệu trong mô hình
-55     Bảng 8.2 Kết quả tính thấm mang trái tràn sự cố khi chưa và đã có màng khoan phụt thiết kế
-57     Bảng 8.3 Ảnh hưởng của hệ số thấm màng Kmàng (MNLTK)
-58     Bảng 8.4 Ảnh hưởng của cao trình đáy màng (MNLTK; mặt lớp II tại tim ≈ +72,4 m)
-58     Bảng 8.5 Ảnh hưởng của hệ số thấm lớp II (MNLTK, màng thiết kế đáy +68,3 m)
-58     Bảng 8.6 Ảnh hưởng của chiều dày màng (số hàng khoan) và cao trình đỉnh màng
-67     Bảng PL1 Quan hệ Z ~ F ~ W lòng hồ Cà Giây (đầy đủ)
-67     Bảng PL2 Quan hệ Z ~ Q xả của tràn chính và tràn sự cố (cửa van mở hoàn toàn)
-68     Bảng PL3 Kết quả điều tiết lũ P = 1% (đường quá trình BCNCKT, vận hành bình thường)
-69     Bảng PL4 Kết quả điều tiết lũ P = 0,2% (đường quá trình BCNCKT, vận hành bình thường)
-73     Bảng PL5 Danh mục chương trình tính toán (ngôn ngữ Python 3)
+8      Bảng 1.5 Đặc trưng lũ thiết kế đến hồ Cà Giây
+12     Bảng 2.1 Các chỉ tiêu thiết kế áp dụng cho công trình cấp II
+14     Bảng 2.2 Kết quả điều tiết toàn chuỗi 44 năm hồ Cà Giây (MNDBT +74,70 m; MNC +67,50 m)
+16     Bảng 2.3 Kết quả điều tiết lũ với tràn hiện trạng (tràn chính 9 × 2,4 m; tràn sự cố 5 m)
+18     Bảng 2.4 Kết quả tính cao trình đỉnh đập theo ba trường hợp (lũ BCNCKT)
+18     Bảng 2.5 Tổng hợp cao trình đỉnh đập yêu cầu (m)
+20     Bảng 2.6 Kết quả tính thấm mặt cắt lòng sông – hiện trạng
+22     Bảng 2.7 Kết quả kiểm tra ổn định mái đập hiện trạng (Bishop, mặt cắt lòng sông)
+24     Bảng 2.8 Tổng hợp kết quả đánh giá an toàn công trình hiện trạng
+27     Bảng 3.1 So sánh phương án bảo vệ mái hạ lưu
+30     Bảng 3.2 Tổng hợp giải pháp sửa chữa, nâng cấp được lựa chọn
+31     Bảng 4.1 Các trị số thiết kế của công trình tháo lũ (lũ BCNCKT)
+31     Bảng 4.2 Phân loại các tình huống lũ và yêu cầu đối với đỉnh đập, tường chắn sóng
+32     Bảng 4.3 Khả năng tháo của tràn chính theo cột nước (m = 0,45; n = 9; b = 2,4 m)
+33     Bảng 4.4 Kết quả tính đường mặt nước trên dốc tràn chính
+36     Bảng 4.5 Kết quả kiểm tra ổn định ngưỡng tràn chính (dải rộng 1 m)
+37     Bảng 4.6 Kiểm tra ổn định trượt ngưỡng tràn chính khi có neo (c = 0, dải rộng 1 m)
+39     Bảng 5.1 Kết quả tính thấm mặt cắt lòng sông sau sửa chữa
+40     Bảng 5.2 Kết quả kiểm tra ổn định mái đập sau sửa chữa (Bishop)
+43     Bảng 5.3 Hệ số ổn định cung trượt nông mái hạ lưu theo chiều sâu tầng bão hòa do mưa
+43     Bảng 5.4 Hệ số ổn định lớp mặt dày 1 m theo mô hình mái dốc vô hạn
+44     Bảng 5.5 Đặc trưng dòng chảy tràn trên mái hạ lưu theo chiều dài đường chảy
+44     Bảng 5.6 Kiểm tra khả năng thoát nước các loại rãnh mái hạ lưu
+46     Bảng 6.1 Thông số tính toán cống lấy nước
+47     Bảng 6.2 Kết quả tính đường mặt nước trong thân cống (b = 1,8 m; i = 0,03)
+49     Bảng 6.3 Lực đóng mở cửa van cống và kiểm tra máy VĐ20
+50     Bảng 6.4 Nội lực và cốt thép yêu cầu của khung kín cống hộp (tham khảo, dải rộng 1 m)
+54     Bảng 7.1 Khối lượng các công tác chủ yếu
+55     Bảng 7.2 Tiến độ thi công dự kiến (6 tháng, từ tháng 1 đến tháng 6)
+57     Bảng 7.3 Nội dung và tần suất quan trắc, kiểm tra đề xuất
+61     Bảng 8.1 Hệ số thấm bão hòa các vật liệu trong mô hình
+62     Bảng 8.2 Kết quả tính thấm mang trái tràn sự cố khi chưa và đã có màng khoan phụt thiết kế
+64     Bảng 8.3 Ảnh hưởng của hệ số thấm màng Kmàng (MNLTK)
+64     Bảng 8.4 Ảnh hưởng của cao trình đáy màng (MNLTK; mặt lớp II tại tim ≈ +72,4 m)
+64     Bảng 8.5 Ảnh hưởng của hệ số thấm lớp II (MNLTK, màng thiết kế đáy +68,3 m)
+65     Bảng 8.6 Ảnh hưởng của chiều dày màng (số hàng khoan) và cao trình đỉnh màng
+67     Bảng 8.7 So sánh khối lượng và hiệu quả của màng theo TKCS và theo phương án hợp lý hóa
+75     Bảng PL1 Quan hệ Z ~ F ~ W lòng hồ Cà Giây (đầy đủ)
+75     Bảng PL2 Quan hệ Z ~ Q xả của tràn chính và tràn sự cố (cửa van mở hoàn toàn)
+76     Bảng PL3 Kết quả điều tiết lũ P = 1% (đường quá trình BCNCKT, vận hành bình thường)
+77     Bảng PL4 Kết quả điều tiết lũ P = 0,2% (đường quá trình BCNCKT, vận hành bình thường)
+81     Bảng PL5 Danh mục chương trình tính toán (ngôn ngữ Python 3)
+82     Bảng PL6 Kiểm chứng kết quả tính toán của đồ án
+82     Bảng PL7 Phân tích độ nhạy các giả thiết tính toán
+83     Bảng PL8 Kiểm tra hội tụ lưới và độ nhạy tham số α (MNLKT, mặt cắt sau sửa chữa)
+83     Bảng PL9 Hệ số ổn định mái đập sau sửa chữa theo hệ số động đất kh (MNDBT)

@@ -8,6 +8,24 @@ Cách rà soát: đọc toàn văn (8 chương, kết luận, 37 tài liệu tha
 tính chính; kiểm tra tự động đánh số hình/bảng/công thức, thứ tự trích dẫn, viết tắt, cấu trúc tệp Word;
 xem từng trang PDF; đối chiếu hướng dẫn trình bày của Trường (`HuongDanTB_HPTN_(26-2-2020).docx`).
 
+## 0. Bản 11/10/2026 – đã tiếp thu vào tệp Word (chi tiết: `thuyet_minh/nhat_ky_tiep_thu_gop_y.txt`)
+
+Đã xử lý toàn bộ mục 3 (trừ ý 6, 7 – việc của SV) và mục 6 ý 1 ÷ 13, cùng góp ý astra/gem/"Góp ý bổ sung":
+- Đỉnh đập theo TCVN 8216:2018 mục 10.1.5 (gió NE: Z₂ = +78,97 < tường +79,40; đỉnh ≥ MNLKT + 0,3 = +78,84);
+  +78,85 là cao trình tối thiểu sau lún, dự phòng lún 2 cm; cấu tạo mặt đập khép kín (đất +78,60 + đá dăm 5 cm + BT 20 cm).
+- Mô hình thấm, ổn định sau sửa chữa chạy lại với +78,85 (Bảng 5.1, 5.2, Hình 5.1 ÷ 5.4, PL1 ÷ PL10); thêm TH11, TH12
+  (thi công, [K] = 1,24); kiểm tra chéo Spencer, lưới tâm mịn, hội tụ lưới PTHH (Phụ lục 6).
+- k_h = 0,05 có căn cứ: a_gR = 0,0222g (TCVN 9386:2012 Phụ lục H, Chợ Lầu) → thiên an toàn; độ nhạy: đạt khi k_h ≤ 0,09.
+- Bảng 4.2 phân loại tình huống kẹt van; neo ngưỡng D25 thành hạng mục thiết kế (mục 4.5.3, Bảng 4.6, Bảng 7.1);
+  khung kín cống hộp tham khảo (Bảng 6.4); kịch bản độ dốc cống 3‰; 02 máy đóng mở.
+- Chương 8: 2 hàng kề nhau A, B (không phải A, C), đáy màng theo mục 9.2.2.9 (mặt lớp II − 3 m), Bảng 8.7, Hình 8.6.
+- P = m/n so sánh; sửa câu dung tích hữu ích; ngưỡng cảnh báo quan trắc có căn cứ; trình tự thi công mùa mưa;
+  TLTK: TCVN 9386-1/-5:2025, TCVN 4116:2023, QCVN 02:2022/BXD, Spencer (1967); "LỜI CẢM ƠN"; khai báo dùng AI (mục 1.7).
+- Không làm: khái toán chi tiết (thiếu đơn giá 2026 – chỉ dẫn vốn 48,69 tỷ theo BCNCKT), đưa link GitHub vào thuyết minh
+  (kho đang công khai – nên chuyển Private).
+- Bản vẽ BV-01 ÷ BV-07 đã cập nhật đồng bộ; gói `TAI_VE/BanVe_A0_DATN_HoCaGiay.zip` dựng lại. Slide bảo vệ CHƯA cập nhật
+  các số mới (TH5 = 1,349; TH8 = 1,496; màng 2 hàng A, B; neo ngưỡng) – sửa tay khi duyệt slide.
+
 ## 1. Đã sửa trong tệp Word
 
 | # | Vị trí | Vấn đề | Đã sửa |

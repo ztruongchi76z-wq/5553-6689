@@ -246,8 +246,8 @@ def bang(to):
     hang = [['Hạng mục', 'Giải pháp sửa chữa, nâng cấp được chọn (Bảng 3.2)'],
             ['Đập đất', 'Đắp bù, gia cố mặt đập BT M250 dày 20 cm, đỉnh +78,85 m; gờ chắn bánh; điện chiếu sáng;\n'
                         'sửa hố xói, hệ rãnh BT, trồng cỏ mái hạ lưu; xử lý hố sụt vai trái; khơi thông lăng trụ'],
-            ['Tràn chính', 'Giữ nguyên quy mô; sửa chữa bề mặt đáy dốc, khe co giãn; nạo vét kênh dẫn'],
-            ['Tràn sự cố', 'Màng khoan phụt vữa xi măng – sét chống thấm mang trái (L = 50 m, 3 hàng); lát lại tấm BT mái'],
+            ['Tràn chính', 'Giữ nguyên quy mô; sửa chữa bề mặt đáy dốc, khe co giãn; nạo vét kênh dẫn; khoan neo ngưỡng D25'],
+            ['Tràn sự cố', 'Màng khoan phụt XM – sét mang trái (L = 50 m, 3 hàng TKCS; đề xuất 3 hàng 15 m + 2 hàng A, B); lát lại tấm BT mái'],
             ['Cống lấy nước', 'Thay 2 máy đóng mở VĐ20; thay gioăng, tấm trượt; bổ sung giá đỡ trục vít; kiểm tra thân cống'],
             ['Quan trắc, SCADA', '14 giếng quan trắc thấm tự động (T1, T3, T5, T7, T9), 9 mốc lún, trạm đo mưa,\n'
                                  'đo mực nước, camera, trạm trung tâm'],

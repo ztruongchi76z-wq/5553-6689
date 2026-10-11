@@ -204,7 +204,7 @@ def phan_duoi(to):
     yb = to.bang(25, 186, cot, hang, h=2.4, cao_dong=5.6, tieu_de='BẢNG KẾT QUẢ TÍNH THẤM (sau sửa chữa, *giá trị 95%)')
     to.text('Gradien cho phép: tiếp xúc tầng lọc [J] = 2,0; cửa ra khối đắp [J] = 0,85 – đều thỏa mãn.', (25, yb - 4),
             2.3, 'LEFT')
-    cot2 = [12, 52, 11, 14, 22, 18, 12, 15]
+    cot2 = [13, 66, 11, 14, 22, 18, 12, 15]
     hang2 = [['TH', 'Trường hợp tính toán', 'Mái', 'Tổ hợp', 'K hiện trạng', 'K sau SC', '[K]', 'Đánh giá']]
     hang2 += [list(r) + ['Đạt'] for r in D.ON_DINH]
     to.bang(198, 186, cot2, hang2, h=2.3, cao_dong=5.2, tieu_de='BẢNG HỆ SỐ ỔN ĐỊNH MÁI ĐẬP (BISHOP)')
@@ -213,8 +213,9 @@ def phan_duoi(to):
           '1. Cao trình ghi bằng m, kích thước ghi bằng cm.\\P'
           '2. Mặt cắt tính toán tại cọc C16 (Km0+400), chiều cao đập lớn nhất; trục x = 0 tại tim đập.\\P'
           '3. Bề rộng chân khay, chiều dày đệm tiêu nước, mái lăng trụ là giả thiết (hồ sơ không có).\\P'
-          '4. Sơ đồ tính sau sửa chữa lấy đỉnh +78,75 (TKCS); với đỉnh chọn +78,85 (cao hơn 0,10 m) cần tính kiểm tra lại.\\P'
-          '5. Thấm: PTHH bão hòa – không bão hòa; ổn định: Bishop đơn giản, kh = 0,05 (Chương 2, 5).')
+          '4. Sơ đồ tính sau sửa chữa lấy đỉnh +78,85 (đồ án), giữ hệ số mái, bề rộng đỉnh và cơ như hiện trạng.\\P'
+          '5. Thấm: PTHH bão hòa – không bão hòa; ổn định: Bishop đơn giản, kh = 0,05 (Chương 2, 5); TH11, TH12: tổ hợp '
+          'thi công (TC).')
     to.mtext(gc, (25, 112), 2.4, rong=290)
 
 

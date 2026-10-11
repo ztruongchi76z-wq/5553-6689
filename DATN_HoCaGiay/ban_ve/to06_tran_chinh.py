@@ -265,7 +265,7 @@ def nguong(to, x0, y0):
         to.line(kn(xn, 72.9), kn(xn, 70.3), 'SUA_CHUA', linetype='DASHED', ltscale=0.25)
     to.dim(kn(-4.3, 70.3), kn(-2.8, 70.3), -5.0, 50)
     to.dim(kn(-1.3, 72.3), kn(-1.3, 70.3), -12.0, 50, goc=90)
-    to.chu_thich_mui_ten(kn(-1.3, 71.0), kn(1.8, 70.6), 'Neo D25 a 150, sâu 200 vào đá II (bổ sung nếu không có)',
+    to.chu_thich_mui_ten(kn(-1.3, 71.0), kn(1.8, 70.6), 'Neo D25, 2 hàng a 150, ngàm 200 vào đá II (hạng mục thiết kế)',
                          h=1.8, rong=88)
     # mực nước (cột nước có ngắt)
     for Z, ten, mau in ((D.MN['MNLTK'], 'MNLTK +77,63', 5), (D.MN['MNLKT'], 'MNLKT +78,54', 1)):
@@ -401,8 +401,10 @@ def ghi_chu(to, x, y):
           '5. Nạo vét kênh dẫn thượng lưu đến cao trình sân +74,00 (thấp hơn ngưỡng 0,7 m) để bảo đảm điều kiện chảy '
           'tới ngưỡng như tính toán. \\P'
           '6. Ổn định ngưỡng: khi bỏ qua lực dính, K trượt khi tháo lũ < [K]; ngưỡng đạt khi lực dính mặt tiếp xúc BT – đá '
-          'c ≥ 9,1 kPa. Kiểm tra hồ sơ hoàn công (bản đáy, chân khay, thép neo); nếu không có thép neo thì khoan neo D25 '
-          'a 150 cm, sâu 200 cm vào đá lớp II (đề nghị GVHD quyết định đưa thành hạng mục bắt buộc). \\P'
+          'c ≥ 9,1 kPa – chưa kiểm chứng, nên khoan neo là hạng mục thiết kế: thép CB400-V D25, 2 hàng, a = 150 cm, khoan '
+          'D76 qua khối ngưỡng, ngàm 200 cm vào đá lớp II, bơm vữa xi măng không co ngót (≈ 36 thanh, 144 m khoan, 0,6 t); '
+          'với c = 0: K = 2,23 (MNLTK) / 1,81 (MNLKT) ≥ [K] (Bảng 4.6); bám dính 191 kN > 171,8 kN/thanh. Số lượng điều '
+          'chỉnh theo hồ sơ hoàn công (nếu đã có thép neo, chân khay ngàm đá). \\P'
           '7. Mũi phun và hố xói: không sửa chữa; quan trắc địa hình hố xói sau mỗi trận lũ lớn.')
     to.mtext(gc, (x, y), 2.0, rong=196)
 

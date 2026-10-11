@@ -331,7 +331,7 @@ def cac_bang(to):
              ['Chiều dài thân cống; độ dốc đáy', 'L ; i', 'm ; –', '67 ; 0,03 (cần xác minh)'],
              ['Hệ số nhám bê tông', 'n', '–', '0,014'],
              ['Chiều sâu nước kênh hạ lưu (giả thiết)', 'hh', 'm', '1,20'],
-             ['Máy đóng mở', '–', '–', 'VĐ20 (20 T), trục vít D85, L = 6 m']]
+             ['Máy đóng mở', '–', '–', '02 máy VĐ20 (20 T), trục vít D85, L = 6 m']]
     y = to.bang(xL, 576, cot1, hang1, h=1.9, cao_dong=4.6, tieu_de='THÔNG SỐ TÍNH TOÁN CỐNG (Bảng 6.1)')
     to.text('Khả năng tháo khi mở hết cửa (đập tràn đỉnh rộng, m = 0,35): ở MNC H0 = 1,90 m → Q = 7,31 m³/s > 6,54; '
             'Q = 10 m³/s cần MN hồ ≥ +67,94 m.', (xL, y - 3.5), 1.8)
@@ -368,7 +368,7 @@ def ghi_chu(to, x, y):
           '1. Cao trình ghi bằng m, kích thước ghi bằng cm. Cống hộp BTCT 1,8 × 2,0 m, dài 67 m, chảy không áp, đặt trên '
           'đá lớp II; tháp van thượng lưu, cửa van phẳng; bể tiêu năng và cụm chia nước hạ lưu còn tốt. Tháp van, bể tiêu '
           'năng, chiều dày kết cấu vẽ sơ đồ (giả thiết). \\P'
-          '2. Kết cấu cống giữ nguyên. Thay máy đóng mở hư hỏng bằng máy vít VĐ20 (trục vít D85 dài 6,0 m, 4,5 kW, '
+          '2. Kết cấu cống giữ nguyên. Thay 02 máy đóng mở hư hỏng (theo BCNCKT, TKCS) bằng máy vít VĐ20 (trục vít D85 dài 6,0 m, 4,5 kW, '
           '380 V/3 pha/50 Hz, kèm tủ điện, công tắc hành trình, rơ le bảo vệ quá tải). \\P'
           '3. Thay tấm trượt bằng vật liệu ma sát thấp (đồng – graphit hoặc polime UHMW, f ≤ 0,3) và gioăng cao su; bổ '
           'sung giá đỡ dẫn hướng trung gian chia trục vít thành 2 nhịp ≤ 3 m; sơn chống gỉ cửa van. \\P'
@@ -377,7 +377,10 @@ def ghi_chu(to, x, y):
           '5. Kiểm tra bên trong thân cống bằng camera/robot khi đóng cửa van (thời gian ngừng cấp nước giữa hai vụ); nếu '
           'phát hiện nứt, rò nước ở khớp nối thì tính toán kết cấu và xử lý bằng vữa, keo epoxy hoặc ống lót. \\P'
           '6. Phải xác minh độ dốc đáy cống (3 % hay 3‰) bằng cao trình đáy cửa vào – cửa ra trên hồ sơ hoàn công trước '
-          'khi chốt kết quả thủy lực; đối chiếu kích thước bể tiêu năng với yêu cầu ở bảng tiêu năng.')
+          'khi chốt kết quả thủy lực (BCNCKT, QTVH ghi 3 %); nếu i = 3‰ thì Q = 10 m³/s cho h₀ = 1,96 m (gần đầy cống), '
+          'Q chảy không áp lớn nhất ≈ 7,2 m³/s; đối chiếu kích thước bể tiêu năng với yêu cầu ở bảng tiêu năng. \\P'
+          '7. Khung kín cống hộp (tham khảo, Bảng 6.4): A_s yêu cầu sau sửa chữa 8 ÷ 16 cm²/m – tiêu chí đối chiếu khi '
+          'kiểm tra cốt thép hiện trạng (khoan lõi, dò cốt thép).')
     to.mtext(gc, (x, y), 2.0, rong=196)
 
 

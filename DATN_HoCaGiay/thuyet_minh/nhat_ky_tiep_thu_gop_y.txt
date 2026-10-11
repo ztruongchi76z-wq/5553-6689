@@ -1,0 +1,38 @@
+Gỡ mục lục cũ (205 dòng, 205 bookmark) để điền lại sau khi sửa.
+Tiêu đề "LỜI CÁM ƠN" -> "LỜI CẢM ƠN" (thống nhất với lời văn "cảm ơn").
+Mục 1.2.3: sửa câu "các giá trị này nhỏ hơn thiết kế" – dung tích hữu ích tính lại 29,60 > 28,83 triệu m3 (lớn hơn 2,7%); nêu rõ nguyên nhân và chỗ xét ảnh hưởng.
+Mục 1.4.2, 2.2.2: ghi rõ "44 năm thủy văn (1981-1982 ÷ 2024-2025)" để tránh hiểu nhầm 45 năm.
+Mục 1.6.4, Bảng 1.1: ghi rõ cống có 02 máy đóng mở (theo BCNCKT, TKCS) – trước đây chỉ ghi chung.
+Danh mục từ viết tắt: thêm Lu (Lugeon), TC (thi công).
+Mục 1.7: thêm đoạn trình tự thực hiện – kiểm chứng (Hình 1.2 mới), đoạn khai báo việc sử dụng công cụ AI (RA_SOAT mục 3 ý 12); "được tác giả lập trình" -> "được lập trình".
+Bảng 2.1: ghi số điều, bảng của TCVN 8216:2018 vào cột "Căn cứ"; bổ sung [K] = 1,24 cho điều kiện thi công – sửa chữa; nguồn trị số 2,0 (hồ sơ [3]); tiêu chuẩn động đất hiện hành TCVN 9386-1:2025, 9386-5:2025.
+Ghi chú sau Bảng 2.1: căn cứ k_h – a_gR = 0,0222g (TCVN 9386:2012 Phụ lục H, Chợ Lầu), a_g ≤ 0,028g: vùng động đất rất yếu, k_h = 0,05 thiên an toàn; đối chiếu TCVN 9386-1/-5:2025, QCVN 02:2022/BXD.
+Mục 2.2: dẫn nguồn công thức P = m/(n+1) [13]; so sánh với P = m/n của QTVH (40,9 / 88,6 / 84,1%); sửa lý do sai "dung tích tính lại nhỏ hơn" (thực tế dung tích hữu ích 2022 lớn hơn).
+Mục 2.3: phân loại tình huống kẹt van (kiểm tra sự cố, Bảng 4.2); so với BCNCKT +78,09 m; độ nhạy hệ số lưu lượng m = 0,467: MNLTK +77,59, MNLKT +78,49 m.
+Mục 2.4: kiểm tra các hướng gió NE, NW (đà gió lớn nhất, k_α theo góc tới): Z2 lớn nhất +78,97 m (NE) – thêm một hàng vào Bảng 2.5; áp dụng đúng điều 10.1.5 (độ vượt cao tính đến đỉnh tường +79,40; đỉnh đập ≥ MNLKT + 0,3 = +78,84 quyết định); sửa "thấp hơn yêu cầu 0,39 m" -> 0,49 m.
+Mục 2.5.4: nêu kiểm tra chéo Spencer, lưới tâm mịn (TCVN 8216:2018 mục 11.3.1).
+Mục 2.7: thêm Bảng 2.8 tổng hợp kết quả đánh giá an toàn hiện trạng (đạt / không đạt theo từng chỉ tiêu); sửa ý kết luận về cao trình đỉnh đập theo điều 10.1.5.
+Mục 3.2.1: cập nhật căn cứ cao trình đỉnh (10.1.5, gió mọi hướng); Đ1 thấp hơn điều kiện 0,09 m; Đ3: +78,85 là cao trình tối thiểu sau lún, dự phòng lún 2 cm; bổ sung lớp cấp phối đá dăm đệm 5 cm (khép kín +78,60 + 0,05 + 0,20 = +78,85); dốc ngang 2% theo 10.2.3.
+Bảng 3.1: ghi chi phí hai phương án bảo vệ mái theo BCNCKT (14,38 / 15,96 tỷ đồng).
+Chương 3: tràn chính bổ sung neo ngưỡng (hạng mục thiết kế); tràn sự cố nêu đề xuất hợp lý hóa của chuyên đề; cống bổ sung đo cao độ đáy; cập nhật Bảng 3.2.
+Chương 4: đánh số lại Bảng 4.2 ÷ 4.4 thành 4.3 ÷ 4.5 (kể cả lời dẫn) để chèn bảng phân loại tình huống lũ.
+Mục 4.1: thêm Bảng 4.2 phân loại tình huống lũ (thiết kế / kiểm tra / sự cố / sự cố chồng sự cố / khẩn cấp); không coi tường chắn sóng là kết cấu giữ nước khi chưa kiểm tra (RA_SOAT mục 6 ý 7, mục 3 ý 8).
+Mục 4.5: kết luận ổn định ngưỡng viết lại có điều kiện (c ≥ 9,1 kPa); thêm mục 4.5.3 "Kiểm tra ổn định khi có neo" – công thức (4-6), (4-7), Bảng 4.6: K = 2,23 / 1,81 với c = 0 (neo D25, 2 hàng, a = 1,5 m, ngàm 2 m), kiểm tra bám dính 191 kN > 171,8 kN.
+Mục 5.1: cao trình đỉnh theo 10.1.5 (gió NE, Z2 = +78,97 < +79,40); +78,85 là cao trình tối thiểu sau lún tại mép thượng lưu, giải trình điều 11.4.4, dự phòng lún 2 cm; mô hình sau sửa chữa đã tính lại với +78,85; cấu tạo mặt đập khép kín +78,60 + đá dăm 0,05 + BT 0,20 = +78,85 (mép hạ lưu +78,76).
+Mục 5.2: Bảng 5.1 cập nhật theo mô hình đỉnh +78,85; thêm kiểm tra hội tụ lưới (q lệch ≤ 0,2%) và độ nhạy α (q −1,9 ÷ +3,5%, Z tim −1,2 ÷ +0,5 m).
+Mục 5.3: Bảng 5.2 cập nhật theo đỉnh +78,85 (TH5 = 1,349; TH8 = 1,496), thêm TH11, TH12 (thi công, [K] = 1,24); kiểm tra chéo Spencer (lệch ≤ 0,2%), lưới tâm mịn; độ nhạy k_h: mái HL đạt khi k_h ≤ 0,09, TL khi k_h ≤ 0,14.
+Hình 5.1 ÷ 5.4, Hình PL1 ÷ PL10: thay bằng hình của mô hình đỉnh +78,85 m; cập nhật K_min trong chú thích Hình PL1 ÷ PL8.
+Mục 5.5: độ nhạy tỷ lệ mưa 30 phút/ngày 20 ÷ 40% (τ ô 4 × 4 m = 1,4 ÷ 2,2 Pa); lưu tốc rãnh dọc với lưu lượng thiết kế 2,9 m/s.
+Mục 6.3.2: nêu nguồn i = 3% (BCNCKT, QTVH); thêm kịch bản i = 3‰: Q = 10 m3/s gần đầy cống (lưu không 0,04 m), Q không áp lớn nhất 7,2 m3/s; yêu cầu đo cao độ đáy cống.
+Mục 6.1, 6.4, Bảng 6.1: ghi 02 máy đóng mở, giả thiết hai cửa cùng kích thước.
+Mục 6.5: thay câu "mức tăng nằm trong hệ số an toàn" bằng bài tính khung kín tham khảo (Bảng 6.4, A_s = 7,9 ÷ 15,7 cm2/m, tăng 4% so với trước SC) làm tiêu chí kiểm tra; K_đ = 1,0 ÷ 1,3; dẫn TCVN 4116:2023.
+Mục 7.2: trình tự phụt (đoạn 3 hàng C → A → B; đoạn 2 hàng B → A); tiêu chí Lugeon; ép nước xác định đáy màng (9.2.2.9); biện pháp khoan neo ngưỡng; 02 máy đóng mở; kiểm tra thân cống, đo cao độ đáy; tải thi công trên đỉnh.
+Bảng 7.1: sửa khối lượng mặt đập theo chi tiết BV-04 (BT 848 m3 thay 986; nilon 4.240 m2 thay 4.930; đất đắp bù 1.610 m3 thay 1.972; cào bóc 695 m3 (rộng 4,70 m) thay 740; gờ chắn bánh 76 m3 thay 61; thêm đá dăm đệm 212 m3); thêm khoan neo ngưỡng (36 thanh, 144 m, 0,6 t) và kiểm tra thân cống.
+Mục 7.4: Bảng 7.2 ghi rõ trình tự (mặt đập đoạn mang tràn sau khoan phụt; neo ngưỡng; kiểm tra cống); thêm các ràng buộc trình tự và biện pháp cho tháng 5 – 6 đầu mùa mưa (RA_SOAT mục 6 ý 8).
+Mục 7.5: cập nhật giá trị dự báo đường bão hòa (mô hình +78,85); thay ngưỡng "vượt 1,5 m" chưa có căn cứ bằng đường cơ sở + ngưỡng cấp I (1,0 m – theo sai số mô hình), cấp II (2,0 m – theo trạng thái tắc thoát nước), ngưỡng lún (2 cm) (RA_SOAT mục 6 ý 9).
+Mục 8.2.2: dẫn đúng TCVN 8216:2018 mục 10.4.2 (T ≥ H/10), 9.2.3.2 (J = 3 ÷ 4), 9.2.2.9 (giới hạn độ sâu màng đập cấp II: vị trí (5 ÷ 7) Lu + 3 m); công thức (8-3) chỉ áp dụng cho các hàng kề nhau.
+Chương 8: đoạn 2 hàng đổi từ A, C (cách 3,0 m – không liên tục) sang 2 hàng kề nhau A, B; đáy màng theo 9.2.2.9 (mặt lớp II − 3 m, +69,4 thay +70,5 ÷ +71,0); Bảng 8.7 so sánh khối lượng (khoan 506 -> 365 m); Hình 8.6 tổng hợp độ nhạy; mô hình +78,85 thay đổi ≤ 0,4%.
+Kết luận, kiến nghị: cập nhật số liệu cao trình đỉnh (10.1.5), ổn định (+78,85; kiểm tra chéo), kết luận có điều kiện (k_h, ngưỡng tràn, thân cống); kiến nghị đo độ dốc cống, tiêu chuẩn động đất 2025, ngưỡng cảnh báo.
+Tài liệu tham khảo: [12] -> TCVN 9386-1:2025 và 9386-5:2025; [30] -> TCVN 4116:2023; thêm [38] QCVN 02:2022/BXD, [39] Spencer (1967) – trích dẫn lần đầu ở Phụ lục 6.
+Bảng PL5: thêm 4 dòng chương trình tính bổ sung.
+Thêm Phụ lục 6: Bảng PL6 kiểm chứng (so với BCNCKT, QTVH, SEEP/W, Spencer, lưới mịn, hội tụ lưới), Bảng PL7 độ nhạy giả thiết, Bảng PL8 hội tụ lưới – α, Bảng PL9 hệ số ổn định theo k_h.

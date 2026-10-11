@@ -328,6 +328,11 @@ def xuat_hinh(doc, pdf=None, png=None, dpi_png=90, kho=None):
     from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
     from ezdxf.addons.drawing.config import (Configuration, BackgroundPolicy, ColorPolicy, LineweightPolicy,
                                              HatchPolicy)
+    from ezdxf.fonts import fonts as _fonts
+    # máy không có Arial: dựng PDF xem trước bằng Liberation Sans (cùng kích thước chữ) thay cho phông dự phòng
+    # mặc định của ezdxf (DejaVu Sans, rộng hơn); máy có arial.ttf thì giữ Arial.
+    _fonts.font_manager.add_synonyms({'LiberationSans-Regular.ttf': 'arial.ttf', 'LiberationSans-Bold.ttf': 'arialbd.ttf',
+                                      'LiberationSans-Italic.ttf': 'ariali.ttf'}, reverse=False)
     W, H = kho or KHO
     fig = plt.figure(figsize=(W / 25.4, H / 25.4))
     ax = fig.add_axes([0, 0, 1, 1])
