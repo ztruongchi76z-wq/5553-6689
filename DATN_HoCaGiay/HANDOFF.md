@@ -85,3 +85,8 @@ từng bước lấy từ bản 11/10 – chỉ mở sau khi tự tính). Folder
 không có nguồn hồ sơ – chỉ là kịch bản kiểm tra); BCNCKT tính lũ với tràn 25 m (thiết kế 1996) trong khi tràn đã chia
 9 khoang × 2,4 m; BCNCKT ghi nhầm "MNLKT = +78,45 m" (thực là ĐĐ3); QTVH dùng P = m/n (TH2 86,4 % → 84,4 % theo
 m/(n + 1)); QTVH kết luận hồ không xả dòng chảy tối thiểu (Luật TNN 2023, Điều 24).
+Thống nhất với phụ huynh (11/10, tối): không làm thêm bản ĐATN nào; SV tự làm theo thư mục `1-DATN_HoCaGiay_TuLam`
+(đã chia sẻ quyền chỉnh sửa cho tài khoản của SV). Phụ huynh cho biết không có quy định cấm dùng AI hỗ trợ, yêu cầu là
+phải kiểm soát, kiểm chứng – phiên sau chỉ giảng phương pháp, kiểm tra bảng tính của SV, hỏi thử như hội đồng; bài báo
+khoa học chỉ tính khi SV tự làm được. Góp ý "Qwen_de_xuat" (đòi khôi phục Phụ lục 6, neo, khung cống, a_gR, Bảng 8.7–8.8)
+là nhận xét nhầm sang bản 09/10 – bản 11/10 đã có đủ các phần đó.
