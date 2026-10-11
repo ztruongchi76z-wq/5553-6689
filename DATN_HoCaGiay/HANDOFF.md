@@ -73,3 +73,15 @@ tren GitHub)/` (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py, 
 vào Thùng rác (khôi phục được 30 ngày): thư mục `Final/` (mọi bản 10/10 và 11/10, gói giải nén, bản trùng trong
 `New update`), `Update/` (10/10), `DATN_HoCaGiay/` (bản giải nén 09/10, đã có trong tệp lưu trữ), thuyết minh 09/10 ở
 thư mục gốc. Phiên này không tải được tệp lớn lên Drive – SV tự tải bản cuối từ GitHub `TAI_VE/`, `thuyet_minh/`.
+
+## Thư mục tự làm lại (11/10/2026, tối)
+Theo yêu cầu phụ huynh: SV làm lại đồ án từ đầu để hiểu và tự làm. Trên Drive (My Drive) có thư mục mới
+`1-DATN_HoCaGiay_TuLam` gồm: `00_DOC_TRUOC` (Lộ trình 12 bước; Những điểm cần chốt với Thầy – 24 câu hỏi nhóm A ÷ D;
+Sai sót, điểm chưa hợp lý trong hồ sơ tư vấn – đã đối chiếu văn bản gốc BCNCKT, TKCS, KTTV, QTVH), `01` ÷ `04` (bản sao
+hướng dẫn trình bày, đề cương, hồ sơ gốc, 9 DWG + 5 PDF, 3 TCVN), `05` ÷ `08` (trống – SV tự làm), `07_ThuyetMinh`
+(Khung thuyết minh hướng dẫn từng mục theo file mẫu Bộ môn, bản nháp 06/10 của SV, góp ý), `09_DapSo_ThamKhao` (đáp số
+từng bước lấy từ bản 11/10 – chỉ mở sau khi tự tính). Folder 1, 2 giữ nguyên (chỉ chép, không di chuyển).
+Điểm mới phát hiện khi đối chiếu: KTTV Bảng 1-2 cũng ghi độ dốc cống 3 % (trị số 3 ‰ trong `tinh_toan/so_lieu.py`
+không có nguồn hồ sơ – chỉ là kịch bản kiểm tra); BCNCKT tính lũ với tràn 25 m (thiết kế 1996) trong khi tràn đã chia
+9 khoang × 2,4 m; BCNCKT ghi nhầm "MNLKT = +78,45 m" (thực là ĐĐ3); QTVH dùng P = m/n (TH2 86,4 % → 84,4 % theo
+m/(n + 1)); QTVH kết luận hồ không xả dòng chảy tối thiểu (Luật TNN 2023, Điều 24).
