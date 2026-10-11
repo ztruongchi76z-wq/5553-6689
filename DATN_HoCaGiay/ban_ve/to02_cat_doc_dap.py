@@ -220,7 +220,7 @@ def ghi_chu(to, x, y):
           '2. Đỉnh đập sau sửa chữa +78,85 (mép thượng lưu) – cao hơn TKCS 0,10 m theo điều kiện MNLKT + 0,3 m khi có '
           'tường chắn sóng (TCVN 8216:2018, điều 10.1.5). Mặt đập hiện trạng +78,31 ÷ +78,50: phải nâng 0,35 ÷ 0,54 m. \\P'
           '3. Trình tự: bóc lớp mặt đá dăm láng nhựa hư hỏng → đắp bù đất đầm K ≥ 0,97 đến +78,60 → đá dăm đệm 5 cm, '
-          'nilon → BT M250 dày 20 cm, dốc ngang 2% (BV-04); cao trình ghi là cao trình sau lún, thi công cộng 2 cm dự phòng '
+          'nilon → BT B20 (M250) dày 20 cm, dốc ngang 2% (BV-04); cao trình ghi là cao trình sau lún, thi công cộng 2 cm dự phòng '
           'lún (nghiệm thu ≥ +78,87). Khoan phụt mang tràn sự cố thi công trước khi đắp bù. \\P'
           '4. Lớp 5, lớp I tại mang trái tràn sự cố là đường dẫn nước chính (K = 6,54E-05 và 4,35E-04 cm/s – CG7).')
     to.mtext(gc, (x, y), 2.0, rong=170)

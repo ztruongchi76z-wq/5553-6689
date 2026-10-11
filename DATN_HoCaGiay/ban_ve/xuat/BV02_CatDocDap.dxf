@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.2752083335
+2461325.3769675926
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.2752083335
+2461325.3769675926
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{034BD023-1801-4827-8655-865904894397}
+{32287C35-E682-48CA-ADFC-95B39BC2A1D9}
   9
 $VERSIONGUID
   2
-{9FCBB424-7DE7-4AB4-9520-4B18F35195DF}
+{59C771C8-2F68-4119-8687-FBB0C15C72DB}
   9
 $EXTNAMES
 290
@@ -1327,9 +1327,9 @@ ISM
   0
 CLASS
   1
-LAYOUT
+ACDBPLACEHOLDER
   2
-AcDbLayout
+AcDbPlaceHolder
   3
 ObjectDBX Classes
  90
@@ -1343,9 +1343,9 @@ ObjectDBX Classes
   0
 CLASS
   1
-ACDBPLACEHOLDER
+LAYOUT
   2
-AcDbPlaceHolder
+AcDbLayout
   3
 ObjectDBX Classes
  90
@@ -24373,9 +24373,9 @@ GHI CHÚ: \P1. Cao trình ghi bằng m. Cọc, cao độ mặt đập hiện tr�
   3
 ữa +78,85 (mép thượng lưu) – cao hơn TKCS 0,10 m theo điều kiện MNLKT + 0,3 m khi có tường chắn sóng (TCVN 8216:2018, điều 10.1.5). Mặt đập hiện trạng +78,31 ÷ +78,50: phải nâng 0,35 ÷ 0,54 m. \P3. Trình tự: bóc lớp mặt đá dăm láng nhựa hư hỏng → đắp
   3
- bù đất đầm K ≥ 0,97 đến +78,60 → đá dăm đệm 5 cm, nilon → BT M250 dày 20 cm, dốc ngang 2% (BV-04); cao trình ghi là cao trình sau lún, thi công cộng 2 cm dự phòng lún (nghiệm thu ≥ +78,87). Khoan phụt mang tràn sự cố thi công trước khi đắp bù. \P4. 
+ bù đất đầm K ≥ 0,97 đến +78,60 → đá dăm đệm 5 cm, nilon → BT B20 (M250) dày 20 cm, dốc ngang 2% (BV-04); cao trình ghi là cao trình sau lún, thi công cộng 2 cm dự phòng lún (nghiệm thu ≥ +78,87). Khoan phụt mang tràn sự cố thi công trước khi đắp bù.
   1
-Lớp 5, lớp I tại mang trái tràn sự cố là đường dẫn nước chính (K = 6,54E-05 và 4,35E-04 cm/s – CG7).
+ \P4. Lớp 5, lớp I tại mang trái tràn sự cố là đường dẫn nước chính (K = 6,54E-05 và 4,35E-04 cm/s – CG7).
   7
 VN
  44
@@ -26823,7 +26823,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T06:36:18.033416+00:00
+1.4.4 @ 2026-10-11T09:02:50.410043+00:00
   0
 VISUALSTYLE
   5
@@ -33385,7 +33385,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T06:36:18.145561+00:00
+1.4.4 @ 2026-10-11T09:02:50.507602+00:00
   0
 ENDSEC
   0

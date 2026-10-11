@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.277013889
+2461325.3772337963
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.277013889
+2461325.3772337963
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{3AEB3B68-1132-4087-9438-4B27DC9F1E0C}
+{49387839-4E85-45C5-8C5A-B5E88BF25AA6}
   9
 $VERSIONGUID
   2
-{F6862FCF-1EA2-490D-9AB1-05B5C4E8F0AD}
+{ADAF603A-5187-41A0-A8A3-2C5455669422}
   9
 $EXTNAMES
 290
@@ -31749,9 +31749,9 @@ t cấu vẽ sơ đồ (giả thiết). \P2. Kết cấu cống giữ nguyên. T
   3
 ước ở khớp nối thì tính toán kết cấu và xử lý bằng vữa, keo epoxy hoặc ống lót. \P6. Phải xác minh độ dốc đáy cống (3 % hay 3‰) bằng cao trình đáy cửa vào – cửa ra trên hồ sơ hoàn công trước khi chốt kết quả thủy lực (BCNCKT, QTVH ghi 3 %); nếu i = 3
   3
-‰ thì Q = 10 m³/s cho h₀ = 1,96 m (gần đầy cống), Q chảy không áp lớn nhất ≈ 7,2 m³/s; đối chiếu kích thước bể tiêu năng với yêu cầu ở bảng tiêu năng. \P7. Khung kín cống hộp (tham khảo, Bảng 6.4): A_s yêu cầu sau sửa chữa 8 ÷ 16 cm²/m – tiêu chí đối
+‰ thì Q = 10 m³/s cho h₀ = 1,96 m (gần đầy cống), Q chảy không áp lớn nhất ≈ 7,2 m³/s; đối chiếu kích thước bể tiêu năng với yêu cầu ở bảng tiêu năng. \P7. Khung kín cống hộp (tham khảo, Bảng 6.4): A_s yêu cầu sau sửa chữa 8 ÷ 17 cm²/m (lớp bảo vệ ≥ 
   1
- chiếu khi kiểm tra cốt thép hiện trạng (khoan lõi, dò cốt thép).
+60 mm – TCVN 4116:2023) – tiêu chí đối chiếu khi kiểm tra cốt thép hiện trạng (khoan lõi, dò cốt thép).
   7
 VN
  44
@@ -37555,7 +37555,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T06:38:54.779867+00:00
+1.4.4 @ 2026-10-11T09:03:13.730682+00:00
   0
 VISUALSTYLE
   5
@@ -44117,7 +44117,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T06:38:54.976770+00:00
+1.4.4 @ 2026-10-11T09:03:13.928444+00:00
   0
 ENDSEC
   0

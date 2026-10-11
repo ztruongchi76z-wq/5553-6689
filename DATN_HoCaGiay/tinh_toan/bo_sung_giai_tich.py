@@ -10,6 +10,7 @@ CÁC TÍNH TOÁN BỔ SUNG (giải tích) – hoàn thiện thuyết minh theo g
  (7) Mức bảo đảm cấp nước theo m/(n+1) và m/n.
 """
 import json
+import os
 import numpy as np
 import so_lieu as S
 import cao_trinh_dinh as CT
@@ -137,8 +138,10 @@ def khung_kin(L, Hc, qt, qb, e1, e2, EI_t=1.0, EI_b=1.0, EI_w=1.0, n=400):
     return dict(MA=MA, MB=MB, Mt_giua=Mt_giua, Mb_giua=Mb_giua, Mw_max=float(Mw.max()), Mw_min=float(Mw.min()))
 
 
-def cot_thep(M, t, Rs=260.0, Kn=1.15, nc=1.0, a=0.05, b=1.0):
-    """As (cm²/m) ≈ Kn·nc·M / (Rs·0,9·h0) – ước tính tham khảo (cấu kiện chịu uốn, bỏ qua lực dọc)."""
+def cot_thep(M, t, Rs=260.0, Kn=1.15, nc=1.0, a=0.07, b=1.0):
+    """As (cm²/m) ≈ Kn·nc·M / (Rs·0,9·h0) – ước tính tham khảo (cấu kiện chịu uốn, bỏ qua lực dọc và hệ số điều kiện
+    làm việc γs2 = 1,1 của TCVN 4116:2023 Bảng 13 – thiên an toàn). a = 7 cm: lớp bê tông bảo vệ ≥ 60 mm ở mặt tiếp xúc
+    trực tiếp với nước (TCVN 4116:2023 mục 6.3.3) + nửa đường kính thanh Ø20."""
     h0 = t - a
     return Kn * nc * abs(M) * 1e3 / (Rs * 1e6 * 0.9 * h0) * 1e4
 
@@ -195,4 +198,5 @@ print('Rãnh dọc ở Q = 0,028 m³/s: h = %.3f m, v = %.2f m/s' % (h, v_tk))
 for ten, m in (('TH1', 18), ('TH1A', 39), ('TH2', 37), ('TH1_tk', 18), ('TH1A_tk', 37), ('TH2_tk', 35)):
     print(ten, 'm/(n+1) = %.1f%%  m/n = %.1f%%' % (100 * m / 45, 100 * m / 44))
 
-json.dump(KQ, open('../ket_qua/bo_sung_giai_tich.json', 'w'), ensure_ascii=False, indent=1, default=float)
+json.dump(KQ, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ket_qua', 'bo_sung_giai_tich.json'), 'w'),
+          ensure_ascii=False, indent=1, default=float)

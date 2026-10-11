@@ -25,7 +25,7 @@ def chi_tiet_A(to, x0, y0):
     xs = 4.30                       # mép hạ lưu tấm BT
     x_mep = 4.70                    # mép hạ lưu mặt đập hiện trạng (bề rộng đỉnh 5,0 m kể tường 0,3 m)
     z_top = lambda x: D.DINH_SC - i * x
-    # gờ chắn bánh, tấm lát mái BT M200 dày 10 cm (m = 3) tới rãnh ngang đỉnh mái 20 × 20
+    # gờ chắn bánh, tấm lát mái BT B15 (M200) dày 10 cm (m = 3) tới rãnh ngang đỉnh mái 20 × 20
     zg = zdap - i * 4.5             # đáy gờ = mặt đất đắp tại x = 4,50 (+78,51)
     xa0, za0 = 4.50, zg
     xa1 = xa0 + 0.75
@@ -50,13 +50,13 @@ def chi_tiet_A(to, x0, y0):
     dap = [(0.0, zboc), (x_mep, zboc), (x_mep, z_day_tam(x_mep)), (xa0, z_day_tam(xa0)), (xa0, zg), (xs, zdap - i * xs),
            (0.0, zdap)]
     vung(to, kn, dap, ('ANSI31', 0.9))
-    # cấp phối đá dăm đệm 5 cm + BT M250 20 cm
+    # cấp phối đá dăm đệm 5 cm + BT B20 (M250) 20 cm
     vung(to, kn, [(0.0, zdap), (xs, zdap - i * xs), (xs, zdap + 0.05 - i * xs), (0.0, zdap + 0.05)], CP, 'NET_MANH')
     vung(to, kn, [(0.0, zdap + 0.05), (xs, zdap + 0.05 - i * xs), (xs, z_top(xs)), (0.0, z_top(0))], BT, 'SUA_CHUA')
     to.line(kn(0.0, zdap + 0.05), kn(xs, zdap + 0.05 - i * xs), 'NET_MANH', linetype='DASHED', ltscale=0.2)
     # gờ chắn bánh 20 × 25 cm (đặt trên tấm BT kéo dài)
     vung(to, kn, [(xs, zg), (4.50, zg), (4.50, z_top(xs) + 0.25), (xs, z_top(xs) + 0.25)], BT, 'SUA_CHUA')
-    # tấm lát BT M200 dày 10 cm trên mái m = 3 tới rãnh 20 × 20
+    # tấm lát BT B15 (M200) dày 10 cm trên mái m = 3 tới rãnh 20 × 20
     vung(to, kn, [(xa0, za0), (xa1, za1), (xa1, za1 - 0.10), (xa0, za0 - 0.10)], BT, 'SUA_CHUA')
     # rãnh 20 × 20, thành 10 cm, đáy 10 cm
     ranh = [(xr0, zr), (xr0, za1 - 0.10 - 0.30), (xr0 + 0.40, za1 - 0.40), (xr0 + 0.40, za1 - 0.05),
@@ -83,13 +83,13 @@ def chi_tiet_A(to, x0, y0):
     to.dim(kn(xr0, 77.0), kn(xr0 + 0.40, 77.0), -8, TL)
     to.dim(kn(4.5, z_top(xs)), kn(4.5, z_top(xs) + 0.25), -7, TL, goc=90)
     # chú thích lớp
-    cts = [((2.8, z_top(2.8) - 0.1), (3.0, 80.9), 'Bê tông M250 đá 1×2 dày 20 cm, khe co giãn 5 m/khe chèn ma tít'),
+    cts = [((2.8, z_top(2.8) - 0.1), (3.0, 80.9), 'Bê tông B20 (M250) đá 1×2 dày 20 cm, khe co giãn 5 m/khe chèn ma tít'),
            ((2.2, zdap + 0.03 - i * 2.2), (2.4, 80.5), 'Nilon tái sinh + cấp phối đá dăm đệm dày 5 cm'),
            ((1.6, 78.40), (1.8, 80.1), 'Đất đắp bù (bãi VL lớp 1) đầm K ≥ 0,97 đến +78,60'),
            ((-0.15, 79.1), (0.05, 81.3), 'Tường chắn sóng hiện trạng – giữ nguyên'),
-           ((4.4, z_top(xs) + 0.2), (5.9, 80.3), 'Gờ chắn bánh BT M250 20×50 cm (nhô 25 cm), đoạn 1,0 m cách 0,30 m'),
-           ((xr0 + 0.2, za1 - 0.2), (7.0, 79.2), 'Rãnh ngang đỉnh mái 20×20 cm, BT M200'),
-           ((5.0, za0 - 0.18), (7.0, 78.6), 'Tấm lát BT M200 dày 10 cm, lót nilon'),
+           ((4.4, z_top(xs) + 0.2), (5.9, 80.3), 'Gờ chắn bánh BT B20 (M250) 20×50 cm (nhô 25 cm), đoạn 1,0 m cách 0,30 m'),
+           ((xr0 + 0.2, za1 - 0.2), (7.0, 79.2), 'Rãnh ngang đỉnh mái 20×20 cm, BT B15 (M200)'),
+           ((5.0, za0 - 0.18), (7.0, 78.6), 'Tấm lát BT B15 (M200) dày 10 cm, lót nilon'),
            ((3.9, 78.27), (7.0, 77.75), 'Bóc lớp đá dăm láng nhựa hư hỏng (~15 cm)')]
     for p, q, s in cts:
         to.chu_thich_mui_ten(kn(*p), kn(*q), s, 2.5, rong=len(s) * 1.5)
@@ -127,7 +127,7 @@ def mat_cat_ranh(to, x0, y0, ten, b, h, t, tl=20, da_hoc=False, mai=0.0):
         to.dim(kn(-t, -t), kn(b + t, -t), -6, tl)
         to.dim(kn(b + t, 0), kn(b + t, h), 6, tl, goc=90)
         to.dim(kn(b + t, -t), kn(b + t, 0), 6, tl, goc=90)
-        ghi = 'BT M200 đá 1×2, lót nilon'
+        ghi = 'BT B15 (M200) đá 1×2, lót nilon'
     else:
         m = mai
         tr = [(-m * h, h), (0, 0), (b, 0), (b + m * h, h)]
@@ -248,8 +248,8 @@ def bang_khoi_luong(to):
     #     A3 (4,50 ÷ 4,70, dưới tấm lát mái) = 0,20 × (0,210 + 0,143)/2            = 0,0353 m²/m
     #     V = 986 × 1,6328 = 1.610 m³ (làm tròn 10 m³).
     #  3. Cấp phối đá dăm đệm: 986 × 4,30 × 0,05 = 212 m³;  4. nilon tái sinh: 986 × 4,30 = 4.240 m²;
-    #  5. BT M250 mặt đập: 986 × 4,30 × 0,20 = 848 m³;
-    #  6. BT M250 gờ chắn bánh (tiết diện vẽ 20 × 50 cm từ mặt đất đắp +78,51 tới 25 cm trên mặt BT, đoạn 1,0 m
+    #  5. BT B20 (M250) mặt đập: 986 × 4,30 × 0,20 = 848 m³;
+    #  6. BT B20 (M250) gờ chắn bánh (tiết diện vẽ 20 × 50 cm từ mặt đất đắp +78,51 tới 25 cm trên mặt BT, đoạn 1,0 m
     #     cách 0,30 m → 986 / 1,30 = 758 đoạn): 758 × 1,0 × 0,20 × 0,504 = 76 m³.
     L = 986.0
     # kể dự phòng lún 2 cm (đất đắp đến +78,62 tại tường): cộng 0,02 m vào chiều dày đắp
@@ -263,13 +263,13 @@ def bang_khoi_luong(to):
             ['2', 'Đất đắp bù K ≥ 0,97 (+78,20 → +78,62, kể dự phòng lún 2 cm)', 'm³', n(v_dap)],
             ['3', 'Cấp phối đá dăm đệm dày 5 cm (rộng 4,30 m)', 'm³', n(L * 4.30 * 0.05)],
             ['4', 'Nilon tái sinh lót móng (rộng 4,30 m)', 'm²', n(L * 4.30)],
-            ['5', 'Bê tông M250 mặt đập dày 20 cm (rộng 4,30 m)', 'm³', n(L * 4.30 * 0.20)],
-            ['6', 'Bê tông M250 gờ chắn bánh (đoạn 1,0 m cách 0,30 m)', 'm³', n(v_go)],
+            ['5', 'Bê tông B20 (M250) mặt đập dày 20 cm (rộng 4,30 m)', 'm³', n(L * 4.30 * 0.20)],
+            ['6', 'Bê tông B20 (M250) gờ chắn bánh (đoạn 1,0 m cách 0,30 m)', 'm³', n(v_go)],
             ['7', 'Cột đèn chiếu sáng cao 9 m, 150 W', 'cột', '30'],
             ['8', 'Phát quang, bóc lớp mặt mái HL dày 10 cm', 'm³', '3.952'],
             ['9', 'Đào, đắp xử lý hố xói mái HL, K ≥ 0,95 (theo TKCS)', 'm³', '≈ 25.000'],
-            ['10', 'Rãnh dọc BT M200 40×40', 'm', '1.212'],
-            ['11', 'Rãnh xiên BT M200 20×20 (ô 4×4 m)', 'm', '19.759'],
+            ['10', 'Rãnh dọc BT B15 (M200) 40×40', 'm', '1.212'],
+            ['11', 'Rãnh xiên BT B15 (M200) 20×20 (ô 4×4 m)', 'm', '19.759'],
             ['12', 'Rãnh ngang trên cơ, trên lăng trụ 40×40', 'm', '1.972'],
             ['13', 'Rãnh ngang đỉnh mái 20×20', 'm', '986'],
             ['14', 'Rãnh chân đập đá hộc xây VM100 50×50', 'm', '1.106'],
@@ -281,7 +281,7 @@ def ghi_chu(to):
     gc = ('GHI CHÚ:\\P'
           '1. Cao trình ghi bằng m, kích thước ghi bằng cm.\\P'
           '2. Phương án Đ3 (Chương 3): đắp bù đến +78,60, mặt BT đỉnh +78,85 (mép thượng lưu), dốc ngang 2%\\P'
-          '    về hạ lưu; cấu tạo lớp theo TKCS (đá dăm đệm 5 cm + nilon + BT M250 20 cm).\\P'
+          '    về hạ lưu; cấu tạo lớp theo TKCS (đá dăm đệm 5 cm + nilon + BT B20 (M250) 20 cm).\\P'
           '3. Cao trình trên hình là cao trình thiết kế sau lún (+78,85 mép thượng lưu, +78,76 mép tấm). Thi công cộng\\P'
           '    dự phòng lún 2 cm: đất đắp đến +78,62; cao độ nghiệm thu (trước lún) ≥ +78,87 tại mép thượng lưu (chân\\P'
           '    tường chắn sóng) và ≥ +78,78 tại mép tấm; nghiệm thu bằng máy thủy chuẩn tại từng khe co giãn.\\P'

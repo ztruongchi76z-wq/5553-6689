@@ -127,7 +127,7 @@ def ve_mat_cat(to, kn, h, tien_to, tieu_de, sau_sc=False):
         # các hạng mục sửa chữa (nét đỏ)
         to.pline([kn(h['xcu'] + 0.5, h['Zc']), kn(h['xcd'], h['Zc'])], 'SUA_CHUA', const_width=0.6)
         to.chu_thich_mui_ten(kn(1.8, h['Zc']), kn(9, h['Zc'] + 5.5),
-                             'Đắp bù, mặt BT M250 dày 20 cm – đỉnh +78,85 (chi tiết A, BV-04)', 2.3, rong=95)
+                             'Đắp bù, mặt BT B20 (M250) dày 20 cm – đỉnh +78,85 (chi tiết A, BV-04)', 2.3, rong=95)
         mai = [kn(h['xcd'] + 0.3, h['Zc'] - 0.1), kn(h['x_b1'], h['Zcd']), kn(h['x_b2'], h['Zcd']),
                kn(h['x_l1'], h['Z_ltr'])]
         to.pline(mai, 'SUA_CHUA', const_width=0.45)

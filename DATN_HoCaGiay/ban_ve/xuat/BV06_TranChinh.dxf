@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.346076389
+2461325.3771527777
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.346076389
+2461325.3771527777
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{2D413592-6781-42D2-89A0-537145A5230A}
+{EE818D3F-2944-42DA-8B8D-438E9373E982}
   9
 $VERSIONGUID
   2
-{D19033CB-04D4-447A-83E4-BDEC64A16923}
+{81AEDF69-CBF3-403C-B35E-A2751891D301}
   9
 $EXTNAMES
 290
@@ -1327,9 +1327,9 @@ ISM
   0
 CLASS
   1
-ACDBPLACEHOLDER
+LAYOUT
   2
-AcDbPlaceHolder
+AcDbLayout
   3
 ObjectDBX Classes
  90
@@ -1343,9 +1343,9 @@ ObjectDBX Classes
   0
 CLASS
   1
-LAYOUT
+ACDBPLACEHOLDER
   2
-AcDbLayout
+AcDbPlaceHolder
   3
 ObjectDBX Classes
  90
@@ -14929,7 +14929,7 @@ AcDbText
  40
 2.25
   1
-Đục 2 ÷ 3 cm BT mài mòn, trát vữa XM – polime ≥ 40 MPa dày 3 cm (chi tiết B)
+Đục 2 ÷ 3 cm BT mài mòn, trát vữa XM – polime ≥ 40 MPa, W8 dày 3 cm (chi tiết B)
   7
 VN
  11
@@ -37083,17 +37083,17 @@ GHI CHÚ: \P1. Cao trình ghi bằng m, kích thước ghi bằng cm. Hình họ
   3
 ũi phun vẽ sơ đồ; kích thước ghi "giả thiết" phải đối chiếu hồ sơ hoàn công. \P2. Kết cấu ngưỡng, trụ pin, tường bên, cầu giao thông còn tốt – giữ nguyên. Độ vượt cao tường bên nhỏ nhất 0,73 m (x = 20 m, lũ kiểm tra) ≥ 0,5 m: không nâng tường. \P3. Đ
   3
-áy dốc: đục bỏ lớp BT bề mặt mài mòn 2 ÷ 3 cm đến lớp BT chắc, làm sạch bằng phun nước áp lực, quét lớp kết dính, trát vữa XM – polime R ≥ 40 MPa dày 3 cm, hoàn thiện phẳng (gồ ghề cục bộ ≤ 3 mm) để hạn chế xâm thực ở lưu tốc 9 ÷ 12 m/s. Thi công mùa
+áy dốc: đục bỏ lớp BT bề mặt mài mòn 2 ÷ 3 cm đến lớp BT chắc, làm sạch bằng phun nước áp lực, quét lớp kết dính, trát vữa XM – polime R ≥ 40 MPa, W8 (TCVN 4116:2023 mục 5.1.9) dày 3 cm, hoàn thiện phẳng (gồ ghề cục bộ ≤ 3 mm) để hạn chế xâm thực ở l
   3
- khô, theo từng dải, bảo dưỡng ẩm theo chỉ dẫn nhà sản xuất. \P4. Khe co giãn: cạo bỏ vật liệu chèn cũ, chèn lại ma tít đàn hồi; kiểm tra, thông các lỗ thoát nước dưới bản đáy. \P5. Nạo vét kênh dẫn thượng lưu đến cao trình sân +74,00 (thấp hơn ngưỡn
+ưu tốc 9 ÷ 12 m/s. Thi công mùa khô, theo từng dải, bảo dưỡng ẩm theo chỉ dẫn nhà sản xuất. \P4. Khe co giãn: cạo bỏ vật liệu chèn cũ, chèn lại ma tít đàn hồi; kiểm tra, thông các lỗ thoát nước dưới bản đáy. \P5. Nạo vét kênh dẫn thượng lưu đến cao t
   3
-g 0,7 m) để bảo đảm điều kiện chảy tới ngưỡng như tính toán. \P6. Ổn định ngưỡng: khi bỏ qua lực dính, K trượt khi tháo lũ < [K]; ngưỡng đạt khi lực dính mặt tiếp xúc BT – đá c ≥ 9,1 kPa – chưa kiểm chứng, nên khoan neo là hạng mục thiết kế: thép CB4
+rình sân +74,00 (thấp hơn ngưỡng 0,7 m) để bảo đảm điều kiện chảy tới ngưỡng như tính toán. \P6. Ổn định ngưỡng: khi bỏ qua lực dính, K trượt khi tháo lũ < [K]; ngưỡng đạt khi lực dính mặt tiếp xúc BT – đá c ≥ 9,1 kPa – chưa kiểm chứng, nên khoan neo
   3
-00-V D25, 2 hàng, a = 150 cm, khoan D76 qua khối ngưỡng, ngàm 200 cm vào đá lớp II, bơm vữa xi măng không co ngót (≈ 36 thanh, 144 m khoan, 0,6 t); neo thụ động (ma sát – cắt): với c = 0 lực kéo cần 40 ÷ 57 kN/thanh ≤ 33% Ntt = min(thép 171,8; bám dí
+ là hạng mục thiết kế: thép CB400-V D25, 2 hàng, a = 150 cm, khoan D76 qua khối ngưỡng, ngàm 200 cm vào đá lớp II, bơm vữa xi măng không co ngót (≈ 36 thanh, 144 m khoan, 0,6 t); neo thụ động (ma sát – cắt): với c = 0 lực kéo cần 40 ÷ 57 kN/thanh ≤ 3
   3
-nh vữa – đá 191; thép – vữa 314) = 171,8 kN; K = 2,23 (MNLTK) / 1,81 (MNLKT) khi mọi neo đạt Ntt (Bảng 4.6). Thí nghiệm kéo nhổ ≥ 3 neo đến 100 kN trước thi công đại trà. Số lượng điều chỉnh theo hồ sơ hoàn công (nếu đã có thép neo, chân khay ngàm đá
+3% Ntt = min(thép 171,8; bám dính vữa – đá 191; thép – vữa 314) = 171,8 kN; K = 2,23 (MNLTK) / 1,81 (MNLKT) khi mọi neo đạt Ntt (Bảng 4.6). Thí nghiệm kéo nhổ ≥ 3 neo đến 100 kN trước thi công đại trà. Số lượng điều chỉnh theo hồ sơ hoàn công (nếu đã
   1
-). \P7. Mũi phun và hố xói: không sửa chữa; quan trắc địa hình hố xói sau mỗi trận lũ lớn.
+ có thép neo, chân khay ngàm đá). \P7. Mũi phun và hố xói: không sửa chữa; quan trắc địa hình hố xói sau mỗi trận lũ lớn.
   7
 VN
  44
@@ -37951,7 +37951,7 @@ AcDbText
  40
 2.25
   1
-Vữa XM – polime R ≥ 40 MPa dày 3 cm, gồ ghề ≤ 3 mm
+Vữa XM – polime R ≥ 40 MPa, W8, dày 3 cm, gồ ghề ≤ 3 mm
   7
 VN
  11
@@ -41371,7 +41371,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T08:18:21.032569+00:00
+1.4.4 @ 2026-10-11T09:03:06.216580+00:00
   0
 VISUALSTYLE
   5
@@ -47933,7 +47933,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T08:18:21.374369+00:00
+1.4.4 @ 2026-10-11T09:03:06.441369+00:00
   0
 ENDSEC
   0

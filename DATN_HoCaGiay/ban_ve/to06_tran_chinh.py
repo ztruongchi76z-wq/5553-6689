@@ -127,7 +127,7 @@ def cat_doc(to):
     to.line((CX(xm), CY(zm) + 1.0), (CX(xm) - 1.0, CY(zm) + 8.6), 'NET_MANH')
     # chú thích sửa chữa
     to.chu_thich_mui_ten((CX(25.0), CY(z_day(25.0)) + 0.6), (CX(30.0), CY(71.0)),
-                         'Đục 2 ÷ 3 cm BT mài mòn, trát vữa XM – polime ≥ 40 MPa dày 3 cm (chi tiết B)', h=1.8, rong=110)
+                         'Đục 2 ÷ 3 cm BT mài mòn, trát vữa XM – polime ≥ 40 MPa, W8 dày 3 cm (chi tiết B)', h=1.8, rong=110)
     to.chu_thich_mui_ten((CX(12.0), CY(z_day(12.0)) - 1.0), (CX(15.0), CY(68.6)),
                          'Khe co giãn: thay vật liệu chèn bằng ma tít đàn hồi; thông lỗ thoát nước dưới bản đáy (chi tiết C)',
                          h=1.8, rong=124)
@@ -315,7 +315,7 @@ def chi_tiet(to, x0, y0):
     to.chu_thich_mui_ten((x0 + 20, yb + 28 * k), (x0 + 30, yb + 28 * k + 12),
                          'Mặt BT cũ trước khi đục (mài mòn, gồ ghề)', h=1.8, rong=62)
     to.chu_thich_mui_ten((x0 + 45, yb + 26.5 * k), (x0 + 52, yb + 28 * k + 6),
-                         'Vữa XM – polime R ≥ 40 MPa dày 3 cm, gồ ghề ≤ 3 mm', h=1.8, rong=66)
+                         'Vữa XM – polime R ≥ 40 MPa, W8, dày 3 cm, gồ ghề ≤ 3 mm', h=1.8, rong=66)
     to.chu_thich_mui_ten((x0 + 60, yb + 25 * k), (x0 + 66, yb - 6),
                          'Mặt BT chắc sau khi đục 2 ÷ 3 cm, làm nhám, phun nước áp lực, quét lớp kết dính', h=1.8,
                          rong=100)
@@ -398,7 +398,7 @@ def ghi_chu(to, x, y):
           '2. Kết cấu ngưỡng, trụ pin, tường bên, cầu giao thông còn tốt – giữ nguyên. Độ vượt cao tường bên nhỏ nhất '
           '0,73 m (x = 20 m, lũ kiểm tra) ≥ 0,5 m: không nâng tường. \\P'
           '3. Đáy dốc: đục bỏ lớp BT bề mặt mài mòn 2 ÷ 3 cm đến lớp BT chắc, làm sạch bằng phun nước áp lực, quét lớp '
-          'kết dính, trát vữa XM – polime R ≥ 40 MPa dày 3 cm, hoàn thiện phẳng (gồ ghề cục bộ ≤ 3 mm) để hạn chế xâm '
+          'kết dính, trát vữa XM – polime R ≥ 40 MPa, W8 (TCVN 4116:2023 mục 5.1.9) dày 3 cm, hoàn thiện phẳng (gồ ghề cục bộ ≤ 3 mm) để hạn chế xâm '
           'thực ở lưu tốc 9 ÷ 12 m/s. Thi công mùa khô, theo từng dải, bảo dưỡng ẩm theo chỉ dẫn nhà sản xuất. \\P'
           '4. Khe co giãn: cạo bỏ vật liệu chèn cũ, chèn lại ma tít đàn hồi; kiểm tra, thông các lỗ thoát nước dưới bản '
           'đáy. \\P'

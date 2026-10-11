@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.2485648147
+2461325.378240741
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.2485648147
+2461325.378240741
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{09AC4960-D1AD-484A-BAF1-EF4001DE74BB}
+{7CC612F8-CF52-42F5-8FCA-FD1CBFC4D601}
   9
 $VERSIONGUID
   2
-{364179B4-481F-4026-8304-8F546B20ECAA}
+{C117DE19-55B0-4893-8000-A15684FBE86C}
   9
 $EXTNAMES
 290
@@ -56443,7 +56443,7 @@ AcDbText
  40
 2.5
   1
-Đắp bù, BT M250 mặt đập dày 20 cm, đỉnh +78,85; gờ chắn bánh; điện chiếu sáng
+Đắp bù, BT B20 (M250) mặt đập dày 20 cm, đỉnh +78,85; gờ chắn bánh; điện chiếu sáng
   7
 VN
  11
@@ -57191,7 +57191,7 @@ AcDbText
  40
 2.5
   1
-Trạm đo mưa, đo mực nước hồ, 2 camera, đường quản lý BT M250 3,35 km
+Trạm đo mưa, đo mực nước hồ, 2 camera, đường quản lý BT B20 3,35 km
   7
 VN
  11
@@ -58337,7 +58337,7 @@ AcDbText
  40
 2.375
   1
-Đắp bù, gia cố mặt đập BT M250 dày 20 cm, đỉnh +78,85 m; gờ chắn bánh; điện chiếu sáng;
+Đắp bù, gia cố mặt đập BT B20 (M250) dày 20 cm, đỉnh +78,85 m; gờ chắn bánh; điện chiếu sáng;
   7
 VN
  11
@@ -58865,7 +58865,7 @@ AcDbText
  40
 2.375
   1
-Bê tông hóa 3,35 km, mặt BT M250 rộng 4 m
+Bê tông hóa 3,35 km, mặt BT B20 (M250) rộng 4 m
   7
 VN
  11
@@ -99525,7 +99525,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T05:57:56.249141+00:00
+1.4.4 @ 2026-10-11T09:04:40.193049+00:00
   0
 VISUALSTYLE
   5
@@ -106087,7 +106087,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T05:57:56.853414+00:00
+1.4.4 @ 2026-10-11T09:04:40.748089+00:00
   0
 ENDSEC
   0

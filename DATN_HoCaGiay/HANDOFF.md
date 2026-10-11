@@ -58,3 +58,9 @@ BV-04 (bảng khối lượng theo đúng Bảng 7.1, ghi chú 6), BV-05 (điề
 BV-06 (hhk 1,30 / 1,77 m); slide 10, 12, 18, 21; thuyết minh mục 5.5.3 (lớp phủ cỏ, không đổi số trang). Hai gói
 zip trong `TAI_VE/` đã dựng lại. Slide trực tuyến (link mục 2) vẫn là bản cũ: khi xuất PowerPoint từ link, sửa tay
 slide 10, 12, 16, 18, 21 theo danh sách trong `DOC_TRUOC.txt` của gói slide.
+
+## Cập nhật khuya 11/10/2026 (đối chiếu TCVN 10778:2024, TCVN 4116:2023)
+SV tải bản đầy đủ TCVN 10778:2024 và TCVN 4116:2023 lên Drive. Đã đối chiếu và sửa thuyết minh (RA_SOAT mục 0, phần
+"Đối chiếu TCVN 10778:2024 và TCVN 4116:2023"; thuyết minh 104 trang), bản vẽ BV-01 ÷ BV-04, BV-06, BV-07, slide 6, 9,
+10, 18, 21; chương trình mới `tinh_toan/kt_dong_chay_toi_thieu.py`, `bo_sung_giai_tich.py` tính khung cống với lớp bảo vệ
+60 mm. Kết luận chính không đổi (MNDBT, MNC giữ nguyên; MNDBT cần cho TH1A +74,68 m khi kể dòng chảy tối thiểu).

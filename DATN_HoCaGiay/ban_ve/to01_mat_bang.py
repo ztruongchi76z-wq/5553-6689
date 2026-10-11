@@ -198,7 +198,7 @@ def lop_phu(to):
     # chú thích hạng mục
     ghi(to, P(*tim(560.0, -2.5)), (P(*tim(560.0, 0))[0] - 40.0, Y0 + 170.0),
         ['ĐẬP ĐẤT C23 → C2 (L = 986 m) – BV-02, BV-03, BV-04',
-         'Đắp bù, BT M250 mặt đập dày 20 cm, đỉnh +78,85; gờ chắn bánh; điện chiếu sáng',
+         'Đắp bù, BT B20 (M250) mặt đập dày 20 cm, đỉnh +78,85; gờ chắn bánh; điện chiếu sáng',
          'Mái hạ lưu: sửa hố xói, rãnh BT chia ô 4 × 4 m, trồng cỏ; khơi thông lăng trụ',
          'Xử lý 2 hố sụt vai trái; mái thượng lưu đá xây giữ nguyên'], rong=128)
     ghi(to, P(*tim(90.0, -1.0)), (P(*tim(90.0, 0))[0] - 18.0, Y0 + 130.0),
@@ -216,7 +216,7 @@ def lop_phu(to):
          'Kiểm tra thân cống bằng camera/robot; đo cao độ đáy cống'], rong=96)
     ghi(to, P(*tim(46.4, 40.0)), (P(*tim(46.4, 0))[0] + 30.0, Y0 + 205.0),
         ['NHÀ QUẢN LÝ – trạm trung tâm SCADA',
-         'Trạm đo mưa, đo mực nước hồ, 2 camera, đường quản lý BT M250 3,35 km'], rong=104)
+         'Trạm đo mưa, đo mực nước hồ, 2 camera, đường quản lý BT B20 3,35 km'], rong=104)
     # hướng dòng chảy, mũi tên bắc, thước tỷ lệ
     mui_ten(to, P(*tim(300.0, 60.0)), P(*tim(300.0, 20.0)), 'NUOC', 2.5)
     to.text('HỒ CHỨA', P(*tim(300.0, 75.0)), 3.0, 'CENTER', 'NUOC', 'VN_DAM')
@@ -245,14 +245,14 @@ def thuoc(to, x, y):
 def bang(to):
     cot = [30, 162]
     hang = [['Hạng mục', 'Giải pháp sửa chữa, nâng cấp được chọn (Bảng 3.2)'],
-            ['Đập đất', 'Đắp bù, gia cố mặt đập BT M250 dày 20 cm, đỉnh +78,85 m; gờ chắn bánh; điện chiếu sáng;\n'
+            ['Đập đất', 'Đắp bù, gia cố mặt đập BT B20 (M250) dày 20 cm, đỉnh +78,85 m; gờ chắn bánh; điện chiếu sáng;\n'
                         'sửa hố xói, hệ rãnh BT, trồng cỏ mái hạ lưu; xử lý hố sụt vai trái; khơi thông lăng trụ'],
             ['Tràn chính', 'Giữ nguyên quy mô; sửa chữa bề mặt đáy dốc, khe co giãn; nạo vét kênh dẫn; khoan neo ngưỡng D25'],
             ['Tràn sự cố', 'Màng khoan phụt XM – sét mang trái (L = 50 m, 3 hàng TKCS; đề xuất 3 hàng 15 m + 2 hàng A, B); lát lại tấm BT mái'],
             ['Cống lấy nước', 'Thay 2 máy đóng mở VĐ20; thay gioăng, tấm trượt; bổ sung giá đỡ trục vít; kiểm tra thân cống, đo cao độ đáy cống'],
             ['Quan trắc, SCADA', '14 giếng quan trắc thấm tự động (T1, T3, T5, T7, T9), 9 mốc lún, trạm đo mưa,\n'
                                  'đo mực nước, camera, trạm trung tâm'],
-            ['Đường quản lý', 'Bê tông hóa 3,35 km, mặt BT M250 rộng 4 m']]
+            ['Đường quản lý', 'Bê tông hóa 3,35 km, mặt BT B20 (M250) rộng 4 m']]
     to.bang(30.0, 318.0, cot, hang, h=1.9, cao_dong=5.0, can=['L', 'L'],
             tieu_de='TỔNG HỢP GIẢI PHÁP SỬA CHỮA, NÂNG CẤP')
     cot2 = [84, 16, 42]

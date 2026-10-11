@@ -381,7 +381,7 @@ def ghi_chu(to, x, y):
           '6. Phải xác minh độ dốc đáy cống (3 % hay 3‰) bằng cao trình đáy cửa vào – cửa ra trên hồ sơ hoàn công trước '
           'khi chốt kết quả thủy lực (BCNCKT, QTVH ghi 3 %); nếu i = 3‰ thì Q = 10 m³/s cho h₀ = 1,96 m (gần đầy cống), '
           'Q chảy không áp lớn nhất ≈ 7,2 m³/s; đối chiếu kích thước bể tiêu năng với yêu cầu ở bảng tiêu năng. \\P'
-          '7. Khung kín cống hộp (tham khảo, Bảng 6.4): A_s yêu cầu sau sửa chữa 8 ÷ 16 cm²/m – tiêu chí đối chiếu khi '
+          '7. Khung kín cống hộp (tham khảo, Bảng 6.4): A_s yêu cầu sau sửa chữa 8 ÷ 17 cm²/m (lớp bảo vệ ≥ 60 mm – TCVN 4116:2023) – tiêu chí đối chiếu khi '
           'kiểm tra cốt thép hiện trạng (khoan lõi, dò cốt thép).')
     to.mtext(gc, (x, y), 2.0, rong=196)
 

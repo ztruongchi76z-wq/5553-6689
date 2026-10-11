@@ -103,6 +103,28 @@ Bản vẽ dựng lại bằng `ban_ve/to04…`, `to05…`, `to06…`; bộ PDF 
 tuyến trên Claude (link trong HANDOFF mục 2) không sửa được từ phiên này – danh sách chỗ cần sửa tay khi xuất PowerPoint
 từ link ghi trong `DOC_TRUOC.txt` của gói slide.
 
+### Đối chiếu TCVN 10778:2024 và TCVN 4116:2023 (khuya 11/10/2026 – SV tải bản đầy đủ hai tiêu chuẩn lên Drive)
+
+Hai tiêu chuẩn đã có trong danh mục tài liệu ([15], [34]) nhưng trước đây chưa có văn bản để đối chiếu nội dung. Đã đọc
+phần quy định (TCVN 10778:2024 mục 1 ÷ 11, Phụ lục B.3; TCVN 4116:2023 mục 4 ÷ 7) và sửa (script
+`thuyet_minh/tiep_thu_gop_y_5.py`, nhật ký `nhat_ky_tiep_thu_gop_y_5.txt`; thuyết minh 104 trang, mục lục 0 lỗi; số thứ tự
+tài liệu tham khảo không đổi):
+
+| # | Tiêu chuẩn, điều | Thuyết minh trước đây | Đã sửa |
+|---|---|---|---|
+| 1 | TCVN 10778:2024 công thức (6), mục 6.3 – dòng chảy tối thiểu Q_tt trong cân bằng nước | Nhu cầu nước lấy theo tổng của QTVH (tưới + sinh hoạt), chưa có Q_tt (QTVH mục 3.4.2: Q_tt = 0,027 m³/s, 0,85 triệu m³/năm) | Tính lại có Q_tt (`tinh_toan/kt_dong_chay_toi_thieu.py`): mức bảo đảm không đổi (40,0 / 86,7 / 82,2 %), ΣW thiếu 159,7 / 8,9 / 14,6 triệu m³, MNDBT cần cho TH1A +74,62 → **+74,68 m** (< +74,70 m) – thêm vào mục 2.2.3, slide 6 |
+| 2 | Công thức (14), (9) – P = m/(n + 1), số năm đủ nước m ≥ (n + 1)·P/100 | P = m/(n + 1) dẫn [14] | Ghi rõ là công thức (14) của TCVN 10778:2024; điều kiện (9): cần ≥ 39/44 năm – TH1A vừa đạt 39 năm; QTVH dùng m/n là khác tiêu chuẩn (mục 2.2.2, slide 21) |
+| 3 | Mục 7.1 ÷ 7.3 – mực nước chết thỏa đồng thời điều kiện bồi lắng và lấy nước | Chỉ kiểm tra khả năng lấy nước | Thêm điều kiện bồi lắng: bùn cát 70 năm ≈ 0,48 triệu m³ (QTVH mục 3.5.4) ≪ dung tích dưới ngưỡng cống 3,52 triệu m³ (mục 2.2.1) |
+| 4 | Bảng 1 – tổn thất thấm; mục 8.2.1.2 – điều tiết toàn chuỗi khi chuỗi ≥ 15 năm; mục 10 – điều tiết lũ, sai số lặp ≤ 5 cm | Không dẫn | Dẫn chiếu (k_t = 1 %/tháng nằm trong 0,5 ÷ 1,5 %/tháng; chuỗi 44 năm; sai số lặp ≪ 5 cm) – mục 2.2.2, 2.3.1; Bảng 2.1 thêm dòng 12; danh mục viết tắt MNLTK, MNLKT ghi tên theo tiêu chuẩn |
+| 5 | TCVN 4116:2023 mục 6.3.3 – lớp bê tông bảo vệ ≥ 60 mm và ≥ 2d ở mặt tiếp xúc trực tiếp với nước | Khung cống tính với a = 5 cm | a = 7 cm (60 mm + Ø20/2); tính lại `bo_sung_giai_tich.py` – Bảng 6.4: A_s sau sửa chữa 8,4 ÷ 16,7 cm²/m (trước 7,9 ÷ 15,7), văn bản "8 ÷ 17 cm²/m (5Ø16 ÷ 6Ø20)", BV-07 ghi chú 7; mức tăng do nâng đỉnh vẫn ≈ 4 % |
+| 6 | Mục 5.1.2 – chỉ tiêu bê tông là cấp độ bền chịu nén B (và mác chống thấm W) | Ghi mác M250, M200 | Ghi B20 (M250), B15 (M200) trong lời văn, Bảng 3.1, 3.2, 7.1, BV-01 ÷ BV-04, slide 9, 10, 18; Bảng 2.1 thêm dòng 11 |
+| 7 | Mục 5.1.9 – vùng có yêu cầu chống mài mòn, xâm thực: tối thiểu B25, W8 | Vữa xi măng – polime ≥ 40 MPa (đạt cường độ) | Thêm yêu cầu mác chống thấm ≥ W8 (mục 4.4, BV-06) |
+
+Đã khớp, không sửa: thép CB300-V R_s = 260 MPa, CB400-V R_s = 350 MPa (TCVN 4116:2023 Bảng 11); K_n, n_c theo QCVN 04-05
+(mục 7.1 dẫn chiếu); phương trình cân bằng nước và cách tính bốc hơi phụ thêm; điều tiết lũ bắt đầu từ MNDBT.
+Lưu ý cho SV: công thức tính A_s là ước tính tham khảo (bỏ qua hệ số điều kiện làm việc γ_s2 = 1,1 – thiên an toàn); nếu
+GVHD yêu cầu tính khung cống đầy đủ theo TCVN 4116:2023 mục 8.2 thì cần hồ sơ hoàn công kết cấu cống.
+
 ## 1. Đã sửa trong tệp Word
 
 | # | Vị trí | Vấn đề | Đã sửa |
