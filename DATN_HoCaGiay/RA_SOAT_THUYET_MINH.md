@@ -29,6 +29,27 @@ xem từng trang PDF; đối chiếu hướng dẫn trình bày của Trường 
   (slide 8, 9, 10, 12, 13, 16, 17, 18, 19, 21: K = 1,349 / 1,496; neo ngưỡng; màng 2 hàng A, B, đáy theo 9.2.2.9;
   hình thấm sau sửa chữa q = 8,05·10⁻⁶); gói `TAI_VE/Slide_BaoVe_DATN_HoCaGiay.zip` dựng lại.
 
+### Đợt 2 (tối 11/10/2026) – góp ý `Gpt_gop_y.txt` (chi tiết: `thuyet_minh/nhat_ky_tiep_thu_gop_y_2.txt`)
+
+Cả 6 điểm kỹ thuật đều có cơ sở, đã sửa (script `thuyet_minh/tiep_thu_gop_y_2.py`, thuyết minh 102 trang):
+1. Dự phòng lún: tách cao trình thiết kế sau lún (+78,85 / +78,76) và cao độ nghiệm thu trước lún (≥ +78,87 / ≥ +78,78;
+   đất đắp đến +78,62); đắp bù 1.610 → 1.700 m³ (Bảng 7.1, BV-04, BV-02).
+2. Neo D25: nêu rõ neo thụ động, cơ chế ma sát – cắt (EN 1992-1-1 mục 6.2.5 [40]); N_tt = min(thép 171,8; bám dính
+   vữa – đá 191 theo FHWA [41]; thép – vữa 314) kN; lực cần 40 ÷ 57 kN = 23 ÷ 33% N_tt, bám dính cần 0,08 ÷ 0,12 MPa,
+   độ mở 0,1 ÷ 0,2 mm; K = 2,23 / 1,81 là trạng thái giới hạn; thí nghiệm kéo nhổ trước thi công đại trà.
+3. Tràn sự cố: (4-1) vô nghiệm với P = 1% (Q_max = 138,25 < 138,6 m³/s) → đầu dốc lấy h_k = 4,28 / 4,76 m
+   (`tinh_toan/kt_tran_su_co.py`); cuối dốc h = 2,56 ÷ 2,91 m; tường yêu cầu 5,5 → 3,7 m – cần đo tường thực tế.
+4. Cống: điều kiện cửa vào chưa ngập H ≤ (1,2 ÷ 1,4)h_c = 2,4 ÷ 2,8 m; H0 = 2,34 m vẫn thỏa; sơ đồ chảy qua lỗ cho +67,97 m.
+5. Chống xói: kết luận có điều kiện (τ = 1,4 ÷ 2,2 Pa so với [τ] đất chưa phủ ≈ 1,8 ÷ 3,6 Pa) – trồng cỏ vầng/thảm xơ
+   dừa đến khi cỏ phủ kín.
+6. Màng: thêm Bảng 8.8 η theo K lớp II (`tinh_toan/kt_lop_II_lu.py`) – với 5 Lu η chỉ còn 26 ÷ 32%; giữ kết luận hiệu
+   quả khi q ≤ 1 Lu.
+
+Sửa nhỏ: TH2 "chưa đạt"; mục 2.3 dẫn Bảng 4.2; "6 điểm phần trăm"; [14] → TCVN 10778:2024 (chưa đọc được toàn văn bản
+2024 – số liệu tổn thất thấm (1 ÷ 3)%/tháng nay dẫn [13]); "chưa tìm thấy cung bất lợi hơn trong phạm vi khảo sát";
+ghi chú slide 6 (dung tích hữu ích 29,60 > 28,83 triệu m³). Bản vẽ BV-02, 04, 05, 06, 07 và slide (bản 16) đồng bộ.
+Không làm được: trang "Nhiệm vụ đồ án" là trang để đóng bản có chữ ký của Bộ môn, GVHD – SV tự chèn.
+
 ## 1. Đã sửa trong tệp Word
 
 | # | Vị trí | Vấn đề | Đã sửa |

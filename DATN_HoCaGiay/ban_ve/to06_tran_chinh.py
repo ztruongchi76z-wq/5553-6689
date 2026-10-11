@@ -373,12 +373,14 @@ def cac_bang(to):
                 tieu_de='ỔN ĐỊNH NGƯỠNG TRÀN CHÍNH – DẢI RỘNG 1 m (Bảng 4.5)')
     to.text('K = (f·ΣV + c·B)/ΣH; f = 0,60; B = 5,05 m; [K] = Kn·nc = 1,15 (cơ bản), 1,035 (đặc biệt). c = 0: K < [K] '
             'khi tháo lũ → cần c ≥ 6,4 kPa (MNLTK), 9,1 kPa (MNLKT).', (xL, y - 3.2), 1.8)
-    to.text('Có neo D25 (2 hàng, a = 1,5 m, ngàm 2,0 m vào đá lớp II), c = 0: K = 2,23 (MNLTK), 1,81 (MNLKT) ≥ [K] '
-            '– đạt (Bảng 4.6).', (xL, y - 6.4), 1.8)
+    to.text('Neo D25 thụ động (2 hàng, a = 1,5 m, ngàm 2,0 m vào đá lớp II), c = 0: lực kéo cần 40 / 57 kN/thanh ≤ 33% '
+            'Ntt = 171,8 kN; K = 2,23 / 1,81 khi mọi neo đạt Ntt (Bảng 4.6).', (xL, y - 6.4), 1.8)
     cot5 = [18, 18, 30, 22, 18, 30]
     hang5 = [['Tần suất', 'Q (m³/s)', 'h đầu dốc (m)', 'h cuối dốc (m)', 'v cuối (m/s)', 'Tường yêu cầu (m)']] + \
             [list(r) for r in D.TSC_TL]
     y = to.bang(xL, 385, cot5, hang5, h=1.9, cao_dong=4.6, tieu_de='THỦY LỰC TRÀN SỰ CỐ (b = 5 m, dốc 32 m, i = 0,08)')
+    to.text('Đầu dốc h = hk (P = 0, mặt cắt khống chế); tường yêu cầu = hhk + 0,5 m – đối chiếu chiều cao tường thực tế.',
+            (xL, y - 3.2), 1.7)
     cot6 = [100, 16, 22]
     hang6 = [['Hạng mục (Bảng 7.1 – II)', 'Đơn vị', 'Khối lượng'],
              ['Xử lý bề mặt đáy dốc tràn chính bằng vữa XM – polime dày 3 cm', 'm²', '1.210'],
@@ -405,8 +407,10 @@ def ghi_chu(to, x, y):
           '6. Ổn định ngưỡng: khi bỏ qua lực dính, K trượt khi tháo lũ < [K]; ngưỡng đạt khi lực dính mặt tiếp xúc BT – đá '
           'c ≥ 9,1 kPa – chưa kiểm chứng, nên khoan neo là hạng mục thiết kế: thép CB400-V D25, 2 hàng, a = 150 cm, khoan '
           'D76 qua khối ngưỡng, ngàm 200 cm vào đá lớp II, bơm vữa xi măng không co ngót (≈ 36 thanh, 144 m khoan, 0,6 t); '
-          'với c = 0: K = 2,23 (MNLTK) / 1,81 (MNLKT) ≥ [K] (Bảng 4.6); bám dính 191 kN > 171,8 kN/thanh. Số lượng điều '
-          'chỉnh theo hồ sơ hoàn công (nếu đã có thép neo, chân khay ngàm đá). \\P'
+          'neo thụ động (ma sát – cắt): với c = 0 lực kéo cần 40 ÷ 57 kN/thanh ≤ 33% Ntt = min(thép 171,8; bám dính vữa – '
+          'đá 191; thép – vữa 314) = 171,8 kN; K = 2,23 (MNLTK) / 1,81 (MNLKT) khi mọi neo đạt Ntt (Bảng 4.6). Thí '
+          'nghiệm kéo nhổ ≥ 3 neo đến 100 kN trước thi công đại trà. Số lượng điều chỉnh theo hồ sơ hoàn công (nếu đã '
+          'có thép neo, chân khay ngàm đá). \\P'
           '7. Mũi phun và hố xói: không sửa chữa; quan trắc địa hình hố xói sau mỗi trận lũ lớn.')
     to.mtext(gc, (x, y), 2.0, rong=196)
 

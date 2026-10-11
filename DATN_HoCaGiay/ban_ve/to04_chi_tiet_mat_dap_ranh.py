@@ -189,7 +189,7 @@ def mat_bang_khai_trien(to, x0, y0):
     to.chu_thich_mui_ten(kn(8.5, -10.3), kn(-6, -6), 'Rãnh xiên 20×20, ô 4×4 m', 2.4, rong=34)
     to.chu_thich_mui_ten(kn(20, -0.1), kn(14, 3.5), 'Rãnh ngang đỉnh mái 20×20', 2.4, rong=40)
     to.chu_thich_mui_ten(kn(12, -s[1] - 1.2), kn(-6, -s[1] - 4.5), 'Rãnh ngang trên cơ 40×40', 2.4, rong=34)
-    to.text('Trong ô: đất màu 10 cm + trồng cỏ', kn(20, -L1 * 0.3), 2.4, 'MC')
+    to.text('Trong ô: đất màu 10 cm + cỏ vầng (hoặc thảm xơ dừa)', kn(20, -L1 * 0.3), 2.4, 'MC')
     to.dim(kn(0, 0), kn(B, 0), 9, TL)
     for a, b in zip(s[:-1], s[1:]):
         to.dim(kn(B, -a), kn(B, -b), 14, TL, goc=90)
@@ -252,14 +252,15 @@ def bang_khoi_luong(to):
     #  6. BT M250 gờ chắn bánh (tiết diện vẽ 20 × 50 cm từ mặt đất đắp +78,51 tới 25 cm trên mặt BT, đoạn 1,0 m
     #     cách 0,30 m → 986 / 1,30 = 758 đoạn): 758 × 1,0 × 0,20 × 0,504 = 76 m³.
     L = 986.0
-    a_dap = (0.40 * 4.30 - 0.01 * 4.30 ** 2) + (0.40 * 0.20 - 0.01 * (4.50 ** 2 - 4.30 ** 2)) + (0.21 * 0.20 - 0.20 ** 2 / 6)
+    # kể dự phòng lún 2 cm (đất đắp đến +78,62 tại tường): cộng 0,02 m vào chiều dày đắp
+    a_dap = (0.42 * 4.30 - 0.01 * 4.30 ** 2) + (0.42 * 0.20 - 0.01 * (4.50 ** 2 - 4.30 ** 2)) + (0.23 * 0.20 - 0.20 ** 2 / 6)
     v_dap = round(L * a_dap / 10.0) * 10.0
     v_go = int(L / 1.30) * 1.0 * 0.20 * (D.DINH_SC - 0.02 * 4.30 + 0.25 - (78.60 - 0.02 * 4.50))
     n = lambda v: '{:,.0f}'.format(v).replace(',', '.')
     cot = [10, 96, 14, 22]
     hang = [['TT', 'Hạng mục', 'Đơn vị', 'Khối lượng'],
             ['1', 'Cào bóc lớp đá dăm láng nhựa dày 15 cm (rộng 4,70 m)', 'm³', n(L * 4.70 * 0.15)],
-            ['2', 'Đất đắp bù mặt đập K ≥ 0,97 (+78,20 → +78,60, dốc 2%)', 'm³', n(v_dap)],
+            ['2', 'Đất đắp bù K ≥ 0,97 (+78,20 → +78,62, kể dự phòng lún 2 cm)', 'm³', n(v_dap)],
             ['3', 'Nilon tái sinh lót móng (rộng 4,30 m)', 'm²', n(L * 4.30)],
             ['4', 'Cấp phối đá dăm đệm dày 5 cm (rộng 4,30 m)', 'm³', n(L * 4.30 * 0.05)],
             ['5', 'Bê tông M250 mặt đập dày 20 cm (rộng 4,30 m)', 'm³', n(L * 4.30 * 0.20)],
@@ -280,12 +281,14 @@ def ghi_chu(to):
           '1. Cao trình ghi bằng m, kích thước ghi bằng cm.\\P'
           '2. Phương án Đ3 (Chương 3): đắp bù đến +78,60, mặt BT đỉnh +78,85 (mép thượng lưu), dốc ngang 2%\\P'
           '    về hạ lưu; cấu tạo lớp theo TKCS (đá dăm đệm 5 cm + nilon + BT M250 20 cm).\\P'
-          '3. Cao trình +78,85 m là cao trình tối thiểu tại mép thượng lưu (chân tường chắn sóng) sau lún; khi thi công\\P'
-          '    lấy dự phòng lún +2 cm (cao độ hoàn thiện +78,85 ÷ +78,87 m), nghiệm thu bằng máy thủy chuẩn.\\P'
+          '3. Cao trình trên hình là cao trình thiết kế sau lún (+78,85 mép thượng lưu, +78,76 mép tấm). Thi công cộng\\P'
+          '    dự phòng lún 2 cm: đất đắp đến +78,62; cao độ nghiệm thu (trước lún) ≥ +78,87 tại mép thượng lưu (chân\\P'
+          '    tường chắn sóng) và ≥ +78,78 tại mép tấm; nghiệm thu bằng máy thủy chuẩn tại từng khe co giãn.\\P'
           '4. Đắp đất từng lớp ≤ 25 cm, độ ẩm sai lệch ±2% so với độ ẩm tốt nhất; kiểm tra độ chặt từng lớp.\\P'
           '5. Rãnh dọc chạy theo mái có lưu tốc lớn (≈ 9 m/s khi đầy): BT liền khối, có gờ tiêu năng tại chỗ nối với cơ\\P'
           '    và lăng trụ. Khả năng thoát của các rãnh lớn hơn nhiều lần lưu lượng thiết kế (Bảng 5.6).\\P'
-          '6. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈ 6,6 Pa xuống ≈ 1,8 Pa (Bảng 5.5).\\P'
+          '6. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈ 6,6 Pa xuống ≈ 1,8 Pa (1,4 ÷ 2,2 Pa, Bảng 5.5) –\\P'
+          '    xấp xỉ giới hạn của đất chưa có lớp phủ: trồng cỏ vầng hoặc phủ thảm xơ dừa đến khi cỏ phủ kín.\\P'
           '7. Khối lượng mặt đập tính cho L = 986 m theo kích thước chi tiết A (BT, đá dăm, nilon rộng 4,30 m).')
     to.mtext(gc, (480, 255), 2.4, rong=170)
 

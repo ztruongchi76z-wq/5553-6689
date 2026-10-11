@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.2487615743
+2461325.2752662036
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.2487615743
+2461325.2752662036
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{6C547426-25CA-4822-9AFF-AC61620B50FF}
+{564A72F7-55AF-46D8-8F3A-756CA9DAA8B1}
   9
 $VERSIONGUID
   2
-{FB80BF74-2536-4E17-BD54-913A6A6F7F6E}
+{3E7DA90B-5321-4FC7-8611-0187FD5A1EE0}
   9
 $EXTNAMES
 290
@@ -22471,7 +22471,7 @@ AcDbText
  40
 3.0
   1
-Trong ô: đất màu 10 cm + trồng cỏ
+Trong ô: đất màu 10 cm + cỏ vầng (hoặc thảm xơ dừa)
   7
 VN
  72
@@ -29437,7 +29437,7 @@ AcDbText
  40
 3.36
   1
-Đất đắp bù mặt đập K ≥ 0,97 (+78,20 → +78,60, dốc 2%)
+Đất đắp bù K ≥ 0,97 (+78,20 → +78,62, kể dự phòng lún 2 cm)
   7
 VN
  72
@@ -29509,7 +29509,7 @@ AcDbText
  40
 3.36
   1
-1.610
+1.700
   7
 VN
  72
@@ -31687,11 +31687,13 @@ AcDbMText
   3
 GHI CHÚ:\P1. Cao trình ghi bằng m, kích thước ghi bằng cm.\P2. Phương án Đ3 (Chương 3): đắp bù đến +78,60, mặt BT đỉnh +78,85 (mép thượng lưu), dốc ngang 2%\P    về hạ lưu; cấu tạo lớp theo TKCS (đá dăm đệm 5 cm + nilon + BT M250 20 cm).\P3. Cao trìn
   3
-h +78,85 m là cao trình tối thiểu tại mép thượng lưu (chân tường chắn sóng) sau lún; khi thi công\P    lấy dự phòng lún +2 cm (cao độ hoàn thiện +78,85 ÷ +78,87 m), nghiệm thu bằng máy thủy chuẩn.\P4. Đắp đất từng lớp ≤ 25 cm, độ ẩm sai lệch ±2% so v
+h trên hình là cao trình thiết kế sau lún (+78,85 mép thượng lưu, +78,76 mép tấm). Thi công cộng\P    dự phòng lún 2 cm: đất đắp đến +78,62; cao độ nghiệm thu (trước lún) ≥ +78,87 tại mép thượng lưu (chân\P    tường chắn sóng) và ≥ +78,78 tại mép tấm
   3
-ới độ ẩm tốt nhất; kiểm tra độ chặt từng lớp.\P5. Rãnh dọc chạy theo mái có lưu tốc lớn (≈ 9 m/s khi đầy): BT liền khối, có gờ tiêu năng tại chỗ nối với cơ\P    và lăng trụ. Khả năng thoát của các rãnh lớn hơn nhiều lần lưu lượng thiết kế (Bảng 5.6).
+; nghiệm thu bằng máy thủy chuẩn tại từng khe co giãn.\P4. Đắp đất từng lớp ≤ 25 cm, độ ẩm sai lệch ±2% so với độ ẩm tốt nhất; kiểm tra độ chặt từng lớp.\P5. Rãnh dọc chạy theo mái có lưu tốc lớn (≈ 9 m/s khi đầy): BT liền khối, có gờ tiêu năng tại c
+  3
+hỗ nối với cơ\P    và lăng trụ. Khả năng thoát của các rãnh lớn hơn nhiều lần lưu lượng thiết kế (Bảng 5.6).\P6. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈ 6,6 Pa xuống ≈ 1,8 Pa (1,4 ÷ 2,2 Pa, Bảng 5.5) –\P    xấp xỉ giới hạn của đất chư
   1
-\P6. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈ 6,6 Pa xuống ≈ 1,8 Pa (Bảng 5.5).\P7. Khối lượng mặt đập tính cho L = 986 m theo kích thước chi tiết A (BT, đá dăm, nilon rộng 4,30 m).
+a có lớp phủ: trồng cỏ vầng hoặc phủ thảm xơ dừa đến khi cỏ phủ kín.\P7. Khối lượng mặt đập tính cho L = 986 m theo kích thước chi tiết A (BT, đá dăm, nilon rộng 4,30 m).
   7
 VN
  44
@@ -32799,7 +32801,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T05:58:13.411493+00:00
+1.4.4 @ 2026-10-11T06:36:23.266991+00:00
   0
 VISUALSTYLE
   5
@@ -39361,7 +39363,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T05:58:13.600300+00:00
+1.4.4 @ 2026-10-11T06:36:23.466453+00:00
   0
 ENDSEC
   0

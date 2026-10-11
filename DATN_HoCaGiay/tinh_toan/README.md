@@ -9,6 +9,8 @@ Mô hình sau sửa chữa dùng đỉnh +78,85 m (`so_lieu.py`, `Z_DINH_DAP_SC`
 | bo_sung_giai_tich.py | Hướng gió, độ nhạy m tràn, cống i = 3‰, neo ngưỡng, khung kín cống, mưa, m/n |
 | kt_hoi_tu.py | Hội tụ lưới PTHH, tham số α, độ nhạy k_h |
 | kt_hai_hang.py, kt_dinh.py | Màng 2 hàng A–B, đáy màng theo TCVN 8216:2018 mục 9.2.2.9, ảnh hưởng đỉnh +78,85 |
+| kt_tran_su_co.py | Thủy lực tràn sự cố: độ sâu đầu dốc = h_k (P = 0), đường mặt nước, tường yêu cầu (ket_qua/kt_tran_su_co.json) |
+| kt_lop_II_lu.py | Hiệu quả màng theo K lớp II 1e-5 ÷ 1e-4 cm/s (tiêu chí 5 Lu) – Bảng 8.8 (ket_qua/kt_lop_II_lu.json) |
 
 Các tệp gốc còn lại (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py) nằm trong thư mục Drive "Hugo".
 Chạy: `python3 chay_tham_on_dinh.py` (cần numpy, scipy, triangle, matplotlib).

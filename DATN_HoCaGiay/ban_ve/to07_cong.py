@@ -335,6 +335,8 @@ def cac_bang(to):
     y = to.bang(xL, 576, cot1, hang1, h=1.9, cao_dong=4.6, tieu_de='THÔNG SỐ TÍNH TOÁN CỐNG (Bảng 6.1)')
     to.text('Khả năng tháo khi mở hết cửa (đập tràn đỉnh rộng, m = 0,35): ở MNC H0 = 1,90 m → Q = 7,31 m³/s > 6,54; '
             'Q = 10 m³/s cần MN hồ ≥ +67,94 m.', (xL, y - 3.5), 1.8)
+    to.text('H0 = 2,34 m ≤ 1,2hc = 2,4 m: cửa vào chưa ngập, công thức đập tràn đỉnh rộng áp dụng được (mục 6.3.1).',
+            (xL, y - 6.3), 1.8)
     cot2 = [20, 24, 24, 26, 32, 18]
     hang2 = [['Q (m³/s)', 'h đầu cống (m)', 'h cuối cống (m)', 'v cuối cống (m/s)', 'Lưu không nhỏ nhất (m)', 'h/H']] + \
             [list(r) for r in D.CONG_BANG62]

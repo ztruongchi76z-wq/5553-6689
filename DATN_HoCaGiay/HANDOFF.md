@@ -43,4 +43,4 @@ Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_
 > đọc `HANDOFF.md` trước, giữ nguyên các kết quả đã tính, rồi giúp tôi: [ghi việc cần làm].
 
 ## Cập nhật 11/10/2026
-Thuyết minh, bản vẽ, mã tính toán (`tinh_toan/`) đã tiếp thu góp ý – xem `RA_SOAT_THUYET_MINH.md` mục 0. Slide bảo vệ đã cập nhật theo số mới. Còn lại: SV tự kiểm tra, hỏi GVHD các điểm ghi trong mục 0.
+Thuyết minh, bản vẽ, mã tính toán (`tinh_toan/`) đã tiếp thu góp ý – xem `RA_SOAT_THUYET_MINH.md` mục 0. Slide bảo vệ đã cập nhật theo số mới. Tối 11/10: tiếp thu góp ý đợt 2 (RA_SOAT mục 0, "Đợt 2"). Còn lại: SV tự kiểm tra, hỏi GVHD các điểm ghi trong mục 0.

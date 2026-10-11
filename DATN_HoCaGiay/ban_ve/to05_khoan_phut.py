@@ -615,7 +615,7 @@ def cac_bang(to):
              ['η / J ra – MNLTK +77,63*', eta('TK', 0), eta('HLH_TK', 0), eta('HLH_9229', 0)],
              ['η / J ra – MNLKT +78,54*', eta('TK', 1), eta('HLH_TK', 1), eta('HLH_9229', 1)],
              ['Điều kiện áp dụng', '–', 'Phụt thí nghiệm 2 hàng A, B', 'Như cột trước + ép nước'],
-             ['', '', 'đạt K ≤ 1E-05 cm/s (≈ 0,8 Lu)', 'lớp II đạt q ≤ 5 Lu']]
+             ['', '', 'đạt K ≤ 1E-05 cm/s (≈ 0,8 Lu)', 'lớp II q ≤ 5 Lu (η như bảng khi q ≤ 1 Lu)']]
     y3 = 466.0
     yb = to.bang(x0, y3, cot3, hang3, h=2.0, cao_dong=4.6,
                  tieu_de='SO SÁNH PHƯƠNG ÁN MÀNG TKCS VÀ PHƯƠNG ÁN HỢP LÝ HÓA (mục 8.6)')
@@ -623,6 +623,8 @@ def cac_bang(to):
             'khối lượng thanh toán theo TKCS (Bảng 7.1).', (x0, yb - 3.5), 1.8)
     to.text('(*) η, J ra tại mặt cắt đại diện (thuộc đoạn 2 hàng); đoạn 3 hàng sát tràn giữ η = 54% (MNLTK), 52% (MNLKT).',
             (x0, yb - 6.5), 1.8)
+    to.text('η ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); nếu lớp II thấm tới 5 Lu (K ≈ 6,5E-05) η mọi phương án chỉ còn '
+            '26 ÷ 32% (Bảng 8.8).', (x0, yb - 9.5), 1.8)
     # khối lượng TKCS
     cot4 = [72, 16, 30]
     hang4 = [['Hạng mục (TKCS, Bảng 7.1)', 'Đơn vị', 'Khối lượng'],
@@ -646,7 +648,9 @@ def ghi_chu(to, x, y):
           'ép nước lớp II cho q ≤ 5 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu không đạt thì phụt đủ 3 hàng như TKCS. \\P'
           '4. Đáy màng theo TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước '
           '(5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nước lớp II cho q ≤ 5 Lu, không sâu hơn đáy '
-          'TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trình tại đó q giảm còn 5 Lu, trừ 3 m. \\P'
+          'TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trình tại đó q giảm còn 5 Lu, trừ 3 m. Hiệu quả η trên bản vẽ '
+          'ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); với q tới 5 Lu η chỉ còn 26 ÷ 32% (Bảng 8.8) – tính lại theo K đo '
+          'được. \\P'
           '5. Trình tự: phụt thí nghiệm → đoạn 3 hàng: hàng C → A → B; đoạn 2 hàng: hàng B → A (hàng hạ lưu trước); '
           'trong mỗi hàng phụt hố thứ tự I trước, hố thứ tự II sau; phân đoạn phụt từ trên xuống, mỗi đoạn 2 ÷ 3 m '
           '(TCVN 8645:2011, TCVN 8644:2011). \\P'
