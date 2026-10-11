@@ -44,3 +44,10 @@ Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_
 
 ## Cập nhật 11/10/2026
 Thuyết minh, bản vẽ, mã tính toán (`tinh_toan/`) đã tiếp thu góp ý – xem `RA_SOAT_THUYET_MINH.md` mục 0. Slide bảo vệ đã cập nhật theo số mới. Tối 11/10: tiếp thu góp ý đợt 2 (RA_SOAT mục 0, "Đợt 2"). Còn lại: SV tự kiểm tra, hỏi GVHD các điểm ghi trong mục 0.
+
+## Cập nhật đêm 11/10/2026 (rà soát đợt 3)
+Rà soát độc lập toàn bộ thuyết minh sau đợt 2: 6 điểm GPT đã sửa đúng; sửa thêm 13 nhóm lỗi còn sót (RA_SOAT mục 0,
+"Đợt 3") – thuyết minh nay 103 trang, **tài liệu tham khảo đã đánh số lại theo thứ tự trích dẫn** (bảng đổi số trong
+RA_SOAT). Slide: sửa slide 16 và ghi chú slide 17, 20 (gói `TAI_VE/Slide_BaoVe_DATN_HoCaGiay.zip` dựng lại); bản vẽ
+không đổi. Slide trực tuyến trên Claude (link ở mục 2) **chưa** sửa chữ "3 ÷ 5%" ở slide 16 – nếu xuất PowerPoint từ link
+đó thì sửa tay thành "3 ÷ 5 điểm %".

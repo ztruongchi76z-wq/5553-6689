@@ -50,6 +50,37 @@ Sửa nhỏ: TH2 "chưa đạt"; mục 2.3 dẫn Bảng 4.2; "6 điểm phần t
 ghi chú slide 6 (dung tích hữu ích 29,60 > 28,83 triệu m³). Bản vẽ BV-02, 04, 05, 06, 07 và slide (bản 16) đồng bộ.
 Không làm được: trang "Nhiệm vụ đồ án" là trang để đóng bản có chữ ký của Bộ môn, GVHD – SV tự chèn.
 
+### Đợt 3 (đêm 11/10/2026) – rà soát độc lập sau đợt 2 (chi tiết: `thuyet_minh/nhat_ky_tiep_thu_gop_y_3.txt`)
+
+Kiểm chứng lại 6 điểm GPT và các sửa nhỏ của đợt 2: **đều đã sửa đúng**. Đã chạy lại `dieu_tiet_lu.py`,
+`chay_tham_on_dinh.py`, `kt_tran_su_co.py`, `kt_lop_II_lu.py` – các số trong Bảng 2.3, 2.6, 2.7, 5.1, 5.2, 8.8 và mục 4.3
+khớp chương trình; tính tay lại Bảng 4.5, 4.6, 5.4, 5.5, 5.6, 6.2, 6.3, 6.4, 7.1 – khớp. Các chỗ còn lệch đã sửa
+(script `thuyet_minh/tiep_thu_gop_y_3.py`, thuyết minh 103 trang, mục lục 219 dòng, 0 lỗi số trang):
+
+| # | Vị trí | Vấn đề | Đã sửa |
+|---|---|---|---|
+| 1 | Mục 6.5 | Đường bão hòa tại tim đập ghi +65,7 ÷ +73,4 m (số của mô hình cũ) | +65,6 ÷ +73,0 m theo Bảng 5.1 |
+| 2 | Mục 6.4 | "chia hai nhịp L ≤ 3 m (Kođ tăng lên 3,4 ÷ 6,5)" – Bảng 6.3 có trường hợp 2,69 | 3,4 ÷ 6,5 khi f ≤ 0,4; f = 0,5 ở MNLTK vẫn 2,7 > 2 |
+| 3 | Bảng 1.1 | Chiều cao đập lớn nhất 24,75 m (trị số TKCS, đỉnh +78,75) | 24,35 / 24,85 m (hiện trạng / sau sửa chữa, đáy +54,0) |
+| 4 | Mục 4.5.1 | Áp lực đẩy ngược ghi theo "h_c" nhưng chương trình dùng 0 / 1,0 / 1,2 m | Ghi rõ chiều sâu nước tại chân ngưỡng như chương trình (thiên an toàn) |
+| 5 | Mục 5.1.1 | Độ lún bổ sung 0,5 ÷ 1 cm chưa có căn cứ | Thêm ước tính: Δσ ≈ 11 kPa, ∫Δσ·dz ≈ 100 kPa·m, E_oed ≈ 10 ÷ 20 MPa |
+| 6 | Mục 8.5.4 | "tăng η thêm 3 ÷ 5%" (đợt 2 mới sửa một chỗ "6%") | "3 ÷ 5 điểm phần trăm" (cả slide 16) |
+| 7 | Mục 8.6, Bảng 8.8 | "1 Lu < q ≤ 5 Lu thì η chỉ còn 26 ÷ 42%" – sai ở đầu khoảng (gần 1 Lu η ≈ 50%) | Thêm dòng K = 1,3·10⁻⁵ cm/s (1 Lu) vào Bảng 8.8 (`kt_lop_II_lu.py` chạy lại): η = 50,2 ÷ 51,5% (3 hàng), 43,8 ÷ 45,4% (2 hàng); viết lại câu |
+| 8 | Mục 8.6, 8.7 | Kết quả mô hình chưa nêu: với lớp II 5 Lu, ở MNLKT dòng thấm **vẫn ra trên mái hạ lưu** (+74,95 m) dù có màng | Bổ sung vào mục 8.6, kết luận chuyên đề, ghi chú slide 17 |
+| 9 | Bảng 8.7 | Ghi chú "không kể hố phụt thí nghiệm" nhưng 51 hố của TKCS gồm cả 10 hố thí nghiệm; tổng khoan 506 m ≠ Bảng 7.1 (480 m) | Ghi rõ cách tính, chênh 5 ÷ 7% so với Bảng 2-2 TKCS, chỉ dùng so sánh tương đối |
+| 10 | TLTK | Thứ tự trích dẫn lần đầu không đúng IEEE sau các lần thêm tài liệu: [38] QCVN 02 nêu ở mục 2.1 không ghi số; [39] Spencer, [40], [41], [35] xuất hiện trước số nhỏ hơn | Ghi số trích dẫn ở lần nêu đầu, **đánh số lại 41 tài liệu theo thứ tự xuất hiện** (hướng dẫn trình bày của Trường: IEEE) – bảng đổi số ở dưới |
+| 11 | TLTK [12], Spencer | Tên TCVN 9386-1, -5:2025 ghi "Thiết kế công trình chịu động đất…"; tác giả Spencer ghi "S." | "Thiết kế kết cấu chịu động đất – Phần 1: Quy định chung, tác động động đất và quy định cho nhà" và "– Phần 5: Nền móng, kết cấu chắn và các vấn đề địa kỹ thuật"; "E. Spencer" |
+| 12 | Nhỏ | Mục 2.2.1 "0,45 m" (đúng 0,44); 7.3 tăng 490 m³ chưa kể dự phòng lún; "-0,00" ở Bảng 1.2; chữ hoa sau dấu ";" (7.6); "(4) Chất lượng màng" dính vào đoạn (3); thụt lề, cỡ chữ lẫn ở 2 đoạn; "≈ 1 Lu" ở kết luận (đúng ≈ 0,8 Lu); Bảng 4.5, 6.3 số bị xuống dòng | Đã sửa hết |
+| 13 | PDF | LibreOffice 24.2 làm mất một số chỉ số trên ở cuối dòng (vd. "kG/cm²" thành "kG/cm", "1·10⁻⁵" tách dòng) | Xuất PDF bằng LibreOffice 26.2 – đã đối chiếu toàn văn Word ↔ PDF, không còn mất ký tự |
+
+**Bảng đổi số tài liệu tham khảo (số cũ → số mới):** [1]…[12] giữ nguyên; [38]→[13]; [13]…[21]→[14]…[22]; [39]→[23];
+[22]…[26]→[24]…[28]; [40]→[29]; [41]→[30]; [27]…[32]→[31]…[36]; [35]→[37]; [33]→[38]; [34]→[39]; [36]→[40]; [37]→[41].
+Các số tài liệu nêu trong mục 0 – 6 của tệp này là **số cũ**.
+
+Không sửa (để SV, GVHD quyết): trang danh mục bảng biểu còn 1 dòng (Bảng PL9) sang trang xii khi xuất bằng LibreOffice –
+Word dàn trang lại khi cập nhật trường (F9), xem lại khi in. Bộ bản vẽ A0 không có số liệu nào bị ảnh hưởng (đã đối chiếu
+BV-01 ÷ BV-07), không dựng lại.
+
 ## 1. Đã sửa trong tệp Word
 
 | # | Vị trí | Vấn đề | Đã sửa |

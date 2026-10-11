@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Kiểm tra (góp ý 11/10): hiệu quả màng khi lớp II thấm hơn giả thiết 1e-5 cm/s.
 Tiêu chí hiện trường q ≤ 5 Lu (TCVN 8216:2018 điều 9.2.2.9) tương ứng K lớp II tới ≈ 6,5e-5 cm/s (1 Lu ≈ 1,3e-5 cm/s),
-nên tính lại η cho K_II = 1e-5; 3e-5; 6,5e-5; 1e-4 cm/s với màng TKCS (3 hàng, đáy +68,3) và các phương án hợp lý hóa
+nên tính lại η cho K_II = 1e-5; 1,3e-5 (≈ 1 Lu); 3e-5; 6,5e-5; 1e-4 cm/s với màng TKCS (3 hàng, đáy +68,3) và các phương án hợp lý hóa
 (đáy +69,4 = mặt lớp II − 3 m; 2 hàng A, B) tại mặt cắt đại diện, MNLTK và MNLKT."""
 import json
 import os
@@ -14,7 +14,7 @@ PA = {'3h_TK': dict(xa=K.X_TIM - 2.4, xb=K.X_TIM + 2.4, ztop=77.0, zbot=68.3),
       '2h_A_B_day_69_4': dict(xa=XA - 0.9, xb=XB + 0.9, ztop=77.0, zbot=69.4)}
 out = {}
 msh0 = K.luoi(None)
-for KII in (1e-5, 3e-5, 6.5e-5, 1e-4):
+for KII in (1e-5, 1.3e-5, 3e-5, 6.5e-5, 1e-4):
     for Zw in (77.63, 78.54):
         q0 = K.giai(Zw, None, K_II=KII, msh=msh0)[2]
         for ten, man in PA.items():
