@@ -79,7 +79,29 @@ Các số tài liệu nêu trong mục 0 – 6 của tệp này là **số cũ**
 
 Không sửa (để SV, GVHD quyết): trang danh mục bảng biểu còn 1 dòng (Bảng PL9) sang trang xii khi xuất bằng LibreOffice –
 Word dàn trang lại khi cập nhật trường (F9), xem lại khi in. Bộ bản vẽ A0 không có số liệu nào bị ảnh hưởng (đã đối chiếu
-BV-01 ÷ BV-07), không dựng lại.
+BV-01 ÷ BV-07), không dựng lại. **Đính chính:** đối chiếu kỹ lại sau đó (toàn bộ chữ trích từ DXF) thấy BV-04, BV-05,
+BV-06 còn lệch – đã sửa, xem mục ngay dưới.
+
+### Đối chiếu bản vẽ, slide với thuyết minh bản cuối (khuya 11/10/2026)
+
+Đọc toàn bộ chữ trên 7 tờ A0 (trích từ DXF) và 21 slide, so với thuyết minh 103 trang. BV-01, BV-02, BV-03, BV-07 và
+các slide còn lại khớp. Đã sửa:
+
+| # | Vị trí | Lệch | Đã sửa |
+|---|---|---|---|
+| 1 | BV-04, bảng khối lượng | Ghi "(Bảng 7.1)" nhưng mục 3, 4 đảo thứ tự (nilon / đá dăm) và thiếu mục 9 (đào, đắp xử lý hố xói ≈ 25.000 m³), nên số thứ tự 9 ÷ 14 lệch Bảng 7.1 | Đúng thứ tự Bảng 7.1, đủ 15 mục; ghi chú 8: mục 9 lấy theo TKCS, chuẩn xác bằng đo đạc hố xói |
+| 2 | BV-04, ghi chú 6 | "1,4 ÷ 2,2 Pa, Bảng 5.5" – Bảng 5.5 chỉ có i = 115 mm/h (1,82 Pa), khoảng 1,4 ÷ 2,2 Pa nằm trong lời văn | Dẫn "mục 5.5.1" |
+| 3 | BV-05, ghi chú 3 và dòng "Điều kiện áp dụng" | Phương án hợp lý hóa ghi điều kiện "ép nước lớp II q ≤ 5 Lu"; thuyết minh (mục 8.6, 8.7 sau đợt 3) và slide 17 yêu cầu q ≤ 1 Lu – 5 Lu chỉ là tiêu chí cao trình đáy màng | q ≤ 1 Lu; 1 < q ≤ 5 Lu thì tính lại η theo K đo, cân nhắc giữ 3 hàng; chú thích dưới bảng thêm: với 5 Lu, ở MNLKT dòng thấm vẫn ra mái hạ lưu (+74,95 m) |
+| 4 | BV-06, mặt cắt 1-1 | hhk = 1,31 / 1,78 m | 1,30 / 1,77 m như mục 4.2 (Bảng 4.4); độ vượt cao 0,73 m giữ nguyên |
+| 5 | Slide 10 | Sơ đồ ghi "Đắp bù + BT M250 dày 20 cm", thiếu lớp đá dăm đệm 5 cm | Thêm dòng "+ đá dăm đệm 5 cm" |
+| 6 | Slide 12 | "(≈ 36 thanh, Bảng 4.6)" – Bảng 4.6 không có số thanh | "(36 thanh, mục 4.5.3, Bảng 7.1)" |
+| 7 | Slide 18 | Dòng tiến độ "Sửa đáy dốc tràn, nạo vét kênh dẫn" thiếu khoan neo ngưỡng (Bảng 7.2 có) | "Sửa đáy dốc, neo ngưỡng tràn, kênh dẫn" |
+| 8 | Slide 21, câu 2 | Dẫn "Bảng 2.2" nhưng các số theo m/n (40,9 / 88,6 / 84,1%) nằm trong lời văn | "Mục 2.2.3" |
+| 9 | Thuyết minh mục 5.5.3 | "cỏ Vetiver hoặc cỏ lá tre" – lệch mục 5.5.1, 7.4, Kết luận và BV-04 (trồng cỏ bằng vầng hoặc phủ thảm xơ dừa) | "cỏ bản địa (cỏ gà, cỏ lá tre) bằng vầng hoặc gieo hạt có phủ thảm xơ dừa cố định bằng ghim (mục 5.5.1)" – script `thuyet_minh/tiep_thu_gop_y_4.py`; mục lục, số trang không đổi (103 trang, 0 lỗi) |
+
+Bản vẽ dựng lại bằng `ban_ve/to04…`, `to05…`, `to06…`; bộ PDF gộp và hai gói zip trong `TAI_VE/` đã thay. Slide trực
+tuyến trên Claude (link trong HANDOFF mục 2) không sửa được từ phiên này – danh sách chỗ cần sửa tay khi xuất PowerPoint
+từ link ghi trong `DOC_TRUOC.txt` của gói slide.
 
 ## 1. Đã sửa trong tệp Word
 

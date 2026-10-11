@@ -51,3 +51,10 @@ Rà soát độc lập toàn bộ thuyết minh sau đợt 2: 6 điểm GPT đã
 RA_SOAT). Slide: sửa slide 16 và ghi chú slide 17, 20 (gói `TAI_VE/Slide_BaoVe_DATN_HoCaGiay.zip` dựng lại); bản vẽ
 không đổi. Slide trực tuyến trên Claude (link ở mục 2) **chưa** sửa chữ "3 ÷ 5%" ở slide 16 – nếu xuất PowerPoint từ link
 đó thì sửa tay thành "3 ÷ 5 điểm %".
+
+## Cập nhật khuya 11/10/2026 (đối chiếu bản vẽ, slide với thuyết minh)
+Đối chiếu toàn bộ chữ trên 7 tờ A0 và 21 slide với thuyết minh bản cuối (RA_SOAT mục 0, cuối phần "Đợt 3"). Đã sửa
+BV-04 (bảng khối lượng theo đúng Bảng 7.1, ghi chú 6), BV-05 (điều kiện phương án hợp lý hóa: lớp II q ≤ 1 Lu),
+BV-06 (hhk 1,30 / 1,77 m); slide 10, 12, 18, 21; thuyết minh mục 5.5.3 (lớp phủ cỏ, không đổi số trang). Hai gói
+zip trong `TAI_VE/` đã dựng lại. Slide trực tuyến (link mục 2) vẫn là bản cũ: khi xuất PowerPoint từ link, sửa tay
+slide 10, 12, 16, 18, 21 theo danh sách trong `DOC_TRUOC.txt` của gói slide.

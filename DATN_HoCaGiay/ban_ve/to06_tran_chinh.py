@@ -236,7 +236,7 @@ def mat_cat_11(to):
     to.hatch(pp, 'AR-CONC', 0.03)
     to.pline(pp, 'NET_CHINH', dong=True)
     to.pline([kn(-B / 2, 0.03), kn(B / 2, 0.03)], 'SUA_CHUA', const_width=0.35)
-    for h, ten, mau, kieu in ((1.305, 'P = 1%: hhk = 1,31', 5, 'CONTINUOUS'), (1.775, 'P = 0,2%: hhk = 1,78', 1, 'DASHED')):
+    for h, ten, mau, kieu in ((1.305, 'P = 1%: hhk = 1,30', 5, 'CONTINUOUS'), (1.775, 'P = 0,2%: hhk = 1,77', 1, 'DASHED')):
         to.line(kn(-B / 2, h), kn(B / 2, h), 'NUOC', color=mau, linetype=kieu, ltscale=0.3)
         to.text(ten, (kn(-B / 2 + 0.4, 0)[0], kn(0, h)[1] + 0.8), 1.8, 'LEFT', 'NUOC')
     to.dim(kn(B / 2, 0.0), kn(B / 2, ht), 6.0, 100, goc=90)

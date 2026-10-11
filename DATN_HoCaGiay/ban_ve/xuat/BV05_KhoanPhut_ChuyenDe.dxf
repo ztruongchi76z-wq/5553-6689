@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.2769212965
+2461325.3459606483
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.2769212965
+2461325.3459722223
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{66E60FA8-976E-44B2-A14D-253C80194A4F}
+{F6C623C1-A15B-4918-B45E-C2AE34D66734}
   9
 $VERSIONGUID
   2
-{8294BD38-6D47-4C32-A1FC-E25D5FA70740}
+{03D21582-211E-4B37-961E-0018114CB322}
   9
 $EXTNAMES
 290
@@ -1327,9 +1327,9 @@ ISM
   0
 CLASS
   1
-ACDBPLACEHOLDER
+LAYOUT
   2
-AcDbPlaceHolder
+AcDbLayout
   3
 ObjectDBX Classes
  90
@@ -1343,9 +1343,9 @@ ObjectDBX Classes
   0
 CLASS
   1
-LAYOUT
+ACDBPLACEHOLDER
   2
-AcDbLayout
+AcDbPlaceHolder
   3
 ObjectDBX Classes
  90
@@ -55843,7 +55843,7 @@ AcDbText
  40
 2.3
   1
-Phụt thí nghiệm 2 hàng A, B
+Phụt thí nghiệm 2 hàng A, B đạt
   7
 VN
  72
@@ -55879,7 +55879,7 @@ AcDbText
  40
 2.3
   1
-Như cột trước + ép nước
+Như cột trước; đáy màng xác định
   7
 VN
  72
@@ -56009,7 +56009,7 @@ AcDbText
  40
 2.3
   1
-đạt K ≤ 1E-05 cm/s (≈ 0,8 Lu)
+K ≤ 1E-05 cm/s; lớp II q ≤ 1 Lu
   7
 VN
  72
@@ -56045,7 +56045,7 @@ AcDbText
  40
 2.3
   1
-lớp II q ≤ 5 Lu (η như bảng khi q ≤ 1 Lu)
+bằng ép nước lớp II (tiêu chí 5 Lu)
   7
 VN
  72
@@ -56293,7 +56293,7 @@ AcDbText
  40
 2.07
   1
-η ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); nếu lớp II thấm tới 5 Lu (K ≈ 6,5E-05) η mọi phương án chỉ còn 26 ÷ 32% (Bảng 8.8).
+η ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); nếu lớp II thấm tới 5 Lu (K ≈ 6,5E-05) η mọi phương án chỉ còn 26 ÷ 32% (Bảng 8.8), ở MNLKT dòng thấm vẫn ra mái hạ lưu (+74,95).
   7
 VN
  11
@@ -60197,21 +60197,21 @@ GHI CHÚ:\P1. Cao trình ghi bằng m, kích thước ghi bằng cm. Lý trình 
   3
 m; đỉnh +77,00, đáy +70,0 ÷ +67,0; K màng ≤ 1E-05 cm/s. \P3. Phương án hợp lý hóa (Chương 8): giữ 3 hàng A, B, C trên đoạn 15 m sát tràn (C01 ÷ C06); đoạn 15 ÷ 50 m chỉ phụt hai hàng kề nhau A, B (cách 1,5 m, hố so le; T = Bb + 0,6A = 1,5 + 1,8 = 3,3
   3
- m), bỏ hàng C. Chỉ áp dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 0,8 Lu) ở hố kiểm tra KT1 và ép nước lớp II cho q ≤ 5 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu không đạt thì phụt đủ 3 hàng như TKCS. \P4. Đáy màng the
+ m), bỏ hàng C. Chỉ áp dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 0,8 Lu) ở hố kiểm tra KT1 và ép nước lớp II cho q ≤ 1 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu 1 < q ≤ 5 Lu phải tính lại η theo K đo được, cân nhắc gi
   3
-o TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước (5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nước lớp II cho q ≤ 5 Lu, không sâu hơn đáy TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trìn
+ữ 3 hàng trên toàn tuyến; nếu màng thử không đạt thì phụt đủ 3 hàng như TKCS. \P4. Đáy màng theo TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước (5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nư
   3
-h tại đó q giảm còn 5 Lu, trừ 3 m. Hiệu quả η trên bản vẽ ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); với q tới 5 Lu η chỉ còn 26 ÷ 32% (Bảng 8.8) – tính lại theo K đo được. \P5. Trình tự: phụt thí nghiệm → đoạn 3 hàng: hàng C → A → B; đoạn 2 hàng: hàn
+ớc lớp II cho q ≤ 5 Lu, không sâu hơn đáy TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trình tại đó q giảm còn 5 Lu, trừ 3 m. Hiệu quả η trên bản vẽ ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); với q tới 5 Lu η chỉ còn 26 ÷ 32% (Bảng 8.8) – tính lại
   3
-g B → A (hàng hạ lưu trước); trong mỗi hàng phụt hố thứ tự I trước, hố thứ tự II sau; phân đoạn phụt từ trên xuống, mỗi đoạn 2 ÷ 3 m (TCVN 8645:2011, TCVN 8644:2011). \P6. Vữa xi măng – bentonite trong đất, lớp 5, lớp I; vữa xi măng trong lớp II; vữa
+ theo K đo được. \P5. Trình tự: phụt thí nghiệm → đoạn 3 hàng: hàng C → A → B; đoạn 2 hàng: hàng B → A (hàng hạ lưu trước); trong mỗi hàng phụt hố thứ tự I trước, hố thứ tự II sau; phân đoạn phụt từ trên xuống, mỗi đoạn 2 ÷ 3 m (TCVN 8645:2011, TCVN 
   3
- loãng trước, đặc dần. Áp lực phụt tăng dần theo độ sâu, không gây nứt tách đất đắp (TKCS: 0,75 ÷ 5,0 kG/cm²); theo dõi đẩy trồi mặt đập và chuyển vị tường bên trong khi phụt. \P7. Kết thúc đoạn phụt khi lượng tiêu hao vữa nhỏ hơn quy định trong thời
+8644:2011). \P6. Vữa xi măng – bentonite trong đất, lớp 5, lớp I; vữa xi măng trong lớp II; vữa loãng trước, đặc dần. Áp lực phụt tăng dần theo độ sâu, không gây nứt tách đất đắp (TKCS: 0,75 ÷ 5,0 kG/cm²); theo dõi đẩy trồi mặt đập và chuyển vị tường
   3
- gian quy định dưới áp lực thiết kế; lấp hố bằng vữa xi măng – sét. \P8. Kiểm tra chất lượng: 3 hố KT ở vị trí xa hố phụt nhất (giữa hai hố cùng hàng; KT2, KT3 điều chỉnh theo đoạn tiêu hao vữa lớn), thí nghiệm đổ nước, ép nước 9 đoạn; màng đạt khi K
+ bên trong khi phụt. \P7. Kết thúc đoạn phụt khi lượng tiêu hao vữa nhỏ hơn quy định trong thời gian quy định dưới áp lực thiết kế; lấp hố bằng vữa xi măng – sét. \P8. Kiểm tra chất lượng: 3 hố KT ở vị trí xa hố phụt nhất (giữa hai hố cùng hàng; KT2,
   3
- ≤ 1E-05 cm/s (≈ 0,8 Lu). \P9. Khoan phụt thi công trước khi đắp bù, đổ bê tông mặt đập (BV-04) và trước khi lát lại tấm BT mái tràn sự cố. \P10. Quan trắc sau xử lý: giếng đo áp P1 (đoạn 3 hàng, cách hàng C 5 m), P2 (đoạn 2 hàng, cách hàng B 5 m), đ
+ KT3 điều chỉnh theo đoạn tiêu hao vữa lớn), thí nghiệm đổ nước, ép nước 9 đoạn; màng đạt khi K ≤ 1E-05 cm/s (≈ 0,8 Lu). \P9. Khoan phụt thi công trước khi đắp bù, đổ bê tông mặt đập (BV-04) và trước khi lát lại tấm BT mái tràn sự cố. \P10. Quan trắc
   1
-ầu đo trong lớp I; so sánh với mực nước dự báo; theo dõi thấm ở mái hạ lưu khi mực nước hồ vượt +74,0 m.
+ sau xử lý: giếng đo áp P1 (đoạn 3 hàng, cách hàng C 5 m), P2 (đoạn 2 hàng, cách hàng B 5 m), đầu đo trong lớp I; so sánh với mực nước dự báo; theo dõi thấm ở mái hạ lưu khi mực nước hồ vượt +74,0 m.
   7
 VN
  44
@@ -61319,7 +61319,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T06:38:46.208496+00:00
+1.4.4 @ 2026-10-11T08:18:11.910162+00:00
   0
 VISUALSTYLE
   5
@@ -67881,7 +67881,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T06:38:46.454058+00:00
+1.4.4 @ 2026-10-11T08:18:12.212502+00:00
   0
 ENDSEC
   0

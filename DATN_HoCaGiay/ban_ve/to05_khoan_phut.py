@@ -614,8 +614,8 @@ def cac_bang(to):
              ['– trong đó trong lớp II (m)', so(tk[3], 1), pc(a[3], tk[3]), pc(b[3], tk[3])],
              ['η / J ra – MNLTK +77,63*', eta('TK', 0), eta('HLH_TK', 0), eta('HLH_9229', 0)],
              ['η / J ra – MNLKT +78,54*', eta('TK', 1), eta('HLH_TK', 1), eta('HLH_9229', 1)],
-             ['Điều kiện áp dụng', '–', 'Phụt thí nghiệm 2 hàng A, B', 'Như cột trước + ép nước'],
-             ['', '', 'đạt K ≤ 1E-05 cm/s (≈ 0,8 Lu)', 'lớp II q ≤ 5 Lu (η như bảng khi q ≤ 1 Lu)']]
+             ['Điều kiện áp dụng', '–', 'Phụt thí nghiệm 2 hàng A, B đạt', 'Như cột trước; đáy màng xác định'],
+             ['', '', 'K ≤ 1E-05 cm/s; lớp II q ≤ 1 Lu', 'bằng ép nước lớp II (tiêu chí 5 Lu)']]
     y3 = 466.0
     yb = to.bang(x0, y3, cot3, hang3, h=2.0, cao_dong=4.6,
                  tieu_de='SO SÁNH PHƯƠNG ÁN MÀNG TKCS VÀ PHƯƠNG ÁN HỢP LÝ HÓA (mục 8.6)')
@@ -624,7 +624,7 @@ def cac_bang(to):
     to.text('(*) η, J ra tại mặt cắt đại diện (thuộc đoạn 2 hàng); đoạn 3 hàng sát tràn giữ η = 54% (MNLTK), 52% (MNLKT).',
             (x0, yb - 6.5), 1.8)
     to.text('η ứng với K lớp II = 1E-05 cm/s (≈ 0,8 Lu); nếu lớp II thấm tới 5 Lu (K ≈ 6,5E-05) η mọi phương án chỉ còn '
-            '26 ÷ 32% (Bảng 8.8).', (x0, yb - 9.5), 1.8)
+            '26 ÷ 32% (Bảng 8.8), ở MNLKT dòng thấm vẫn ra mái hạ lưu (+74,95).', (x0, yb - 9.5), 1.8)
     # khối lượng TKCS
     cot4 = [72, 16, 30]
     hang4 = [['Hạng mục (TKCS, Bảng 7.1)', 'Đơn vị', 'Khối lượng'],
@@ -645,7 +645,8 @@ def ghi_chu(to, x, y):
           '3. Phương án hợp lý hóa (Chương 8): giữ 3 hàng A, B, C trên đoạn 15 m sát tràn (C01 ÷ C06); đoạn 15 ÷ 50 m '
           'chỉ phụt hai hàng kề nhau A, B (cách 1,5 m, hố so le; T = Bb + 0,6A = 1,5 + 1,8 = 3,3 m), bỏ hàng C. Chỉ áp '
           'dụng khi phụt thí nghiệm 2 hàng A, B trong vùng phụt thử cho K ≤ 1E-05 cm/s (≈ 0,8 Lu) ở hố kiểm tra KT1 và '
-          'ép nước lớp II cho q ≤ 5 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu không đạt thì phụt đủ 3 hàng như TKCS. \\P'
+          'ép nước lớp II cho q ≤ 1 Lu (quy đổi 1 Lu ≈ 1,3E-05 cm/s); nếu 1 < q ≤ 5 Lu phải tính lại η theo K đo được, '
+          'cân nhắc giữ 3 hàng trên toàn tuyến; nếu màng thử không đạt thì phụt đủ 3 hàng như TKCS. \\P'
           '4. Đáy màng theo TCVN 8216:2018 điều 9.2.2.9 (đập cấp II: màng không sâu quá cao trình nền có lượng mất nước '
           '(5 ÷ 7) Lu cộng thêm 3 m): đáy = mặt lớp II − 3,0 m khi ép nước lớp II cho q ≤ 5 Lu, không sâu hơn đáy '
           'TKCS; nếu lớp II nứt nẻ (q > 5 Lu) thì đáy = cao trình tại đó q giảm còn 5 Lu, trừ 3 m. Hiệu quả η trên bản vẽ '
