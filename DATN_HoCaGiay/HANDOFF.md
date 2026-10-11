@@ -64,3 +64,12 @@ SV tải bản đầy đủ TCVN 10778:2024 và TCVN 4116:2023 lên Drive. Đã 
 "Đối chiếu TCVN 10778:2024 và TCVN 4116:2023"; thuyết minh 104 trang), bản vẽ BV-01 ÷ BV-04, BV-06, BV-07, slide 6, 9,
 10, 18, 21; chương trình mới `tinh_toan/kt_dong_chay_toi_thieu.py`, `bo_sung_giai_tich.py` tính khung cống với lớp bảo vệ
 60 mm. Kết luận chính không đổi (MNDBT, MNC giữ nguyên; MNDBT cần cho TH1A +74,68 m khi kể dòng chảy tối thiểu).
+
+## Dọn Drive (khuya 11/10/2026)
+Thư mục Drive "Hugo" (Folder 3) đã dọn theo yêu cầu SV: còn `Ban cuoi/` (SV tải 5 tệp bản cuối vào – xem
+`DOC_TRUOC.txt` trong đó), `TCVN/` (TCVN 8216:2018, 10778:2024, 4116:2023 – mỗi bản 1 tệp), `Tinh toan bo sung (chua co
+tren GitHub)/` (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py, xuat_excel.py, du_lieu/can_bang_nuoc.json),
+`Gop y/` (thêm Note.txt), `Hisrory.txt` và tệp lưu trữ `LUU TRU - ban 09-10-2026 - DATN_HoCaGiay_TinhToan.zip`. Đã chuyển
+vào Thùng rác (khôi phục được 30 ngày): thư mục `Final/` (mọi bản 10/10 và 11/10, gói giải nén, bản trùng trong
+`New update`), `Update/` (10/10), `DATN_HoCaGiay/` (bản giải nén 09/10, đã có trong tệp lưu trữ), thuyết minh 09/10 ở
+thư mục gốc. Phiên này không tải được tệp lớn lên Drive – SV tự tải bản cuối từ GitHub `TAI_VE/`, `thuyet_minh/`.

@@ -13,5 +13,5 @@ Mô hình sau sửa chữa dùng đỉnh +78,85 m (`so_lieu.py`, `Z_DINH_DAP_SC`
 | kt_lop_II_lu.py | Hiệu quả màng theo K lớp II 1e-5; 1,3e-5 (≈ 1 Lu); 3e-5; 6,5e-5; 1e-4 cm/s (tiêu chí 5 Lu) – Bảng 8.8 (ket_qua/kt_lop_II_lu.json) |
 | kt_dong_chay_toi_thieu.py | Điều tiết toàn chuỗi có kể dòng chảy tối thiểu Q_tt = 0,027 m³/s (TCVN 10778:2024 công thức 6), mức bảo đảm, MNDBT cần cho P = 85 % – mục 2.2.3 (ket_qua/kt_dong_chay_toi_thieu.json); cần du_lieu/can_bang_nuoc.json đi kèm can_bang_nuoc.py |
 
-Các tệp gốc còn lại (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py) nằm trong thư mục Drive "Hugo".
+Các tệp gốc còn lại (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py, xuat_excel.py và du_lieu/can_bang_nuoc.json) nằm trong thư mục Drive "Hugo/Tinh toan bo sung (chua co tren GitHub)" – chép vào đây (giữ thư mục du_lieu/) để chạy.
 Chạy: `python3 chay_tham_on_dinh.py` (cần numpy, scipy, triangle, matplotlib).
