@@ -18,12 +18,12 @@ Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_
 
 ## 2. Slide bảo vệ
 
-- Liên kết: https://claude.ai/artifact/2tTe4JVKGyUN8186i2koGm (riêng tư – muốn GVHD hoặc bạn xem thì mở trang, vào **Share**
-  để chia sẻ; tải về PowerPoint/PDF ở **Share › Export**).
+- Liên kết: https://claude.ai/artifact/2tTe4JVKGyUN8186i2koGm (đang chia sẻ "ai có liên kết đều xem được" – đổi ở
+  **Share**; tải về PowerPoint/PDF ở **Share › Export**).
 - Bố cục 5 phần: tổng quan – đánh giá hiện trạng – giải pháp, thiết kế – chuyên đề khoan phụt – thi công, kết luận;
   slide 21 (dự phòng) là 6 câu hỏi hội đồng dễ hỏi kèm trả lời ngắn.
-- Số liệu trên slide lấy theo bản thuyết minh PDF hiện tại; khi sửa thuyết minh theo góp ý thì sửa slide tương ứng.
-- Slide 17 (đề xuất màng) có nhắc số hố, mét khoan của BV-05 trong ghi chú – xem RA_SOAT mục 3, điểm 13.
+- Số liệu trên slide khớp thuyết minh bản 11/10 (đã cập nhật 11/10); sửa thêm thuyết minh thì sửa slide tương ứng.
+- Slide 17 (đề xuất màng) dùng số hố, mét khoan của Bảng 8.7 (51 → 40 hố; khoan 506 → 365 m).
 
 ## 3. Việc SV làm tiếp
 
@@ -43,4 +43,4 @@ Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_
 > đọc `HANDOFF.md` trước, giữ nguyên các kết quả đã tính, rồi giúp tôi: [ghi việc cần làm].
 
 ## Cập nhật 11/10/2026
-Thuyết minh, bản vẽ, mã tính toán (`tinh_toan/`) đã tiếp thu góp ý – xem `RA_SOAT_THUYET_MINH.md` mục 0. Còn lại: cập nhật số liệu mới trên slide; SV tự kiểm tra, hỏi GVHD các điểm ghi trong mục 0.
+Thuyết minh, bản vẽ, mã tính toán (`tinh_toan/`) đã tiếp thu góp ý – xem `RA_SOAT_THUYET_MINH.md` mục 0. Slide bảo vệ đã cập nhật theo số mới. Còn lại: SV tự kiểm tra, hỏi GVHD các điểm ghi trong mục 0.

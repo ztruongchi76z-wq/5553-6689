@@ -917,7 +917,7 @@ def ket_luan_tltk_phu_luc(d, body, KQ):
          % round((1 - kl['hl_9229'][1] / kl['tk'][1]) * 100))
     p = tim_doan(body, 'Bổ sung khảo sát: hồ sơ hoàn công tràn chính')
     dat_noi_dung(p, 'Bổ sung khảo sát: hồ sơ hoàn công tràn chính, cống lấy nước (bản đáy, chân khay, thép neo, cốt thép '
-                    'thân cống); đo cao độ đáy cống để xác định độ dốc (3%% hay 3‰); thí nghiệm ép nước lớp II tại mang '
+                    'thân cống); đo cao độ đáy cống để xác định độ dốc (3% hay 3‰); thí nghiệm ép nước lớp II tại mang '
                     'tràn sự cố; đối chiếu gia tốc nền a_{gR} theo QCVN 02:2022/BXD, TCVN 9386-1:2025 khi lập thiết kế '
                     'bản vẽ thi công.')
     p = tim_doan(body, 'Bổ sung vào quy trình vận hành: kiểm tra cửa van tràn sự cố')
