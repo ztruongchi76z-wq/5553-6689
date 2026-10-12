@@ -38,7 +38,7 @@ for h, az in huong.items():
         r1 = CT.tinh_truong_hop(S.MNDBT, V4, 2970.0, alpha=goc)
         r2 = CT.tinh_truong_hop(77.63, V50, 3025.0, alpha=goc)
         row.update(Z1=S.MNDBT + r1['dh'] + r1['hsl'] + 0.70, Z2=77.63 + r2['dh'] + r2['hsl'] + 0.50,
-                   hsl1=r1['hsl'], hsl2=r2['hsl'], ka=r1['ka'])
+                   hsl1=r1['hsl'], hsl2=r2['hsl'], ka=r1['ka'], Vw4=r1['V'], Vw50=r2['V'], dh1=r1['dh'], dh2=r2['dh'])
     gio.append(row)
 KQ['gio'] = dict(phuong_tuyen=phuong_tuyen, phap_tuyen=phap_tuyen, bang=gio)
 print('Tuyến đập phương vị %.1f°, pháp tuyến mái TL %.1f°' % (phuong_tuyen, phap_tuyen))
@@ -57,6 +57,21 @@ for m in (0.45, 0.467):
     out[m] = dict(MNLTK=r1['Zmax'], MNLKT=r2['Zmax'], ket=r3['Zmax'])
     print('m = %.3f: MNLTK %.3f MNLKT %.3f (kẹt van %.3f)' % (m, r1['Zmax'], r2['Zmax'], r3['Zmax']))
 KQ['do_nhay_m'] = out
+# độ nhạy riêng hệ số lưu lượng tràn chính (tràn sự cố giữ m = 0,45) – góp ý A4 (12/10/2026)
+out_tc = {}
+for m in (0.40, 0.42, 0.45, 0.467):
+    tc = DT.Tran('TC', 74.70, 9, 2.40, m, 0.70, 0.45)
+    out_tc['%.3f' % m] = dict(MNLTK=DT.dieu_tiet(S.Q_KTTV['1%'], tc, sc0)['Zmax'],
+                              MNLKT=DT.dieu_tiet(S.Q_KTTV['0.2%'], tc, sc0)['Zmax'])
+lo, hi = 0.38, 0.45
+for _ in range(14):
+    mid = 0.5 * (lo + hi)
+    tc = DT.Tran('TC', 74.70, 9, 2.40, mid, 0.70, 0.45)
+    lo, hi = (lo, mid) if DT.dieu_tiet(S.Q_KTTV['0.2%'], tc, sc0)['Zmax'] + 0.30 <= S.Z_DINH_DAP_SC else (mid, hi)
+out_tc['m_gh'] = hi
+KQ['do_nhay_m_tran_chinh'] = out_tc
+print('m tràn chính:', {k: (round(v['MNLTK'], 3), round(v['MNLKT'], 3)) if isinstance(v, dict) else round(v, 4)
+                        for k, v in out_tc.items()})
 
 # ---------------------------------------------------------------- (3) cống i = 3 ‰
 cong = {}
@@ -77,12 +92,17 @@ KQ['cong_do_doc'] = {str(k): v for k, v in cong.items()}
 
 # ---------------------------------------------------------------- (4) neo ngưỡng tràn
 f = 0.60
+# [K] = γn·γlc/γc theo QCVN 04-05:2022 điều 2.5.3: γn = 1,15 (cấp II, Bảng B.1); γlc = 1,00 (cơ bản) / 0,90 (đặc biệt);
+# γc = 0,95 – công trình BT trên nền đá, mặt trượt qua mặt tiếp xúc bê tông – đá (Bảng B.2). Sửa 12/10/2026 (trước: γc = 1).
+GAMMA_N, GAMMA_C = 1.15, 0.95
+K_CP = {'MNLTK': GAMMA_N * 1.00 / GAMMA_C, 'MNLKT': GAMMA_N * 0.90 / GAMMA_C}
 neo = {}
-for ten, Zw, Kcp in (('MNLTK', 77.63, 1.15), ('MNLKT', 78.54, 1.035)):
+for ten, Zw, Kcp in (('MNLTK', 77.63, K_CP['MNLTK']), ('MNLKT', 78.54, K_CP['MNLKT'])):
     hch = 1.0 if ten == 'MNLTK' else 1.2          # như bài tính Bảng 4.4
     r = CV.on_dinh_nguong(Zw, h_chan=hch, c=0.0, ten=ten)
     can = Kcp * r['Px'] - f * r['SV']               # lực chống trượt bổ sung cần thiết (kN/m)
-    neo[ten] = dict(SV=r['SV'], SH=r['Px'], K_c0=r['K_truot'], R_can=can)
+    neo[ten] = dict(SV=r['SV'], SH=r['Px'], K_c0=r['K_truot'], R_can=can, K_cp=Kcp,
+                    c_can=can / r.get('B', 5.05))
 As = np.pi * 0.025 ** 2 / 4 * 1e6       # mm²
 Rs = 350.0                                # MPa – CB400-V
 N1 = As * Rs / 1000.0                     # kN – lực kéo tính toán 1 thanh
@@ -139,7 +159,8 @@ def khung_kin(L, Hc, qt, qb, e1, e2, EI_t=1.0, EI_b=1.0, EI_w=1.0, n=400):
 
 
 def cot_thep(M, t, Rs=260.0, Kn=1.15, nc=1.0, a=0.07, b=1.0):
-    """As (cm²/m) ≈ Kn·nc·M / (Rs·0,9·h0) – ước tính tham khảo (cấu kiện chịu uốn, bỏ qua lực dọc và hệ số điều kiện
+    """As (cm²/m) ≈ γn·γlc·M / (γc·Rs·0,9·h0) – TCVN 4116:2023 công thức (35), γn = Kn = 1,15, γlc = nc = 1,0, γc = 1,0
+    (tham số giữ tên Kn, nc như bản trước). Ước tính tham khảo (cấu kiện chịu uốn, bỏ qua lực dọc và hệ số điều kiện
     làm việc γs2 = 1,1 của TCVN 4116:2023 Bảng 13 – thiên an toàn). a = 7 cm: lớp bê tông bảo vệ ≥ 60 mm ở mặt tiếp xúc
     trực tiếp với nước (TCVN 4116:2023 mục 6.3.3) + nửa đường kính thanh Ø20."""
     h0 = t - a

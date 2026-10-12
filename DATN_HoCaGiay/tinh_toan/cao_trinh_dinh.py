@@ -11,7 +11,13 @@ Sóng do gió và sóng leo: TCVN 8421:2010 (phương pháp của SNiP 2.06.04-8
   - Sóng nước sâu (H > 0,5λ): gh/V² và gτ/V tra theo đường bao trên của đồ thị theo gt/V và gD/V²
     (dùng công thức xấp xỉ của Krưlốp: gh/V² = 0,16·{1 − [1 + 0,006·(gD/V²)^0,5]^−2};
      gτ/V = 19,1·(gh/V²)^0,625), lấy cặp giá trị nhỏ hơn
-  - h1% = K1%·h ; sóng leo h_sl1% = kr·kp·ksp·krun·kα·h1%
+  - h1% = K1%·h ; sóng leo h_sl1% = kr·kp·ksp·krun·kα·h1% (công thức 25; kα theo Bảng 9 – góc giữa front sóng
+    và pháp tuyến mái)
+  - Vận tốc gió tính toán (Phụ lục A, A.3.3): Vw = kfl·kl·Vl; Vl – vận tốc gió trạm (Bảng 1.4, trạm Phan Thiết);
+    kl theo Bảng A3, địa hình dạng A (vùng ven biển trống trải): 1,10 (Vl ≤ 15 m/s) ÷ 1,09 (20 ÷ 35 m/s);
+    kfl = 0,675 + 4,5/Vl ≤ 1 (quy đổi số liệu phong tiêu) – lấy bằng 1 (thiên an toàn, vì chưa rõ dụng cụ đo).
+  Sửa 12/10/2026 khi đối chiếu toàn văn TCVN 8421:2010: kα trước đây nội suy sai bảng (thiên lớn 5 ÷ 11 %),
+  trước đây chưa quy đổi Vl → Vw (thiên nhỏ ≈ 10 %).
 """
 import numpy as np
 import so_lieu as S
@@ -21,7 +27,19 @@ A_AN_TOAN = {'II': (0.70, 0.50, 0.20)}   # TCVN 8216:2018 Bảng 3
 
 
 def kw(V):
-    return 3e-7 * (1 + 0.3 * V)
+    return 3e-7 * (1 + 0.3 * V)      # Bảng A2: 2,1·10⁻⁶ (20 m/s) … 4,8·10⁻⁶ (50 m/s)
+
+
+def V_tinh_toan(Vl, dung_kfl=False):
+    """Vận tốc gió tính toán Vw = kfl·kl·Vl (TCVN 8421:2010, A.3.3), địa hình dạng A (Bảng A3)."""
+    kl = float(np.interp(Vl, [10, 15, 20, 25, 30, 35, 40], [1.10, 1.10, 1.09, 1.09, 1.09, 1.09, 1.08]))
+    kfl = min(0.675 + 4.5 / Vl, 1.0) if dung_kfl else 1.0
+    return kfl * kl * Vl
+
+
+def k_alpha(goc):
+    """Hệ số giảm sóng leo theo góc tới của front sóng (TCVN 8421:2010, Bảng 9)."""
+    return float(np.interp(goc, [0, 10, 20, 30, 40, 50, 60], [1.0, 0.98, 0.96, 0.92, 0.87, 0.82, 0.76]))
 
 
 def song_nuoc_sau(V, D, t_h):
@@ -78,7 +96,11 @@ def krun(lam_h, m):
     return float(np.interp(lam_h, xs, ys))
 
 
-def tinh_truong_hop(Z, V, D, t_h=6.0, Z_day=59.0, m=3.0, delta=0.02, alpha=0.0):
+def tinh_truong_hop(Z, V, D, t_h=6.0, Z_day=59.0, m=3.0, delta=0.02, alpha=0.0, quy_doi_gio=True):
+    """V – vận tốc gió trạm Vl; khi quy_doi_gio = True tính với Vw = kfl·kl·Vl (A.3.3)."""
+    V_tram = V
+    if quy_doi_gio:
+        V = V_tinh_toan(V)
     H = Z - Z_day
     dh = kw(V) * V ** 2 * D / (G * H) * np.cos(np.radians(alpha))
     h, tau, gD, gt, aD, at = song_nuoc_sau(V, D, t_h)
@@ -89,9 +111,9 @@ def tinh_truong_hop(Z, V, D, t_h=6.0, Z_day=59.0, m=3.0, delta=0.02, alpha=0.0):
     kr, kp = kr_kp(delta / h1)
     ks = ksp(V, m)
     kru = krun(lam / h1, m)
-    ka = 1.0 if alpha <= 0 else float(np.interp(alpha, [0, 20, 40, 60], [1.0, 0.96, 0.92, 0.87]))
+    ka = k_alpha(alpha)
     hsl = kr * kp * ks * kru * ka * h1
-    return dict(Z=Z, H=H, V=V, D=D, kw=kw(V), dh=dh, gt=gt, gD=gD, a_D=aD, a_t=at, h=h, tau=tau,
+    return dict(Z=Z, H=H, V_tram=V_tram, V=V, D=D, kw=kw(V), dh=dh, gt=gt, gD=gD, a_D=aD, a_t=at, h=h, tau=tau,
                 lam=lam, sau=sau, K1=k1, h1=h1, kr=kr, kp=kp, ksp=ks, krun=kru, ka=ka, hsl=hsl)
 
 
