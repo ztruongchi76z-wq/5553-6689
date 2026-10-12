@@ -85,13 +85,13 @@ thư mục gốc. Phiên này không tải được tệp lớn lên Drive – S
 ## Thư mục tự làm lại (11/10/2026, tối)
 Theo yêu cầu phụ huynh: SV làm lại đồ án từ đầu để hiểu và tự làm. Trên Drive (My Drive) có thư mục mới
 `1-DATN_HoCaGiay_TuLam` gồm: `00_DOC_TRUOC` (Lộ trình 12 bước; Những điểm cần chốt với Thầy – 24 câu hỏi nhóm A ÷ D;
-Sai sót, điểm chưa hợp lý trong hồ sơ tư vấn – đã đối chiếu văn bản gốc BCNCKT, TKCS, KTTV, QTVH), `01` ÷ `04` (bản sao
+ghi chú nội bộ về khác biệt số liệu giữa hồ sơ dự án và đồ án – đã đối chiếu văn bản gốc BCNCKT, TKCS, KTTV, QTVH; chỉ để SV hiểu, không đưa nguyên văn vào thuyết minh – xem RA_SOAT mục 0a "Giọng văn"), `01` ÷ `04` (bản sao
 hướng dẫn trình bày, đề cương, hồ sơ gốc, 9 DWG + 5 PDF, 3 TCVN), `05` ÷ `08` (trống – SV tự làm), `07_ThuyetMinh`
 (Khung thuyết minh hướng dẫn từng mục theo file mẫu Bộ môn, bản nháp 06/10 của SV, góp ý), `09_DapSo_ThamKhao` (đáp số
 từng bước lấy từ bản 11/10 – chỉ mở sau khi tự tính). Folder 1, 2 giữ nguyên (chỉ chép, không di chuyển).
 Điểm mới phát hiện khi đối chiếu: KTTV Bảng 1-2 cũng ghi độ dốc cống 3 % (trị số 3 ‰ trong `tinh_toan/so_lieu.py`
 không có nguồn hồ sơ – chỉ là kịch bản kiểm tra); BCNCKT tính lũ với tràn 25 m (thiết kế 1996) trong khi tràn đã chia
-9 khoang × 2,4 m; BCNCKT ghi nhầm "MNLKT = +78,45 m" (thực là ĐĐ3); QTVH dùng P = m/n (TH2 86,4 % → 84,4 % theo
+9 khoang × 2,4 m; BCNCKT ghi "MNLKT = +78,45 m" ở mục kiểm tra đỉnh đập (trị số ĐĐ3); QTVH dùng P = m/n (TH2 86,4 % → 84,4 % theo
 m/(n + 1)); QTVH kết luận hồ không xả dòng chảy tối thiểu (Luật TNN 2023, Điều 24).
 Thống nhất với phụ huynh (11/10, tối): không làm thêm bản ĐATN nào; SV tự làm theo thư mục `1-DATN_HoCaGiay_TuLam`
 (đã chia sẻ quyền chỉnh sửa cho tài khoản của SV). Phụ huynh cho biết không có quy định cấm dùng AI hỗ trợ, yêu cầu là

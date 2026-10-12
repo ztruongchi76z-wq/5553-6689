@@ -47,13 +47,19 @@ TCVN 8421:2010, TCVN 9151:2012, TCVN 4116:2023); (d) tệp "Lời tư vấn" và
 Không tiếp thu: **A3** – giả thiết "9 cửa van tràn chính" không đúng hồ sơ (tràn chính chảy tự do, không cửa van – QTVH,
 BCNCKT, KTTV); **A12** – trang nhiệm vụ có chữ ký là việc của SV.
 
-**Tệp "Lời tư vấn" (12/10)**: ý "tư vấn phân cấp sai, dùng lũ 1,5 % / 0,5 %" **không đúng với hồ sơ** – BCNCKT (mục
-4.1.1), TKCS (1.2.3), báo cáo KTTV (1.1.9) và QTVH 2026 đều xác định cấp II, lũ 1 % / 0,2 % (QTVH thêm 0,1 %). Cấp III / IV
-chỉ là cấp cũ theo TCVN 5060-90 (QTVH ghi III, BCNCKT ghi IV – không thống nhất); 1,5 % / 0,5 % là tần suất của cấp III theo
-TCXDVN 285:2002 / QCVN 04-05:2012 – không hồ sơ nào dùng. Sai sót thật ở bước phân cấp của BCNCKT: xét H = 25,4 m với nền
-loại A (thực tế 24,75 m, nền B – kết luận cấp II không đổi) và dùng hệ số an toàn ổn định mái của cấp III (1,25 / 1,13).
-Hai ảnh bảng phân cấp được dùng để viết đoạn "lịch sử phân cấp" ở mục 1.1.3 và câu hỏi dự phòng trên slide. Các ý 1 ÷ 5 và
-lỗi nhỏ còn lại trong tệp đã có trong thuyết minh (mục 2.1 ÷ 2.5, Kết luận – kiến nghị).
+**Tệp "Lời tư vấn" (12/10)**: hồ sơ dự án (BCNCKT mục 4.1.1, TKCS 1.2.3, báo cáo KTTV 1.1.9, QTVH 2026) đều xác định
+cấp II, lũ 1 % / 0,2 % (QTVH thêm 0,1 %) – phù hợp QCVN 04-05; cấp III / IV là cấp cũ theo TCVN 5060-90, còn 1,5 % / 0,5 %
+là tần suất cấp III theo TCXDVN 285:2002 / QCVN 04-05:2012 – không hồ sơ nào dùng, nên đồ án không nêu ý "phân cấp sai".
+Khác biệt nhỏ về số liệu (H = 25,4 / 24,75 m, nền A / B; [K] = 1,13 / 1,17) được trình bày như số liệu đồ án cập nhật, không
+đổi kết luận. Hai ảnh bảng phân cấp dùng để viết đoạn "lịch sử phân cấp" (mục 1.1.3) và câu hỏi dự phòng trên slide. Các ý
+còn lại của tệp đã có trong thuyết minh dưới dạng "cập nhật, thống nhất số liệu".
+
+**Giọng văn (12/10, tối)**: đơn vị tư vấn (Viện Đào tạo và Khoa học ứng dụng Miền Trung – thành viên liên danh lập BCNCKT,
+TKCS) là nơi SV thực tập và hướng dẫn ĐATN, nên mọi chỗ so sánh với hồ sơ dự án viết theo hướng "đồ án cập nhật, thống nhất
+số liệu theo hiện trạng và tiêu chuẩn hiện hành", không dùng từ đánh giá đúng / sai (thuyết minh mục 1.1.3, 1.2.3, 1.4.3,
+1.6.2, 1.7, 2.1, 4.2.3, 8.2.2, Kết luận; slide 5, 13, 21, dự phòng). Khi bảo vệ nên nói: phương pháp tính của hồ sơ thống nhất
+với đồ án (tính lại cùng thông số, sai khác < 0,1 m); khác biệt do số liệu đầu vào được cập nhật (tràn hiện trạng 21,6 m,
+bình đồ 2022, tiêu chuẩn mới ban hành).
 
 **Bản vẽ, slide**: BV-02 (Bảng 2.4, 2.5, ghi chú 3), BV-04 (khối lượng, ghi chú 3, 6, 8), BV-06 ([K], neo, chống ăn mòn),
 BV-07 (02 giá đỡ, Bảng 6.3, biểu đồ Kođ, TCVN 9151) xuất lại; gói `TAI_VE/BanVe_A0_DATN_HoCaGiay.zip` dựng lại. Slide: thêm

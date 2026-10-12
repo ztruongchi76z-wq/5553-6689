@@ -107,17 +107,15 @@ def chuong1_2(body, KQ):
          'khoảng 24,3 m (24,75 m sau nâng cấp [1]) trên nền đất sét pha nửa cứng (nền loại B, chiều cao > 15 ÷ 35 m) '
          'cũng cho cấp II, nên không thuộc trường hợp được xem xét giảm cấp theo điều 2.1.2.3a của quy chuẩn. ')
     them_cuoi(p, ' Cấp công trình thay đổi theo các thế hệ tiêu chuẩn: khi thiết kế (1996) và lập QTVH năm 2005 theo '
-                 'TCVN 5060-90, hồ sơ ghi công trình cấp III [1] hoặc cấp IV [3] (không thống nhất) và đều tính lũ thiết '
+                 'TCVN 5060-90, hồ sơ ghi công trình cấp III [1] hoặc cấp IV [3] và đều tính lũ thiết '
                  'kế P = 1%; nếu theo TCXDVN 285:2002 (thang cấp I ÷ V), công trình thuộc cấp III (dung tích 20 ÷ 200 '
                  'triệu m^{3}; đập nền loại B cao 15 ÷ 35 m), ứng với lũ thiết kế 1,5% và lũ kiểm tra 0,5%; từ QCVN '
                  '04-05:2012 (thang cấp mới: đặc biệt, I ÷ IV) đến QCVN 04-05:2022, công trình là cấp II. Các hồ sơ sửa '
-                 'chữa (BCNCKT, TKCS, báo cáo KTTV, QTVH 2026) đều xác định cấp II và tần suất lũ 1% / 0,2% – phù hợp '
-                 'quy chuẩn; điểm chưa đúng ở bước phân cấp của BCNCKT là xét chiều cao đập 25,4 m với nền loại A (thực '
-                 'tế nền loại B, H = 24,75 m – kết luận cấp II không đổi) và dùng hệ số an toàn ổn định mái của cấp III '
-                 'cho đập (mục 2.1).')
+                 'chữa (BCNCKT, TKCS, báo cáo KTTV, QTVH 2026) đều xác định công trình cấp II với tần suất lũ 1% / 0,2%, '
+                 'phù hợp quy chuẩn hiện hành; đồ án sử dụng thống nhất cấp II.')
     ghi('Mục 1.1.3: bổ sung tiêu chí chiều cao đập (≈ 24,3 ÷ 24,75 m, nền loại B → cấp II, QCVN 04-05:2022 Bảng 1) – '
         'không thuộc trường hợp giảm cấp theo điều 2.1.2.3a; thêm lịch sử phân cấp (TCVN 5060-90: III/IV; TCXDVN '
-        '285:2002: III – 1,5%/0,5%; QCVN 04-05:2012/2022: II – 1%/0,2%) và chỉ rõ hồ sơ tư vấn đã phân cấp II đúng.')
+        '285:2002: III – 1,5%/0,5%; QCVN 04-05:2012/2022: II – 1%/0,2%); các hồ sơ sửa chữa đều xác định cấp II.')
 
     # ---- 1.6.2 tràn chính: chảy tự do, không có cửa van (GPT A3)
     p = tim_doan(body, 'Tràn chính có 9 khoang × 2,4 m, ngưỡng +74,70 m')
@@ -1029,12 +1027,12 @@ def ket_luan(d, body, KQ):
     M = KQ['mua']
     dp = DU_PHONG_LUN
     p = tim_doan(body, 'Rà soát và hiệu chỉnh số liệu cơ bản:')
-    thay(p, 'hệ số an toàn [K] cho tổ hợp đặc biệt của đập cấp II là 1,17 (không phải 1,13).',
-         'hệ số an toàn [K] cho tổ hợp đặc biệt của đập cấp II là 1,17 (không phải 1,13); chiều cao đập dùng để phân '
-         'cấp là 24,75 m trên nền loại B (BCNCKT ghi 25,4 m, nền loại A); vận tốc gió tính sóng phải '
-         'quy đổi về mặt nước (TCVN 8421:2010, A.3.3 – BCNCKT dùng trực tiếp vận tốc gió trạm, chỉ xét hướng Bắc); khi '
-         'kiểm tra trượt kết cấu bê tông trên nền đá (ngưỡng tràn) ở bước thiết kế bản vẽ thi công cần kể hệ số điều '
-         'kiện làm việc γ_{c} = 0,95 (QCVN 04-05:2022 Bảng B.2).')
+    dat_noi_dung(p, 'Số liệu cơ bản được cập nhật, thống nhất trước khi tính toán: quan hệ Z ~ F ~ W theo bình đồ 2022 '
+                    '(diện tích theo km^{2}, dung tích tính lại từ diện tích); bề rộng tràn chính hiện trạng 21,6 m '
+                    '(9 × 2,4 m) thay cho bề rộng thiết kế ban đầu 25 m; lũ tính theo tung độ đường quá trình; hệ số an '
+                    'toàn [K] = 1,17 cho tổ hợp đặc biệt của đập cấp II (TCVN 8216:2018); vận tốc gió tính sóng quy đổi '
+                    'về mặt nước và xét các hướng gió thổi vào mái thượng lưu (TCVN 8421:2010); kiểm tra trượt kết cấu bê '
+                    'tông trên nền đá kể hệ số điều kiện làm việc γ_{c} = 0,95 (QCVN 04-05:2022 Bảng B.2).')
     p = tim_doan(body, 'Hồ giữ nguyên MNDBT +74,70 m, MNC +67,50 m;')
     them_cuoi(p, ' Theo quy tắc ưu tiên (cắt giảm tưới trước), cấp nước sinh hoạt đạt mức bảo đảm '
                  + so(cn['P_sinh_hoat'], 1) + '% (≥ 90%).')
@@ -1290,6 +1288,57 @@ def tai_ket_qua(dir_tt):
     return KQ
 
 
+
+# =========================================================================== GIỌNG VĂN VỚI HỒ SƠ DỰ ÁN
+def giong_van_ho_so(body):
+    """So sánh với hồ sơ của đơn vị tư vấn theo hướng "cập nhật, thống nhất số liệu", không dùng từ đánh giá đúng/sai."""
+    ds = [
+        ('Quan hệ đặc tính lòng hồ được lập từ bình đồ khảo sát năm 2022.',
+         'Khi kiểm tra lại bảng số liệu, đồ án nhận thấy hai điểm cần hiệu chỉnh: (i) đơn vị của cột diện tích được ghi là '
+         '“ha” nhưng giá trị thực là km2 (một hồ dung tích 37 triệu m3 không thể có mặt thoáng khoảng 6 ha; chính biểu đồ '
+         'trong TKCS cũng ghi F theo km2); (ii) từ cao trình +70 m trở lên, cột dung tích không khớp với cột diện tích (ví '
+         'dụ từ +70 đến +71 m dung tích chỉ tăng 2,81 triệu m3 trong khi diện tích trung bình là 3,70 km2). Vì vậy, toàn '
+         'bộ đồ án sử dụng dung tích tính lại',
+         'Khi sử dụng bảng số liệu, đồ án thống nhất hai điểm: (i) cột diện tích được hiểu theo đơn vị km^{2} như biểu đồ '
+         'đặc tính lòng hồ trong TKCS (bảng số ghi đơn vị “ha”); (ii) từ cao trình +70 m trở lên, dung tích được tính lại '
+         'từ diện tích để quan hệ Z ~ F ~ W nhất quán (ví dụ từ +70 đến +71 m diện tích trung bình 3,70 km^{2}, trong bảng '
+         'dung tích tăng 2,81 triệu m^{3}). Toàn bộ đồ án sử dụng dung tích tính lại'),
+        ('Hai bộ số liệu (Bảng 1.5) có lưu lượng đỉnh',
+         'Ngoài ra, tổng lượng ghi trong báo cáo BCNCKT (32,43 và 41,95 triệu m3) nhỏ hơn tổng lượng tích phân từ chính '
+         'đường quá trình (36,27 và 47,69 triệu m3). Đồ án sử dụng trực tiếp',
+         'Tổng lượng tích phân từ đường quá trình (36,27 và 47,69 triệu m^{3}) khác giá trị ghi trong bảng đặc trưng lũ '
+         '(32,43 và 41,95 triệu m^{3}); đồ án sử dụng trực tiếp'),
+        ('Tràn chính có 9 khoang × 2,4 m',
+         'Lưu ý: hồ sơ BCNCKT năm 2022 mô tả tràn có tổng bề rộng 25 m chia 3 khoang (9 + 8 + 8 m) và dùng bề rộng này để '
+         'tính điều tiết lũ, trong khi hồ sơ QTVH 2026 cập nhật hiện trạng là 9 khoang × 2,4 m = 21,6 m. Đồ án sử dụng số '
+         'liệu hiện trạng 21,6 m.',
+         'Hồ sơ BCNCKT năm 2022 tính điều tiết lũ với bề rộng tràn theo thiết kế ban đầu 25 m (3 khoang 9 + 8 + 8 m); hồ '
+         'sơ QTVH 2026 cập nhật hiện trạng 9 khoang × 2,4 m = 21,6 m. Đồ án sử dụng số liệu hiện trạng cập nhật 21,6 m.'),
+        ('Các bài toán được lập trình tính toán bằng ngôn ngữ Python',
+         'để chủ động kiểm soát giả thiết và kiểm tra chéo kết quả của hồ sơ tư vấn:',
+         'để chủ động kiểm soát giả thiết và đối chiếu với kết quả của hồ sơ dự án:'),
+        ('Trình tự thực hiện và kiểm chứng kết quả',
+         '(i) tính lại với đúng thông số của hồ sơ tư vấn rồi so sánh với kết quả đã công bố',
+         '(i) tính lại với cùng thông số của hồ sơ dự án và so sánh với kết quả trong hồ sơ'),
+        ('Lưu ý: hồ sơ BCNCKT dùng hệ số [K] = 1,13',
+         'Lưu ý: hồ sơ BCNCKT dùng hệ số [K] = 1,13 cho các tổ hợp đặc biệt; giá trị này tương ứng công trình cấp III. Đồ '
+         'án dùng [K] = 1,17 cho tổ hợp đặc biệt của đập cấp II.',
+         'Đồ án dùng [K] = 1,17 cho tổ hợp đặc biệt của đập cấp II theo TCVN 8216:2018 (BCNCKT dùng 1,13; các hệ số ổn '
+         'định tính được đều lớn hơn cả hai trị số nên kết luận đánh giá không đổi).'),
+        ('Kết quả tính đường mặt nước cho trong Bảng 4.4',
+         'Kết quả tính của tư vấn [26] cho độ vượt cao tường bên nhỏ hơn (0,16 m tại mặt cắt thứ ba với lũ kiểm tra) do '
+         'dùng lưu lượng tràn chính 311 m3/s ứng với giả thiết tràn rộng 25 m.',
+         'Phụ lục tính toán của BCNCKT [26] cho độ vượt cao tường bên nhỏ hơn (0,16 m tại mặt cắt thứ ba với lũ kiểm '
+         'tra) vì tính với lưu lượng tràn chính 311 m^{3}/s ứng với bề rộng tràn 25 m.'),
+        ('Trong đó: Bb – khoảng cách giữa hai hàng biên',
+         '(hồ sơ ghi Bb = 1,5 m nhưng thay số 3,0 m – cần ghi lại cho đúng)', '(trị số TKCS dùng khi tính)'),
+    ]
+    for dau, cu, moi in ds:
+        thay(tim_doan(body, dau), cu, moi)
+    ghi('Giọng văn khi so sánh với hồ sơ dự án (đơn vị tư vấn là nơi SV thực tập, hướng dẫn ĐATN): viết theo hướng '
+        '"đồ án cập nhật, thống nhất số liệu theo hiện trạng và tiêu chuẩn hiện hành", bỏ các từ đánh giá đúng/sai '
+        '(mục 1.1.3, 1.2.3, 1.4.3, 1.6.2, 1.7, 2.1, 4.2.3, 8.2.2 và Kết luận).')
+
 def main(vao, ra, dir_tt):
     KQ = tai_ket_qua(dir_tt)
     d = docx.Document(vao)
@@ -1311,6 +1360,7 @@ def main(vao, ra, dir_tt):
     ket_luan(d, body, KQ)
     phu_luc(d, body, KQ)
     tai_lieu(d, body)
+    giong_van_ho_so(body)
     d.save(ra)
     with open(os.path.splitext(ra)[0] + '_nhat_ky.txt', 'w', encoding='utf-8') as f:
         f.write('\n'.join(C.NHAT_KY) + '\n')
