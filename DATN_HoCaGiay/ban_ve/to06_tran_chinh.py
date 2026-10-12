@@ -265,8 +265,8 @@ def nguong(to, x0, y0):
         to.line(kn(xn, 72.9), kn(xn, 70.3), 'SUA_CHUA', linetype='DASHED', ltscale=0.25)
     to.dim(kn(-4.3, 70.3), kn(-2.8, 70.3), -5.0, 50)
     to.dim(kn(-1.3, 72.3), kn(-1.3, 70.3), -12.0, 50, goc=90)
-    to.chu_thich_mui_ten(kn(-1.3, 71.0), kn(1.8, 70.6), 'Neo D25, 2 hàng a 150, ngàm 200 vào đá II (hạng mục thiết kế)',
-                         h=1.8, rong=88)
+    to.chu_thich_mui_ten(kn(-1.3, 71.0), kn(1.8, 70.6), 'Neo D25, 2 hàng a 150, ngàm 200 vào đá II (hạng mục thiết kế); đầu thanh thấp hơn mặt '
+                         'ngưỡng 6 cm, trám vữa XM – polime ≥ W8', h=1.8, rong=88)
     # mực nước (cột nước có ngắt)
     for Z, ten, mau in ((D.MN['MNLTK'], 'MNLTK +77,63', 5), (D.MN['MNLKT'], 'MNLKT +78,54', 1)):
         yv = kn(0, 75.55 if mau == 5 else 75.95)[1]
@@ -371,9 +371,9 @@ def cac_bang(to):
               '[K]', 'K lật', 'σ gót / mũi\n(kPa)']] + [list(r) for r in D.TC_BANG44]
     y = to.bang(xL, 445, cot4, hang4, h=1.9, cao_dong=4.6,
                 tieu_de='ỔN ĐỊNH NGƯỠNG TRÀN CHÍNH – DẢI RỘNG 1 m (Bảng 4.5)')
-    to.text('K = (f·ΣV + c·B)/ΣH; f = 0,60; B = 5,05 m; [K] = Kn·nc = 1,15 (cơ bản), 1,035 (đặc biệt). c = 0: K < [K] '
-            'khi tháo lũ → cần c ≥ 6,4 kPa (MNLTK), 9,1 kPa (MNLKT).', (xL, y - 3.2), 1.8)
-    to.text('Neo D25 thụ động (2 hàng, a = 1,5 m, ngàm 2,0 m vào đá lớp II), c = 0: lực kéo cần 40 / 57 kN/thanh ≤ 33% '
+    to.text('K = (f·ΣV + c·B)/ΣH; f = 0,60; B = 5,05 m; [K] = γn·γlc/γc = 1,15·1,0/0,95 = 1,21 (cơ bản), 1,15·0,9/0,95 = 1,09 '
+            '(đặc biệt) – QCVN 04-05:2022 CT (1), Bảng B.2. c = 0: K < [K] khi tháo lũ → cần c ≥ 7,6 kPa (MNLTK), 10,4 kPa (MNLKT).', (xL, y - 3.2), 1.8)
+    to.text('Neo D25 thụ động (2 hàng, a = 1,5 m, ngàm 2,0 m vào đá lớp II), c = 0: lực kéo cần 48 / 65 kN/thanh ≤ 38% '
             'Ntt = 171,8 kN; K = 2,23 / 1,81 khi mọi neo đạt Ntt (Bảng 4.6).', (xL, y - 6.4), 1.8)
     cot5 = [18, 18, 30, 22, 18, 30]
     hang5 = [['Tần suất', 'Q (m³/s)', 'h đầu dốc (m)', 'h cuối dốc (m)', 'v cuối (m/s)', 'Tường yêu cầu (m)']] + \
@@ -405,12 +405,14 @@ def ghi_chu(to, x, y):
           '5. Nạo vét kênh dẫn thượng lưu đến cao trình sân +74,00 (thấp hơn ngưỡng 0,7 m) để bảo đảm điều kiện chảy '
           'tới ngưỡng như tính toán. \\P'
           '6. Ổn định ngưỡng: khi bỏ qua lực dính, K trượt khi tháo lũ < [K]; ngưỡng đạt khi lực dính mặt tiếp xúc BT – đá '
-          'c ≥ 9,1 kPa – chưa kiểm chứng, nên khoan neo là hạng mục thiết kế: thép CB400-V D25, 2 hàng, a = 150 cm, khoan '
+          'c ≥ 10,4 kPa – chưa kiểm chứng, nên khoan neo là hạng mục thiết kế: thép CB400-V D25, 2 hàng, a = 150 cm, khoan '
           'D76 qua khối ngưỡng, ngàm 200 cm vào đá lớp II, bơm vữa xi măng không co ngót (≈ 36 thanh, 144 m khoan, 0,6 t); '
-          'neo thụ động (ma sát – cắt): với c = 0 lực kéo cần 40 ÷ 57 kN/thanh ≤ 33% Ntt = min(thép 171,8; bám dính vữa – '
+          'neo thụ động (ma sát – cắt): với c = 0 lực kéo cần 48 ÷ 65 kN/thanh ≤ 38% Ntt = min(thép 171,8; bám dính vữa – '
           'đá 191; thép – vữa 314) = 171,8 kN; K = 2,23 (MNLTK) / 1,81 (MNLKT) khi mọi neo đạt Ntt (Bảng 4.6). Thí '
-          'nghiệm kéo nhổ ≥ 3 neo đến 100 kN trước thi công đại trà. Số lượng điều chỉnh theo hồ sơ hoàn công (nếu đã '
-          'có thép neo, chân khay ngàm đá). \\P'
+          'nghiệm kéo nhổ ≥ 3 neo đến 100 kN (≈ 1,5 lần lực cần lớn nhất) trước thi công đại trà; kiểm tra ổn định chỉ dùng '
+          'lực neo không vượt lực đã thử. Chống ăn mòn: thanh có định tâm, vữa bao ≥ 25 mm; đầu thanh thấp hơn mặt ngưỡng '
+          '60 mm, trám vữa XM – polime ≥ W8 (TCVN 4116:2023 mục 6.3.3, 7.4). Số lượng điều chỉnh theo hồ sơ hoàn công '
+          '(nếu đã có thép neo, chân khay ngàm đá). \\P'
           '7. Mũi phun và hố xói: không sửa chữa; quan trắc địa hình hố xói sau mỗi trận lũ lớn.')
     to.mtext(gc, (x, y), 2.0, rong=196)
 

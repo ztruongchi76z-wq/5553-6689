@@ -1284,7 +1284,7 @@ def tai_ket_qua(dir_tt):
     z0 = KQ['mua']['Z0_don_lu']
     KQ['dV_don_lu'] = {k: S.V_of_Z(S.MNDBT) - S.V_of_Z(v) for k, v in z0.items()}
     t = 78.60 + DU_PHONG_LUN - 78.20
-    a_dat = (t * 4.30 - 0.01 * 4.30 ** 2) + (t * 0.20 - 0.01 * (4.50 ** 2 - 4.30 ** 2)) + (0.23 * 0.20 - 0.20 ** 2 / 6)
+    a_dat = (t * 4.30 - 0.01 * 4.30 ** 2) + (t * 0.20 - 0.01 * (4.50 ** 2 - 4.30 ** 2)) + ((0.21 + DU_PHONG_LUN) * 0.20 - 0.20 ** 2 / 6)
     KQ['v_dat_dinh'] = round(986 * a_dat / 10.0) * 10.0
     KQ['v_dat_tkcs'] = round(986 * 4.70 * 0.30 / 10.0) * 10.0
     return KQ

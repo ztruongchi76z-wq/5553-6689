@@ -219,9 +219,10 @@ def ghi_chu(to, x, y):
           'TKCS (cắt dọc đỉnh đập, ngang 1/500, đứng 1/200); hình vẽ từ lý trình 40 m (cọc DP, C27 không thể hiện). \\P'
           '2. Đỉnh đập sau sửa chữa +78,85 (mép thượng lưu) – cao hơn TKCS 0,10 m theo điều kiện MNLKT + 0,3 m khi có '
           'tường chắn sóng (TCVN 8216:2018, điều 10.1.5). Mặt đập hiện trạng +78,31 ÷ +78,50: phải nâng 0,35 ÷ 0,54 m. \\P'
-          '3. Trình tự: bóc lớp mặt đá dăm láng nhựa hư hỏng → đắp bù đất đầm K ≥ 0,97 đến +78,60 → đá dăm đệm 5 cm, '
-          'nilon → BT B20 (M250) dày 20 cm, dốc ngang 2% (BV-04); cao trình ghi là cao trình sau lún, thi công cộng 2 cm dự phòng '
-          'lún (nghiệm thu ≥ +78,87). Khoan phụt mang tràn sự cố thi công trước khi đắp bù. \\P'
+          '3. Trình tự: bóc lớp mặt đá dăm láng nhựa hư hỏng → đắp bù đất đầm K ≥ 0,97 đến +78,60 (thi công +78,73 – kể '
+          'dự phòng lún 0,13 m ≥ 0,5%H, TCVN 8216:2018 điều 11.4.4) → đá dăm đệm 5 cm, nilon → BT B20 (M250) dày 20 cm, '
+          'dốc ngang 2% (BV-04); cao trình ghi là cao trình thiết kế sau lún, nghiệm thu ≥ +78,98 tại mép thượng lưu. '
+          'Khoan phụt mang tràn sự cố thi công trước khi đắp bù. \\P'
           '4. Lớp 5, lớp I tại mang trái tràn sự cố là đường dẫn nước chính (K = 6,54E-05 và 4,35E-04 cm/s – CG7).')
     to.mtext(gc, (x, y), 2.0, rong=170)
 
@@ -230,27 +231,27 @@ def bang_cao_trinh(to):
     cot = [62, 34, 34, 34]
     hang = [['Đại lượng', 'Z1: MNDBT', 'Z2: MNLTK', 'Z3: MNLKT'],
             ['Mực nước tính toán (m)', '+74,70', '+77,63', '+78,54'],
-            ['Gió V (m/s), hướng Bắc', '13,8 (P = 4%)', '7,6 (P = 50%)', '–'],
+            ['Gió Vl / Vw (m/s), hướng Bắc', '13,8 / 15,18 (P = 4%)', '7,6 / 8,36 (P = 50%)', '–'],
             ['Đà gió D (m)', '2.970', '3.025', '–'],
-            ['Sóng leo hsl1% (m)', '1,153', '0,398', '–'],
-            ['Độ dềnh Δh (m)', '0,006', '0,001', '–'],
+            ['Sóng leo hsl1% (m)', '1,347', '0,481', '–'],
+            ['Độ dềnh Δh (m)', '0,007', '0,001', '–'],
             ['Độ vượt cao an toàn a (m)', '0,70', '0,50', '0,20'],
-            ['Cao trình đỉnh yêu cầu (m)', '+76,56', '+78,53', '+78,74']]
+            ['Cao trình đỉnh yêu cầu (m)', '+76,75', '+78,61', '+78,74']]
     to.bang(30.0, 118.0, cot, hang, h=1.9, cao_dong=4.8, tieu_de='CAO TRÌNH ĐỈNH ĐẬP YÊU CẦU (Bảng 2.4)')
     cot2 = [78, 18, 18, 18, 22, 26]
     hang2 = [['Trường hợp', 'Z1', 'Z2', 'Z3', 'Zđ = max', 'MNLKT + 0,3'],
-             ['Hồ sơ BCNCKT (MNLTK +77,43; MNLKT +78,25)', '76,56', '78,33', '78,45', '78,45', '78,55'],
-             ['Đồ án – lũ BCNCKT (+77,63; +78,54)', '76,56', '78,53', '78,74', '78,74', '78,84'],
-             ['Đồ án – lũ BCNCKT, gió Đông Bắc (NE)', '77,15', '78,97', '78,74', '78,97', '78,84'],
-             ['Đồ án – lũ QTVH (+77,50; +78,44)', '76,56', '78,40', '78,64', '78,64', '78,74']]
+             ['Hồ sơ BCNCKT (MNLTK +77,43; MNLKT +78,25)', '76,75', '78,41', '78,45', '78,45', '78,55'],
+             ['Đồ án – lũ BCNCKT (+77,63; +78,54)', '76,75', '78,61', '78,74', '78,74', '78,84'],
+             ['Đồ án – lũ BCNCKT, gió Đông Bắc (NE)', '77,31', '79,07', '78,74', '79,07', '78,84'],
+             ['Đồ án – lũ QTVH (+77,50; +78,44)', '76,75', '78,48', '78,64', '78,64', '78,74']]
     y = to.bang(210.0, 118.0, cot2, hang2, h=1.9, cao_dong=4.8, tieu_de='TỔNG HỢP CAO TRÌNH ĐỈNH ĐẬP YÊU CẦU (Bảng 2.5)')
-    to.text('Tường chắn sóng +79,40 > Zđ max = +78,97 (gió NE): đạt – độ vượt cao tính đến đỉnh tường (điều 10.1.5).',
+    to.text('Tường chắn sóng +79,40 > Zđ max = +79,07 (gió NE): đạt, dự trữ 0,33 m – độ vượt cao tính đến đỉnh tường (điều 10.1.5).',
             (210.0, y - 4.0), 1.9)
-    to.text('Đỉnh đập (không kể tường) ≥ MNLKT + 0,3 = +78,84 → chọn +78,85 m tại mép thượng lưu (cao trình tối thiểu '
-            'sau lún).', (210.0, y - 8.0), 1.9)
+    to.text('Đỉnh đập (không kể tường) ≥ MNLKT + 0,3 = +78,84 → chọn +78,85 m tại mép thượng lưu (cao trình thiết kế '
+            'sau lún; thi công cộng dự phòng lún 0,13 m).', (210.0, y - 8.0), 1.9)
     to.text('Đỉnh hiện trạng +78,31 ÷ +78,50 < MNLKT +78,54 tại nhiều đoạn.', (210.0, y - 12.0), 1.9)
     to.text('TCVN 8216:2018: Bảng 3 (a = 0,7 / 0,5 / 0,2 m – cấp II), Bảng 4 (gió P = 4% / 50%), điều 10.1.5 '
-            '(có tường chắn sóng: đỉnh đập ≥ MNLKT + 0,3 m).', (210.0, y - 16.0), 1.9)
+            '(có tường chắn sóng: đỉnh đập ≥ MNLKT + 0,3 m); TCVN 8421:2010: Vw = kl·Vl (A.3.3), kα (Bảng 9).', (210.0, y - 16.0), 1.9)
 
 
 def ve(thu_muc):

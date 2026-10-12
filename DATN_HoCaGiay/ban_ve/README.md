@@ -36,7 +36,8 @@ khối được đổi tự động, kích thước vẫn ghi số thật. Muố
 - Các bộ phận không có kích thước trong hồ sơ (tháp van, bể tiêu năng, mũi phun, chiều dày bản đáy, nắp cống…)
   vẽ **sơ đồ** và ghi "giả thiết" trên bản vẽ – phải đối chiếu hồ sơ hoàn công trước khi dùng.
 - Mặt đập (BV-04): đất đắp +78,60 + cấp phối đá dăm đệm 5 cm + BT M250 20 cm = +78,85 ở mép thượng lưu, dốc ngang
-  2 % → +78,76 ở mép tấm. Thuyết minh mục 5.1.3 đã ghi đủ lớp đá dăm (bản 11/10).
+  2 % → +78,76 ở mép tấm (cao trình thiết kế sau lún). Thi công cộng dự phòng lún 0,13 m ≥ 0,5%H (TCVN 8216:2018 điều
+  11.4.4): đất đắp +78,73, nghiệm thu ≥ +78,98 (bản 12/10).
 - Phương án hợp lý hóa màng khoan phụt (BV-05) là đề xuất có điều kiện của chuyên đề, chỉ áp dụng khi phụt thí nghiệm
   đạt yêu cầu.
 - Sinh viên cần tự kiểm tra lại từng con số, chỉnh sửa theo góp ý của GVHD; tên người hướng dẫn, người thực hiện và

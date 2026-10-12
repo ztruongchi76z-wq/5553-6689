@@ -1,4 +1,4 @@
-# Rà soát thuyết minh ĐATN hồ Cà Giây – 10/10/2026
+# Rà soát thuyết minh ĐATN hồ Cà Giây – 10/10/2026 (cập nhật đợt 6: 12/10/2026)
 
 Tệp được rà soát: `thuyet_minh/ban_09-10-2026/DATN_TranQuocThanh_HoCaGiay.docx` (bản 09/10, 88 trang).
 Bản sau rà soát: `thuyet_minh/DATN_TranQuocThanh_HoCaGiay.docx` và `.pdf` (89 trang: bìa + tờ nhiệm vụ,
@@ -7,6 +7,63 @@ i–xii, 1–74).
 Cách rà soát: đọc toàn văn (8 chương, kết luận, 37 tài liệu tham khảo, 5 phụ lục); tính tay lại các phép
 tính chính; kiểm tra tự động đánh số hình/bảng/công thức, thứ tự trích dẫn, viết tắt, cấu trúc tệp Word;
 xem từng trang PDF; đối chiếu hướng dẫn trình bày của Trường (`HuongDanTB_HPTN_(26-2-2020).docx`).
+
+## 0a. Đợt 6 – 12/10/2026 (bản hiện hành; chi tiết: `thuyet_minh/nhat_ky_tiep_thu_gop_y_6.txt`)
+
+Thuyết minh `thuyet_minh/DATN_TranQuocThanh_HoCaGiay.docx` / `.pdf` – **122 trang**, mục lục khớp số trang. Dựng bằng
+`thuyet_minh/tiep_thu_gop_y_6.py` (đầu vào là bản trước đợt 6: `git show 0276cd6:DATN_HoCaGiay/thuyet_minh/DATN_TranQuocThanh_HoCaGiay.docx`)
+rồi `chen_muc_luc.py`. Nguồn góp ý: (a) yêu cầu của cô Nguyễn Thị Phương Mai (Zalo); (b) báo cáo rà soát GPT 11/10
+(`BaoCao_RaSoat_DATN_HoCaGiay_20261011.docx`); (c) 4 tiêu chuẩn SV tải lên Drive 04_TieuChuan và Hugo/TCVN (QCVN 04-05:2022,
+TCVN 8421:2010, TCVN 9151:2012, TCVN 4116:2023); (d) tệp "Lời tư vấn" và 2 ảnh bảng phân cấp (TCXDVN 285:2002, QCVN 04-05:2012).
+
+**Yêu cầu của GVHD → mục 4.6 (mới) và 5.6 (mới)**
+- 4.6.1 Mưa lưu vực 1978–1999 so với 2000–2024: mưa năm −0,1 %, mùa mưa −2,1 %, tháng lớn nhất −12,3 %, X1max −4,1 %;
+  Mann – Kendall, Sen, Welch không có ý nghĩa (p = 0,06 ÷ 0,93); Cv tăng (0,20 → 0,26) – mưa cực trị phân tán hơn
+  (Bảng 4.7, Hình 4.2, Phụ lục 7 – Bảng PL12). Dẫn nghiên cứu BĐKH [31] Lê Thị Hải Yến và cs. (2017)
+  (https://vjol.info.vn/DHTL/article/view/30969); TLTK đánh số lại [31] ÷ [41] → [32] ÷ [42].
+- 4.6.2 MNLTK hiện nay +77,63 m so với TK 1996 +77,24 m: +0,20 m do lũ cập nhật (847 → 914 m³/s), +0,12 m do tràn thực tế
+  21,6 m (thiết kế 25 m). Lũ tăng k = 10/20/30 % (Bảng 4.8, Hình 4.3): lũ kiểm tra chạm đỉnh +78,85 khi k ≈ 9 % (BCNCKT)
+  ÷ 12 % (QTVH), chạm tường khi ≈ 25 %; sóng NE với lũ thiết kế chạm tường khi ≈ 12 %; điều kiện MNLKT + 0,3 m hết dự trữ
+  khi k > 0,4 %. Hạ mực nước đón lũ cố định không khả thi; xả trước qua tràn sự cố về +73,84 m mất 27 ÷ 44 giờ.
+- 4.6.3 Bảng 4.9 (công trình tháo lũ trước/sau sửa chữa); 5.6 Bảng 5.7 (đập: đỉnh, thấm, gradien, ổn định, lớp mặt, τ).
+
+**Lỗi thực chất phát hiện khi đối chiếu tiêu chuẩn mới (đã sửa)**
+- QCVN 04-05:2022 công thức (1), Bảng B.2: trượt bê tông trên đá có γc = 0,95 → [K] ngưỡng tràn 1,211 / 1,089 (bản trước
+  1,15 / 1,035); c cần 7,6 / 10,4 kPa; lực neo cần 48 ÷ 65 kN/thanh (28 ÷ 38 % Ntt). Ký hiệu γn, γlc, γc thay Kn, nc.
+  Thêm: phân loại kẹt van theo 2.6.3.10 (trả lời GPT B1), lũ vượt kiểm tra 0,1 % (2.6.3.5), bồi lắng 75 năm (Bảng 9),
+  tiêu chí chiều cao đập (nền B → cấp II), lịch sử phân cấp.
+- TCVN 8421:2010: gió phải quy đổi về mặt nước Vw = kl·Vl (A.3.3); bảng kα trong chương trình cũ sai (Bảng 9) →
+  Z2 gió Đông Bắc +78,97 → **+79,07 m** (< tường +79,40, dự trữ 0,33 m); đỉnh đập +78,85 m không đổi.
+- TCVN 9151:2012 điều 7.2.3: sơ đồ đập tràn khi H < 1,15h (bản trước ghi 1,2 ÷ 1,4h); H0 = 2,34 m = 1,17h → vùng chuyển
+  tiếp, yêu cầu +67,94 ÷ +67,97 m; Fr cuối cống 4,9 ÷ 5,7 < 10 → độ đầy giới hạn 0,90, không bắt buộc cấp khí.
+- TCVN 4116:2023: ξ = 0,11 ÷ 0,14 ≪ ξR; kiểm tra bề rộng khe nứt (9.2); cường độ thực tế (7.15); chống ăn mòn neo (7.4, 6.3.3).
+- TCVN 8216:2018 điều 11.4.4 (+ QCVN 04-05:2022 điều 2.6.2.2.1a): dự phòng lún ≥ 0,5 %H → **0,13 m** (bản trước 2 cm):
+  đất đắp thi công +78,73, nghiệm thu ≥ +78,98 (mép thượng lưu) / +78,89 (mép hạ lưu tấm); đắp bù **2.210 m³**;
+  Bảng 7.1 dòng 9 ≈ 23.600 m³ (trừ phần nâng đỉnh của TKCS).
+
+**Góp ý GPT 11/10**: tiếp thu A1, A2, A4 (làm rõ εm = ε·m; độ nhạy: đỉnh +78,85 đạt khi m ≥ 0,441), A5 ÷ A11, B1 ÷ B10
+(bất đẳng hướng kh/kv = 5 – Bảng PL10; tìm lại cung trượt bằng miền mở rộng, lưới lồng, Nelder – Mead, Spencer – Bảng PL11;
+ô rãnh theo đường chéo 5,66 m: τ = 2,23 Pa; trục vít μ = 1,0 → **02 giá đỡ dẫn hướng**, L ≤ 2 m, Kođ ≥ 2,97).
+Không tiếp thu: **A3** – giả thiết "9 cửa van tràn chính" không đúng hồ sơ (tràn chính chảy tự do, không cửa van – QTVH,
+BCNCKT, KTTV); **A12** – trang nhiệm vụ có chữ ký là việc của SV.
+
+**Tệp "Lời tư vấn" (12/10)**: ý "tư vấn phân cấp sai, dùng lũ 1,5 % / 0,5 %" **không đúng với hồ sơ** – BCNCKT (mục
+4.1.1), TKCS (1.2.3), báo cáo KTTV (1.1.9) và QTVH 2026 đều xác định cấp II, lũ 1 % / 0,2 % (QTVH thêm 0,1 %). Cấp III / IV
+chỉ là cấp cũ theo TCVN 5060-90 (QTVH ghi III, BCNCKT ghi IV – không thống nhất); 1,5 % / 0,5 % là tần suất của cấp III theo
+TCXDVN 285:2002 / QCVN 04-05:2012 – không hồ sơ nào dùng. Sai sót thật ở bước phân cấp của BCNCKT: xét H = 25,4 m với nền
+loại A (thực tế 24,75 m, nền B – kết luận cấp II không đổi) và dùng hệ số an toàn ổn định mái của cấp III (1,25 / 1,13).
+Hai ảnh bảng phân cấp được dùng để viết đoạn "lịch sử phân cấp" ở mục 1.1.3 và câu hỏi dự phòng trên slide. Các ý 1 ÷ 5 và
+lỗi nhỏ còn lại trong tệp đã có trong thuyết minh (mục 2.1 ÷ 2.5, Kết luận – kiến nghị).
+
+**Bản vẽ, slide**: BV-02 (Bảng 2.4, 2.5, ghi chú 3), BV-04 (khối lượng, ghi chú 3, 6, 8), BV-06 ([K], neo, chống ăn mòn),
+BV-07 (02 giá đỡ, Bảng 6.3, biểu đồ Kođ, TCVN 9151) xuất lại; gói `TAI_VE/BanVe_A0_DATN_HoCaGiay.zip` dựng lại. Slide: thêm
+slide 8 (mưa, lũ gia tăng) và 15 (hiệu quả trước/sau); sửa 5, 11, 12, 13, 14, 20, 21 và slide dự phòng (22 + 1 slide);
+gói `TAI_VE/Slide_BaoVe_DATN_HoCaGiay.zip` dựng lại (link slide trên Claude không còn khớp).
+
+**Cần hỏi GVHD**: (1) dự phòng lún 0,13 m theo 11.4.4 cho đập cũ đã cố kết (tính lún chỉ 0,5 ÷ 1 cm) – giữ hay giảm;
+(2) vị trí khống chế cao trình đỉnh (mép thượng lưu, chân tường); (3) mức độ Chương 6 (cống) – giữ ở mức kiểm tra;
+(4) lời cam đoan và khai báo dùng AI; (5) hệ số lưu lượng tràn chính m = 0,45 (nếu 0,40: MNLKT +78,62); (6) màng 2 hàng
+chỉ áp dụng sau phụt thí nghiệm; (7) chọn địa hình A (kl = 1,10) khi quy đổi gió.
 
 ## 0. Bản 11/10/2026 – đã tiếp thu vào tệp Word (chi tiết: `thuyet_minh/nhat_ky_tiep_thu_gop_y.txt`)
 

@@ -1,5 +1,13 @@
 # HANDOFF – ĐATN hồ chứa nước Cà Giây (cập nhật 10/10/2026, chiều)
 
+> **Cập nhật 12/10/2026 – đợt 6 (bản hiện hành).** Thuyết minh 122 trang (`thuyet_minh/`, script `tiep_thu_gop_y_6.py`,
+> nhật ký `nhat_ky_tiep_thu_gop_y_6.txt`): thêm mục 4.6 (mưa từ 2000, lũ gia tăng, so MNLTK thiết kế 1996, xả trước) và
+> 5.6 (thấm, ổn định trước/sau sửa chữa) theo yêu cầu cô Mai; đối chiếu QCVN 04-05:2022 (γc = 0,95 → [K] ngưỡng tràn
+> 1,21 / 1,09), TCVN 8421:2010 (gió quy đổi → Z₂ = +79,07), TCVN 9151:2012, TCVN 4116:2023, TCVN 8216:2018 11.4.4 (dự phòng
+> lún 0,13 m, đắp bù 2.210 m³); trục vít 02 giá đỡ dẫn hướng; Phụ lục PL10 ÷ PL12. Bản vẽ BV-02, 04, 06, 07 và slide
+> (22 + 1, thêm slide 8, 15) đã đồng bộ; gói zip trong `TAI_VE/`. Danh sách đã sửa / không sửa / cần hỏi GVHD:
+> `RA_SOAT_THUYET_MINH.md` mục 0a. Link slide trên Claude (mục 2) KHÔNG còn khớp – dùng PDF/PPTX trong gói zip.
+
 Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_TinhToan.zip` (mục 5 "Kết quả chính" và mục 6
 "Giả thiết" của bản đó vẫn giữ nguyên giá trị).
 

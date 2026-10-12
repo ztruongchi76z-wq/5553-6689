@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461325.377094907
+2461326.7127546296
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461325.377094907
+2461326.7127546296
   9
 $TDUUPDATE
  40
@@ -933,11 +933,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{034348E9-3EFF-4E2B-B457-52F8F21DD94F}
+{9AF2D185-6282-4858-B55C-E022FB86A598}
   9
 $VERSIONGUID
   2
-{22B46814-86C5-45EB-BFE9-015E71060E3A}
+{75C5E24F-BCEB-4907-A429-2E21D0AF46C7}
   9
 $EXTNAMES
 290
@@ -19745,7 +19745,7 @@ AcDbLine
  30
 0.0
  11
-271.875
+305.625
  21
 751.1083389149362
  31
@@ -19771,7 +19771,7 @@ AcDbText
  40
 3.125
   1
-Đất đắp bù (bãi VL lớp 1) đầm K ≥ 0,97 đến +78,60
+Đất đắp bù (bãi VL lớp 1) đầm K ≥ 0,97 đến +78,60 (thi công +78,73)
   7
 VN
  11
@@ -29437,7 +29437,7 @@ AcDbText
  40
 3.36
   1
-Đất đắp bù K ≥ 0,97 (+78,20 → +78,62, kể dự phòng lún 2 cm)
+Đất đắp bù K ≥ 0,97 (+78,20 → +78,73, kể dự phòng lún 0,13 m)
   7
 VN
  72
@@ -29509,7 +29509,7 @@ AcDbText
  40
 3.36
   1
-1.700
+2.210
   7
 VN
  72
@@ -30599,7 +30599,7 @@ AcDbText
  40
 3.36
   1
-Đào, đắp xử lý hố xói mái HL, K ≥ 0,95 (theo TKCS)
+Xử lý hố xói, áp trúc mái HL, K ≥ 0,95 (TKCS trừ mục 2)
   7
 VN
  72
@@ -30671,7 +30671,7 @@ AcDbText
  40
 3.36
   1
-≈ 25.000
+≈ 23.600
   7
 VN
  72
@@ -31853,15 +31853,15 @@ AcDbMText
   3
 GHI CHÚ:\P1. Cao trình ghi bằng m, kích thước ghi bằng cm.\P2. Phương án Đ3 (Chương 3): đắp bù đến +78,60, mặt BT đỉnh +78,85 (mép thượng lưu), dốc ngang 2%\P    về hạ lưu; cấu tạo lớp theo TKCS (đá dăm đệm 5 cm + nilon + BT B20 (M250) 20 cm).\P3. Ca
   3
-o trình trên hình là cao trình thiết kế sau lún (+78,85 mép thượng lưu, +78,76 mép tấm). Thi công cộng\P    dự phòng lún 2 cm: đất đắp đến +78,62; cao độ nghiệm thu (trước lún) ≥ +78,87 tại mép thượng lưu (chân\P    tường chắn sóng) và ≥ +78,78 tại m
+o trình trên hình là cao trình thiết kế sau lún (+78,85 mép thượng lưu, +78,76 mép tấm). Thi công cộng\P    dự phòng lún 0,13 m (≥ 0,5%H, TCVN 8216:2018 điều 11.4.4): đất đắp đến +78,73; cao độ nghiệm thu (trước\P    lún) ≥ +78,98 tại mép thượng lưu 
   3
-ép tấm; nghiệm thu bằng máy thủy chuẩn tại từng khe co giãn.\P4. Đắp đất từng lớp ≤ 25 cm, độ ẩm sai lệch ±2% so với độ ẩm tốt nhất; kiểm tra độ chặt từng lớp.\P5. Rãnh dọc chạy theo mái có lưu tốc lớn (≈ 9 m/s khi đầy): BT liền khối, có gờ tiêu năng
+(chân tường chắn sóng) và ≥ +78,89 tại mép tấm; nghiệm thu bằng máy\P    thủy chuẩn tại từng khe co giãn; theo dõi bằng mốc lún mặt đập.\P4. Đắp đất từng lớp ≤ 25 cm, độ ẩm sai lệch ±2% so với độ ẩm tốt nhất; kiểm tra độ chặt từng lớp.\P5. Rãnh dọc c
   3
- tại chỗ nối với cơ\P    và lăng trụ. Khả năng thoát của các rãnh lớn hơn nhiều lần lưu lượng thiết kế (Bảng 5.6).\P6. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈ 6,6 Pa xuống ≈ 1,8 Pa (1,4 ÷ 2,2 Pa, mục 5.5.1) –\P    xấp xỉ giới hạn của 
+hạy theo mái có lưu tốc lớn (≈ 9 m/s khi đầy): BT liền khối, có gờ tiêu năng tại chỗ nối với cơ\P    và lăng trụ. Khả năng thoát của các rãnh lớn hơn nhiều lần lưu lượng thiết kế (Bảng 5.6).\P6. Ô 4×4 m giảm ứng suất tiếp dòng chảy tràn trên mái từ ≈
   3
-đất chưa có lớp phủ: trồng cỏ vầng hoặc phủ thảm xơ dừa đến khi cỏ phủ kín.\P7. Khối lượng mặt đập tính cho L = 986 m theo kích thước chi tiết A (BT, đá dăm, nilon rộng 4,30 m).\P8. Mục 9 lấy theo tổng đất đắp đập của TKCS; chuẩn xác theo đo đạc hố x
+ 6,6 Pa xuống ≈ 1,8 ÷ 2,2 Pa (cạnh, chéo ô;\P    1,4 ÷ 2,7 Pa tùy cường độ mưa, mục 5.5.1) – xấp xỉ giới hạn của đất chưa có lớp phủ: trồng cỏ vầng hoặc\P    phủ thảm xơ dừa đến khi cỏ phủ kín.\P7. Khối lượng mặt đập tính cho L = 986 m theo kích thướ
   1
-ói trước khi thi công.
+c chi tiết A (BT, đá dăm, nilon rộng 4,30 m).\P8. Mục 9 = tổng đất đắp của TKCS (≈ 25.000 m³) trừ phần nâng đỉnh lên +78,50 của TKCS (≈ 1.390 m³) đã\P    tính ở mục 2; chuẩn xác theo đo đạc hố xói trước khi thi công.
   7
 VN
  44
@@ -32969,7 +32969,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T09:03:01.168016+00:00
+1.4.4 @ 2026-10-12T17:06:22.484996+00:00
   0
 VISUALSTYLE
   5
@@ -39531,7 +39531,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-10-11T09:03:01.401112+00:00
+1.4.4 @ 2026-10-12T17:06:22.695798+00:00
   0
 ENDSEC
   0

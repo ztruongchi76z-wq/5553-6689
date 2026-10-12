@@ -207,17 +207,20 @@ def so_do_van(to, x0, y0):
     for k in range(int((yv1 - yv0) / 2.0)):
         y = yv0 + 2.0 * k
         to.line((xc - 1.2, y), (xc + 1.2, y + 1.2), 'NET_MANH')
-    # giá đỡ trung gian (đề xuất)
-    ym = 0.5 * (yv0 + yv1)
-    p = [(xc - 20, ym - 1.5), (xc + 20, ym - 1.5), (xc + 20, ym + 1.5), (xc - 20, ym + 1.5)]
-    to.hatch(p, 'ANSI31', 0.3, lop='SUA_CHUA', mau_to=1)
-    to.pline(p, 'SUA_CHUA', dong=True)
-    to.circle((xc, ym), 2.4, 'SUA_CHUA')
+    # 02 giá đỡ dẫn hướng trung gian (đề xuất): L = 6 m → 3 × 2 m
+    ym1, ym2 = yv0 + (yv1 - yv0) / 3.0, yv0 + 2.0 * (yv1 - yv0) / 3.0
+    for ym in (ym1, ym2):
+        p = [(xc - 20, ym - 1.5), (xc + 20, ym - 1.5), (xc + 20, ym + 1.5), (xc - 20, ym + 1.5)]
+        to.hatch(p, 'ANSI31', 0.3, lop='SUA_CHUA', mau_to=1)
+        to.pline(p, 'SUA_CHUA', dong=True)
+        to.circle((xc, ym), 2.4, 'SUA_CHUA')
+    ym = ym2
     to.chu_thich_mui_ten((xc + 20, ym), (xc + 30, ym + 10),
-                         'Bổ sung giá đỡ dẫn hướng trung gian: L = 6 m → 2 × 3 m', h=1.8, rong=82)
-    to.text('(Kođ 0,67 ÷ 1,62 → 2,69 ÷ 6,48 ≥ 2)', (xc + 30.8, ym + 7.2), 1.8, 'LEFT')
-    to.dim((xc - 26, yv0), (xc - 26, ym), 0, 1, goc=90, text='L = 3,0 m')
-    to.dim((xc - 26, ym), (xc - 26, yv1), 0, 1, goc=90, text='L = 3,0 m')
+                         'Bổ sung 02 giá đỡ dẫn hướng trung gian: L = 6 m → 3 × 2 m', h=1.8, rong=86)
+    to.text('(Kođ 0,67 ÷ 1,62 → 2,97 ÷ 7,14 ≥ 2; μ = 1,0)', (xc + 30.8, ym + 7.2), 1.8, 'LEFT')
+    to.dim((xc - 26, yv0), (xc - 26, ym1), 0, 1, goc=90, text='L = 2,0 m')
+    to.dim((xc - 26, ym1), (xc - 26, ym2), 0, 1, goc=90, text='L = 2,0 m')
+    to.dim((xc - 26, ym2), (xc - 26, yv1), 0, 1, goc=90, text='L = 2,0 m')
     to.text('Trục vít D85 (d chân ren ≈ 72 mm)', (xc + 4.0, yv0 + 16.0), 1.8, 'LEFT')
     # sàn đặt máy, máy VĐ20, tủ điện
     to.rect(xc - 30, yv1, 60, 3, 'NET_CHINH')
@@ -294,24 +297,25 @@ def bieu_do_luc(to, x0, y0):
         to.text(ten, (xl + 6.5, y0 - 13.0), 1.8, 'ML')
     # hệ số ổn định trục vít
     x1 = x0 + 190.0
-    fx2, fy2 = khung_bieu_do(to, x1, y0, 160.0, 100.0, (0, 6, []), (0, 7, [0, 1, 2, 3, 4, 5, 6, 7]),
+    fx2, fy2 = khung_bieu_do(to, x1, y0, 160.0, 100.0, (0, 6, []), (0, 8, [0, 1, 2, 3, 4, 5, 6, 7, 8]),
                              'Trường hợp (MN hồ – f)', 'Kođ', 'ỔN ĐỊNH TRỤC VÍT KHI ĐÓNG CƯỠNG BỨC')
     nhan = ['DBT 0,3', 'DBT 0,4', 'DBT 0,5', 'LTK 0,3', 'LTK 0,4', 'LTK 0,5']
     K6 = [1.62, 1.19, 0.94, 1.13, 0.84, 0.67]
-    K3 = [6.48, 4.77, 3.77, 4.53, 3.38, 2.69]
+    K3 = [3.17, 2.34, 1.85, 2.22, 1.66, 1.32]     # 1 gối, L = 3 m, μ = 1,0
+    K2 = [7.14, 5.26, 4.16, 5.00, 3.72, 2.97]     # 2 gối, L = 2 m, μ = 1,0 (đề xuất)
     for k in range(6):
         xc = fx2(k + 0.5)
         to.text(nhan[k], (xc, y0 - 2.8), 1.6, 'CENTER')
-        for j, (v, mau) in enumerate(((K6[k], 1), (K3[k], 3))):
-            xa = xc - 10.0 + j * 10.0
-            p = [(xa, fy2(0)), (xa + 9.0, fy2(0)), (xa + 9.0, fy2(v)), (xa, fy2(v))]
+        for j, (v, mau) in enumerate(((K6[k], 1), (K3[k], 6), (K2[k], 3))):
+            xa = xc - 11.0 + j * 7.5
+            p = [(xa, fy2(0)), (xa + 7.0, fy2(0)), (xa + 7.0, fy2(v)), (xa, fy2(v))]
             to.hatch(p, 'SOLID', lop='NET_MANH', mau_to=MAU[mau])
             to.pline(p, 'NET_CHINH', dong=True)
-            to.text(so(v, 2), (xa + 4.5, fy2(v) + 1.0), 1.6, 'CENTER')
+            to.text(so(v, 2), (xa + 3.5, fy2(v) + 1.0), 1.4, 'CENTER')
     to.line((fx2(0), fy2(2)), (fx2(6), fy2(2)), 'SUA_CHUA')
     to.text('[Kođ] = 2', (fx2(6) + 1.0, fy2(2)), 1.9, 'ML', 'SUA_CHUA')
-    for j, (ten, mau) in enumerate((('Trục tự do L = 6 m (hiện trạng)', 1), ('L = 3 m (có giá đỡ trung gian)', 3))):
-        xl = x1 + 2.0 + j * 72.0
+    for j, (ten, mau) in enumerate((('L = 6 m (hiện trạng)', 1), ('1 gối, L = 3 m', 6), ('2 gối, L = 2 m (đề xuất)', 3))):
+        xl = x1 + 2.0 + j * 50.0
         p = [(xl, y0 - 14.5), (xl + 5, y0 - 14.5), (xl + 5, y0 - 11.5), (xl, y0 - 11.5)]
         to.hatch(p, 'SOLID', lop='NET_MANH', mau_to=MAU[mau])
         to.pline(p, 'NET_CHINH', dong=True)
@@ -335,8 +339,10 @@ def cac_bang(to):
     y = to.bang(xL, 576, cot1, hang1, h=1.9, cao_dong=4.6, tieu_de='THÔNG SỐ TÍNH TOÁN CỐNG (Bảng 6.1)')
     to.text('Khả năng tháo khi mở hết cửa (đập tràn đỉnh rộng, m = 0,35): ở MNC H0 = 1,90 m → Q = 7,31 m³/s > 6,54; '
             'Q = 10 m³/s cần MN hồ ≥ +67,94 m.', (xL, y - 3.5), 1.8)
-    to.text('H0 = 2,34 m ≤ 1,2hc = 2,4 m: cửa vào chưa ngập, công thức đập tràn đỉnh rộng áp dụng được (mục 6.3.1).',
+    to.text('TCVN 9151:2012 điều 7.2.3: H < 1,15h = 2,30 m – sơ đồ đập tràn; H ≥ 1,5h = 3,0 m – sơ đồ lỗ.',
             (xL, y - 6.3), 1.8)
+    to.text('Q = 10 m³/s: H0 = 2,34 m = 1,17h (chuyển tiếp) → MN hồ ≥ +67,94 ÷ +67,97 m (mục 6.3.1).',
+            (xL, y - 9.1), 1.8)
     cot2 = [20, 24, 24, 26, 32, 18]
     hang2 = [['Q (m³/s)', 'h đầu cống (m)', 'h cuối cống (m)', 'v cuối cống (m/s)', 'Lưu không nhỏ nhất (m)', 'h/H']] + \
             [list(r) for r in D.CONG_BANG62]
@@ -345,21 +351,23 @@ def cac_bang(to):
             (xL + 186, 576 - 3 * 4.6 - 3.5), 1.8)
     to.text('nếu i = 3‰: h0 = 1,39 ÷ 1,96 m > hk – dòng êm, gần đầy cống (phải tính lại).',
             (xL + 186, 576 - 3 * 4.6 - 6.3), 1.8)
+    to.text('Fr cuối cống = v²/(gh) = 5,7 / 4,9 < 10: độ đầy giới hạn 0,90, không bắt buộc cấp khí (TCVN 9151:2012).',
+            (xL + 186, 576 - 3 * 4.6 - 9.1), 1.8)
     cot3 = [20, 20, 16, 20, 18, 22]
     hang3 = [['Q (m³/s)', 'h1 (m)', 'Fr1', 'h″ (m)', 'σ = hh/h″', 'Ln = 4,5h″ (m)']] + [list(r) for r in D.CONG_TIEU_NANG]
     y3 = to.bang(xL + 186, 538, cot3, hang3, h=1.9, cao_dong=4.6, tieu_de='TIÊU NĂNG SAU CỐNG')
     to.text('σ < 1,05: nước nhảy phóng xa nếu không có bể; bể cần d ≈ 1,05h″ − hh ≈ 0,7 ÷ 1,2 m.', (xL + 186, y3 - 3.5), 1.8)
-    cot4 = [27, 11, 15, 16, 16, 14, 16, 16, 18, 18]
+    cot4 = [27, 11, 15, 16, 16, 14, 16, 16, 18, 26]
     hang4 = [['Mực nước hồ', 'f', 'W (kN)', 'T1 + T2\n(kN)', 'P mở\n(kN)', 'P mở\n(T)', 'So với\n20 T',
-              'P đóng\n(kN)', 'Kođ trục\nL = 6 m', 'Kođ trục\nL = 3 m']] + [list(r) for r in D.CONG_BANG63]
+              'P đóng\n(kN)', 'Kođ trục\nL = 6 m', 'Kođ (μ = 1,0)\n1 gối / 2 gối']] + [list(r) for r in D.CONG_BANG63]
     y4 = to.bang(xL, 500, cot4, hang4, h=1.9, cao_dong=4.6,
                  tieu_de='LỰC ĐÓNG MỞ CỬA VAN VÀ ỔN ĐỊNH TRỤC VÍT (Bảng 6.3)')
     to.text('P mở = nG·G + nms·(T1 + T2) + Wh; G = 20 kN (ước tính); Kođ = Pth/P đóng ≥ [Kođ] = 2 '
-            '(Euler, μ = 0,7, d = 72 mm).', (xL, y4 - 3.5), 1.8)
+            '(Euler, d = 72 mm; trục tự do μ = 0,7; đoạn giữa hai gối dẫn hướng μ = 1,0).', (xL, y4 - 3.5), 1.8)
     cot5 = [118, 16, 22]
     hang5 = [['Hạng mục (Bảng 7.1 – III)', 'Đơn vị', 'Khối lượng'],
              ['Máy đóng mở VĐ20 (kèm tủ điện, công tắc hành trình)', 'bộ', '2'],
-             ['Thay gioăng, tấm trượt, giá đỡ trục trung gian; sơn cửa van', 'bộ', '2']]
+             ['Thay gioăng, tấm trượt; 02 giá đỡ dẫn hướng trục trung gian/máy; sơn cửa van', 'bộ', '2']]
     to.bang(xL, 440, cot5, hang5, h=1.9, cao_dong=4.6, tieu_de='KHỐI LƯỢNG SỬA CHỮA CỐNG')
     to.text('Số bộ theo TKCS – đối chiếu số cửa van trong tháp van (mô tả hiện trạng chỉ nêu một cửa van).',
             (xL, 440 - 3 * 4.6 - 3.5), 1.8)
@@ -373,7 +381,7 @@ def ghi_chu(to, x, y):
           '2. Kết cấu cống giữ nguyên. Thay 02 máy đóng mở hư hỏng (theo BCNCKT, TKCS) bằng máy vít VĐ20 (trục vít D85 dài 6,0 m, 4,5 kW, '
           '380 V/3 pha/50 Hz, kèm tủ điện, công tắc hành trình, rơ le bảo vệ quá tải). \\P'
           '3. Thay tấm trượt bằng vật liệu ma sát thấp (đồng – graphit hoặc polime UHMW, f ≤ 0,3) và gioăng cao su; bổ '
-          'sung giá đỡ dẫn hướng trung gian chia trục vít thành 2 nhịp ≤ 3 m; sơn chống gỉ cửa van. \\P'
+          'sung 02 giá đỡ dẫn hướng trung gian chia trục vít thành 3 nhịp ≤ 2 m (μ = 1,0; Kođ ≥ 2,97); sơn chống gỉ cửa van. \\P'
           '4. Vận hành: chỉ vận hành cống khi mực nước hồ ≤ MNDBT, trừ trường hợp khẩn cấp; với nhiệm vụ Q = 10 m³/s, khi '
           'MN hồ +67,50 ÷ +67,94 m cống chỉ tháo được 7,3 ÷ 10 m³/s (ghi vào QTVH). \\P'
           '5. Kiểm tra bên trong thân cống bằng camera/robot khi đóng cửa van (thời gian ngừng cấp nước giữa hai vụ); nếu '
