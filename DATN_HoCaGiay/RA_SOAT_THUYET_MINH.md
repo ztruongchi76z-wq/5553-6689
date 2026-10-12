@@ -61,6 +61,20 @@ số liệu theo hiện trạng và tiêu chuẩn hiện hành", không dùng t�
 với đồ án (tính lại cùng thông số, sai khác < 0,1 m); khác biệt do số liệu đầu vào được cập nhật (tràn hiện trạng 21,6 m,
 bình đồ 2022, tiêu chuẩn mới ban hành).
 
+**Góp ý Qwen (12/10, tối) – đối chiếu với bản hiện hành**
+- Đã tiếp thu: (1) giải thích hệ số ổn định sau sửa chữa giảm 0,9 ÷ 1,6 % ở mọi trường hợp (tải trọng phần đắp nâng đỉnh;
+  vẫn lớn hơn [K] ≥ 15 %) – mục 5.3; (2) chênh lệch mức bảo đảm với QTVH: công thức P = m/n và tổn thất thấm k_t – với
+  k_t = 0,5 %/tháng TH1A, TH2 đạt 42/44, 39/44 năm, chỉ chênh QTVH (41/44, 38/44) 1 năm; TH2 sát ngưỡng (38/44 năm của QTVH
+  = 84,4 % theo công thức (14) TCVN 10778:2024) – mục 2.2.3, Bảng PL7 thêm dòng k_t, kiến nghị quan trắc cân bằng nước,
+  slide 6; (3) xu thế mưa theo độ dốc Sen: toàn chuỗi −0,3 %/10 năm (mưa năm), −1,8 %/10 năm (X1max); từ 2000: +4,3 % và
+  −6,9 %/10 năm – không có ý nghĩa thống kê (mục 4.6.1).
+- Không áp dụng (đọc nhầm hoặc theo bản cũ): "mục 4.6.1.12" (thực là mục 4.6.1); [K] 1,150 / 1,035 (bản hiện hành thống
+  nhất 1,211 / 1,089 – ghi chú "m = 1,00 do nền đá" trái với QCVN 04-05:2022 Bảng B.2, γc = 0,95); "LỜI CÁM ƠN" (đã là
+  "LỜI CẢM ƠN"); "MNLTK cũ +78,25 m" (đó là MNLKT của BCNCKT; MNLTK thiết kế ban đầu +77,24 m); "K mái hạ lưu tăng
+  1,667 → 1,670" (Bảng 5.2: mọi trường hợp giảm nhẹ); "Bảng 2.2 là điều tiết lũ" (Bảng 2.2 là cân bằng nước; điều tiết lũ ở
+  Bảng 2.3, 4.1, 4.8); "đối chứng SEEP/W sai khác < 5 %" (6,22 so với 5,71·10⁻⁶ m³/s/m – khoảng 9 %); kịch bản lũ +5 ÷ 20 %
+  (đồ án đã có 10 / 20 / 30 % và mức tăng giới hạn 9 ÷ 12 %, 25 %).
+
 **Bản vẽ, slide**: BV-02 (Bảng 2.4, 2.5, ghi chú 3), BV-04 (khối lượng, ghi chú 3, 6, 8), BV-06 ([K], neo, chống ăn mòn),
 BV-07 (02 giá đỡ, Bảng 6.3, biểu đồ Kođ, TCVN 9151) xuất lại; gói `TAI_VE/BanVe_A0_DATN_HoCaGiay.zip` dựng lại. Slide: thêm
 slide 8 (mưa, lũ gia tăng) và 15 (hiệu quả trước/sau); sửa 5, 11, 12, 13, 14, 20, 21 và slide dự phòng (22 + 1 slide);

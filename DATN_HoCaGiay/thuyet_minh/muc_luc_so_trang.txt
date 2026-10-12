@@ -43,7 +43,7 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 22     2.5 Đánh giá an toàn thấm và ổn định đập hiện trạng
 22     2.5.1 Mặt cắt và sơ đồ tính toán
 23     2.5.2 Phương pháp tính thấm
-23     2.5.3 Kết quả tính thấm hiện trạng
+24     2.5.3 Kết quả tính thấm hiện trạng
 25     2.5.4 Phương pháp kiểm tra ổn định mái
 25     2.5.5 Kết quả kiểm tra ổn định hiện trạng
 27     2.6 Đánh giá công trình tháo lũ và cống lấy nước
@@ -87,9 +87,9 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 56     5.4 Ổn định trượt nông lớp mặt mái hạ lưu
 57     5.5 Thiết kế hệ thống thoát nước mái hạ lưu
 57     5.5.1 Hiệu quả chống xói của việc chia ô mái
-58     5.5.2 Kiểm tra khả năng thoát nước của rãnh
+59     5.5.2 Kiểm tra khả năng thoát nước của rãnh
 59     5.5.3 Cấu tạo hệ thống rãnh và lớp phủ mái
-59     5.6 Đánh giá hiệu quả của giải pháp sửa chữa đối với an toàn đập
+60     5.6 Đánh giá hiệu quả của giải pháp sửa chữa đối với an toàn đập
 62     CHƯƠNG 6 THIẾT KẾ SỬA CHỮA, NÂNG CẤP CỐNG LẤY NƯỚC
 62     6.1 Phân tích hình thức và quy mô sửa chữa
 62     6.2 Nhiệm vụ và các thông số tính toán
@@ -183,8 +183,8 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 15     Bảng 2.2 Kết quả điều tiết toàn chuỗi 44 năm hồ Cà Giây (MNDBT +74,70 m; MNC +67,50 m)
 18     Bảng 2.3 Kết quả điều tiết lũ với tràn hiện trạng (tràn chính 9 × 2,4 m; tràn sự cố 5 m)
 21     Bảng 2.4 Kết quả tính cao trình đỉnh đập theo ba trường hợp (lũ BCNCKT)
-21     Bảng 2.5 Tổng hợp cao trình đỉnh đập yêu cầu (m)
-23     Bảng 2.6 Kết quả tính thấm mặt cắt lòng sông – hiện trạng
+22     Bảng 2.5 Tổng hợp cao trình đỉnh đập yêu cầu (m)
+24     Bảng 2.6 Kết quả tính thấm mặt cắt lòng sông – hiện trạng
 25     Bảng 2.7 Kết quả kiểm tra ổn định mái đập hiện trạng (Bishop, mặt cắt lòng sông)
 27     Bảng 2.8 Tổng hợp kết quả đánh giá an toàn công trình hiện trạng
 31     Bảng 3.1 So sánh phương án bảo vệ mái hạ lưu
@@ -200,8 +200,8 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 49     Bảng 4.9 So sánh các chỉ tiêu an toàn của công trình tháo lũ trước và sau sửa chữa
 53     Bảng 5.1 Kết quả tính thấm mặt cắt lòng sông sau sửa chữa
 54     Bảng 5.2 Kết quả kiểm tra ổn định mái đập sau sửa chữa (Bishop)
-56     Bảng 5.3 Hệ số ổn định cung trượt nông mái hạ lưu theo chiều sâu tầng bão hòa do mưa
-56     Bảng 5.4 Hệ số ổn định lớp mặt dày 1 m theo mô hình mái dốc vô hạn
+57     Bảng 5.3 Hệ số ổn định cung trượt nông mái hạ lưu theo chiều sâu tầng bão hòa do mưa
+57     Bảng 5.4 Hệ số ổn định lớp mặt dày 1 m theo mô hình mái dốc vô hạn
 58     Bảng 5.5 Đặc trưng dòng chảy tràn trên mái hạ lưu theo chiều dài đường chảy
 59     Bảng 5.6 Kiểm tra khả năng thoát nước các loại rãnh mái hạ lưu
 60     Bảng 5.7 So sánh các chỉ tiêu an toàn của đập đất trước và sau sửa chữa (mặt cắt lòng sông)

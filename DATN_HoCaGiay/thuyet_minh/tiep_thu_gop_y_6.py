@@ -503,6 +503,16 @@ def chuong4_muc46(d, body, KQ):
     ds.append(doan_moi('Hình 4.2 Lượng mưa năm và lượng mưa 1 ngày lớn nhất năm của lưu vực trước và sau khi công trình '
                        'vận hành', cap41))
     dem = M['x1max_dem']
+    mn, x1 = M['mua_nam'], M['x1max']
+    dau = lambda v: ('+' if v > 0 else '') + so(v, 1)
+    tb_n = (mn['tb_truoc'] * mn['n_truoc'] + mn['tb_sau'] * mn['n_sau']) / (mn['n_truoc'] + mn['n_sau'])
+    tb_x = (x1['tb_truoc'] * x1['n_truoc'] + x1['tb_sau'] * x1['n_sau']) / (x1['n_truoc'] + x1['n_sau'])
+    xu_the = (' Tính theo độ dốc Sen, trên toàn chuỗi lượng mưa năm thay đổi '
+              + dau(1000 * mn['mk_toan_chuoi']['sen'] / tb_n) + '%/10 năm và X_{1max} '
+              + dau(1000 * x1['mk_toan_chuoi']['sen'] / tb_x) + '%/10 năm; riêng giai đoạn công trình vận hành, lượng '
+              'mưa năm (2000 ÷ 2024) có xu thế ' + dau(1000 * mn['mk_sau']['sen'] / mn['tb_sau']) + '%/10 năm (p = '
+              + so(mn['mk_sau']['p'], 2) + ') và X_{1max} (2000 ÷ 2020) ' + dau(1000 * x1['mk_sau']['sen'] / x1['tb_sau'])
+              + '%/10 năm (p = ' + so(x1['mk_sau']['p'], 2) + ') – đều không có ý nghĩa thống kê.')
     nd('Kết quả (Bảng 4.7, Hình 4.2): lượng mưa năm bình quân hai giai đoạn gần như không đổi (' + so(M['mua_nam'][
         'tb_truoc'], 1) + ' và ' + so(M['mua_nam']['tb_sau'], 1) + ' mm, ' + so(M['mua_nam']['thay_doi_pt'], 1)
        + '%); lượng mưa mùa mưa giảm ' + so(-M['mua_mua']['thay_doi_pt'], 1) + '%, mưa tháng lớn nhất giảm '
@@ -510,7 +520,7 @@ def chuong4_muc46(d, body, KQ):
        + '%. Không có chuỗi nào có xu thế hoặc sai khác trị bình quân có ý nghĩa thống kê ở mức 5% (p = '
        + so(min(M[k]['mk_toan_chuoi']['p'] for k in ('mua_nam', 'mua_mua', 'mua_thang_max', 'x1max')), 2) + ' ÷ '
        + so(max(M[k]['mk_toan_chuoi']['p'] for k in ('mua_nam', 'mua_mua', 'mua_thang_max', 'x1max')), 2)
-       + '). Tuy vậy mức dao động tăng lên: C_{v} của lượng mưa năm tăng từ ' + so(M['mua_nam']['cv_truoc'], 2)
+       + ').' + xu_the + ' Tuy vậy mức dao động tăng lên: C_{v} của lượng mưa năm tăng từ ' + so(M['mua_nam']['cv_truoc'], 2)
        + ' lên ' + so(M['mua_nam']['cv_sau'], 2) + ', của X_{1max} từ ' + so(M['x1max']['cv_truoc'], 2) + ' lên '
        + so(M['x1max']['cv_sau'], 2) + '; số năm có X_{1max} > 200 mm tăng từ ' + str(dem['truoc_200']) + ' lên '
        + str(dem['sau_200']) + ' và trận mưa 1 ngày lớn nhất của cả chuỗi (280,4 mm, năm 2003) xảy ra sau khi công '
@@ -1289,6 +1299,43 @@ def tai_ket_qua(dir_tt):
 
 
 
+# =========================================================================== GÓP Ý BỔ SUNG 12/10 (tối)
+def bo_sung_doi_chieu(body):
+    """Giải thích K sau sửa chữa giảm nhẹ; chênh lệch mức bảo đảm cấp nước với QTVH; độ nhạy tổn thất thấm."""
+    p = tim_doan(body, 'Tất cả các trường hợp đều thỏa mãn; hệ số ổn định nhỏ nhất của mái hạ lưu K = 1,349')
+    them_cuoi(p, ' So với hiện trạng, hệ số ổn định sau sửa chữa giảm 0,9 ÷ 1,6% ở mọi trường hợp (Bảng 5.2) vì phần '
+                 'đắp nâng đỉnh đập (dày 0,4 ÷ 0,5 m cùng tấm bê tông mặt đập) làm tăng tải trọng ở đầu các cung trượt '
+                 'sâu, trong khi các hạng mục sửa chữa chủ yếu tác động lên lớp mặt và không thay đổi hệ thống chống thấm '
+                 '– thoát nước của thân đập; mức giảm nhỏ, mọi trường hợp vẫn lớn hơn [K] ít nhất 15% (TH5: 1,349 so với '
+                 '1,17; TH8: 1,496 so với 1,30). Hiệu quả của sửa chữa đối với ổn định thể hiện ở lớp mặt mái hạ lưu '
+                 '(K = 0,52 → 4,41) và cao trình đỉnh đập (mục 5.6, Bảng 5.7).')
+    p = tim_doan(body, 'Kết quả điều tiết (Bảng 2.2, Hình 2.1) cho thấy:')
+    thay(p, 'Mức bảo đảm do đồ án tính thấp hơn kết quả của QTVH chủ yếu do đồ án kể tổn thất thấm kt = 1%/tháng và '
+            'dùng công thức P = m/(n + 1); nếu tính theo P = m/n như QTVH thì TH1 đạt 40,9%, TH1A đạt 88,6%, TH2 đạt '
+            '84,1% – kết luận không đổi.',
+         'Mức bảo đảm do đồ án tính thấp hơn kết quả của QTVH do hai giả thiết: (i) công thức tần suất – nếu tính theo '
+         'P = m/n như QTVH thì TH1 đạt 40,9%, TH1A đạt 88,6%, TH2 đạt 84,1%; (ii) tổn thất thấm lòng hồ – nếu lấy '
+         'k_{t} = 0,5%/tháng (cận dưới ứng với địa chất lòng hồ tốt, TCVN 10778:2024 Bảng 1) thì số năm đủ nước của '
+         'TH1A và TH2 là 42/44 và 39/44, chỉ chênh 1 năm so với QTVH (41/44 và 38/44 năm, tức 93% và 86,4% theo '
+         'P = m/n). Với TH1, số năm đủ nước của đồ án (18/44) không phụ thuộc k_{t}, nên chênh lệch với QTVH (61%) '
+         'xuất phát từ khác biệt về số liệu đầu vào hoặc cách tính mà hồ sơ chưa trình bày đủ chi tiết để đối chiếu; '
+         'cả hai đều cho kết luận TH1 không đạt 85%. Phương án TH2 nằm sát ngưỡng: theo công thức (14) của TCVN '
+         '10778:2024, 38/44 năm của QTVH tương ứng 84,4% (< 85%), còn đồ án cho 82,2% với k_{t} = 1%/tháng và 86,7% '
+         'với k_{t} = 0,5%/tháng – vì vậy cần xác định tổn thất thấm từ số liệu quan trắc cân bằng nước của hồ trước '
+         'khi kết luận về nhiệm vụ mở rộng (Bảng PL7).')
+    p = tim_doan(body, 'Bổ sung khảo sát: hồ sơ hoàn công tràn chính, cống lấy nước')
+    them_cuoi(p, ' Quan trắc cân bằng nước của hồ để xác định tổn thất thấm lòng hồ (mức bảo đảm của nhiệm vụ mở rộng '
+                 'TH2 phụ thuộc giả thiết này – mục 2.2.3).')
+    cap, tbl = tim_bang(body, 'Bảng PL7')
+    r = tim_hang(tbl, 'Mức bảo đảm cấp nước')
+    them_hang(tbl, r, ['Tổn thất thấm lòng hồ k_{t} (1%/tháng)', '0,5%; 0',
+                       'TH1A: 93,3% (0,5% và 0); TH2: 86,7% (0,5%), 91,1% (0)',
+                       'TH1A luôn đạt; TH2 đạt khi k_{t} ≤ 0,5%/tháng – cần quan trắc tổn thất'])
+    ghi('Bổ sung (góp ý 12/10 tối): giải thích hệ số ổn định sau sửa chữa giảm 0,9 ÷ 1,6% (mục 5.3); phân tích chênh '
+        'lệch mức bảo đảm với QTVH theo công thức tần suất và tổn thất thấm k_t, TH2 sát ngưỡng (mục 2.2.3, Bảng PL7 '
+        'thêm dòng k_t); xu thế mưa theo độ dốc Sen (%/10 năm) toàn chuỗi và từ 2000 (mục 4.6.1).')
+
+
 # =========================================================================== GIỌNG VĂN VỚI HỒ SƠ DỰ ÁN
 def giong_van_ho_so(body):
     """So sánh với hồ sơ của đơn vị tư vấn theo hướng "cập nhật, thống nhất số liệu", không dùng từ đánh giá đúng/sai."""
@@ -1360,6 +1407,7 @@ def main(vao, ra, dir_tt):
     ket_luan(d, body, KQ)
     phu_luc(d, body, KQ)
     tai_lieu(d, body)
+    bo_sung_doi_chieu(body)
     giong_van_ho_so(body)
     d.save(ra)
     with open(os.path.splitext(ra)[0] + '_nhat_ky.txt', 'w', encoding='utf-8') as f:
