@@ -98,3 +98,13 @@ Thống nhất với phụ huynh (11/10, tối): không làm thêm bản ĐATN n
 phải kiểm soát, kiểm chứng – phiên sau chỉ giảng phương pháp, kiểm tra bảng tính của SV, hỏi thử như hội đồng; bài báo
 khoa học chỉ tính khi SV tự làm được. Góp ý "Qwen_de_xuat" (đòi khôi phục Phụ lục 6, neo, khung cống, a_gR, Bảng 8.7–8.8)
 là nhận xét nhầm sang bản 09/10 – bản 11/10 đã có đủ các phần đó.
+
+## Cập nhật 13/10/2026 (trước buổi gặp GVHD)
+- QTVH bản đầy đủ (06/2026, mục 6): đơn vị quản lý đã chia tràn chính thành 9 khoang × 2,4 m và lắp cửa van, đầu mùa lũ
+  mở hết → thuyết minh mục 1.6.2, 2.3, Bảng 4.2 (thêm trường hợp 1 – 2 cửa không mở), BV-06, slide đã sửa. Hệ số QTVH:
+  m = 0,40, ε = Σb/(Σb + Σd) = 0,82 (tỷ lệ bề rộng thông thủy); Bảng 7-5 = 0,40 × 21,6 m.
+- Tờ chốt `TAI_VE/CHOT_VOI_GVHD_13-10-2026.docx` (PDF, TXT) thay bản HTML. Việc treo chờ GVHD quyết: **vấn đề 0 – chuyên
+  đề**: đề cương nháp (Drive, chưa ký) dự kiến "thấm – ổn định mái bằng GeoStudio, đề nghị Thầy giao"; thuyết minh làm
+  Chương 8 khoan phụt (mô hình thấm PTHH Python). Phương án: PA1 giữ; PA2 thêm phụ lục đối chứng GeoStudio; PA3 đổi tên
+  chương; PA4 chuyển sang GeoStudio. Chưa có phiếu nhiệm vụ có chữ ký để đối chiếu tên chuyên đề.
+- Sau buổi gặp: SV gửi bảng V (quyết định mục 0 ÷ 17) → cập nhật `tiep_thu_gop_y_6.py` (hoặc đợt 7), bản vẽ, slide.
