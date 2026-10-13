@@ -40,12 +40,12 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 20     2.4 Kiểm tra cao trình đỉnh đập
 20     2.4.1 Công thức tính toán
 21     2.4.2 Kết quả tính toán
-22     2.5 Đánh giá an toàn thấm và ổn định đập hiện trạng
-22     2.5.1 Mặt cắt và sơ đồ tính toán
+23     2.5 Đánh giá an toàn thấm và ổn định đập hiện trạng
+23     2.5.1 Mặt cắt và sơ đồ tính toán
 23     2.5.2 Phương pháp tính thấm
 24     2.5.3 Kết quả tính thấm hiện trạng
 25     2.5.4 Phương pháp kiểm tra ổn định mái
-25     2.5.5 Kết quả kiểm tra ổn định hiện trạng
+26     2.5.5 Kết quả kiểm tra ổn định hiện trạng
 27     2.6 Đánh giá công trình tháo lũ và cống lấy nước
 27     2.7 Kết luận chương 2
 29     CHƯƠNG 3 LỰA CHỌN GIẢI PHÁP SỬA CHỮA, NÂNG CẤP
@@ -185,7 +185,7 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 21     Bảng 2.4 Kết quả tính cao trình đỉnh đập theo ba trường hợp (lũ BCNCKT)
 22     Bảng 2.5 Tổng hợp cao trình đỉnh đập yêu cầu (m)
 24     Bảng 2.6 Kết quả tính thấm mặt cắt lòng sông – hiện trạng
-25     Bảng 2.7 Kết quả kiểm tra ổn định mái đập hiện trạng (Bishop, mặt cắt lòng sông)
+26     Bảng 2.7 Kết quả kiểm tra ổn định mái đập hiện trạng (Bishop, mặt cắt lòng sông)
 27     Bảng 2.8 Tổng hợp kết quả đánh giá an toàn công trình hiện trạng
 31     Bảng 3.1 So sánh phương án bảo vệ mái hạ lưu
 34     Bảng 3.2 Tổng hợp giải pháp sửa chữa, nâng cấp được lựa chọn

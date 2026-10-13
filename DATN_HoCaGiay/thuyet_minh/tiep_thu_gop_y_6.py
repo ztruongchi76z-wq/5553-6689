@@ -120,10 +120,11 @@ def chuong1_2(body, KQ):
     # ---- 1.6.2 tràn chính: chảy tự do, không có cửa van (GPT A3)
     p = tim_doan(body, 'Tràn chính có 9 khoang × 2,4 m, ngưỡng +74,70 m')
     thay(p, 'Tràn chính có 9 khoang × 2,4 m, ngưỡng +74,70 m,',
-         'Tràn chính có 9 khoang × 2,4 m (các trụ pin đỡ cầu giao thông), ngưỡng +74,70 m, chảy tự do – không có '
-         'cửa van [1], [3], [7];')
-    ghi('Mục 1.6.2: ghi rõ tràn chính chảy tự do, không có cửa van (QTVH, BCNCKT, KTTV) – trả lời góp ý A3 '
-        '(giả thiết "9 cửa van tràn chính" của báo cáo rà soát không đúng với hồ sơ).')
+         'Tràn chính có 9 khoang × 2,4 m (các trụ pin đỡ cầu giao thông), ngưỡng +74,70 m, làm việc như đập tràn chảy '
+         'tự do khi tháo lũ (BCNCKT, báo cáo KTTV ghi hình thức “tràn tự do”; QTVH 2026 lập quan hệ Q ~ Z của tràn '
+         'chính không theo độ mở cửa van) [1], [3], [7];')
+    ghi('Mục 1.6.2: tràn chính làm việc như đập tràn chảy tự do khi tháo lũ (BCNCKT, KTTV: “tràn tự do”; QTVH lập '
+        'Q ~ Z không theo độ mở cửa) – không khẳng định có/không cửa van; chờ đối chiếu phần vận hành QTVH (góp ý A3).')
 
     # ---- Bảng 2.1: ký hiệu hệ số theo QCVN 04-05:2022, tần suất vượt kiểm tra, γc, TCVN 4116:2023
     cap, tbl = tim_bang(body, 'Bảng 2.1')
@@ -193,10 +194,14 @@ def chuong1_2(body, KQ):
     # ---- 2.3.2 độ nhạy m (GPT A4)
     mm = KQ['m']
     p = tim_doan(body, 'Đối chiếu với hồ sơ: BCNCKT 2022 tính được MNLTK = +77,43 m')
-    them_cuoi(p, ' Hệ số ε·m ≈ 0,40 (tràn chính) và 0,37 (tràn sự cố) mà QTVH dùng là tích của hệ số co hẹp và hệ số '
-                 'lưu lượng (ứng với m ≈ 0,45 khi ε ≈ 0,85 ÷ 0,9 ở cột nước lũ), không phải m = 0,40. Tuy vậy m chưa được '
+    them_cuoi(p, ' Lưu lượng xả trong bảng thông số của QTVH ứng đúng hệ số tổng hợp Q/(B·√(2g)·H^{1,5}) = 0,400 '
+                 '(tràn chính) và 0,370 (tràn sự cố) ở cả ba cấp lũ, tức không thay đổi theo cột nước, trong khi thuyết '
+                 'minh QTVH ghi hệ số lưu lượng m = 0,40 và hệ số co hẹp riêng – cần đối chiếu bảng tính gốc để biết 0,40 '
+                 'là m hay tích ε·m. Đồ án dùng m = 0,45 và ε tính theo cột nước (ε·m = 0,38 ÷ 0,40, không lớn hơn 0,40 '
+                 'của QTVH); dùng hệ số tổng hợp 0,40 / 0,37 của QTVH cho MNLKT +78,52 m, gần như trùng kết quả của đồ '
+                 'án (+78,54 m). Tuy vậy m chưa được '
                  'kiểm định bằng thí nghiệm mô hình hoặc đo lũ nên đồ án kiểm tra cả phía bất lợi: nếu m của tràn chính '
-                 'chỉ bằng 0,40 thì MNLKT = +' + so(mm['0.40'][1]) + ' m và điều kiện MNLKT + 0,3 m đòi hỏi đỉnh đập +'
+                 'chỉ bằng 0,40 và còn nhân với ε thì MNLKT = +' + so(mm['0.40'][1]) + ' m và điều kiện MNLKT + 0,3 m đòi hỏi đỉnh đập +'
                  + so(mm['0.40'][1] + 0.3) + ' m; đỉnh đập +78,85 m còn thỏa khi m ≥ ' + so(mm['m_gh'], 3)
                  + ' (Bảng PL7). Vì vậy cần nạo vét kênh dẫn để giữ điều kiện chảy tới ngưỡng như giả thiết và xác định '
                  'm bằng đo đạc quan hệ Q ~ Z khi có lũ lớn (kiến nghị).')

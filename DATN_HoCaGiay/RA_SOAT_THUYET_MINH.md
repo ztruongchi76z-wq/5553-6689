@@ -44,8 +44,7 @@ TCVN 8421:2010, TCVN 9151:2012, TCVN 4116:2023); (d) tệp "Lời tư vấn" và
 **Góp ý GPT 11/10**: tiếp thu A1, A2, A4 (làm rõ εm = ε·m; độ nhạy: đỉnh +78,85 đạt khi m ≥ 0,441), A5 ÷ A11, B1 ÷ B10
 (bất đẳng hướng kh/kv = 5 – Bảng PL10; tìm lại cung trượt bằng miền mở rộng, lưới lồng, Nelder – Mead, Spencer – Bảng PL11;
 ô rãnh theo đường chéo 5,66 m: τ = 2,23 Pa; trục vít μ = 1,0 → **02 giá đỡ dẫn hướng**, L ≤ 2 m, Kođ ≥ 2,97).
-Không tiếp thu: **A3** – giả thiết "9 cửa van tràn chính" không đúng hồ sơ (tràn chính chảy tự do, không cửa van – QTVH,
-BCNCKT, KTTV); **A12** – trang nhiệm vụ có chữ ký là việc của SV.
+**A3 – chưa chốt (13/10)**: phần đọc được của QTVH (bảng thông số: chỉ tràn sự cố ghi “cửa van phẳng”; Bảng 7-5 Q ~ Z tràn chính không theo độ mở cửa) và BCNCKT, KTTV (“tràn tự do”) cho tràn chính chảy tự do, nhưng theo SV phần vận hành QTVH nêu 9 cửa van mở hết đầu mùa lũ (bản QTVH 18 MB vượt giới hạn đọc của công cụ – cần SV mang trang này hỏi GVHD). Thuyết minh mục 1.6.2 đã viết trung tính “làm việc như đập tràn chảy tự do khi tháo lũ”. Nếu có cửa van: 1 (2) khoang không mở được cho MNLKT +78,62 (+78,70) m. Hệ số lưu lượng: Q trong QTVH ứng đúng hệ số tổng hợp 0,400 / 0,370 ở mọi cột nước; đồ án (m = 0,45·ε) cho +78,54 m, dùng 0,40 của QTVH cho +78,52 m, m = 0,40·ε cho +78,62 m – chờ đối chiếu bảng tính gốc (mục 2.3.2 đã sửa câu chữ). **A12** – trang nhiệm vụ có chữ ký là việc của SV.
 
 **Tệp "Lời tư vấn" (12/10)**: hồ sơ dự án (BCNCKT mục 4.1.1, TKCS 1.2.3, báo cáo KTTV 1.1.9, QTVH 2026) đều xác định
 cấp II, lũ 1 % / 0,2 % (QTVH thêm 0,1 %) – phù hợp QCVN 04-05; cấp III / IV là cấp cũ theo TCVN 5060-90, còn 1,5 % / 0,5 %
