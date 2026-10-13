@@ -37,9 +37,9 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 17     2.3 Tính toán điều tiết lũ với công trình tháo lũ hiện trạng
 17     2.3.1 Nguyên lý và phương pháp
 18     2.3.2 Kết quả điều tiết lũ
-20     2.4 Kiểm tra cao trình đỉnh đập
-20     2.4.1 Công thức tính toán
-21     2.4.2 Kết quả tính toán
+21     2.4 Kiểm tra cao trình đỉnh đập
+21     2.4.1 Công thức tính toán
+22     2.4.2 Kết quả tính toán
 23     2.5 Đánh giá an toàn thấm và ổn định đập hiện trạng
 23     2.5.1 Mặt cắt và sơ đồ tính toán
 23     2.5.2 Phương pháp tính thấm
@@ -64,7 +64,7 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 36     4.1 Tính toán điều tiết lũ thiết kế
 37     4.2 Tính toán thủy lực tràn chính
 37     4.2.1 Khả năng tháo qua ngưỡng
-37     4.2.2 Nối tiếp sau ngưỡng – độ sâu co hẹp
+38     4.2.2 Nối tiếp sau ngưỡng – độ sâu co hẹp
 38     4.2.3 Đường mặt nước trên dốc nước
 39     4.2.4 Tiêu năng mũi phun
 40     4.3 Tính toán thủy lực tràn sự cố
@@ -182,7 +182,7 @@ xiii   DANH MỤC CÁC TỪ VIẾT TẮT VÀ GIẢI THÍCH CÁC THUẬT NGỮ
 13     Bảng 2.1 Các chỉ tiêu thiết kế áp dụng cho công trình cấp II
 15     Bảng 2.2 Kết quả điều tiết toàn chuỗi 44 năm hồ Cà Giây (MNDBT +74,70 m; MNC +67,50 m)
 18     Bảng 2.3 Kết quả điều tiết lũ với tràn hiện trạng (tràn chính 9 × 2,4 m; tràn sự cố 5 m)
-21     Bảng 2.4 Kết quả tính cao trình đỉnh đập theo ba trường hợp (lũ BCNCKT)
+22     Bảng 2.4 Kết quả tính cao trình đỉnh đập theo ba trường hợp (lũ BCNCKT)
 22     Bảng 2.5 Tổng hợp cao trình đỉnh đập yêu cầu (m)
 24     Bảng 2.6 Kết quả tính thấm mặt cắt lòng sông – hiện trạng
 26     Bảng 2.7 Kết quả kiểm tra ổn định mái đập hiện trạng (Bishop, mặt cắt lòng sông)

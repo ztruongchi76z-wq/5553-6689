@@ -120,11 +120,12 @@ def chuong1_2(body, KQ):
     # ---- 1.6.2 tràn chính: chảy tự do, không có cửa van (GPT A3)
     p = tim_doan(body, 'Tràn chính có 9 khoang × 2,4 m, ngưỡng +74,70 m')
     thay(p, 'Tràn chính có 9 khoang × 2,4 m, ngưỡng +74,70 m,',
-         'Tràn chính có 9 khoang × 2,4 m (các trụ pin đỡ cầu giao thông), ngưỡng +74,70 m, làm việc như đập tràn chảy '
-         'tự do khi tháo lũ (BCNCKT, báo cáo KTTV ghi hình thức “tràn tự do”; QTVH 2026 lập quan hệ Q ~ Z của tràn '
-         'chính không theo độ mở cửa van) [1], [3], [7];')
-    ghi('Mục 1.6.2: tràn chính làm việc như đập tràn chảy tự do khi tháo lũ (BCNCKT, KTTV: “tràn tự do”; QTVH lập '
-        'Q ~ Z không theo độ mở cửa) – không khẳng định có/không cửa van; chờ đối chiếu phần vận hành QTVH (góp ý A3).')
+         'Tràn chính có 9 khoang × 2,4 m (mố trụ dày 0,6 m), ngưỡng +74,70 m: theo thiết kế ban đầu tràn rộng 25 m, '
+         '3 khoang chảy tự do [3], [7]; đơn vị quản lý đã chia thành 9 khoang và lắp cửa van để tích thêm nước cuối mùa '
+         'lũ phục vụ tưới, đầu mùa lũ toàn bộ cửa van được mở hoàn toàn để xả lũ [1], nên khi tháo lũ tràn chính làm '
+         'việc như đập tràn chảy tự do với điều kiện 9 cửa mở hết, không bị cản trở;')
+    ghi('Mục 1.6.2: tràn chính có 9 cửa van do đơn vị quản lý lắp để tích nước cuối mùa lũ, mở hoàn toàn đầu mùa lũ '
+        '(QTVH mục 6.x); khi tháo lũ chảy tự do với điều kiện 9 cửa mở hết (tiếp thu góp ý A3).')
 
     # ---- Bảng 2.1: ký hiệu hệ số theo QCVN 04-05:2022, tần suất vượt kiểm tra, γc, TCVN 4116:2023
     cap, tbl = tim_bang(body, 'Bảng 2.1')
@@ -194,14 +195,14 @@ def chuong1_2(body, KQ):
     # ---- 2.3.2 độ nhạy m (GPT A4)
     mm = KQ['m']
     p = tim_doan(body, 'Đối chiếu với hồ sơ: BCNCKT 2022 tính được MNLTK = +77,43 m')
-    them_cuoi(p, ' Lưu lượng xả trong bảng thông số của QTVH ứng đúng hệ số tổng hợp Q/(B·√(2g)·H^{1,5}) = 0,400 '
-                 '(tràn chính) và 0,370 (tràn sự cố) ở cả ba cấp lũ, tức không thay đổi theo cột nước, trong khi thuyết '
-                 'minh QTVH ghi hệ số lưu lượng m = 0,40 và hệ số co hẹp riêng – cần đối chiếu bảng tính gốc để biết 0,40 '
-                 'là m hay tích ε·m. Đồ án dùng m = 0,45 và ε tính theo cột nước (ε·m = 0,38 ÷ 0,40, không lớn hơn 0,40 '
-                 'của QTVH); dùng hệ số tổng hợp 0,40 / 0,37 của QTVH cho MNLKT +78,52 m, gần như trùng kết quả của đồ '
-                 'án (+78,54 m). Tuy vậy m chưa được '
-                 'kiểm định bằng thí nghiệm mô hình hoặc đo lũ nên đồ án kiểm tra cả phía bất lợi: nếu m của tràn chính '
-                 'chỉ bằng 0,40 và còn nhân với ε thì MNLKT = +' + so(mm['0.40'][1]) + ' m và điều kiện MNLKT + 0,3 m đòi hỏi đỉnh đập +'
+    them_cuoi(p, ' QTVH lấy m = 0,40 (TCVN 9147:2012 mục 7.6) và ε = Σb/(Σb + Σd) = 21,6/(21,6 + 8 × 0,6) = 0,82 – '
+                 'tỷ lệ bề rộng thông thủy trên tổng bề rộng, không phải hệ số co hẹp bên theo hình dạng mố; lưu lượng '
+                 'trong bảng quan hệ Q ~ Z của QTVH ứng đúng 0,40 × bề rộng thông thủy 21,6 m (Q/(B·√(2g)·H^{1,5}) = '
+                 '0,400 ở mọi cột nước; tràn sự cố 0,370), tức chưa kể co hẹp bên do 8 mố trụ. Đồ án dùng m = 0,45 và '
+                 'hệ số co hẹp bên theo hình dạng mố (ε = 0,85 ÷ 0,88 ở cột nước lũ, ε·m = 0,38 ÷ 0,40): dùng hệ số 0,40 '
+                 '/ 0,37 như QTVH cho MNLKT +78,52 m, gần như trùng kết quả của đồ án (+78,54 m). Tuy vậy m chưa được '
+                 'kiểm định bằng thí nghiệm mô hình hoặc đo lũ nên đồ án kiểm tra cả phía bất lợi: nếu lấy m = 0,40 '
+                 'của QTVH và nhân thêm hệ số co hẹp bên do mố trụ thì MNLKT = +' + so(mm['0.40'][1]) + ' m và điều kiện MNLKT + 0,3 m đòi hỏi đỉnh đập +'
                  + so(mm['0.40'][1] + 0.3) + ' m; đỉnh đập +78,85 m còn thỏa khi m ≥ ' + so(mm['m_gh'], 3)
                  + ' (Bảng PL7). Vì vậy cần nạo vét kênh dẫn để giữ điều kiện chảy tới ngưỡng như giả thiết và xác định '
                  'm bằng đo đạc quan hệ Q ~ Z khi có lũ lớn (kiến nghị).')
@@ -959,7 +960,8 @@ def chuong7(d, body, KQ):
             'tra cửa van và nguồn điện trước mùa lũ;',
          'Cập nhật quy trình vận hành: quy định rõ thao tác mở cửa van tràn sự cố khi mực nước hồ vượt MNDBT, kiểm '
          'tra cửa van và nguồn điện trước mùa lũ; xả trước qua tràn sự cố khi có dự báo mưa lớn diện rộng trên lưu vực '
-         '(mục 4.6.2); kiểm tra, dọn vật cản ở 9 khoang tràn chính và kênh dẫn trước mùa lũ; ưu tiên cấp nước sinh hoạt '
+         '(mục 4.6.2); kiểm tra, mở hết 9 cửa van tràn chính, dọn vật cản ở các khoang tràn và kênh dẫn trước mùa lũ, '
+         'không giữ cửa đóng để tích nước khi có dự báo lũ; ưu tiên cấp nước sinh hoạt '
          'khi thiếu nước (mục 2.2.3);')
     ghi('Mục 7.2 ÷ 7.5: neo – định tâm, lớp vữa ≥ 25 mm, đầu neo trám vữa W8, thử 100 kN ≈ %s lần; dự phòng lún %s m '
         'trong ngưỡng cảnh báo lún; Bảng 7.3 thêm 2 giếng mang tràn và cập nhật thủy văn; quy trình vận hành thêm xả '
@@ -1304,6 +1306,35 @@ def tai_ket_qua(dir_tt):
 
 
 
+# =========================================================================== CỬA VAN TRÀN CHÍNH (13/10)
+def cua_van_tran_chinh(body):
+    """Tràn chính có 9 cửa van (QTVH): giả thiết mở hết; trường hợp 1 ÷ 2 cửa không mở được; kiểm tra trước mùa lũ."""
+    p = tim_doan(body, 'Kết quả điều tiết lũ cho trong Bảng 2.3')
+    them_cuoi(p, ' Các kết quả trên giả thiết 9 cửa van tràn chính được mở hết từ đầu mùa lũ như QTVH quy định. Nếu có '
+                 'cửa không mở được (kẹt, mất điện, vật cản), bề rộng tràn chính giảm còn 19,2 m (1 cửa) hoặc 16,8 m '
+                 '(2 cửa): với lũ thiết kế MNLTK = +77,69 m (+77,75 m), với lũ kiểm tra MNLKT = +78,62 m (+78,70 m) – '
+                 'cao hơn điều kiện MNLKT + 0,3 m ≤ +78,85 m 0,07 ÷ 0,15 m nhưng vẫn thấp hơn đỉnh đập; các trường hợp '
+                 'này được phân loại cùng các tình huống kẹt van ở Bảng 4.2.')
+    cap, tbl = tim_bang(body, 'Bảng 4.2')
+    r = tim_hang(tbl, 'P = 1% + kẹt van tràn sự cố')
+    rr = them_hang(tbl, r, ['P = 1%, 1 (2) cửa van tràn chính không mở', '+77,69 (+77,75)', 'thấp hơn 1,16 (1,10) m',
+                            'thấp hơn 1,71 (1,65) m', 'Tổ hợp đặc biệt (CHÚ THÍCH điều 2.6.3.10)',
+                            'Đỉnh đập ≥ Zmax + 0,3 m: đạt (dư 0,86 / 0,80 m)'])
+    r = tim_hang(tbl, 'P = 0,2% + kẹt van (BCNCKT / QTVH)')
+    them_hang(tbl, r, ['P = 0,2%, 1 (2) cửa van tràn chính không mở', '+78,62 (+78,70)', 'thấp hơn 0,23 (0,15) m',
+                       'thấp hơn 0,78 (0,70) m', 'Ngoài các trường hợp bắt buộc (điều 2.6.3.10b) – đánh giá rủi ro',
+                       'Không tràn đỉnh; mở hết, kiểm tra 9 cửa trước mùa lũ (QTVH)'])
+    p = tim_doan(body, 'Bổ sung vào quy trình vận hành: kiểm tra cửa van tràn sự cố')
+    thay(p, 'Bổ sung vào quy trình vận hành: kiểm tra cửa van tràn sự cố và nguồn điện dự phòng trước mùa lũ;',
+         'Bổ sung vào quy trình vận hành: kiểm tra cửa van tràn sự cố và nguồn điện dự phòng trước mùa lũ; kiểm tra, '
+         'mở hết 9 cửa van tràn chính trước mùa lũ và không giữ cửa đóng để tích nước khi có dự báo lũ;')
+    p = tim_doan(body, 'Tràn chính đủ khả năng tháo, tường bên dốc nước đủ cao')
+    thay(p, 'Tràn chính đủ khả năng tháo,', 'Tràn chính (9 khoang có cửa van, mở hết trong mùa lũ) đủ khả năng tháo,')
+    ghi('Tràn chính có 9 cửa van (QTVH): mục 2.3 thêm trường hợp 1 ÷ 2 cửa không mở được (MNLTK +77,69 ÷ +77,75; '
+        'MNLKT +78,62 ÷ +78,70 m), Bảng 4.2 thêm 2 dòng; kiến nghị quy trình vận hành kiểm tra, mở hết 9 cửa trước mùa lũ; '
+        'mục 2.3.2: hệ số lưu lượng theo đúng QTVH (m = 0,40; ε = Σb/(Σb + Σd) = 0,82 – tỷ lệ bề rộng thông thủy).')
+
+
 # =========================================================================== GÓP Ý BỔ SUNG 12/10 (tối)
 def bo_sung_doi_chieu(body):
     """Giải thích K sau sửa chữa giảm nhẹ; chênh lệch mức bảo đảm cấp nước với QTVH; độ nhạy tổn thất thấm."""
@@ -1413,6 +1444,7 @@ def main(vao, ra, dir_tt):
     phu_luc(d, body, KQ)
     tai_lieu(d, body)
     bo_sung_doi_chieu(body)
+    cua_van_tran_chinh(body)
     giong_van_ho_so(body)
     d.save(ra)
     with open(os.path.splitext(ra)[0] + '_nhat_ky.txt', 'w', encoding='utf-8') as f:

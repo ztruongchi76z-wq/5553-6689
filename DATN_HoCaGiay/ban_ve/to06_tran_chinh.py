@@ -392,8 +392,9 @@ def cac_bang(to):
 
 def ghi_chu(to, x, y):
     gc = ('GHI CHÚ: \\P'
-          '1. Cao trình ghi bằng m, kích thước ghi bằng cm. Hình học tràn theo hồ sơ hiện trạng: 9 khoang × 2,4 m, ngưỡng '
-          'thực dụng +74,70 chảy tự do, dốc nước dài 60 m, i = 0,08, thu hẹp 31 → 18 m trên 20 m đầu, tiêu năng mũi phun. '
+          '1. Cao trình ghi bằng m, kích thước ghi bằng cm. Hình học tràn theo hồ sơ hiện trạng: 9 khoang × 2,4 m (mố trụ '
+          '0,6 m; cửa van do đơn vị quản lý lắp để tích nước cuối mùa lũ, mở hết từ đầu mùa lũ – QTVH), ngưỡng thực dụng '
+          '+74,70 chảy tự do khi mở hết cửa, dốc nước dài 60 m, i = 0,08, thu hẹp 31 → 18 m trên 20 m đầu, tiêu năng mũi phun. '
           'Bản đáy, tường, mũi phun vẽ sơ đồ; kích thước ghi "giả thiết" phải đối chiếu hồ sơ hoàn công. \\P'
           '2. Kết cấu ngưỡng, trụ pin, tường bên, cầu giao thông còn tốt – giữ nguyên. Độ vượt cao tường bên nhỏ nhất '
           '0,73 m (x = 20 m, lũ kiểm tra) ≥ 0,5 m: không nâng tường. \\P'
