@@ -1,0 +1,235 @@
+module.exports = {
+  bai: 8,
+  ten: 'THƯ ĐIỆN TỬ',
+  tenNgan: 'Thư điện tử',
+  chuDe: 'CHỦ ĐỀ 3: TỔ CHỨC LƯU TRỮ, TÌM KIẾM VÀ TRAO ĐỔI THÔNG TIN',
+  tiet: [17],
+  nam: 2026,
+  nls: [{
+    ma: '2.2.TC1a',
+    mota: 'Chia sẻ, cộng tác số; ghi chú và tham chiếu nguồn đầy đủ.',
+    bieuHien: 'HS soạn và gửi được thư điện tử có tệp đính kèm để chia sẻ tài liệu, phối hợp làm bài với bạn và thầy cô (gửi cho nhiều người, trả lời, góp ý qua thư); thư có tiêu đề rõ ràng, lời lẽ lịch sự và ghi chú nguồn của tài liệu, hình ảnh đính kèm (tự soạn, tự chụp hay lấy từ trang web nào).',
+  }],
+  kienThuc: [
+    'Biết thư điện tử là gì; biết ưu điểm, nhược điểm cơ bản của dịch vụ thư điện tử so với các phương thức liên lạc khác.',
+    'Biết tài khoản thư điện tử, hộp thư điện tử, các thành phần của địa chỉ thư điện tử.',
+    'Biết cách đăng kí tài khoản thư điện tử; thực hiện được việc đăng nhập, soạn, gửi thư, đăng xuất hộp thư điện tử.',
+  ],
+  nlChung: [
+    '**Tự chủ và tự học:** tự đọc SGK, tìm hiểu thư điện tử, dịch vụ thư điện tử.',
+    '**Giao tiếp và hợp tác:** trao đổi, góp ý cho nhau qua thư điện tử; phối hợp làm bài nhóm.',
+    '**Giải quyết vấn đề và sáng tạo:** nhận diện thư rác, xử lí phù hợp.',
+  ],
+  nlTinHoc: [
+    '**NLa:** Sử dụng trình duyệt và dịch vụ thư điện tử: đăng nhập, soạn, gửi, đọc, trả lời thư, đăng xuất.',
+    '**NLb:** Ứng xử văn minh, lịch sự khi giao tiếp qua thư điện tử; bảo vệ tài khoản.',
+    '**NLe:** Sử dụng thư điện tử để trao đổi, hợp tác trong học tập.',
+  ],
+  phamChat: [
+    '**Trung thực:** ghi rõ nguồn tài liệu đính kèm; không mạo danh người khác.',
+    '**Trách nhiệm:** bảo vệ mật khẩu, đăng xuất sau khi dùng; phản hồi thư đúng hạn.',
+  ],
+  gv: [
+    'Phòng máy có kết nối Internet, ti vi (máy chiếu), SGK, kế hoạch bài dạy.',
+    'Tài khoản thư điện tử dùng cho học tập do GV/nhà trường chuẩn bị sẵn cho các nhóm (HS chưa đủ tuổi tự đăng kí tài khoản; việc đăng kí tài khoản cá nhân thực hiện ở nhà với sự đồng ý, hỗ trợ của cha mẹ).',
+    'Tệp ảnh, tệp văn bản mẫu để đính kèm; bảng tiêu chí đánh giá thư (Phụ lục).',
+  ],
+  hs: ['SGK, vở ghi; thực hành theo nhóm 2 HS/máy.'],
+  hoatDong: [
+    {
+      ten: 'Hoạt động 1: Mở đầu',
+      tg: '4 phút',
+      mucTieu: 'Tạo hứng thú; biết các phương thức gửi thư từ xưa đến nay.',
+      noiDung: 'Ba hình ảnh (SGK): chim bồ câu đưa thư; gửi thư qua bưu điện; gửi thư bằng máy tính có kết nối mạng.',
+      sanPham: 'Câu trả lời của HS.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Chiếu 3 hình ảnh, hỏi: *Có những phương thức gửi thư nào? Ngày nay phương thức nào phổ biến nhất?*',
+          '#Bước 2 – 3. Thực hiện, báo cáo',
+          'HS: Quan sát, trả lời.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Dẫn dắt vào bài.',
+        ],
+        right: ['- Bồ câu đưa thư; gửi qua bưu điện; gửi thư điện tử – phổ biến nhất hiện nay.'],
+      }],
+    },
+    {
+      group: 'Hoạt động 2: Hình thành kiến thức mới',
+      ten: 'Hoạt động 2.1: Thư điện tử – tài khoản, địa chỉ thư điện tử',
+      tg: '9 phút',
+      mucTieu: 'Biết thư điện tử, dịch vụ thư điện tử, tài khoản, hộp thư và các thành phần của địa chỉ thư điện tử.',
+      noiDung: 'Câu hỏi thảo luận; phân tích địa chỉ thư điện tử (Hình 3.9 – SGK).',
+      sanPham: 'Khái niệm; cấu trúc địa chỉ thư điện tử.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Hỏi: *Câu 1. Gửi thư qua bưu điện cần những gì, mất bao lâu? Câu 2. Thư điện tử là gì? Dịch vụ thư điện tử cung cấp những chức năng gì? Câu 3. Quan sát Hình 3.9, địa chỉ thư điện tử gồm những phần nào?*',
+          '#Bước 2. Thực hiện nhiệm vụ',
+          'HS: Thảo luận cặp đôi.',
+          '#Bước 3. Báo cáo, thảo luận',
+          'HS: Trả lời; HS khác bổ sung.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Chốt kiến thức.',
+        ],
+        right: [
+          '**I. THƯ ĐIỆN TỬ**',
+          '- Thư điện tử là thư được gửi và nhận bằng phương tiện điện tử qua mạng Internet.',
+          '- Dịch vụ thư điện tử cung cấp các chức năng soạn, gửi, nhận, chuyển tiếp, lưu trữ, quản lí thư.',
+          '- Người dùng có tài khoản (gồm địa chỉ thư và mật khẩu) để sử dụng hộp thư điện tử.',
+          '- Địa chỉ thư điện tử: <tên đăng nhập>@<địa chỉ máy chủ thư điện tử>; mỗi địa chỉ là duy nhất trên toàn cầu.',
+        ],
+      }],
+    },
+    {
+      ten: 'Hoạt động 2.2: Ưu điểm và nhược điểm của dịch vụ thư điện tử',
+      tg: '6 phút',
+      mucTieu: 'Biết ưu điểm và nhược điểm cơ bản của dịch vụ thư điện tử so với các phương thức liên lạc khác.',
+      noiDung: 'Trò chơi "Tiếp sức": 2 đội lần lượt ghi ưu điểm, nhược điểm của thư điện tử so với thư truyền thống (3 phút).',
+      sanPham: 'Bảng so sánh.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Phổ biến luật chơi tiếp sức.',
+          '#Bước 2 – 3. Thực hiện, báo cáo',
+          'HS: Hai đội thi ghi lên bảng; cả lớp nhận xét.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Chốt kiến thức, tuyên dương đội thắng.',
+        ],
+        right: [
+          '**II. ƯU ĐIỂM VÀ NHƯỢC ĐIỂM**',
+          { table: {
+            cols: [26, 37, 37],
+            header: ['Tiêu chí', 'Thư truyền thống', 'Thư điện tử'],
+            rows: [['Phương tiện', 'Chuyển tay, xe, tàu, máy bay…', 'Internet'], ['Thời gian', 'Mất nhiều thời gian', 'Gần như tức thời'], ['Chi phí', 'Tốn kém', 'Chi phí thấp']],
+          } },
+          '- Ưu điểm: nhanh, rẻ, gửi cho nhiều người cùng lúc, đính kèm được tệp.',
+          '- Nhược điểm: phải có kết nối Internet; có thể gặp thư rác, thư lừa đảo, virus; có thể bị lộ thông tin nếu không bảo vệ tài khoản.',
+        ],
+      }],
+    },
+    {
+      ten: 'Hoạt động 3: Thực hành – Đăng nhập, soạn và gửi thư có tệp đính kèm, phối hợp với bạn qua thư',
+      tg: '18 phút',
+      tags: ['NLS 2.2.TC1a'],
+      mucTieu: [
+        'Biết cách đăng kí tài khoản thư điện tử; thực hiện được việc đăng nhập, soạn, gửi, đọc thư, đăng xuất.',
+        '[NLS 2.2.TC1a] Soạn, gửi thư điện tử có tệp đính kèm để chia sẻ tài liệu, phối hợp trong học tập; ghi chú nguồn tài liệu đính kèm.',
+      ],
+      noiDung: 'GV làm mẫu các bước đăng kí tài khoản; các nhóm dùng tài khoản học tập được cấp để đăng nhập, soạn thư gửi GV và nhóm bạn (có tệp đính kèm, ghi nguồn), đọc và trả lời thư góp ý, đăng xuất.',
+      sanPham: 'Thư điện tử đã gửi, thư trả lời góp ý trong hộp thư của các nhóm.',
+      rows: [
+        {
+          left: [
+            '#Bước 1. Chuyển giao nhiệm vụ 1',
+            'GV: Làm mẫu trên ti vi các bước đăng kí tài khoản thư điện tử (không lưu); nhấn mạnh: HS dưới 13 tuổi đăng kí tài khoản cá nhân phải có sự đồng ý, hỗ trợ của cha mẹ; đặt mật khẩu mạnh, không chia sẻ mật khẩu. Phát tài khoản học tập cho các nhóm.',
+            '#Bước 2. Thực hiện nhiệm vụ',
+            'HS: Quan sát; đăng nhập tài khoản được cấp; mở hộp thư, xem thư chào mừng GV đã gửi.',
+          ],
+          right: [
+            '**III. THỰC HÀNH**',
+            '- Đăng kí: truy cập trang dịch vụ thư (ví dụ Gmail) → Tạo tài khoản → nhập thông tin (tên đăng nhập, mật khẩu…) → xác minh → hoàn tất.',
+            '- Đăng nhập: nhập tên đăng nhập, mật khẩu. Xem thư: nháy vào tên người gửi hoặc tiêu đề thư. Đăng xuất: nháy biểu tượng tài khoản → Đăng xuất.',
+          ],
+        },
+        {
+          left: [
+            '#Bước 1. Chuyển giao nhiệm vụ 2',
+            '[NLS 2.2.TC1a] GV: Giao nhiệm vụ cộng tác: mỗi nhóm soạn thư gửi đồng thời cho GV và một nhóm bạn: tiêu đề "Nhóm … – Bài 8 – Ảnh hoạt động lớp"; nội dung lịch sự (chào hỏi, nội dung chính, lời cảm ơn, kí tên); đính kèm 1 tệp ảnh hoặc văn bản; cuối thư ghi "Nguồn tệp đính kèm: …" (tự chụp/tự soạn hay địa chỉ trang web). Nhóm nhận thư phải trả lời (Reply) góp ý 1 điểm tốt, 1 điểm cần sửa.',
+            '#Bước 2. Thực hiện nhiệm vụ',
+            '[NLS 2.2.TC1a] HS: Nháy Soạn thư → nhập địa chỉ người nhận (nhiều địa chỉ) → tiêu đề → nội dung → đính kèm tệp → ghi nguồn → Gửi; đọc thư nhóm bạn gửi đến, trả lời góp ý; đăng xuất khi xong.',
+            'GV: Quan sát, hỗ trợ; kiểm tra hộp thư GV để theo dõi các nhóm đã gửi.',
+            '#Bước 3. Báo cáo, thảo luận',
+            'HS: 2 nhóm trình chiếu thư đã gửi và thư góp ý nhận được.',
+            '#Bước 4. Kết luận, nhận định',
+            '[NLS 2.2.TC1a] GV: Đánh giá thư theo bảng tiêu chí (Phụ lục), nhấn mạnh việc ghi nguồn khi chia sẻ tài liệu và trả lời góp ý lịch sự; nhắc đăng xuất khi dùng máy chung.',
+          ],
+          right: [
+            '- Soạn thư: Soạn thư → Người nhận → Tiêu đề → Nội dung → Đính kèm tệp (biểu tượng kẹp giấy) → Gửi.',
+            '[NLS 2.2.TC1a] Kết quả: Hộp thư GV nhận đủ thư của các nhóm: tiêu đề đúng quy định, nội dung lịch sự, có tệp đính kèm và dòng ghi nguồn; mỗi nhóm có ít nhất 1 thư trả lời góp ý cho nhóm bạn.',
+          ],
+        },
+      ],
+    },
+    {
+      ten: 'Hoạt động 4: Luyện tập – Trò chơi "Ai nhanh, ai đúng"',
+      tg: '4 phút',
+      mucTieu: 'Củng cố kiến thức về thư điện tử.',
+      noiDung: 'Câu 1. Thư điện tử có hạn chế nào so với các phương thức gửi thư khác? (A. Không gửi được cho nhiều người; B. Thời gian gửi lâu; C. Phải phòng tránh virus, thư rác; D. Chi phí thấp). Câu 2. Một người có thể có nhiều tài khoản thư điện tử không? Câu 3. Khi tạo tài khoản thư điện tử, em không cần khai báo gì? (A. Họ và tên; B. Ngày sinh; C. Địa chỉ nhà; D. Hộp thư của phụ huynh). Câu 4. Địa chỉ nào là địa chỉ thư điện tử? (A. www.nxbgd.vn; B. thu_hoai.432@yahoo.com; C. Hoangth&hotmail.com; D. Hoa675439@gf@gmail.com).',
+      sanPham: 'Đáp án đúng.',
+      rows: [{
+        left: ['#Bước 1 – 3. Giao nhiệm vụ, thực hiện, báo cáo', 'GV: Chiếu câu hỏi; HS trả lời đúng được cộng điểm.', 'HS: Giơ tay trả lời.', '#Bước 4. Kết luận, nhận định', 'GV: Chốt đáp án.'],
+        right: ['Đáp án: 1 – C; 2 – Có (mỗi tài khoản có một địa chỉ riêng, không trùng nhau); 3 – C; 4 – B.'],
+      }],
+    },
+    {
+      ten: 'Hoạt động 5: Vận dụng',
+      tg: '4 phút giao nhiệm vụ; thực hiện ở nhà',
+      tags: ['NLS 2.2.TC1a'],
+      mucTieu: [
+        'Vận dụng để nhận diện thư rác và sử dụng thư điện tử trong học tập, đời sống.',
+        '[NLS 2.2.TC1a] Phối hợp làm bài nhóm qua thư điện tử; chia sẻ tài liệu có ghi chú nguồn đầy đủ.',
+      ],
+      noiDung: 'Bài 1. Thư nào có thể là thư rác: A. Cơ hội đầu tư kiếm nhiều tiền; B. Danh sách HS thi học sinh giỏi Tin học; C. Quà tặng miễn phí, hãy nháy chuột nhanh; D. Bạn đã trúng chuyến đi miễn phí đến Mỹ; E. Ảnh tập thể lớp 6A ngày khai trường; F. Khuyến mãi, ưu đãi giá rẻ cho bạn. Bài 2. Mỗi thành viên gửi phần việc của mình (ảnh, đoạn văn) cho nhóm trưởng qua thư; nhóm trưởng tổng hợp, gửi GV (cùng cha mẹ thực hiện ở nhà).',
+      sanPham: 'Đáp án Bài 1; chuỗi thư phối hợp của nhóm.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Hỏi nhanh Bài 1 tại lớp.',
+          '[NLS 2.2.TC1a] GV: Giao Bài 2 về nhà: thư của mỗi thành viên có tiêu đề rõ ràng, tệp đính kèm và ghi nguồn; nhóm trưởng gửi thư tổng hợp cho GV, đồng gửi (Cc) các thành viên.',
+          '#Bước 2. Thực hiện nhiệm vụ',
+          'HS: Trả lời Bài 1; thực hiện Bài 2 ở nhà với sự hỗ trợ của cha mẹ.',
+          '#Bước 3. Báo cáo, thảo luận',
+          'HS: GV nhận thư tổng hợp của các nhóm trước tiết học sau.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Nhận xét Bài 1; nhắc không mở thư rác, không nháy vào liên kết trong thư lạ.',
+        ],
+        right: [
+          'Bài 1: A, C, D, F có thể là thư rác.',
+          '[NLS 2.2.TC1a] Kết quả: Mỗi nhóm có chuỗi thư phối hợp: thư của thành viên (có tệp, ghi nguồn) → thư tổng hợp của nhóm trưởng gửi GV, đồng gửi các thành viên.',
+        ],
+      }],
+    },
+  ],
+  huongDan: [
+    'Hoàn thành Bài 2 phần Vận dụng; luôn đăng xuất khi dùng máy tính chung.',
+    'Ôn tập Chủ đề 1, 2, 3 chuẩn bị kiểm tra cuối học kì I (Tiết 18).',
+  ],
+  tongHop: [
+    {
+      hd: 'HĐ 3. Thực hành gửi thư, phối hợp qua thư',
+      ma: ['NLS 2.2.TC1a'],
+      gv: 'Cấp tài khoản học tập; giao gửi thư cho GV và nhóm bạn có tệp đính kèm, ghi nguồn; yêu cầu trả lời góp ý; đánh giá theo tiêu chí.',
+      hs: 'Soạn thư, gửi nhiều người, đính kèm tệp, ghi nguồn; trả lời góp ý; đăng xuất.',
+      kq: 'Thư đúng tiêu đề, lịch sự, có tệp và dòng ghi nguồn; có thư góp ý cho nhóm bạn.',
+    },
+    {
+      hd: 'HĐ 5. Vận dụng',
+      ma: ['NLS 2.2.TC1a'],
+      gv: 'Giao phối hợp làm bài nhóm qua thư (thành viên → nhóm trưởng → GV).',
+      hs: 'Gửi phần việc có ghi nguồn; nhóm trưởng tổng hợp, gửi GV, Cc thành viên.',
+      kq: 'Chuỗi thư phối hợp đầy đủ của mỗi nhóm.',
+    },
+  ],
+  phuLuc: [
+    {
+      ten: 'BẢNG TIÊU CHÍ ĐÁNH GIÁ THƯ ĐIỆN TỬ [NLS 2.2.TC1a]',
+      noiDung: [
+        { table: {
+          cols: [8, 62, 15, 15],
+          header: ['TT', 'Tiêu chí', 'Điểm tối đa', 'Điểm đạt'],
+          center: [0, 2],
+          rows: [
+            ['1', 'Đăng nhập, soạn thư mới đúng thao tác; đăng xuất sau khi dùng.', '1', ''],
+            ['2', 'Địa chỉ người nhận đúng (GV và nhóm bạn).', '1', ''],
+            ['3', 'Tiêu đề đúng quy định, rõ nội dung.', '1', ''],
+            ['4', 'Nội dung đúng chính tả, lời lẽ lịch sự (chào hỏi, cảm ơn, kí tên).', '3', ''],
+            ['5', 'Có tệp đính kèm phù hợp.', '2', ''],
+            ['6', 'Có dòng ghi nguồn tệp đính kèm.', '1', ''],
+            ['7', 'Trả lời góp ý cho nhóm bạn lịch sự, cụ thể.', '1', ''],
+          ],
+        } },
+      ],
+    },
+  ],
+};

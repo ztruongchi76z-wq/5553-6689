@@ -1,0 +1,218 @@
+module.exports = {
+  bai: 13,
+  ten: 'THỰC HÀNH: TÌM KIẾM VÀ THAY THẾ',
+  tenNgan: 'Thực hành tìm kiếm và thay thế',
+  chuDe: 'CHỦ ĐỀ 5: ỨNG DỤNG TIN HỌC',
+  tiet: [26],
+  nam: 2027,
+  nls: [{
+    ma: '3.2.TC1a',
+    mota: 'Sử dụng công cụ tìm kiếm, thay thế để tinh chỉnh nội dung văn bản.',
+    bieuHien: 'HS dùng lệnh Find để tìm nhanh và đếm số lần xuất hiện của từ, cụm từ; dùng Replace/Replace All để sửa các lỗi lặp lại, tạo văn bản mới từ văn bản có sẵn (đổi công thức làm kem, sửa lỗi chính tả trong bài thơ "Đi cấy"); lưu bản mới bằng Save As để giữ bản gốc và kiểm tra lại văn bản sau khi thay thế.',
+  }],
+  kienThuc: [
+    'Trình bày được tác dụng của công cụ tìm kiếm, thay thế trong phần mềm soạn thảo văn bản.',
+    'Sử dụng được công cụ tìm kiếm và thay thế của phần mềm soạn thảo văn bản.',
+  ],
+  nlChung: [
+    '**Tự chủ và tự học:** chủ động thực hiện nhiệm vụ; vận dụng kĩ năng soạn thảo đã học vào yêu cầu mới.',
+    '**Giao tiếp và hợp tác:** phối hợp với bạn cùng máy, chia sẻ cách làm nhanh.',
+    '**Giải quyết vấn đề và sáng tạo:** chọn cách thay thế phù hợp (từng chỗ hay tất cả) để tránh thay nhầm.',
+  ],
+  nlTinHoc: [
+    '**NLa:** Sử dụng thành thạo lệnh Find, Replace của phần mềm soạn thảo.',
+    '**NLc:** Giải quyết nhanh, chính xác yêu cầu sửa văn bản với sự hỗ trợ của máy tính.',
+    '**NLd:** Ứng dụng công cụ tìm kiếm, thay thế để tự rà soát, sửa lỗi bài viết của mình.',
+  ],
+  phamChat: [
+    '**Chăm chỉ:** tích cực thực hành.',
+    '**Trách nhiệm:** cẩn thận kiểm tra lại văn bản sau khi sửa; giữ bản gốc.',
+  ],
+  gv: [
+    'Máy tính có cài Microsoft Word, ti vi (máy chiếu), SGK, SBT, kế hoạch bài dạy.',
+    'Tệp *KemSuaChuaDuaHau.docx* và tệp bài thơ *DiCay_LoiChinhTa.docx* đặt sẵn trong thư mục dùng chung; đồng hồ bấm giờ.',
+  ],
+  hs: [
+    'SGK, vở ghi; thực hành tại phòng máy (2 HS/máy).',
+  ],
+  hoatDong: [
+    {
+      ten: 'Hoạt động 1: Mở đầu',
+      tg: '5 phút',
+      mucTieu: 'Tạo tình huống có vấn đề: cần sửa nhanh nhiều chỗ giống nhau trong văn bản.',
+      noiDung: 'Tình huống (SGK): An có công thức làm kem sữa chua dưa hấu, muốn sửa thành công thức làm kem sữa chua xoài.',
+      sanPham: 'Ý kiến của HS về cách sửa.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Chiếu công thức làm kem sữa chua dưa hấu, hỏi: *Muốn có công thức làm kem sữa chua xoài, An cần sửa những gì? Sửa thủ công từng chữ có nhanh không, có dễ sót không?*',
+          '#Bước 2. Thực hiện nhiệm vụ',
+          'HS: Quan sát, đếm nhanh số chữ "dưa hấu" trên màn hình, thảo luận.',
+          '#Bước 3. Báo cáo, thảo luận',
+          'HS: Trả lời; HS khác bổ sung.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Dẫn dắt: phần mềm soạn thảo có công cụ giúp tìm và thay thế nhanh, chính xác → vào bài.',
+        ],
+        right: [
+          '- Đổi nguyên liệu "dưa hấu" thành "xoài" ở mọi vị trí.',
+          '- Sửa thủ công chậm, dễ bỏ sót khi văn bản dài.',
+        ],
+      }],
+    },
+    {
+      ten: 'Hoạt động 2: Hình thành kiến thức mới – Tác dụng của công cụ tìm kiếm và thay thế',
+      tg: '7 phút',
+      tags: ['NLS 3.2.TC1a'],
+      mucTieu: [
+        'Trình bày được tác dụng của công cụ tìm kiếm, thay thế.',
+        '[NLS 3.2.TC1a] Nhận ra các tình huống cần dùng công cụ tìm kiếm, thay thế để tinh chỉnh nội dung văn bản.',
+      ],
+      noiDung: 'Câu hỏi thảo luận về cách sửa công thức làm kem; các tình huống cần tìm kiếm, thay thế.',
+      sanPham: 'Tác dụng của công cụ tìm kiếm, thay thế.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Hỏi: *Câu 1. Trong phần mềm soạn thảo, em làm thế nào để giúp An sửa tệp công thức làm kem? Câu 2. Có cách nào sửa nhanh hơn không?*',
+          '[NLS 3.2.TC1a] GV: Đưa 4 tình huống, yêu cầu HS chọn tình huống nên dùng tìm kiếm, thay thế: (a) đổi tên nhân vật "Minh" thành "Nam" trong cả truyện ngắn; (b) tìm xem từ "Internet" xuất hiện bao nhiêu lần trong bài; (c) đổi phông chữ của tiêu đề; (d) sửa lỗi gõ "nghành" thành "ngành" ở nhiều chỗ.',
+          '#Bước 2. Thực hiện nhiệm vụ',
+          '[NLS 3.2.TC1a] HS: Thảo luận cặp đôi, chọn tình huống và giải thích.',
+          '#Bước 3. Báo cáo, thảo luận',
+          'HS: Trả lời; HS khác nhận xét.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Chốt tác dụng của công cụ tìm kiếm, thay thế.',
+        ],
+        right: [
+          '**I. TẠI SAO CẦN TÌM KIẾM VÀ THAY THẾ?**',
+          '- Công cụ tìm kiếm và thay thế giúp tìm kiếm, thay thế các từ, cụm từ theo yêu cầu một cách nhanh chóng và chính xác.',
+          '[NLS 3.2.TC1a] Kết quả: HS chọn đúng các tình huống (a), (b), (d); giải thích (c) là định dạng, không phải thay thế nội dung.',
+        ],
+      }],
+    },
+    {
+      ten: 'Hoạt động 3: Thực hành – Sử dụng công cụ tìm kiếm và thay thế',
+      tg: '18 phút',
+      tags: ['NLS 3.2.TC1a'],
+      mucTieu: [
+        'Sử dụng được lệnh Find để tìm kiếm và lệnh Replace để thay thế từ, cụm từ.',
+        '[NLS 3.2.TC1a] Tạo văn bản mới (công thức kem sữa chua xoài) từ văn bản có sẵn bằng công cụ thay thế; giữ bản gốc và kiểm tra lại sau khi thay thế.',
+      ],
+      noiDung: 'Thực hành trên tệp KemSuaChuaDuaHau.docx: tìm "dưa hấu"; thay "dưa hấu" bằng "xoài".',
+      sanPham: 'Tệp KemSuaChuaXoai.docx.',
+      rows: [
+        {
+          left: [
+            '#Bước 1. Chuyển giao nhiệm vụ 1 – Tìm kiếm',
+            'GV: Thao tác mẫu lệnh Find; yêu cầu HS mở tệp, tìm từ "dưa hấu" và cho biết từ này xuất hiện bao nhiêu lần.',
+            '#Bước 2. Thực hiện nhiệm vụ',
+            '[NLS 3.2.TC1a] HS: Mở tệp; Home → Find (Ctrl + F); gõ "dưa hấu" → Enter; đọc số kết quả trong ngăn Navigation; nháy vào từng kết quả để xem vị trí.',
+            '#Bước 3. Báo cáo, thảo luận',
+            'HS: Báo cáo số lần xuất hiện; nhận xét các vị trí được đánh dấu.',
+          ],
+          right: [
+            '**II. THỰC HÀNH**',
+            '**1. Tìm kiếm:** Home → nhóm Editing → Find (Ctrl + F) → gõ từ cần tìm vào ô tìm kiếm ở ngăn Navigation → Enter. Các vị trí tìm thấy được đánh dấu, ngăn Navigation hiển thị số kết quả.',
+          ],
+        },
+        {
+          left: [
+            '#Bước 1. Chuyển giao nhiệm vụ 2 – Thay thế',
+            '[NLS 3.2.TC1a] GV: Yêu cầu trước khi thay thế, lưu tệp với tên mới *KemSuaChuaXoai* (File → Save As) để giữ bản gốc; sau đó thay "dưa hấu" bằng "xoài". Một bạn trong cặp sửa thủ công một đoạn, bạn kia dùng Replace All; GV bấm giờ để so sánh.',
+            '#Bước 2. Thực hiện nhiệm vụ',
+            '[NLS 3.2.TC1a] HS: Home → Replace (Ctrl + H); Find what: dưa hấu; Replace with: xoài; chọn Replace All; đọc thông báo số chỗ đã thay; đọc lại toàn bộ văn bản để kiểm tra; lưu tệp.',
+            'GV: Quan sát, hỗ trợ; lưu ý HS khi nào nên dùng Replace (từng chỗ) thay cho Replace All.',
+            '#Bước 3. Báo cáo, thảo luận',
+            'HS: Báo cáo thời gian sửa thủ công và thời gian dùng công cụ; trình chiếu tệp kết quả.',
+            '#Bước 4. Kết luận, nhận định',
+            'GV: Chốt các bước tìm kiếm, thay thế; nhấn mạnh: kiểm tra lại văn bản sau khi Replace All để tránh thay nhầm.',
+          ],
+          right: [
+            '**2. Thay thế:** Home → Replace (Ctrl + H) → hộp thoại Find and Replace:',
+            '- Find what: từ cần tìm; Replace with: từ thay thế.',
+            '- Replace: thay lần lượt từng chỗ; Replace All: thay tất cả; Find Next: tìm vị trí tiếp theo; Close: đóng hộp thoại.',
+            '[NLS 3.2.TC1a] Kết quả: Tệp KemSuaChuaXoai.docx đúng nội dung, bản gốc vẫn được giữ; HS nêu được dùng công cụ nhanh hơn sửa thủ công nhiều lần.',
+          ],
+        },
+      ],
+    },
+    {
+      ten: 'Hoạt động 4: Luyện tập',
+      tg: '7 phút',
+      mucTieu: 'Củng cố kiến thức về lệnh tìm kiếm, thay thế.',
+      noiDung: 'Bài tập 13.1 – 13.4 (SBT Tin học 6) qua trò chơi "Ai nhanh hơn" (2 đội, mỗi đội 4 HS).',
+      sanPham: 'Đáp án đúng.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Chiếu lần lượt 4 câu hỏi:',
+          'Bài 13.1: *Lệnh Find được sử dụng khi nào?* A. Khi muốn định dạng chữ in nghiêng. B. Khi muốn tìm kiếm một từ hoặc cụm từ trong văn bản. C. Khi muốn thay thế một từ hoặc cụm từ. D. Khi cần thay đổi phông chữ.',
+          'Bài 13.2: *Điền từ thích hợp:* a) Để … một từ hoặc cụm từ trong văn bản, em chọn lệnh Find. b) Để … một từ hoặc cụm từ tìm được bằng một từ hoặc cụm từ khác, em dùng lệnh Replace.',
+          'Bài 13.3: *Sắp xếp các bước tìm kiếm:* a) Gõ từ cần tìm rồi nhấn Enter. b) Trong nhóm lệnh Editing chọn Find. c) Nháy chuột chọn thẻ Home.',
+          'Bài 13.4: *Ghép nút lệnh với tác dụng:* 1) Close; 2) Replace; 3) Replace All; 4) Find Next với a) thay thế lần lượt từng cụm từ tìm được; b) thay thế tất cả; c) tìm cụm từ tiếp theo; d) đóng hộp thoại.',
+          '#Bước 2. Thực hiện nhiệm vụ',
+          'HS: Hai đội suy nghĩ, giành quyền trả lời.',
+          '#Bước 3. Báo cáo, thảo luận',
+          'HS: Trả lời; đội bạn nhận xét.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Tổng kết điểm, tuyên dương đội thắng.',
+        ],
+        right: [
+          'Đáp án: 13.1 – B; 13.2 – a) tìm kiếm, b) thay thế; 13.3 – c → b → a; 13.4 – 1-d, 2-a, 3-b, 4-c.',
+        ],
+      }],
+    },
+    {
+      ten: 'Hoạt động 5: Vận dụng – Sửa lỗi chính tả trong bài thơ "Đi cấy"',
+      tg: '8 phút',
+      tags: ['NLS 3.2.TC1a'],
+      mucTieu: [
+        'Vận dụng công cụ tìm kiếm, thay thế để sửa lỗi trong văn bản thực tế.',
+        '[NLS 3.2.TC1a] Dùng Find để đếm số chỗ sai; dùng Replace/Replace All để sửa lỗi chính tả lặp lại và kiểm tra kết quả.',
+      ],
+      noiDung: 'Bạn Lan gõ bài ca dao "Đi cấy" bị sai: các chữ "trông" gõ thành "trong" (8 chỗ) và "cứng" gõ thành "cúng".',
+      sanPham: 'Tệp DiCay_DaSua.docx.',
+      rows: [{
+        left: [
+          '#Bước 1. Chuyển giao nhiệm vụ',
+          'GV: Chiếu bài thơ bị gõ sai: *Người ta đi cấy lấy công / Tôi nay đi cấy còn trông nhiều bề. / Trong trời, trong đất, trong mây / Trong mưa, trong nắng, trong ngày, trong đêm. / Trong cho chân cúng đá mềm / Trời yên biển lặng mới yên tấm lòng.*',
+          '[NLS 3.2.TC1a] GV: Yêu cầu: (1) dùng Find đếm số chữ "trong" bị gõ sai; (2) quyết định dùng Replace All hay Replace và giải thích; (3) sửa lỗi, đọc lại bài thơ, lưu tệp *DiCay_DaSua*.',
+          '#Bước 2. Thực hiện nhiệm vụ',
+          '[NLS 3.2.TC1a] HS: Tìm "trong" (8 kết quả); kiểm tra không có chữ "trong" nào dùng đúng nên chọn Replace All "trong" → "trông"; thay "cúng" → "cứng"; đọc lại, lưu tệp.',
+          '#Bước 3. Báo cáo, thảo luận',
+          'HS: Trình chiếu bài thơ đã sửa; giải thích vì sao chọn Replace All.',
+          '#Bước 4. Kết luận, nhận định',
+          'GV: Nhận xét; lưu ý: nếu trong văn bản có chữ "trong" dùng đúng (ví dụ "trong veo") thì phải dùng Replace để thay từng chỗ.',
+        ],
+        right: [
+          '[NLS 3.2.TC1a] Kết quả: Bài thơ được sửa đúng: "Trông trời, trông đất, trông mây / Trông mưa, trông nắng, trông ngày, trông đêm. / Trông cho chân cứng đá mềm"; HS nêu đúng số chỗ sai (8 chữ "trong", 1 chữ "cúng") và lí do chọn Replace All.',
+        ],
+      }],
+    },
+  ],
+  huongDan: [
+    'Dùng công cụ tìm kiếm, thay thế để rà soát lỗi chính tả trong bài "Cảm nghĩ về bạn bè" (Bài 11).',
+    'Tập hợp các tệp đã làm (sơ đồ tư duy, bài viết, danh sách lớp) vào thư mục SoLuuNiem_6A để chuẩn bị Bài 14.',
+  ],
+  tongHop: [
+    {
+      hd: 'HĐ 2. Tác dụng của công cụ tìm kiếm, thay thế',
+      ma: ['NLS 3.2.TC1a'],
+      gv: 'Đưa 4 tình huống, yêu cầu chọn tình huống cần tìm kiếm, thay thế.',
+      hs: 'Chọn tình huống và giải thích.',
+      kq: 'Chọn đúng (a), (b), (d); phân biệt được thay thế nội dung với định dạng.',
+    },
+    {
+      hd: 'HĐ 3. Thực hành tìm kiếm, thay thế',
+      ma: ['NLS 3.2.TC1a'],
+      gv: 'Thao tác mẫu Find, Replace; yêu cầu Save As giữ bản gốc; bấm giờ so sánh với sửa thủ công.',
+      hs: 'Tìm, đếm số lần xuất hiện; thay "dưa hấu" bằng "xoài"; kiểm tra lại, lưu tệp mới.',
+      kq: 'Tệp KemSuaChuaXoai.docx đúng; bản gốc được giữ; nêu được hiệu quả về thời gian.',
+    },
+    {
+      hd: 'HĐ 5. Vận dụng: sửa lỗi bài thơ "Đi cấy"',
+      ma: ['NLS 3.2.TC1a'],
+      gv: 'Chiếu bài thơ gõ sai; yêu cầu đếm lỗi, chọn Replace hay Replace All.',
+      hs: 'Đếm lỗi bằng Find; sửa bằng Replace All, Replace; đọc lại, lưu tệp.',
+      kq: 'Tệp DiCay_DaSua.docx đúng chính tả; nêu đúng 8 + 1 chỗ sai và lí do chọn lệnh.',
+    },
+  ],
+};
