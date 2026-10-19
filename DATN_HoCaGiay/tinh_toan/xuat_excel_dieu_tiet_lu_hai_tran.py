@@ -25,7 +25,7 @@ import so_lieu as S
 DIR = os.path.dirname(os.path.abspath(__file__))
 RA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DIR, '..', 'TAI_VE', 'DieuTietLu_HaiTran_HoCaGiay.xlsx')
 T_MAX = 48                          # số giờ tính
-Z_DAU, Z_CUOI, BUOC = 71.0, 81.0, 0.01
+Z_DAU, Z_CUOI, BUOC = 71.0, 81.0, 0.1      # bước 0,1 m: Zmax lệch < 0,0003 m so với bước 0,01 m
 N_QH = int(round((Z_CUOI - Z_DAU) / BUOC)) + 1
 
 FONT = 'Times New Roman'
@@ -88,11 +88,9 @@ def in_an(ws, ngang=True):
     ws.page_margins.top = ws.page_margins.bottom = 0.5
 
 
-def q_tran(z, p):
-    """Lưu lượng qua tràn (m³/s) theo TCVN 9147:2012, p = tiền tố tên thông số ('TC' hoặc 'SC')."""
-    H = 'MAX({z}-{p}_Z,0)'.format(z=z, p=p)
-    return ('{p}_s*(1-0.2*({p}_xmb+({p}_n-1)*{p}_xmt)*{H}/({p}_n*{p}_b))*{p}_m*{p}_n*{p}_b*SQRT(2*g_)*{H}^1.5'
-            .format(p=p, H=H))
+def noi_suy(bang, r):
+    """Nội suy cột 'bang' của sheet QuanHe giữa dòng k (cột M) và k+1 với tỷ lệ w (cột N) của dòng r."""
+    return 'INDEX({b},M{r})+N{r}*(INDEX({b},M{r}+1)-INDEX({b},M{r}))'.format(b=bang, r=r)
 
 
 # ================================================================== HƯỚNG DẪN
@@ -108,7 +106,7 @@ ND = [
     ('-', 'Hai tràn cùng lấy nước từ MỘT hồ nên ở mỗi thời điểm chỉ có MỘT mực nước Z. Tràn nào có ngưỡng thấp hơn Z thì tràn đó xả: tràn sự cố (ngưỡng +71,00 m) xả khi Z > +71,00; tràn chính (ngưỡng +74,70 m) xả khi Z > +74,70.'),
     ('-', 'Lưu lượng xả của hồ là TỔNG hai tràn tại CÙNG mực nước: q(Z) = q tràn chính(Z) + q tràn sự cố(Z). Vậy “cộng” là đúng ở bước lập quan hệ q ~ Z (sheet QuanHe, cột q hai tràn), sau đó điều tiết MỘT lần với q tổng – đó chính là tính song song (hai tràn cùng làm việc).'),
     ('-', 'KHÔNG được điều tiết riêng từng tràn rồi cộng kết quả: mỗi lần tính riêng đã cho TOÀN BỘ trận lũ đi qua một tràn, nên mực nước cao hơn thực tế; cộng hai lưu lượng xả của hai lần tính riêng thì tính trùng lượng nước lũ.'),
-    ('-', 'Kết quả “tính độc lập” trong bảng của bạn chỉ có ý nghĩa là trường hợp MỘT tràn không làm việc: “chỉ tràn chính” chính là trường hợp cửa van tràn sự cố bị kẹt (P = 1%: +78,21 m ở file này, bạn tính +78,28 m); “chỉ tràn sự cố” là trường hợp cả 9 cửa tràn chính không mở – không phải trường hợp thiết kế.'),
+    ('-', 'Kết quả “tính độc lập” trong bảng của bạn chỉ có ý nghĩa là trường hợp MỘT tràn không làm việc: “chỉ tràn chính” chính là trường hợp cửa van tràn sự cố bị kẹt (P = 1%: +78,20 m ở file này, bạn tính +78,28 m); “chỉ tràn sự cố” là trường hợp cả 9 cửa tràn chính không mở – không phải trường hợp thiết kế.'),
     ('M', '2. Giả thiết tính toán'),
     ('-', 'Khi lũ về, mực nước hồ ở MNDBT = +74,70 m (ô SoLieu!B5). Tràn chính 9 khoang × 2,4 m, cửa van mở hết, chảy tự do.'),
     ('-', 'Tràn sự cố có cửa van phẳng: giả thiết cửa van MỞ HOÀN TOÀN suốt trận lũ (kéo lên khỏi mặt nước) nên tràn làm việc như đập tràn chảy tự do, tính bằng cùng công thức với tràn chính.'),
@@ -120,13 +118,15 @@ ND = [
     ('-', 'H = Z − Z ngưỡng (lấy 0 khi Z thấp hơn ngưỡng); n – số khoang; b – bề rộng một khoang; m – hệ số lưu lượng; ξmb, ξmt – hệ số hình dạng mố bên, mố trụ. Thông số từng tràn ở sheet SoLieu (giống chương trình của đồ án).'),
     ('M', '4. Phương pháp Pô-ta-pốp'),
     ('c', '(Q₁ + Q₂)/2·Δt − (q₁ + q₂)/2·Δt = V₂ − V₁    ⇒    V₂/Δt + q₂/2 = V₁/Δt + q₁/2 + Q̄ − q₁    ⇒    f₂ = f₁ + Q̄ − q₁'),
-    ('-', 'f = V/Δt + q/2 (đơn vị m³/s) chỉ phụ thuộc mực nước Z, nên lập sẵn bảng Z ~ V ~ q ~ f (sheet QuanHe, bước 0,01 m; một cột f cho trường hợp hai tràn, một cột cho trường hợp kẹt van).'),
-    ('-', 'Mỗi giờ: (1) Q̄ = (Q₁ + Q₂)/2; (2) f₂ = f₁ + Q̄ − q₁; (3) tra ngược bảng f ~ Z được Z₂ (nội suy tuyến tính); (4) tính q₂ = q tràn chính(Z₂) + q tràn sự cố(Z₂) và V₂; (5) sang giờ sau với f₁ = f₂, q₁ = q₂.'),
+    ('-', 'f = V/Δt + q/2 (đơn vị m³/s) chỉ phụ thuộc mực nước Z, nên lập sẵn bảng Z ~ V ~ q ~ f (sheet QuanHe, bước 0,1 m – thử bước 0,01 m kết quả chỉ lệch dưới 0,3 mm; một cột f cho trường hợp hai tràn, một cột cho trường hợp kẹt van).'),
+    ('-', 'Mỗi giờ: (1) Q̄ = (Q₁ + Q₂)/2; (2) f₂ = f₁ + Q̄ − q₁; (3) tra ngược bảng f ~ Z: tìm dòng k có f(k) ≤ f₂ < f(k+1) (cột M, hàm MATCH) và tỷ lệ nội suy w = [f₂ − f(k)] / [f(k+1) − f(k)] (cột N); (4) Z₂, q tràn chính, q tràn sự cố, V₂ đều nội suy giữa dòng k và k+1 với CÙNG tỷ lệ w; (5) sang giờ sau với f₁ = f₂, q₁ = q₂.'),
+    ('-', 'Vì sao dùng cùng w: khi đó V₂/Δt + q₂/2 đúng bằng f₂ (cột L) nên cân bằng nước khớp tuyệt đối. Nếu tính q₂ bằng công thức từ Z₂ còn f lại tra bảng thì hai bên lệch nhau một chút ở mỗi giờ, tích lũy thành sai số cân bằng nước.'),
     ('-', 'Giờ 0: Z = MNDBT, q = q(MNDBT). Trường hợp hai tràn: tràn sự cố đã xả khoảng 64 m³/s (H = 3,70 m), tràn chính chưa xả. Trường hợp kẹt van: q = 0.'),
     ('-', 'Kết quả: Zmax = MNLTK (P = 1%) hoặc MNLKT (P = 0,2%), lưu lượng xả lớn nhất qmax, phân chia cho từng tràn. Kiểm tra: W đến − W xả = ΔV (sai số ≈ 0).'),
     ('M', '5. Trình tự trong file'),
     ('-', 'SoLieu: thông số hai tràn, mực nước trước lũ, đường quá trình lũ P = 1% và 0,2% (BCNCKT – mô hình Gurdich 36 giờ), bảng Z ~ F ~ W 2022.'),
-    ('-', 'QuanHe: bảng Z ~ F ~ V ~ q tràn chính ~ q tràn sự cố ~ q tổng ~ f (1.001 dòng, +71,00 ÷ +81,00 m).'),
+    ('-', 'QuanHe: bảng Z ~ F ~ V ~ q tràn chính ~ q tràn sự cố ~ q tổng ~ f (101 dòng, +71,00 ÷ +81,00 m, bước 0,1 m) – bảng tra cho các sheet điều tiết.'),
+    ('-', 'BangIn: bảng in vào thuyết minh – tự chọn mực nước đầu, cuối và bước (0,1 / 0,2 / 0,5 m; tối đa 101 dòng); chọn vùng có số liệu → Copy → sang Word dán “Giữ văn bản” (Keep Text Only) hoặc dán vào Excel khác bằng Paste Special → Values.'),
     ('-', 'P1_HaiTran, P1_KetVan, P02_HaiTran, P02_KetVan: bốn bảng điều tiết giống nhau, chỉ khác ô tần suất (C3) và trường hợp (F3).'),
     ('-', 'KetQua: tổng hợp 4 trường hợp, so sánh với thuyết minh và với bảng tính độc lập của bạn, biểu đồ lưu lượng và mực nước.'),
     ('M', '6. Chú giải màu ô'),
@@ -260,7 +260,7 @@ qh = wb.create_sheet('QuanHe')
 RONG = (8, 8, 10, 7, 7, 9, 7, 7, 9, 10, 10, 11, 11)
 for k, w in enumerate(RONG):
     qh.column_dimensions[get_column_letter(k + 1)].width = w
-ghi(qh, 'A1', 'BẢNG QUAN HỆ Z ~ V ~ q ~ f (bước 0,01 m) – dùng để tra trong các sheet điều tiết', f_tieu_de, border=False)
+ghi(qh, 'A1', 'BẢNG QUAN HỆ Z ~ V ~ q ~ f (bước 0,1 m) – dùng để tra trong các sheet điều tiết', f_tieu_de, border=False)
 ghi(qh, 'A2', 'f = V·10⁶/Δt + q/2 (m³/s). Cột q hai tràn = q tràn chính + q tràn sự cố tại CÙNG mực nước Z.', f_ghi_chu, border=False)
 tieu_de_cot(qh, 4, 1, ['Z (m)', 'F (km²)', 'V (10⁶ m³)', 'H tràn chính (m)', 'ε tràn chính', 'q tràn chính (m³/s)',
                        'H tràn sự cố (m)', 'ε tràn sự cố', 'q tràn sự cố (m³/s)', 'q hai tràn (m³/s)',
@@ -298,6 +298,8 @@ for i in range(N_QH):
 R_QH = 4 + N_QH
 ten('QH_Z', 'QuanHe!$A$5:$A$%d' % R_QH)
 ten('QH_V', 'QuanHe!$C$5:$C$%d' % R_QH)
+ten('QH_qtc', 'QuanHe!$F$5:$F$%d' % R_QH)
+ten('QH_qsc', 'QuanHe!$I$5:$I$%d' % R_QH)
 ten('QH_f', 'QuanHe!$L$5:$M$%d' % R_QH)
 qh.freeze_panes = 'B5'
 in_an(qh, ngang=False)
@@ -306,13 +308,14 @@ in_an(qh, ngang=False)
 R0 = 16                          # dòng giờ 0
 R1 = R0 + T_MAX
 DT_HDR = ['t (giờ)', 'Q đến (m³/s)', 'Q̄ = (Q₁+Q₂)/2', 'f₁ (giờ trước)', 'q₁ (giờ trước)', 'f₂ = f₁ + Q̄ − q₁',
-          'Z₂ (m) tra ngược f ~ Z', 'q tràn chính (m³/s)', 'q tràn sự cố (m³/s)', 'q xả = tổng (m³/s)',
-          'V₂ (10⁶ m³)', 'f₂ = V₂/Δt + q₂/2']
+          'Z₂ (m)', 'q tràn chính (m³/s)', 'q tràn sự cố (m³/s)', 'q xả = tổng (m³/s)',
+          'V₂ (10⁶ m³)', 'Kiểm tra V₂/Δt + q₂/2 (= f₂)', 'k – dòng tra bảng QuanHe', 'w – tỷ lệ nội suy']
+f_phu = Font(name=FONT, size=10, color='8A8984')
 
 
 def sheet_dieu_tiet(ten_ws, P, th):
     ws = wb.create_sheet(ten_ws)
-    for k, w in enumerate((8, 10, 11, 12, 11, 12, 12, 12, 12, 12, 11, 12)):
+    for k, w in enumerate((8, 10, 11, 12, 11, 12, 12, 12, 12, 12, 11, 12, 10, 10)):
         ws.column_dimensions[get_column_letter(k + 1)].width = w
     ghi(ws, 'A1', 'ĐIỀU TIẾT LŨ – PHƯƠNG PHÁP PÔ-TA-PỐP (Δt = 1 giờ)', f_tieu_de, border=False)
     ghi(ws, 'A3', 'Tần suất P (%)', f_dam)
@@ -359,35 +362,37 @@ def sheet_dieu_tiet(ten_ws, P, th):
     QH_COT = 'INDEX(QH_f,0,$F$4)'
     for t in range(0, T_MAX + 1):
         r = R0 + t
-        k = 'MATCH(F{r},{c},1)'.format(r=r, c=QH_COT)
-        kz = 'MATCH(G{r},QH_Z,1)'.format(r=r)
         ct = {
             'A': t,
             'B': '=IFERROR(INDEX(Lu_Q,MATCH(A{r},Lu_t,0),$C$4),0)'.format(r=r),
-            'H': '=' + q_tran('G%d' % r, 'TC'),
-            'I': '=IF($F$4=2,0,%s)' % q_tran('G%d' % r, 'SC'),
+            # Z₂, q₂, V₂ nội suy trong bảng QuanHe với CÙNG dòng k (cột M) và tỷ lệ w (cột N)
+            # → V₂/Δt + q₂/2 đúng bằng f₂, cân bằng nước khớp tuyệt đối
+            'H': '=' + noi_suy('QH_qtc', r),
+            'I': '=IF($F$4=2,0,%s)' % noi_suy('QH_qsc', r),
             'J': '=H%d+I%d' % (r, r),
-            'K': ('=INDEX(QH_V,{k})+(G{r}-INDEX(QH_Z,{k}))*(INDEX(QH_V,{k}+1)-INDEX(QH_V,{k}))'
-                  '/(INDEX(QH_Z,{k}+1)-INDEX(QH_Z,{k}))').format(k=kz, r=r),
+            'K': '=' + noi_suy('QH_V', r),
             'L': '=K{r}*1000000/dt_s+J{r}/2'.format(r=r),
         }
         if t == 0:
-            ct.update({'C': '', 'D': '', 'E': '', 'F': '', 'G': '=Z0'})
+            ct.update({'C': '', 'D': '', 'E': '', 'F': '', 'G': '=Z0',
+                       'M': '=MATCH(G%d,QH_Z,1)' % r,
+                       'N': '=(G{r}-INDEX(QH_Z,M{r}))/(INDEX(QH_Z,M{r}+1)-INDEX(QH_Z,M{r}))'.format(r=r)})
         else:
             ct.update({
                 'C': '=(B%d+B%d)/2' % (r - 1, r),
                 'D': '=L%d' % (r - 1),
                 'E': '=J%d' % (r - 1),
                 'F': '=D%d+C%d-E%d' % (r, r, r),
-                'G': ('=INDEX(QH_Z,{k})+(F{r}-INDEX(QH_f,{k},$F$4))*(INDEX(QH_Z,{k}+1)-INDEX(QH_Z,{k}))'
-                      '/(INDEX(QH_f,{k}+1,$F$4)-INDEX(QH_f,{k},$F$4))').format(k=k, r=r),
+                'G': '=' + noi_suy('QH_Z', r),
+                'M': '=MATCH(F{r},{c},1)'.format(r=r, c=QH_COT),
+                'N': '=(F{r}-INDEX(QH_f,M{r},$F$4))/(INDEX(QH_f,M{r}+1,$F$4)-INDEX(QH_f,M{r},$F$4))'.format(r=r),
             })
         fm = {'A': '0', 'B': '0.0', 'C': '0.0', 'D': '0.0', 'E': '0.0', 'F': '0.0', 'G': '0.000', 'H': '0.0', 'I': '0.0',
-              'J': '0.0', 'K': '0.000', 'L': '0.0'}
+              'J': '0.0', 'K': '0.000', 'L': '0.0', 'M': '0', 'N': '0.000'}
         for col, f in ct.items():
             c = ws['%s%d' % (col, r)]
             c.value = f
-            c.font = f_dam if col in 'AG' else f_thuong
+            c.font = f_dam if col in 'AG' else (f_phu if col in 'MN' else f_thuong)
             c.number_format = fm[col]
             c.alignment = cg
             c.border = vien
@@ -395,9 +400,11 @@ def sheet_dieu_tiet(ten_ws, P, th):
                 c.fill = nen_tc
             elif col == 'I':
                 c.fill = nen_sc
-    ws.conditional_formatting.add('A%d:L%d' % (R0, R1), FormulaRule(formula=['$G%d=MAX($G$%d:$G$%d)' % (R0, R0, R1)],
+    ws.conditional_formatting.add('A%d:N%d' % (R0, R1), FormulaRule(formula=['$G%d=MAX($G$%d:$G$%d)' % (R0, R0, R1)],
                                                                    fill=nen_dinh))
-    ghi(ws, 'H5', 'Giờ 0: Z = MNDBT, q = q(MNDBT) theo trường hợp chọn. Từ giờ 1: f₂ = f₁ + Q̄ − q₁ → tra Z₂ → q₂, V₂.',
+    ghi(ws, 'H5', 'Giờ 0: Z = MNDBT, q = q(MNDBT) theo trường hợp chọn. Từ giờ 1: f₂ = f₁ + Q̄ − q₁ → tìm dòng k, tỷ lệ w',
+        f_ghi_chu, border=False)
+    ghi(ws, 'H6', 'trong bảng QuanHe (cột M, N) → Z₂, q₂, V₂ nội suy với cùng k, w (cột L kiểm tra bằng f₂).',
         f_ghi_chu, border=False)
     ws.freeze_panes = 'B16'
     in_an(ws)
@@ -408,6 +415,62 @@ CA = [('P1_HaiTran', 1, 'Hai tràn'), ('P1_KetVan', 1, 'Kẹt van'), ('P02_HaiTr
       ('P02_KetVan', 0.2, 'Kẹt van')]
 for ten_ws, P, th in CA:
     sheet_dieu_tiet(ten_ws, P, th)
+
+# ================================================================== BẢNG IN THUYẾT MINH
+bi = wb.create_sheet('BangIn')
+for k, w in enumerate((6, 9, 9, 11, 9, 11, 11, 9, 11, 11, 12, 12)):
+    bi.column_dimensions[get_column_letter(k + 1)].width = w
+ghi(bi, 'A1', 'BẢNG QUAN HỆ PHỤ TRỢ PÔ-TA-PỐP – DÙNG ĐỂ IN VÀO THUYẾT MINH', f_tieu_de, border=False)
+ghi(bi, 'A2', 'Chọn mực nước đầu, cuối, bước ở ô vàng; bảng tự rút gọn. Chọn vùng có số liệu → Copy → Word: dán “Giữ văn bản” '
+              '(Keep Text Only) rồi chuyển thành bảng, hoặc Excel khác: Paste Special → Values.', f_ghi_chu, border=False)
+for c1, c2, nhan, gt, nm, fmt in (('A', 'C', 'Z đầu (m)', 74.70, 'Z_dau_in', '0.00'),
+                                  ('D', 'F', 'Z cuối (m)', 79.50, 'Z_cuoi_in', '0.00'),
+                                  ('G', 'I', 'Bước (m)', 0.1, 'Buoc_in', '0.0')):
+    ghi(bi, c1 + '4', nhan, f_dam)
+    ghi(bi, get_column_letter(bi[c1 + '4'].column + 1) + '4', None)
+    bi.merge_cells('%s4:%s4' % (c1, get_column_letter(bi[c1 + '4'].column + 1)))
+    ghi(bi, c2 + '4', gt, f_nhap_dam, fmt, nen_nhap, cg)
+    ten(nm, 'BangIn!$%s$4' % c2)
+dv_b = DataValidation(type='list', formula1='"0.1,0.2,0.5"', allow_blank=False)
+bi.add_data_validation(dv_b)
+dv_b.add('I4')
+tieu_de_cot(bi, 6, 1, ['TT', 'Z (m)', 'H tràn chính (m)', 'q tràn chính (m³/s)', 'H tràn sự cố (m)', 'q tràn sự cố (m³/s)',
+                       'q hai tràn (m³/s)', 'F (km²)', 'V (10⁶ m³)', 'V/Δt (m³/s)', 'f hai tràn = V/Δt + q/2',
+                       'f kẹt van = V/Δt + q tc/2'], cao=45)
+N_IN = N_QH                       # đủ dòng cho cả dải +71,00 ÷ +81,00 m với bước 0,1 m
+for i in range(N_IN):
+    r = 7 + i
+    B = 'B%d' % r
+    k = 'MATCH({B},Bang_Z,1)'.format(B=B)
+    ct = {
+        'A': '=IF({B}="","",ROW()-6)'.format(B=B),
+        'B': '=Z_dau_in' if i == 0 else
+             '=IF(B{p}="","",IF(B{p}+Buoc_in>Z_cuoi_in+0.000001,"",ROUND(B{p}+Buoc_in,2)))'.format(p=r - 1),
+        'C': '=IF({B}="","",MAX({B}-TC_Z,0))'.format(B=B),
+        'D': '=IF({B}="","",TC_s*(1-0.2*(TC_xmb+(TC_n-1)*TC_xmt)*C{r}/(TC_n*TC_b))*TC_m*TC_n*TC_b*SQRT(2*g_)*C{r}^1.5)'.format(B=B, r=r),
+        'E': '=IF({B}="","",MAX({B}-SC_Z,0))'.format(B=B),
+        'F': '=IF({B}="","",SC_s*(1-0.2*(SC_xmb+(SC_n-1)*SC_xmt)*E{r}/(SC_n*SC_b))*SC_m*SC_n*SC_b*SQRT(2*g_)*E{r}^1.5)'.format(B=B, r=r),
+        'G': '=IF({B}="","",D{r}+F{r})'.format(B=B, r=r),
+        'H': '=IF({B}="","",INDEX(Bang_F,{k})+({B}-INDEX(Bang_Z,{k}))*(INDEX(Bang_F,{k}+1)-INDEX(Bang_F,{k})))'.format(B=B, k=k),
+        'I': '=IF({B}="","",INDEX(Bang_W,{k})+({B}-INDEX(Bang_Z,{k}))*(INDEX(Bang_F,{k})+H{r})/2)'.format(B=B, k=k, r=r),
+        'J': '=IF({B}="","",I{r}*1000000/dt_s)'.format(B=B, r=r),
+        'K': '=IF({B}="","",J{r}+G{r}/2)'.format(B=B, r=r),
+        'L': '=IF({B}="","",J{r}+D{r}/2)'.format(B=B, r=r),
+    }
+    fm = {'A': '0', 'B': '0.00', 'C': '0.00', 'D': '0.0', 'E': '0.00', 'F': '0.0', 'G': '0.0', 'H': '0.000', 'I': '0.000',
+          'J': '0.0', 'K': '0.0', 'L': '0.0'}
+    for col, f in ct.items():
+        c = bi['%s%d' % (col, r)]
+        c.value = f
+        c.font = f_dam if col == 'B' else f_thuong
+        c.number_format = fm[col]
+        c.alignment = cg
+bi.conditional_formatting.add('A7:L%d' % (6 + N_IN), FormulaRule(formula=['$B7<>""'], border=vien))
+bi.freeze_panes = 'C7'
+in_an(bi, ngang=True)
+# vùng in tự co theo số dòng có số liệu (Excel) – không in các dòng trống phía dưới
+bi.defined_names['Print_Area'] = DefinedName('Print_Area', attr_text='OFFSET(BangIn!$A$1,0,0,6+COUNT(BangIn!$B$7:$B$%d),12)'
+                                             % (6 + N_IN))
 
 # ================================================================== KẾT QUẢ
 kq = wb.create_sheet('KetQua')
@@ -430,7 +493,9 @@ for k, (ten_ws, P, th) in enumerate(CA):
     ghi(kq, 'I%d' % r, TM[ten_ws], f_nhap, '0.00', can=cg)
     ghi(kq, 'J%d' % r, Y_NGHIA[ten_ws], f_ghi_chu)
 ghi(kq, 'A9', 'Cột “Thuyết minh”: chương trình của đồ án, đầu lũ dùng cửa van tràn sự cố giữ MNDBT rồi mới mở hết (QTVH) – '
-              'cao hơn giả thiết mở hoàn toàn từ đầu khoảng 2 cm; trường hợp kẹt van trùng nhau.', f_ghi_chu, border=False)
+              'cao hơn giả thiết mở hoàn toàn từ đầu khoảng 2 cm.', f_ghi_chu, border=False)
+ghi(kq, 'A10', 'Kẹt van: chương trình chia mỗi giờ thành 10 bước 6 phút, lệch file này (Δt = 1 giờ) dưới 2 mm – '
+               '78,21 và 78,20 chỉ khác nhau do làm tròn.', f_ghi_chu, border=False)
 ghi(kq, 'A11', 'SO SÁNH VỚI BẢNG TÍNH HAI TRÀN ĐỘC LẬP (bảng của bạn)', f_muc, border=False)
 tieu_de_cot(kq, 12, 1, ['Cách tính', 'Zmax P = 1% (m)', 'Zmax P = 0,2% (m)', '', '', 'Nhận xét'], cao=30)
 kq.merge_cells('F12:J12')
