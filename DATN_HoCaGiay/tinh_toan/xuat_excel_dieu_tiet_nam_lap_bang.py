@@ -134,7 +134,7 @@ ND = [
     ('M', '4. Nguyên lý và các bước tính'),
     ('c', 'V cuối = V đầu + W đến − (W dùng + W tổn thất) − W xả,     Vc ≤ V ≤ Vc + Vhi'),
     ('-', 'Bước 1 – sheet B1_KhongTonThat: ΔV = W đến − W dùng; tháng thừa (ΔV > 0) hồ tích nước, tháng thiếu (ΔV < 0) hồ cấp nước. Hồ làm việc một lần trong năm (một thời kỳ cấp nước liên tục tháng 12 ÷ 4) nên dung tích hữu ích cần Vhi = tổng lượng thiếu. Quá trình dung tích tính theo cách tích sớm: thừa đến đâu tích đến đó, đầy (Vc + Vhi) thì xả.'),
-    ('-', 'Bước 2 – sheet B2_Lan1: tính tổn thất từ quá trình dung tích của bước 1: V̄ = (V đầu + V cuối)/2 → tra Z̄ (bảng V ~ Z) → F̄ (bảng Z ~ F); W bốc hơi = ΔZ × F̄ (mm ÷ 1000 × km² = 10⁶ m³); W thấm = k_t × V̄; W tổn thất = W bốc hơi + W thấm. Điều tiết lại với W dùng + W tổn thất → Vhi lần 1.'),
+    ('-', 'Bước 2 – sheet B2_Lan1: tính tổn thất từ quá trình dung tích của bước 1: Vtb = (V đầu + V cuối)/2 → tra Ztb (bảng V ~ Z) → Ftb (bảng Z ~ F); W bốc hơi = ΔZ × Ftb (mm ÷ 1000 × km² = 10⁶ m³); W thấm = k_t × Vtb; W tổn thất = W bốc hơi + W thấm. Điều tiết lại với W dùng + W tổn thất → Vhi lần 1.'),
     ('-', 'Bước 3, 4 – sheet B3_Lan2, B4_Lan3: tính lại tổn thất theo quá trình dung tích của lần trước và điều tiết lại; dừng khi sai số Vhi giữa hai lần liên tiếp ≤ 1% (thường 2 lần là đạt).'),
     ('-', 'Bước 5 – sheet KetLuan: Vbt cần = Vc + Vhi → MNDBT cần = Z(Vbt cần); so với MNDBT +74,70 m và dung tích hữu ích hiện có 29,60·10⁶ m³; biểu đồ quá trình dung tích hồ trong năm.'),
     ('-', 'Kiểm tra trong mỗi bảng: (1) số đợt thiếu nước trong năm phải bằng 1 (nếu > 1 thì hồ làm việc nhiều lần, không lấy Vhi bằng tổng lượng thiếu); (2) cuối năm thủy lợi hồ về đúng Vc.'),
@@ -312,8 +312,8 @@ R0, R1 = 6, 17                 # 12 tháng của năm thủy lợi
 REG_HDR = ['Tháng', 'W đến (10⁶ m³)', 'W dùng (10⁶ m³)', 'W tổn thất (10⁶ m³)', 'W dùng + W tổn thất',
            'Thừa ΔV+ = W đến − (W dùng + W tt)', 'Thiếu ΔV− = (W dùng + W tt) − W đến', 'V đầu tháng (10⁶ m³)',
            'V cuối tháng (10⁶ m³)', 'W xả thừa (10⁶ m³)', 'Z cuối tháng (m)']
-TT_HDR = ['Tháng', 'V đầu tháng (lần trước)', 'V cuối tháng (lần trước)', 'V̄ = (V đầu + V cuối)/2', 'Z̄ (m) tra V ~ Z',
-          'F̄ (km²) tra Z ~ F', 'ΔZ bốc hơi (mm)', 'W bốc hơi = ΔZ·F̄', 'W thấm = k_t·V̄', 'W tổn thất']
+TT_HDR = ['Tháng', 'V đầu tháng (lần trước)', 'V cuối tháng (lần trước)', 'Vtb = (V đầu + V cuối)/2', 'Ztb (m) tra V ~ Z',
+          'Ftb (km²) tra Z ~ F', 'ΔZ bốc hơi (mm)', 'W bốc hơi = ΔZ·Ftb', 'W thấm = k_t·Vtb', 'W tổn thất']
 
 
 def bang_dieu_tiet(ws, ten_ws, tieu_de, co_ton_that, ws_truoc=None):

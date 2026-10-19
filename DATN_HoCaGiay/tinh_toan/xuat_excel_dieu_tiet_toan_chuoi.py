@@ -2,8 +2,8 @@
 """
 XUẤT FILE EXCEL HƯỚNG DẪN TÍNH ĐIỀU TIẾT TOÀN CHUỖI 44 NĂM (mục 2.2 của đồ án)
 Mọi kết quả trong file Excel là CÔNG THỨC (đổi số liệu nhập thì kết quả tự tính lại); thuật toán giống hệt
-kt_dong_chay_toi_thieu.dieu_tiet_chuoi(): bước tháng, lặp 3 lần dung tích bình quân, tổn thất bốc hơi ΔZ·F(Z̄),
-tổn thất thấm k_t·V̄, giới hạn Vc ≤ V ≤ Vbt, mức bảo đảm P = m/(n + 1).
+kt_dong_chay_toi_thieu.dieu_tiet_chuoi(): bước tháng, lặp 3 lần dung tích bình quân, tổn thất bốc hơi ΔZ·F(Ztb),
+tổn thất thấm k_t·Vtb, giới hạn Vc ≤ V ≤ Vbt, mức bảo đảm P = m/(n + 1).
 
   python3 xuat_excel_dieu_tiet_toan_chuoi.py [đường dẫn .xlsx ra]
 Mặc định: ../TAI_VE/HuongDan_DieuTiet_ToanChuoi_44nam.xlsx
@@ -126,9 +126,9 @@ NOI_DUNG = [
     ('-', 'Bước thời gian tháng: hồ điều tiết năm (tích nước mùa lũ tháng 9 ÷ 11, cấp nước mùa khô tháng 12 ÷ 4) nên thời đoạn tháng đủ chi tiết; 44 năm × 12 tháng = 528 bước tính (sheet DieuTiet).'),
     ('M', '3. Phương trình cân bằng nước cho tháng i (thuyết minh công thức (2-1))'),
     ('c', 'V cuối = V đầu + W đến − W dùng − W bốc hơi − W thấm − W xả,    với Vc ≤ V cuối ≤ Vbt'),
-    ('-', 'W bốc hơi = ΔZ_i × F(Z̄): ΔZ_i – tổn thất bốc hơi phụ thêm tháng i (m, QTVH Bảng 3-24); F(Z̄) – diện tích mặt hồ (km²) ứng với mực nước bình quân tháng. Đơn vị: km² × m = 10⁶ m³.'),
-    ('-', 'W thấm = k_t × V̄: k_t = 1%/tháng dung tích bình quân tháng (TCVN 10778:2024 Bảng 1: 0,5 ÷ 1,0%/tháng với địa chất lòng hồ tốt; đồ án lấy 1% – thiên an toàn).'),
-    ('-', 'Vì W bốc hơi, W thấm phụ thuộc dung tích bình quân V̄ = (V đầu + V cuối)/2 mà V cuối chưa biết nên phải TÍNH THỬ DẦN: lần 1 giả thiết V̄ = V đầu tháng; lần 2 và 3 dùng V̄ = (V đầu + V cuối lần trước)/2. Sau 3 lần, sai khác giữa hai lần cuối lớn nhất 0,002 triệu m³ – đủ chính xác.'),
+    ('-', 'W bốc hơi = ΔZ_i × F(Ztb): ΔZ_i – tổn thất bốc hơi phụ thêm tháng i (m, QTVH Bảng 3-24); F(Ztb) – diện tích mặt hồ (km²) ứng với mực nước bình quân tháng. Đơn vị: km² × m = 10⁶ m³.'),
+    ('-', 'W thấm = k_t × Vtb: k_t = 1%/tháng dung tích bình quân tháng (TCVN 10778:2024 Bảng 1: 0,5 ÷ 1,0%/tháng với địa chất lòng hồ tốt; đồ án lấy 1% – thiên an toàn).'),
+    ('-', 'Vì W bốc hơi, W thấm phụ thuộc dung tích bình quân Vtb = (V đầu + V cuối)/2 mà V cuối chưa biết nên phải TÍNH THỬ DẦN: lần 1 giả thiết Vtb = V đầu tháng; lần 2 và 3 dùng Vtb = (V đầu + V cuối lần trước)/2. Sau 3 lần, sai khác giữa hai lần cuối lớn nhất 0,002 triệu m³ – đủ chính xác.'),
     ('-', 'Nếu V cuối > Vbt: hồ đầy, phần thừa xả qua tràn (W xả = V cuối − Vbt), lấy V cuối = Vbt.'),
     ('-', 'Nếu V cuối < Vc: hồ đã về mực nước chết, không cấp đủ nhu cầu – tháng thiếu nước, W thiếu = Vc − V cuối, lấy V cuối = Vc. Năm có ít nhất 1 tháng thiếu là năm thiếu nước.'),
     ('-', 'Đầu chuỗi (tháng 1 năm 1981-1982) giả thiết hồ đầy ở MNDBT – thời điểm cuối mùa lũ; tháng sau lấy V đầu = V cuối tháng trước, nối liên tục qua 44 năm.'),
@@ -346,17 +346,17 @@ for o, t in (('A2', 'Trường hợp'), ('C2', '=TH_chon'), ('D2', 'Vc ='), ('E2
              ('H2', 'k_t ='), ('I2', '=k_tham')):
     ghi(dt, o, t, f_dam, '0.0%' if o == 'I2' else ('0.000' if o in ('E2', 'G2') else None), nen_kq)
 ghi(dt, 'J2', '← đổi ở sheet SoLieu. Dòng nền đỏ: tháng thiếu nước.', f_ghi_chu, border=False)
-NHOM = [('A3:G3', 'SỐ LIỆU THÁNG', None), ('H3:M3', 'LẦN LẶP 1 – giả thiết V̄ = V đầu tháng', nen_lap[0]),
-        ('N3:S3', 'LẦN LẶP 2 – V̄ = (V đầu + V′₁)/2', nen_lap[1]), ('T3:Y3', 'LẦN LẶP 3 – V̄ = (V đầu + V′₂)/2', nen_lap[2]),
+NHOM = [('A3:G3', 'SỐ LIỆU THÁNG', None), ('H3:M3', 'LẦN LẶP 1 – giả thiết Vtb = V đầu tháng', nen_lap[0]),
+        ('N3:S3', 'LẦN LẶP 2 – Vtb = (V đầu + V′₁)/2', nen_lap[1]), ('T3:Y3', 'LẦN LẶP 3 – Vtb = (V đầu + V′₂)/2', nen_lap[2]),
         ('Z3:AD3', 'KẾT QUẢ THÁNG', nen_kq)]
 for rg, t, nen in NHOM:
     dt.merge_cells(rg)
     ghi(dt, rg.split(':')[0], t, f_dam, fill=nen or PatternFill('solid', fgColor='E6E8EB'), can=giua)
 COT = ['TT tháng', 'Năm', 'Tháng', 'W đến (10⁶ m³)', 'W dùng (10⁶ m³)', 'ΔZ bốc hơi (m)', 'V đầu tháng (10⁶ m³)',
-       'V̄₁ = V đầu', 'Z̄₁ (m) tra V~Z', 'F₁ (km²)', 'W bh₁ = ΔZ·F₁', 'W thấm₁ = k_t·V̄₁',
+       'Vtb₁ = V đầu', 'Ztb₁ (m) tra V~Z', 'F₁ (km²)', 'W bh₁ = ΔZ·F₁', 'W thấm₁ = k_t·Vtb₁',
        'V′₁ = V đầu + W đến − W dùng − W bh₁ − W thấm₁',
-       'V̄₂ = (V đầu + V′₁*)/2', 'Z̄₂ (m)', 'F₂ (km²)', 'W bh₂', 'W thấm₂', 'V′₂',
-       'V̄₃ = (V đầu + V′₂*)/2', 'Z̄₃ (m)', 'F₃ (km²)', 'W bh₃', 'W thấm₃', 'V′₃ (kết quả lặp)',
+       'Vtb₂ = (V đầu + V′₁*)/2', 'Ztb₂ (m)', 'F₂ (km²)', 'W bh₂', 'W thấm₂', 'V′₂',
+       'Vtb₃ = (V đầu + V′₂*)/2', 'Ztb₃ (m)', 'F₃ (km²)', 'W bh₃', 'W thấm₃', 'V′₃ (kết quả lặp)',
        'W xả thừa = max(V′₃ − Vbt; 0)', 'W thiếu = max(Vc − V′₃; 0)', 'V cuối tháng (giới hạn Vc ÷ Vbt)',
        'Z cuối tháng (m)', 'Tháng thiếu (1 = có)']
 tieu_de_cot(dt, 4, 1, COT, cao=58)
@@ -498,20 +498,20 @@ VD1 = [
     ('', 'Lượng nước đến W đến', 'SoLieu mục E, tháng 1 năm đầu', '=DieuTiet!D%d' % r0, '10⁶ m³', '0.000'),
     ('', 'Lượng nước dùng W dùng', 'SoLieu mục C, tháng 1 của trường hợp chọn', '=DieuTiet!E%d' % r0, '10⁶ m³', '0.000'),
     ('', 'Bốc hơi phụ thêm ΔZ', 'SoLieu mục B: mm ÷ 1000', '=DieuTiet!F%d' % r0, 'm', '0.0000'),
-    ('2', 'Lần lặp 1: V̄₁', 'Giả thiết V̄₁ = V đầu', '=DieuTiet!H%d' % r0, '10⁶ m³', '0.000'),
-    ('', 'Mực nước bình quân Z̄₁', 'Tra bảng V ~ Z (BangTraZV), nội suy', '=DieuTiet!I%d' % r0, 'm', '0.000'),
+    ('2', 'Lần lặp 1: Vtb₁', 'Giả thiết Vtb₁ = V đầu', '=DieuTiet!H%d' % r0, '10⁶ m³', '0.000'),
+    ('', 'Mực nước bình quân Ztb₁', 'Tra bảng V ~ Z (BangTraZV), nội suy', '=DieuTiet!I%d' % r0, 'm', '0.000'),
     ('', 'Diện tích mặt hồ F₁', 'Tra bảng Z ~ F (SoLieu mục D), nội suy', '=DieuTiet!J%d' % r0, 'km²', '0.000'),
     ('', 'Tổn thất bốc hơi W bh₁', 'ΔZ × F₁', '=DieuTiet!K%d' % r0, '10⁶ m³', '0.000'),
-    ('', 'Tổn thất thấm W thấm₁', 'k_t × V̄₁', '=DieuTiet!L%d' % r0, '10⁶ m³', '0.000'),
+    ('', 'Tổn thất thấm W thấm₁', 'k_t × Vtb₁', '=DieuTiet!L%d' % r0, '10⁶ m³', '0.000'),
     ('', 'Dung tích cuối tháng V′₁', 'V đầu + W đến − W dùng − W bh₁ − W thấm₁', '=DieuTiet!M%d' % r0, '10⁶ m³', '0.000'),
-    ('3', 'Lần lặp 2: V̄₂', '(V đầu + V′₁)/2  (V′₁ giới hạn trong Vc ÷ Vbt)', '=DieuTiet!N%d' % r0, '10⁶ m³', '0.000'),
-    ('', 'Z̄₂', 'Tra bảng V ~ Z', '=DieuTiet!O%d' % r0, 'm', '0.000'),
+    ('3', 'Lần lặp 2: Vtb₂', '(V đầu + V′₁)/2  (V′₁ giới hạn trong Vc ÷ Vbt)', '=DieuTiet!N%d' % r0, '10⁶ m³', '0.000'),
+    ('', 'Ztb₂', 'Tra bảng V ~ Z', '=DieuTiet!O%d' % r0, 'm', '0.000'),
     ('', 'F₂', 'Tra bảng Z ~ F', '=DieuTiet!P%d' % r0, 'km²', '0.000'),
     ('', 'W bh₂', 'ΔZ × F₂', '=DieuTiet!Q%d' % r0, '10⁶ m³', '0.000'),
-    ('', 'W thấm₂', 'k_t × V̄₂', '=DieuTiet!R%d' % r0, '10⁶ m³', '0.000'),
+    ('', 'W thấm₂', 'k_t × Vtb₂', '=DieuTiet!R%d' % r0, '10⁶ m³', '0.000'),
     ('', 'V′₂', 'V đầu + W đến − W dùng − W bh₂ − W thấm₂', '=DieuTiet!S%d' % r0, '10⁶ m³', '0.000'),
-    ('4', 'Lần lặp 3: V̄₃', '(V đầu + V′₂)/2', '=DieuTiet!T%d' % r0, '10⁶ m³', '0.000'),
-    ('', 'V′₃', 'Như lần 2 với V̄₃ → Z̄₃ → F₃', '=DieuTiet!Y%d' % r0, '10⁶ m³', '0.000'),
+    ('4', 'Lần lặp 3: Vtb₃', '(V đầu + V′₂)/2', '=DieuTiet!T%d' % r0, '10⁶ m³', '0.000'),
+    ('', 'V′₃', 'Như lần 2 với Vtb₃ → Ztb₃ → F₃', '=DieuTiet!Y%d' % r0, '10⁶ m³', '0.000'),
     ('', 'Sai khác |V′₃ − V′₂|', 'Nhỏ → dừng lặp', '=ABS(DieuTiet!Y%d-DieuTiet!S%d)' % (r0, r0), '10⁶ m³', '0.0000'),
     ('5', 'So với giới hạn: W xả thừa', 'max(V′₃ − Vbt; 0)', '=DieuTiet!Z%d' % r0, '10⁶ m³', '0.000'),
     ('', 'W thiếu', 'max(Vc − V′₃; 0)', '=DieuTiet!AA%d' % r0, '10⁶ m³', '0.000'),

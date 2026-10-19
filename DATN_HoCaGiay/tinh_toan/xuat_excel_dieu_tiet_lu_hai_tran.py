@@ -3,7 +3,7 @@
 XUẤT FILE EXCEL: ĐIỀU TIẾT LŨ HỒ CÀ GIÂY VỚI HAI TRÀN CÓ CAO TRÌNH NGƯỠNG KHÁC NHAU – PHƯƠNG PHÁP PÔ-TA-PỐP
 Giả thiết (theo yêu cầu SV): trước lũ hồ ở MNDBT; cửa van tràn sự cố mở hoàn toàn suốt trận lũ (chảy tự do như
 đập tràn); trường hợp kẹt van: chỉ tràn chính làm việc. Hai tràn cùng một mực nước hồ: q(Z) = q_tc(Z) + q_sc(Z),
-điều tiết MỘT lần với q tổng. Bước Δt = 1 giờ; f = V/Δt + q/2; f2 = f1 + Q̄ − q1.
+điều tiết MỘT lần với q tổng. Bước Δt = 1 giờ; f = V/Δt + q/2; f2 = f1 + Qtb − q1.
 
   python3 xuat_excel_dieu_tiet_lu_hai_tran.py [đường dẫn .xlsx ra]
 Mặc định: ../TAI_VE/DieuTietLu_HaiTran_HoCaGiay.xlsx
@@ -14,6 +14,7 @@ import sys
 
 from openpyxl import Workbook
 from openpyxl.chart import LineChart, Reference
+from openpyxl.comments import Comment
 from openpyxl.formatting.rule import FormulaRule
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
@@ -117,9 +118,10 @@ ND = [
     ('c', 'q = σn·ε·m·n·b·√(2g)·H^1,5        ε = 1 − 0,2·[ξmb + (n − 1)·ξmt]·H / (n·b)'),
     ('-', 'H = Z − Z ngưỡng (lấy 0 khi Z thấp hơn ngưỡng); n – số khoang; b – bề rộng một khoang; m – hệ số lưu lượng; ξmb, ξmt – hệ số hình dạng mố bên, mố trụ. Thông số từng tràn ở sheet SoLieu (giống chương trình của đồ án).'),
     ('M', '4. Phương pháp Pô-ta-pốp'),
-    ('c', '(Q₁ + Q₂)/2·Δt − (q₁ + q₂)/2·Δt = V₂ − V₁    ⇒    V₂/Δt + q₂/2 = V₁/Δt + q₁/2 + Q̄ − q₁    ⇒    f₂ = f₁ + Q̄ − q₁'),
+    ('c', '(Q₁ + Q₂)/2·Δt − (q₁ + q₂)/2·Δt = V₂ − V₁    ⇒    V₂/Δt + q₂/2 = V₁/Δt + q₁/2 + Qtb − q₁    ⇒    f₂ = f₁ + Qtb − q₁'),
     ('-', 'f = V/Δt + q/2 (đơn vị m³/s) chỉ phụ thuộc mực nước Z, nên lập sẵn bảng Z ~ V ~ q ~ f (sheet QuanHe, bước 0,1 m – thử bước 0,01 m kết quả chỉ lệch dưới 0,3 mm; một cột f cho trường hợp hai tràn, một cột cho trường hợp kẹt van).'),
-    ('-', 'Mỗi giờ: (1) Q̄ = (Q₁ + Q₂)/2; (2) f₂ = f₁ + Q̄ − q₁; (3) tra ngược bảng f ~ Z: tìm dòng k có f(k) ≤ f₂ < f(k+1) (cột M, hàm MATCH) và tỷ lệ nội suy w = [f₂ − f(k)] / [f(k+1) − f(k)] (cột N); (4) Z₂, q tràn chính, q tràn sự cố, V₂ đều nội suy giữa dòng k và k+1 với CÙNG tỷ lệ w; (5) sang giờ sau với f₁ = f₂, q₁ = q₂.'),
+    ('-', 'Mỗi giờ: (1) Qtb = (Q₁ + Q₂)/2; (2) f₂ = f₁ + Qtb − q₁; (3) tra ngược bảng f ~ Z: tìm dòng k có f(k) ≤ f₂ < f(k+1) (cột M, hàm MATCH) và tỷ lệ nội suy w = [f₂ − f(k)] / [f(k+1) − f(k)] (cột N); (4) Z₂, q tràn chính, q tràn sự cố, V₂ đều nội suy giữa dòng k và k+1 với CÙNG tỷ lệ w; (5) sang giờ sau với f₁ = f₂, q₁ = q₂.'),
+    ('-', 'Ví dụ (sheet P1_KetVan, giờ 3, số liệu mặc định): f₂ = 10270,6 nằm giữa f(38) = 10114,4 (Z = 74,70 m) và f(39) = 10289,9 (Z = 74,80 m) → k = 38; w = (10270,6 − 10114,4)/(10289,9 − 10114,4) = 0,890 → Z₂ = 74,70 + 0,890 × 0,10 = 74,789 m; V₂ = 36,412 + 0,890 × (37,041 − 36,412) = 36,972·10⁶ m³.'),
     ('-', 'Vì sao dùng cùng w: khi đó V₂/Δt + q₂/2 đúng bằng f₂ (cột L) nên cân bằng nước khớp tuyệt đối. Nếu tính q₂ bằng công thức từ Z₂ còn f lại tra bảng thì hai bên lệch nhau một chút ở mỗi giờ, tích lũy thành sai số cân bằng nước.'),
     ('-', 'Giờ 0: Z = MNDBT, q = q(MNDBT). Trường hợp hai tràn: tràn sự cố đã xả khoảng 64 m³/s (H = 3,70 m), tràn chính chưa xả. Trường hợp kẹt van: q = 0.'),
     ('-', 'Kết quả: Zmax = MNLTK (P = 1%) hoặc MNLKT (P = 0,2%), lưu lượng xả lớn nhất qmax, phân chia cho từng tràn. Kiểm tra: W đến − W xả = ΔV (sai số ≈ 0).'),
@@ -307,7 +309,7 @@ in_an(qh, ngang=False)
 # ================================================================== CÁC SHEET ĐIỀU TIẾT
 R0 = 16                          # dòng giờ 0
 R1 = R0 + T_MAX
-DT_HDR = ['t (giờ)', 'Q đến (m³/s)', 'Q̄ = (Q₁+Q₂)/2', 'f₁ (giờ trước)', 'q₁ (giờ trước)', 'f₂ = f₁ + Q̄ − q₁',
+DT_HDR = ['t (giờ)', 'Q đến (m³/s)', 'Qtb = (Q₁+Q₂)/2', 'f₁ (giờ trước)', 'q₁ (giờ trước)', 'f₂ = f₁ + Qtb − q₁',
           'Z₂ (m)', 'q tràn chính (m³/s)', 'q tràn sự cố (m³/s)', 'q xả = tổng (m³/s)',
           'V₂ (10⁶ m³)', 'Kiểm tra V₂/Δt + q₂/2 (= f₂)', 'k – dòng tra bảng QuanHe', 'w – tỷ lệ nội suy']
 f_phu = Font(name=FONT, size=10, color='8A8984')
@@ -359,6 +361,15 @@ def sheet_dieu_tiet(ten_ws, P, th):
     ghi(ws, 'G9', '=INDEX(%s,%s)' % (rg('I'), vt), f_dam, '0.0', nen_kq, cg)
     ghi(ws, 'G10', '=F6-SC_Z', f_dam, '0.00', nen_kq, cg)
     tieu_de_cot(ws, 15, 1, DT_HDR, cao=45)
+    ws['M15'].comment = Comment(
+        'k = MATCH(f₂; cột f của QuanHe; 1): số thứ tự dòng trong bảng QuanHe có f(k) ≤ f₂ < f(k+1), '
+        'tức Z₂ nằm giữa Z(k) và Z(k+1).\nZ(k) = %s + (k − 1) × %s m; ví dụ k = 38 → Z(k) = %s m.\n'
+        'Cột phụ để Excel tra bảng – không cần đưa vào thuyết minh.'
+        % tuple(('%.2f' % x).replace('.', ',') for x in (Z_DAU, BUOC, Z_DAU + 37 * BUOC)), 'Hướng dẫn', 110, 300)
+    ws['N15'].comment = Comment(
+        'w = [f₂ − f(k)] / [f(k+1) − f(k)]: f₂ nằm ở bao nhiêu phần quãng từ dòng k đến dòng k+1 (0 ÷ 1).\n'
+        'Z₂, q tràn chính, q tràn sự cố, V₂ = giá trị dòng k + w × (dòng k+1 − dòng k).\n'
+        'Cột phụ – không cần đưa vào thuyết minh.', 'Hướng dẫn', 110, 300)
     QH_COT = 'INDEX(QH_f,0,$F$4)'
     for t in range(0, T_MAX + 1):
         r = R0 + t
@@ -402,7 +413,7 @@ def sheet_dieu_tiet(ten_ws, P, th):
                 c.fill = nen_sc
     ws.conditional_formatting.add('A%d:N%d' % (R0, R1), FormulaRule(formula=['$G%d=MAX($G$%d:$G$%d)' % (R0, R0, R1)],
                                                                    fill=nen_dinh))
-    ghi(ws, 'H5', 'Giờ 0: Z = MNDBT, q = q(MNDBT) theo trường hợp chọn. Từ giờ 1: f₂ = f₁ + Q̄ − q₁ → tìm dòng k, tỷ lệ w',
+    ghi(ws, 'H5', 'Giờ 0: Z = MNDBT, q = q(MNDBT) theo trường hợp chọn. Từ giờ 1: f₂ = f₁ + Qtb − q₁ → tìm dòng k, tỷ lệ w',
         f_ghi_chu, border=False)
     ghi(ws, 'H6', 'trong bảng QuanHe (cột M, N) → Z₂, q₂, V₂ nội suy với cùng k, w (cột L kiểm tra bằng f₂).',
         f_ghi_chu, border=False)
