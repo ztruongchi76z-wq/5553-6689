@@ -5,7 +5,8 @@ Hình học số hóa gần đúng từ mô hình SEEP/W mặt cắt sườn đ�
   đỉnh +78,50 rộng 5 m; mái thượng lưu m = 3,0 đến cơ +68,0 rộng 3 m, dưới cơ m = 3,5 đến mặt đất +64,6;
   mái hạ lưu m = 3,0 đến mặt đất +68,3 (không có cơ); khối lõi ĐĐ-I có chân khay đáy +63,8 rộng 5 m;
   khối thượng lưu, hạ lưu bằng ĐĐ-II; đệm tiêu nước nằm ngang ở chân hạ lưu (x = 80 ÷ 96,3 m, đỉnh +68,7);
-  nền một lớp từ +48,0 lên mặt đất (mặc định lớp 5 – đá phong hóa hoàn toàn).
+  nền một lớp từ +48,0 lên mặt đất: "Lop 6" trong mô hình của SV – theo thứ tự lớp ở mô hình lòng sông
+  (Lop 4, 5 → 6 → 7) là lớp I, đá cát bột kết phong hóa mạnh (TKCS); độ nhạy với lớp 5, lớp 4.
 Cùng bộ giải phần tử hữu hạn (tham_fem.BaiToanTham) và cùng cách lấy gradien với mặt cắt lòng sông
 (chay_tham_on_dinh.phan_tich_tham): chỉ xét vùng bão hòa, lấy phân vị 95 %
   J vào – phần tử kề biên thượng lưu ngập nước; J ra – phần tử đất kề mặt thấm ra;
@@ -80,9 +81,15 @@ def k_vat_lieu(nen='L5'):
     return {m: S.DAT[nen if key is None else key]['k'] for m, (ten, key) in VL.items()}
 
 
-def chay(Zw, nen='L5', mesh=None):
+NEN_CHINH = 'LI'
+
+
+def chay(Zw, nen=NEN_CHINH, mesh=None, k_them=None):
+    """k_them: thay hệ số thấm vật liệu, vd. {4: k_ĐĐ-II} – đệm tiêu nước bị tắc."""
     xy, tri, mat = mesh if mesh is not None else luoi()
-    bt = F.BaiToanTham(xy, tri, mat, kdat=k_vat_lieu(nen), alpha=1.0)
+    kd = k_vat_lieu(nen)
+    kd.update(k_them or {})
+    bt = F.BaiToanTham(xy, tri, mat, kdat=kd, alpha=1.0)
     x, z = xy[:, 0], xy[:, 1]
     tren = (np.abs(z - z_mat(x)) < 1e-6) & (z > Z_DAY + 1e-6)
     up = np.where(tren & (x <= X_DU + 1e-6) & (z <= Zw + 1e-9))[0]
@@ -177,7 +184,7 @@ if __name__ == '__main__':
         if ten in ('TH1_MNDBT', 'TH2_MNLTK'):
             ket_ve.append((bt, kq, {'TH1_MNDBT': 'TH1 – MNDBT', 'TH2_MNLTK': 'TH2 – MNLTK'}[ten]))
     # độ nhạy hệ số thấm lớp nền
-    for nen in ('L4', 'LI'):
+    for nen in ('L5', 'L4'):
         for Zw in (74.70, 77.61):
             bt, kq = chay(Zw, nen=nen, mesh=mesh)
             KQ['nen_%s_%.2f' % (nen, Zw)] = kq
