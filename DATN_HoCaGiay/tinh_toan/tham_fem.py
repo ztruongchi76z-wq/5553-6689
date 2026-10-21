@@ -21,8 +21,8 @@ import so_lieu as S
 #        thông số mái [KTTV Bảng 1-2]; các kích thước không có trong hồ sơ ghi "giả thiết".
 # ---------------------------------------------------------------------------
 class MatCat:
-    def __init__(self, Zc=78.35, Zday=54.0, B=5.0, m1u=3.0, Zcu=70.0, bcu=3.0, m2u=3.5,
-                 m1d=3.0, Zcd=68.0, bcd=14.0, m2d=3.5, Z_ltr=59.0, b_ltr=3.0, m_ltr_ngoai=1.5,
+    def __init__(self, Zc=S.Z_DINH_DAP_HT, Zday=54.0, B=5.0, m1u=3.0, Zcu=S.Z_CO_TL, bcu=3.0, m2u=3.5,
+                 m1d=3.0, Zcd=S.Z_CO_HL, bcd=14.0, m2d=3.5, Z_ltr=59.0, b_ltr=3.0, m_ltr_ngoai=1.5,
                  m_ltr_trong=1.0, t_ong_khoi=1.0, t_dem=0.8, Z4=48.0, ZI=43.0, Zbot=35.0,
                  x_trai=-150.0, x_phai=160.0, chan_khay_den=48.0, b_ck=6.0, x_ck=-2.0,
                  man_kp=None):

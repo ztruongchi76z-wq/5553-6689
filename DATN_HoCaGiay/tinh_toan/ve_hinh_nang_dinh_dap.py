@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 HÌNH MINH HỌA: HAI CÁCH NÂNG CAO TRÌNH ĐỈNH ĐẬP CÀ GIÂY MÀ VẪN GIỮ HỆ SỐ MÁI m = 3
-  (a) Nâng trong phạm vi mặt đỉnh (phương án Đ3 của đồ án, chi tiết A – BV-04): bóc mặt đập cũ +78,35 đến +78,20,
+  (a) Nâng trong phạm vi mặt đỉnh (phương án Đ3 của đồ án, chi tiết A – BV-04): bóc lớp mặt đập cũ +78,50 đến +78,35,
       đắp bù K ≥ 0,97 đến +78,60, đá dăm 5 cm + BT B20 20 cm → mặt đập +78,85 (mép thượng lưu, dốc ngang 2 %).
       Tường chắn sóng giữ phía thượng lưu, gờ chắn bánh + tấm lát mái giữ mép hạ lưu: không đắp thêm lên mái.
   (b) Đắp áp mái hạ lưu: muốn giữ cả bề rộng đỉnh và hệ số mái thì mái mới song song với mái cũ, dịch ra
@@ -26,7 +26,7 @@ plt.rcParams.update({'font.family': 'Liberation Serif', 'font.size': 8.5, 'savef
 
 EX = 2.0                                  # tỷ lệ đứng
 M = 3.0                                   # hệ số mái hạ lưu trên cơ +68,0
-Z_CU, Z_BOC, Z_DAT, Z_MOI = 78.35, 78.20, 78.60, 78.85
+Z_CU, Z_BOC, Z_DAT, Z_MOI = 78.50, 78.35, 78.60, 78.85   # đỉnh cũ theo hồ sơ (thống nhất 21/10/2026), bóc 15 cm
 DU_PHONG_LUN = 0.13                       # đắp thi công đến +78,73 (TCVN 8216:2018 điều 11.4.4)
 X_MEP = 4.70                              # mép hạ lưu mặt đập; gốc x = 0 tại mặt hạ lưu tường chắn sóng
 TUONG, MNLKT = 79.40, 78.51
@@ -94,14 +94,13 @@ a1.fill_between(x_tl, 0, (z_tl - z0) * EX, color=MAU['dat_tl'], lw=0)
 a1.fill_between(np.r_[x_tl, -0.35], (np.r_[z_tl, 78.35] - z0) * EX, (MNLKT - z0) * EX, color=MAU['nuoc'], lw=0)
 ve_duong(a1, [(xL, MNLKT), (-0.35, MNLKT)], z0, color=MAU['muc'], lw=1.1)
 a1.text(xL + 0.08, (MNLKT - z0) * EX + 0.05, 'MNLKT +%s' % so(MNLKT), color=MAU['muc'], fontsize=7.4)
-# thân đập cũ (sau khi bóc mặt đến +78,20; mép đỉnh cũ còn +78,35)
+# thân đập cũ (sau khi bóc lớp mặt đến +78,35; mép đỉnh cũ +78,50)
 cu = [(-0.75, z0), (-0.75, 77.85), (0.0, 77.85), (0.0, Z_BOC), (X_MEP, Z_BOC), (X_MEP, Z_CU), (x_day, z0)]
 ve_vung(a1, cu, z0, fc=MAU['dat'], ec='none')
 a1.text(2.35, (77.82 - z0) * EX, 'Thân đập cũ (khối chống thấm ĐĐ-I)', ha='center', fontsize=7.4, color=MAU['chu'])
 # đất đắp bù K ≥ 0,97 (cao trình sau lún) – mép hạ lưu bám theo đường mái cũ kéo dài
 z_dat = lambda x: Z_DAT - 0.02 * x
-dap_a = [(0.0, Z_BOC), (X_MEP, Z_BOC), (X_MEP, z_mai(X_MEP) - 0.007), (4.50, z_mai(4.50)), (4.50, z_dat(4.50)),
-         (4.30, z_dat(4.30)), (0.0, Z_DAT)]
+dap_a = [(0.0, Z_BOC), (X_MEP, Z_BOC), (X_MEP, z_dat(X_MEP)), (4.50, z_dat(4.50)), (4.30, z_dat(4.30)), (0.0, Z_DAT)]
 ve_vung(a1, dap_a, z0, fc=MAU['moi'], ec=MAU['vien_moi'], lw=0.8, hatch='////')
 a1.text(2.2, (78.465 - z0) * EX, 'Đất đắp bù K ≥ 0,97: +%s → +%s (thi công +%s)'
         % (so(Z_BOC), so(Z_DAT), so(Z_DAT + DU_PHONG_LUN)), ha='center', va='center', fontsize=7.2, bbox=HOP)

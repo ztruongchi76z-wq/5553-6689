@@ -25,7 +25,7 @@ import tham_suon_doi as TS
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 plt.rcParams.update({'font.family': 'Liberation Serif'})
-MNDBT, MNLTK, MNLKT, MNC = S.MNDBT, 77.61, 78.51, S.MNC        # mực nước lũ theo kết quả điều tiết của SV
+MNDBT, MNLTK, MNLKT, MNC = S.MNDBT, S.MNLTK, S.MNLKT, S.MNC   # mực nước lũ theo kết quả điều tiết của SV
 K_TAC = {4: S.DAT['DD-II']['k']}                              # đệm tiêu nước bị tắc: thấm như đất đắp
 TH = [  # mã, mô tả, mái (+1 hạ lưu, −1 thượng lưu), MN tính thấm, thay k, MN hồ trên mái TL, [K]
     ('TH1', 'TL MNDBT; HL không có nước', +1, MNDBT, None, None, 1.30),

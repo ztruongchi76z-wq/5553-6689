@@ -66,8 +66,16 @@ def F_of_Z(z):
 MNC = 67.50
 MNDBT = 74.70
 V_CHET_TK, V_HI_TK, V_TB_TK = 8.41, 28.83, 37.24   # 10^6 m3, theo thiết kế 1996
-Z_DINH_DAP_HT = 78.35       # đỉnh đập hiện trạng [TKCS mục 2.1.1]
+# Thống nhất 21/10/2026 theo yêu cầu SV (cho giống mô hình SEEP/W, SLOPE/W): đỉnh đập trước nâng cấp lấy theo hồ sơ
+# thiết kế +78,50 (khảo sát cắt dọc TKCS đo được +78,32 ÷ +78,44 do lún, bào mòn); cơ thượng lưu và hạ lưu cùng +68,0
+# (KTTV Bảng 1-2 ghi cơ thượng lưu +70,00); MNLTK, MNLKT theo điều tiết lũ hai tràn mở hết cửa (Excel của SV).
+Z_DINH_DAP_HT = 78.50       # đỉnh đập trước nâng cấp [KTTV Bảng 1-2]
 Z_DINH_DAP_TK_CU = 78.50    # đỉnh đập thiết kế cũ [KTTV Bảng 1-2]
+Z_DINH_DAP_DO = 78.35       # đỉnh đập đo hiện trạng [TKCS mục 2.1.1] – chỉ để đối chiếu
+Z_CO_TL = 68.0              # cao trình cơ thượng lưu
+Z_CO_HL = 68.0              # cao trình cơ hạ lưu [KTTV Bảng 1-2]
+MNLTK = 77.61               # mực nước lũ thiết kế P = 1 %
+MNLKT = 78.51               # mực nước lũ kiểm tra P = 0,2 %
 Z_DINH_DAP_SC = 78.85       # đỉnh đập sau sửa chữa (đắp bù +78,50 rồi BT dày 20 cm + lớp đệm) [TKCS]
 Z_TUONG_CS = 79.40          # đỉnh tường chắn sóng [KTTV Bảng 1-2]
 H_DAP_MAX = 24.75           # chiều cao đập lớn nhất sau nâng cấp [QTVH Bảng 1-3]

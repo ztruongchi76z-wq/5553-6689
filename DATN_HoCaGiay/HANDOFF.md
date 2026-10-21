@@ -8,6 +8,16 @@
 > (22 + 1, thêm slide 8, 15) đã đồng bộ; gói zip trong `TAI_VE/`. Danh sách đã sửa / không sửa / cần hỏi GVHD:
 > `RA_SOAT_THUYET_MINH.md` mục 0a. Link slide trên Claude (mục 2) KHÔNG còn khớp – dùng PDF/PPTX trong gói zip.
 
+> **Thông số đầu vào thống nhất từ 21/10/2026 (theo yêu cầu SV, cho giống mô hình SEEP/W, SLOPE/W của SV):**
+> đỉnh đập trước nâng cấp **+78,50 m** (theo hồ sơ thiết kế; khảo sát đo +78,32 ÷ +78,44 chỉ để đối chiếu);
+> cơ thượng lưu và hạ lưu cùng **+68,0 m** (KTTV Bảng 1-2 ghi cơ thượng lưu +70,00); MNLTK **+77,61**, MNLKT **+78,51**
+> (điều tiết lũ hai tràn mở hết cửa – Excel `TAI_VE/DieuTietLu_HaiTran_HoCaGiay.xlsx`). Đã đổi trong `so_lieu.py`
+> (Z_DINH_DAP_HT, Z_CO_TL, Z_CO_HL, MNLTK, MNLKT) và `tham_fem.MatCat`; đã chạy lại thấm, ổn định mặt cắt lòng sông
+> (`chay_tham_on_dinh.py` → `ket_qua/tham.json`, `tham_on_dinh.json`, hình trong `hinh/` – không đưa lên kho): q thay đổi
+> dưới 1 %, K thay đổi dưới 0,02, mọi trường hợp vẫn đạt. Các script kiểm chứng (`kt_*.py`, `chay_truot_nong.py`,
+> `phan_tich_bo_sung.py`, `bo_sung_giai_tich.py`) chưa chạy lại. Thuyết minh Word, bản vẽ,
+> slide trong kho **chưa** cập nhật theo bộ thông số này (vẫn ghi đỉnh +78,35, cơ thượng lưu +70,0, MNLTK +77,63).
+
 Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_TinhToan.zip` (mục 5 "Kết quả chính" và mục 6
 "Giả thiết" của bản đó vẫn giữ nguyên giá trị).
 

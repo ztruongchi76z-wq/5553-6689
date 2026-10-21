@@ -10,7 +10,7 @@ import on_dinh as O
 import ve_hinh as VH
 
 KQ = {}
-MNLTK, MNLKT = 77.63, 78.54          # kết quả điều tiết lũ của đồ án (mục 4.1), lũ KTTV bất lợi hơn
+MNLTK, MNLKT = S.MNLTK, S.MNLKT      # điều tiết lũ hai tràn mở hết cửa (thống nhất 21/10/2026)
 TEN_VL = {1: 'ĐĐ-I (thân đập TL + lõi)', 3: 'ĐĐ-II (khối hạ lưu)', 4: 'Ống khói + đệm tiêu nước',
           5: 'Lăng trụ đá', 6: 'Chân khay (ĐĐ-I)', 7: 'Lớp 4 (sét pha eQ)', 8: 'Lớp I (đá PH mạnh)',
           9: 'Lớp II (đá PH vừa)', 2: 'Ống khói'}
