@@ -14,6 +14,7 @@ Cùng bộ giải phần tử hữu hạn (tham_fem.BaiToanTham) và cùng cách
 (chay_tham_on_dinh.phan_tich_tham): chỉ xét vùng bão hòa, lấy phân vị 95 %
   J vào – phần tử kề biên thượng lưu ngập nước; J ra – phần tử đất kề mặt thấm ra;
   J tiếp xúc – phần tử đất kề đệm tiêu nước; J chân khay – phần tử lõi nằm trong chân khay.
+Sau sửa chữa: mặt đỉnh nâng +78,50 → +78,85 trong bề rộng đỉnh (cách 1, luoi(sau_sc=True)); kèm kiểm tra hội tụ lưới.
   python3 tham_suon_doi.py
 """
 import json
@@ -39,7 +40,9 @@ NEN = [(15.5, 64.6), (31.0, 65.5), (40.0, 66.5), (55.5, 67.2), (60.4, 63.8), (65
        (72.0, 67.5), (80.0, 67.8), (97.5, 68.3)]     # mặt nền dưới thân đập, kể cả chân khay
 CK = (55.5, 67.2, 69.5, 67.4)                         # miệng chân khay (mặt đất tự nhiên)
 VL = {1: ('Lõi ĐĐ-I', 'DD-I'), 12: ('Khối thượng lưu ĐĐ-II', 'DD-II'), 3: ('Khối hạ lưu ĐĐ-II', 'DD-II'),
-      4: ('Đệm tiêu nước', 'DC'), 20: ('Nền', None)}
+      4: ('Đệm tiêu nước', 'DC'), 20: ('Nền', None), 21: ('Đất đắp bù mặt đập K ≥ 0,97', 'DAP_MOI')}
+DINH_SC = S.Z_DINH_DAP_SC                             # sau sửa chữa: nâng mặt đỉnh +78,50 → +78,85 trong bề rộng đỉnh
+X_TIM = 0.5 * (X_DU + X_DD)
 
 
 def z_nen(x):
@@ -47,11 +50,17 @@ def z_nen(x):
     return float(np.interp(x, xs, zs))
 
 
-def z_mat(x):
-    return np.interp(x, *zip(*MAT))
+def z_mat(x, sau_sc=False):
+    z = np.interp(x, *zip(*MAT))
+    if sau_sc:
+        z = np.where((np.asarray(x) >= X_DU - 1e-9) & (np.asarray(x) <= X_DD + 1e-9), DINH_SC, z)
+    return z
 
 
-def luoi():
+def luoi(sau_sc=False, ti_le=1.0):
+    """sau_sc: thêm lớp đắp bù trên mặt đỉnh (+78,50 → +78,85, rộng bằng mặt đỉnh, hai mép thẳng đứng – tường
+    chắn sóng và gờ chắn bánh), mái giữ nguyên như hình minh họa cách 1. ti_le: nhân diện tích phần tử lớn nhất
+    (kiểm tra hội tụ lưới)."""
     V, idx, segs = [], {}, []
 
     def v(p):
@@ -68,13 +77,20 @@ def luoi():
     # điểm đầu các ranh giới bên trong phải là đỉnh của đường bao / mặt nền thì các vùng mới khép kín
     mat_day_du = sorted(MAT + [(62.4, DINH), (66.4, DINH)])
     nen_day_du = NEN[:1] + [(16.5, z_nen(16.5))] + NEN[1:8] + [(77.5, z_nen(77.5))] + NEN[8:]
-    line([(X0, Z_DAY), (X1, Z_DAY), (X1, 68.3)] + mat_day_du[::-1][1:] + [(X0, Z_DAY)])
+    if sau_sc:
+        tren = [p for p in mat_day_du if p[0] < X_DU] + [(X_DU, DINH), (X_DU, DINH_SC), (X_DD, DINH_SC), (X_DD, DINH)] \
+               + [p for p in mat_day_du if p[0] > X_DD]
+        line([(X_DU, DINH), (62.4, DINH), (66.4, DINH), (X_DD, DINH)])           # mặt đỉnh cũ (ranh giới lớp đắp bù)
+    else:
+        tren = mat_day_du
+    line([(X0, Z_DAY), (X1, Z_DAY), (X1, 68.3)] + tren[::-1][1:] + [(X0, Z_DAY)])
     line(nen_day_du)
     line([(16.5, z_nen(16.5)), (30.4, 65.9), (59.6, 75.6), (62.4, DINH)])      # ranh giới lõi – khối TL
     line([(66.4, DINH), (77.5, z_nen(77.5))])                                   # ranh giới lõi – khối HL
     line([(80.0, z_nen(80.0)), (80.0, 68.7), (96.3, 68.7)])                     # đệm tiêu nước
     regions = [(50.0, 55.0, 20, 1.0), (64.0, 72.0, 1, 0.2), (45.0, 71.8, 12, 0.2), (85.0, 70.5, 3, 0.2),
-               (88.0, 68.4, 4, 0.03)]
+               (88.0, 68.4, 4, 0.03)] + ([(X_TIM, 0.5 * (DINH + DINH_SC), 21, 0.03)] if sau_sc else [])
+    regions = [(xr, zr, m, a * ti_le) for xr, zr, m, a in regions]
     T = tr.triangulate(dict(vertices=np.array(V, float), segments=np.array(segs, int),
                             regions=np.array(regions, float)), 'pq30Aa')
     return T['vertices'], T['triangles'], T['triangle_attributes'][:, 0].astype(int)
@@ -89,15 +105,18 @@ K_HIEU_CHINH = {1: 1.0e-6}       # lõi: k = 1·10⁻⁴ cm/s (thí nghiệm tro
 TU_VAN_T9 = {74.70: 1.6132e-6, 77.43: 3.2713e-6, 78.25: 3.6157e-6, 'tac': 0.98831e-6}   # q đọc trên Hình PL 3-66 ÷ 3-78
 
 
-def chay(Zw, nen=NEN_CHINH, mesh=None, k_them=None):
-    """k_them: thay hệ số thấm vật liệu, vd. {4: k_ĐĐ-II} – đệm tiêu nước bị tắc."""
-    xy, tri, mat = mesh if mesh is not None else luoi()
+def chay(Zw, nen=NEN_CHINH, mesh=None, k_them=None, sau_sc=False):
+    """k_them: thay hệ số thấm vật liệu, vd. {4: k_ĐĐ-II} – đệm tiêu nước bị tắc. sau_sc: mặt cắt sau sửa chữa
+    (mesh phải tạo bằng luoi(sau_sc=True))."""
+    xy, tri, mat = mesh if mesh is not None else luoi(sau_sc)
     kd = k_vat_lieu(nen)
     kd.update(K_HIEU_CHINH)
     kd.update(k_them or {})
     bt = F.BaiToanTham(xy, tri, mat, kdat=kd, alpha=1.0)
     x, z = xy[:, 0], xy[:, 1]
-    tren = (np.abs(z - z_mat(x)) < 1e-6) & (z > Z_DAY + 1e-6)
+    tren = (np.abs(z - z_mat(x, sau_sc)) < 1e-6) & (z > Z_DAY + 1e-6)
+    if sau_sc:   # hai mép lớp đắp bù (chân tường chắn sóng, gờ chắn bánh) cũng nằm trên biên
+        tren |= ((np.abs(x - X_DU) < 1e-6) | (np.abs(x - X_DD) < 1e-6)) & (z >= DINH - 1e-6)
     up = np.where(tren & (x <= X_DU + 1e-6) & (z <= Zw + 1e-9))[0]
     seep = np.where(tren & (x >= X_DD - 1e-6))[0]
     H0 = np.interp(x, [15.5, 97.5], [Zw, 68.3])
@@ -129,8 +148,13 @@ def chay(Zw, nen=NEN_CHINH, mesh=None, k_them=None):
     e_ck = np.where(trong_ck)[0]
     q_in = bt.luu_luong(up)
     q_out = -bt.luu_luong(bt.seep_on)
+    # cao độ đường bão hòa tại tim đập: điểm cao nhất trên đường thẳng đứng x = X_TIM có áp lực nước ≥ 0
+    Hi = mtri.LinearTriInterpolator(mtri.Triangulation(x, z, tri), bt.H)
+    zs = np.linspace(63.9, (DINH_SC if sau_sc else DINH) - 0.01, 1500)
+    psi = np.ma.filled(Hi(np.full_like(zs, X_TIM), zs), np.nan) - zs
+    z_tim = float(zs[np.where(psi >= 0)[0].max()]) if np.any(psi >= 0) else np.nan
     return bt, dict(Zw=Zw, nen=nen, q=q_in, q_out=q_out, J_vao=tk(e_vao), J_ra=tk(e_ra), J_tiep=tk(e_tiep),
-                    J_ck=tk(e_ck), so_nut=len(xy), so_pt=len(tri), niter=bt.niter,
+                    J_ck=tk(e_ck), z_tim=z_tim, sau_sc=sau_sc, so_nut=len(xy), so_pt=len(tri), niter=bt.niter,
                     seep_cao=float(xy[bt.seep_on, 1].max()) if len(bt.seep_on) else None)
 
 
@@ -193,6 +217,25 @@ if __name__ == '__main__':
                  kq['J_vao']['p95'], kq['J_ra']['p95'], kq['J_tiep']['p95'], kq['J_ck']['p95'], kq['niter']))
         if ten in ('TH1_MNDBT', 'TH2_MNLTK'):
             ket_ve.append((bt, kq, {'TH1_MNDBT': 'TH1 – MNDBT', 'TH2_MNLTK': 'TH2 – MNLTK'}[ten]))
+    # sau sửa chữa (mặt đỉnh +78,85) – cùng các trường hợp
+    mesh_sc = luoi(sau_sc=True)
+    for ten, Zw, kt in (('SC_TH1_MNDBT', S.MNDBT, None), ('SC_TH2_MNLTK', S.MNLTK, None), ('SC_TH3_MNLKT', S.MNLKT, None),
+                        ('SC_TH4_MNDBT_tac', S.MNDBT, K_TAC)):
+        bt, kq = chay(Zw, mesh=mesh_sc, k_them=kt, sau_sc=True)
+        KQ[ten] = kq
+        ht = KQ[ten[3:]]
+        print('%-17s q %.3e (HT %.3e) | Jtiep %.2f/%.2f Jra %.3f/%.3f Jck %.2f/%.2f | z tim %.2f (HT %.2f)'
+              % (ten, kq['q'], ht['q'], kq['J_tiep']['tb'], kq['J_tiep']['p95'], kq['J_ra']['tb'], kq['J_ra']['p95'],
+                 kq['J_ck']['tb'], kq['J_ck']['p95'], kq['z_tim'], ht['z_tim']))
+    # hội tụ lưới (mặt cắt sau sửa chữa): diện tích phần tử lớn nhất ×4, ×1, ×1/4, ×1/16
+    for tl in (4.0, 1.0, 0.25, 0.0625):
+        m = mesh_sc if tl == 1.0 else luoi(sau_sc=True, ti_le=tl)
+        for Zw in (S.MNDBT, S.MNLKT):
+            kq = chay(Zw, mesh=m, sau_sc=True)[1]
+            KQ['luoi_%g_%.2f' % (tl, Zw)] = kq
+            print('lưới ×%-6g nút %6d Zw %.2f q %.4e | Jtiep p95 %.2f max %.2f | Jra p95 %.3f | Jck p95 %.2f | z tim %.2f'
+                  % (tl, len(m[0]), Zw, kq['q'], kq['J_tiep']['p95'], kq['J_tiep']['max'], kq['J_ra']['p95'],
+                     kq['J_ck']['p95'], kq['z_tim']))
     # độ nhạy: nền lớp 5, lớp I; lõi theo TKCS (ĐĐ-I)
     for ten, nen, kt in (('nen_L5', 'L5', None), ('nen_LI', 'LI', None), ('loi_DDI', NEN_CHINH, {1: S.DAT['DD-I']['k']})):
         for Zw in (S.MNDBT, S.MNLTK):
