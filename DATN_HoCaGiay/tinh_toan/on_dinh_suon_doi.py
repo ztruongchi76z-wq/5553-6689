@@ -4,7 +4,8 @@
 - Bishop đơn giản, mặt trượt trụ tròn, tìm tâm theo lưới tâm × bán kính (on_dinh.py – như SLOPE/W "Grid & Radius").
 - Áp lực nước lỗ rỗng lấy từ lời giải thấm phần tử hữu hạn của chính mặt cắt sườn đồi (tham_suon_doi.py).
 - Chỉ tiêu tính toán theo TTGH I (c_I, φ_I – TKCS Bảng 2-1, 2-3, 2-4): lõi ĐĐ-I; khối thượng lưu, hạ lưu ĐĐ-II;
-  đệm cát; nền "Lop 6" = lớp I (đá phong hóa mạnh). Độ nhạy: nền lớp 5.
+  đệm cát; nền "Lop 6" – thấm và cường độ như lớp 4 (hiệu chỉnh theo kết quả thấm Mặt cắt V – T9 của tư vấn,
+  xem tham_suon_doi.py). Độ nhạy: nền lớp 5.
 - Mặt đất hạ lưu +68,3 cao hơn mực nước hạ lưu ở lòng sông nên các trường hợp "HL có nước" thành HL không có nước.
 - Rút nước nhanh: áp lực lỗ rỗng giữ như thấm ổn định ở mực nước cao (đường bão hòa chưa kịp hạ – thiên an toàn),
   tải nước hồ lấy theo mực nước thấp.
@@ -109,7 +110,7 @@ def ve(kq, ten_file):
     ax = axs.ravel()[-1]
     ax.axis('off')
     ax.text(0.02, 0.95, 'Mặt cắt sườn đồi – ổn định trượt (Bishop)\n'
-                        '— cung trượt nguy hiểm nhất\n— đường bão hòa (đỏ)\nNền "Lop 6" = lớp I (đá phong hóa mạnh)\n'
+                        '— cung trượt nguy hiểm nhất\n— đường bão hòa (đỏ)\nNền "Lop 6": như lớp 4 (hiệu chỉnh theo T9)\n'
                         'Rút nước nhanh: áp lực lỗ rỗng\ngiữ như ở mực nước cao',
             transform=ax.transAxes, va='top', fontsize=8)
     fig.tight_layout()

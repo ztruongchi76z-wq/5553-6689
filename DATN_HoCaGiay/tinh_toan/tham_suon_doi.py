@@ -5,8 +5,11 @@ Hình học số hóa gần đúng từ mô hình SEEP/W mặt cắt sườn đ�
   đỉnh +78,50 rộng 5 m; mái thượng lưu m = 3,0 đến cơ +68,0 rộng 3 m, dưới cơ m = 3,5 đến mặt đất +64,6;
   mái hạ lưu m = 3,0 đến mặt đất +68,3 (không có cơ); khối lõi ĐĐ-I có chân khay đáy +63,8 rộng 5 m;
   khối thượng lưu, hạ lưu bằng ĐĐ-II; đệm tiêu nước nằm ngang ở chân hạ lưu (x = 80 ÷ 96,3 m, đỉnh +68,7);
-  nền một lớp từ +48,0 lên mặt đất: "Lop 6" trong mô hình của SV – theo thứ tự lớp ở mô hình lòng sông
-  (Lop 4, 5 → 6 → 7) là lớp I, đá cát bột kết phong hóa mạnh (TKCS); độ nhạy với lớp 5, lớp 4.
+  nền một lớp từ +48,0 lên mặt đất ("Lop 6" trong mô hình).
+Mô hình này là Mặt cắt V – T9 của tư vấn (BCNCKT, Phụ lục 3 mục 3.5, Hình PL 3-65 ÷ 3-80). Hệ số thấm hiệu chỉnh cho khớp
+lưu lượng tư vấn đọc trên hình (1,613 / 3,271 / 3,616·10⁻⁶ ở +74,70 / +77,43 / +78,25; 0,988·10⁻⁶ khi đệm tắc):
+  lõi k = 1·10⁻⁴ cm/s (thí nghiệm trong phòng – BCNCKT), nền lớp 4 k = 4,11·10⁻⁵ cm/s, khối TL, HL ĐĐ-II
+  → lệch +4 / −7 / −1 / +13 %. Với nền lớp I (5·10⁻⁴ cm/s) lưu lượng lớn gấp gần 5 lần – không phù hợp.
 Cùng bộ giải phần tử hữu hạn (tham_fem.BaiToanTham) và cùng cách lấy gradien với mặt cắt lòng sông
 (chay_tham_on_dinh.phan_tich_tham): chỉ xét vùng bão hòa, lấy phân vị 95 %
   J vào – phần tử kề biên thượng lưu ngập nước; J ra – phần tử đất kề mặt thấm ra;
@@ -81,13 +84,16 @@ def k_vat_lieu(nen='L5'):
     return {m: S.DAT[nen if key is None else key]['k'] for m, (ten, key) in VL.items()}
 
 
-NEN_CHINH = 'LI'
+NEN_CHINH = 'L4'
+K_HIEU_CHINH = {1: 1.0e-6}       # lõi: k = 1·10⁻⁴ cm/s (thí nghiệm trong phòng, BCNCKT) – hiệu chỉnh theo kết quả T9
+TU_VAN_T9 = {74.70: 1.6132e-6, 77.43: 3.2713e-6, 78.25: 3.6157e-6, 'tac': 0.98831e-6}   # q đọc trên Hình PL 3-66 ÷ 3-78
 
 
 def chay(Zw, nen=NEN_CHINH, mesh=None, k_them=None):
     """k_them: thay hệ số thấm vật liệu, vd. {4: k_ĐĐ-II} – đệm tiêu nước bị tắc."""
     xy, tri, mat = mesh if mesh is not None else luoi()
     kd = k_vat_lieu(nen)
+    kd.update(K_HIEU_CHINH)
     kd.update(k_them or {})
     bt = F.BaiToanTham(xy, tri, mat, kdat=kd, alpha=1.0)
     x, z = xy[:, 0], xy[:, 1]
@@ -175,21 +181,25 @@ if __name__ == '__main__':
     print('nút %d, phần tử %d' % (len(mesh[0]), len(mesh[1])))
     KQ = {}
     ket_ve = []
-    for ten, Zw in (('TH1_MNDBT', 74.70), ('TH2_MNLTK', 77.61), ('TH3_MNLKT', 78.51), ('MNLTK_BCNCKT', 77.43)):
-        bt, kq = chay(Zw, mesh=mesh)
+    K_TAC = {4: S.DAT['DD-II']['k']}
+    for ten, Zw, kt in (('TH1_MNDBT', S.MNDBT, None), ('TH2_MNLTK', S.MNLTK, None), ('TH3_MNLKT', S.MNLKT, None),
+                        ('TH4_MNDBT_tac', S.MNDBT, K_TAC), ('TV_74.70', 74.70, None), ('TV_77.43', 77.43, None),
+                        ('TV_78.25', 78.25, None), ('TV_tac', 74.70, K_TAC)):
+        bt, kq = chay(Zw, mesh=mesh, k_them=kt)
         KQ[ten] = kq
-        print('%-13s Zw %.2f q %.3e (ra %.3e) Jvao %.3f Jra %.3f Jtiep %.3f Jck %.3f | lặp %d, mặt thấm ra cao nhất %s'
-              % (ten, Zw, kq['q'], kq['q_out'], kq['J_vao']['p95'], kq['J_ra']['p95'], kq['J_tiep']['p95'],
-                 kq['J_ck']['p95'], kq['niter'], kq['seep_cao']))
+        tv = TU_VAN_T9.get('tac' if ten == 'TV_tac' else Zw) if ten.startswith('TV') else None
+        print('%-14s Zw %.2f q %.3e%s | Jvao %.3f Jra %.3f Jtiep %.3f Jck %.3f | lặp %d'
+              % (ten, Zw, kq['q'], (' (TV %.3e, lệch %+.0f%%)' % (tv, 100 * (kq['q'] / tv - 1))) if tv else '',
+                 kq['J_vao']['p95'], kq['J_ra']['p95'], kq['J_tiep']['p95'], kq['J_ck']['p95'], kq['niter']))
         if ten in ('TH1_MNDBT', 'TH2_MNLTK'):
             ket_ve.append((bt, kq, {'TH1_MNDBT': 'TH1 – MNDBT', 'TH2_MNLTK': 'TH2 – MNLTK'}[ten]))
-    # độ nhạy hệ số thấm lớp nền
-    for nen in ('L5', 'L4'):
-        for Zw in (74.70, 77.61):
-            bt, kq = chay(Zw, nen=nen, mesh=mesh)
-            KQ['nen_%s_%.2f' % (nen, Zw)] = kq
-            print('nền %-3s Zw %.2f q %.3e Jvao %.3f Jra %.3f Jtiep %.3f Jck %.3f' % (
-                nen, Zw, kq['q'], kq['J_vao']['p95'], kq['J_ra']['p95'], kq['J_tiep']['p95'], kq['J_ck']['p95']))
+    # độ nhạy: nền lớp 5, lớp I; lõi theo TKCS (ĐĐ-I)
+    for ten, nen, kt in (('nen_L5', 'L5', None), ('nen_LI', 'LI', None), ('loi_DDI', NEN_CHINH, {1: S.DAT['DD-I']['k']})):
+        for Zw in (S.MNDBT, S.MNLTK):
+            bt, kq = chay(Zw, nen=nen, mesh=mesh, k_them=kt)
+            KQ['%s_%.2f' % (ten, Zw)] = kq
+            print('%-8s Zw %.2f q %.3e Jvao %.3f Jra %.3f Jtiep %.3f Jck %.3f' % (
+                ten, Zw, kq['q'], kq['J_vao']['p95'], kq['J_ra']['p95'], kq['J_tiep']['p95'], kq['J_ck']['p95']))
     ve(ket_ve, os.path.join(DIR, '..', 'TAI_VE', 'Tham_MatCatSuonDoi.png'))
     json.dump(KQ, open(os.path.join(DIR, 'ket_qua', 'tham_suon_doi.json'), 'w'), ensure_ascii=False, indent=1)
     print('Đã ghi ket_qua/tham_suon_doi.json, ../TAI_VE/Tham_MatCatSuonDoi.png')
