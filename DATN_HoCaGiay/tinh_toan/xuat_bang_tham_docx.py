@@ -37,14 +37,15 @@ def so_q(q):
 
 
 def chu(p, markup, co=13, dam=False, nghieng=False):
-    """Thêm chữ vào đoạn; ^{...} là chỉ số trên."""
-    for i, phan in enumerate(re.split(r'\^\{([^}]*)\}', markup)):
+    """Thêm chữ vào đoạn; ^{...} là chỉ số trên, _{...} là chỉ số dưới."""
+    for phan in re.split(r'(\^\{[^}]*\}|_\{[^}]*\})', markup):
         if not phan:
             continue
-        r = p.add_run(phan)
+        tren, duoi = phan.startswith('^{'), phan.startswith('_{')
+        r = p.add_run(phan[2:-1] if tren or duoi else phan)
         r.font.name, r.font.size, r.bold, r.italic = FONT, Pt(co), dam, nghieng
         r._element.rPr.rFonts.set(qn('w:eastAsia'), FONT)
-        r.font.superscript = bool(i % 2)
+        r.font.superscript, r.font.subscript = tren, duoi
     return p
 
 
@@ -85,22 +86,26 @@ def hang_lap(row, tieu_de=False):
         trpr.append(e)
 
 
-def bang(d, chu_thich, tieu_de, du_lieu):
+def bang(d, chu_thich, tieu_de, du_lieu, cot=COT, cot_trai=(0,)):
+    """cot: bề rộng cột (dxa); cot_trai: các cột canh trái ở phần số liệu."""
     p = doan(d, chu_thich, co=12, can=WD_ALIGN_PARAGRAPH.CENTER, nghieng=True, truoc=6, sau=6)
     p.paragraph_format.keep_with_next = True
-    t = d.add_table(rows=1 + len(du_lieu), cols=len(COT))
+    t = d.add_table(rows=1 + len(du_lieu), cols=len(cot))
     t.style = 'Table Grid'
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     t.autofit = False
-    for gc, w in zip(t._tbl.tblGrid.findall(qn('w:gridCol')), COT):
+    for gc, w in zip(t._tbl.tblGrid.findall(qn('w:gridCol')), cot):
         gc.set(qn('w:w'), str(w))
-    for j, (c, w) in enumerate(zip(t.rows[0].cells, COT)):
+    for j, (c, w) in enumerate(zip(t.rows[0].cells, cot)):
         o_bang(c, tieu_de[j], w, dam=True, nen='F2F2F2')
     hang_lap(t.rows[0], tieu_de=True)
     for i, dong in enumerate(du_lieu):
-        for j, (c, w) in enumerate(zip(t.rows[i + 1].cells, COT)):
-            o_bang(c, dong[j], w, can=WD_ALIGN_PARAGRAPH.LEFT if j == 0 else WD_ALIGN_PARAGRAPH.CENTER)
+        for j, (c, w) in enumerate(zip(t.rows[i + 1].cells, cot)):
+            o_bang(c, dong[j], w, can=WD_ALIGN_PARAGRAPH.LEFT if j in cot_trai else WD_ALIGN_PARAGRAPH.CENTER)
         hang_lap(t.rows[i + 1])
+    for row in t.rows[:-1]:          # giữ cả bảng trên một trang (bảng ngắn)
+        for c in row.cells:
+            c.paragraphs[0].paragraph_format.keep_with_next = True
     return t
 
 

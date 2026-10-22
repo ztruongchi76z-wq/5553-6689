@@ -14,8 +14,11 @@
 > (điều tiết lũ hai tràn mở hết cửa – Excel `TAI_VE/DieuTietLu_HaiTran_HoCaGiay.xlsx`). Đã đổi trong `so_lieu.py`
 > (Z_DINH_DAP_HT, Z_CO_TL, Z_CO_HL, MNLTK, MNLKT) và `tham_fem.MatCat`; đã chạy lại thấm, ổn định mặt cắt lòng sông
 > (`chay_tham_on_dinh.py` → `ket_qua/tham.json`, `tham_on_dinh.json`, hình trong `hinh/` – không đưa lên kho): q thay đổi
-> dưới 1 %, K thay đổi dưới 0,02, mọi trường hợp vẫn đạt. Các script kiểm chứng (`kt_*.py`, `chay_truot_nong.py`,
-> `phan_tich_bo_sung.py`, `bo_sung_giai_tich.py`) chưa chạy lại. Thuyết minh Word, bản vẽ,
+> dưới 1 %, K thay đổi dưới 0,02, mọi trường hợp vẫn đạt. 22/10: đã chạy lại `phan_tich_bo_sung.py` (TH11, TH12 thi
+> công, Spencer); mặt cắt sườn đồi V – T9 có thấm (`tham_suon_doi.py`) và ổn định 12 trường hợp (`on_dinh_suon_doi.py`)
+> hiện trạng và sau sửa chữa; bảng Word để SV dán: `TAI_VE/BangTham_LongSong_SuonDoi.docx` (Bảng 5.1, 5.2),
+> `TAI_VE/BangOnDinh_LongSong_SuonDoi.docx` (Bảng 5.3, 5.4). Các script kiểm chứng khác (`kt_*.py` trừ
+> `kt_cung_truot_sau_sc.py`, `chay_truot_nong.py`, `bo_sung_giai_tich.py`) chưa chạy lại. Thuyết minh Word, bản vẽ,
 > slide trong kho **chưa** cập nhật theo bộ thông số này (vẫn ghi đỉnh +78,35, cơ thượng lưu +70,0, MNLTK +77,63).
 
 Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_TinhToan.zip` (mục 5 "Kết quả chính" và mục 6
