@@ -1,0 +1,31 @@
+# Chương trình tính toán (Python 3) – bản 12/10/2026
+
+Mô hình sau sửa chữa dùng đỉnh +78,85 m (`so_lieu.py`, `Z_DINH_DAP_SC`). Kết quả JSON trong `ket_qua/`.
+
+| Tệp | Nội dung |
+|---|---|
+| so_lieu.py, dieu_tiet_lu.py, cao_trinh_dinh.py (đợt 6: Vw = kl·Vl theo TCVN 8421:2010 A.3.3, kα Bảng 9), tham_fem.py, on_dinh.py, chay_tham_on_dinh.py, chay_truot_nong.py, cong_va_tran_ket_cau.py, chuyen_de_khoan_phut.py, ve_hinh.py | Chương trình gốc (Bảng PL5) |
+| phan_tich_bo_sung.py | Spencer, lưới tâm mịn, tải trọng thi công (TH11, TH12) |
+| bo_sung_giai_tich.py | Hướng gió (Vw quy đổi), [K] ngưỡng tràn = γn·γlc/γc (γc = 0,95), độ nhạy m tràn, cống i = 3‰, neo ngưỡng, khung kín cống (a = 7 cm: lớp bảo vệ ≥ 60 mm theo TCVN 4116:2023 mục 6.3.3 – Bảng 6.4), mưa, m/n |
+| kt_hoi_tu.py | Hội tụ lưới PTHH, tham số α, độ nhạy k_h |
+| kt_hai_hang.py, kt_dinh.py | Màng 2 hàng A–B, đáy màng theo TCVN 8216:2018 mục 9.2.2.9, ảnh hưởng đỉnh +78,85 |
+| kt_tran_su_co.py | Thủy lực tràn sự cố: độ sâu đầu dốc = h_k (P = 0), đường mặt nước, tường yêu cầu (ket_qua/kt_tran_su_co.json) |
+| kt_lop_II_lu.py | Hiệu quả màng theo K lớp II 1e-5; 1,3e-5 (≈ 1 Lu); 3e-5; 6,5e-5; 1e-4 cm/s (tiêu chí 5 Lu) – Bảng 8.8 (ket_qua/kt_lop_II_lu.json) |
+| kt_dong_chay_toi_thieu.py | Điều tiết toàn chuỗi có kể dòng chảy tối thiểu Q_tt = 0,027 m³/s (TCVN 10778:2024 công thức 6), mức bảo đảm, MNDBT cần cho P = 85 % – mục 2.2.3 (ket_qua/kt_dong_chay_toi_thieu.json); cần du_lieu/can_bang_nuoc.json đi kèm can_bang_nuoc.py |
+| kt_cap_nuoc_bo_sung.py | Mức bảo đảm theo mục tiêu (TCVN 10778:2024 mục 8.2.2.2), sinh hoạt ưu tiên, số tháng MN < +67,94 m (ket_qua/kt_cap_nuoc_bo_sung.json) |
+| xuat_excel_dieu_tiet_toan_chuoi.py | Xuất `../TAI_VE/HuongDan_DieuTiet_ToanChuoi_44nam.xlsx` – file Excel hướng dẫn điều tiết toàn chuỗi (toàn công thức, thuật toán như kt_dong_chay_toi_thieu.dieu_tiet_chuoi; kiểm tra lại bằng LibreOffice: TH1A 39/44, TH2 37/44, TH1 18/44) |
+| xuat_excel_dieu_tiet_nam_lap_bang.py | Xuất `../TAI_VE/DieuTietNam_LapBang_CoTonThat.xlsx` – điều tiết năm thiết kế P = 85% theo phương pháp lập bảng có kể tổn thất (tích sớm, lặp đến khi Vhi hội tụ ≤ 1%); kiểm tra LibreOffice: TH1A 27,85 / TH2 28,81 / TH1 36,19 triệu m³ |
+| xuat_excel_dieu_tiet_lu_hai_tran.py | Xuất `../TAI_VE/DieuTietLu_HaiTran_HoCaGiay.xlsx` – điều tiết lũ hai tràn theo Pô-ta-pốp (cửa tràn sự cố mở hoàn toàn; kẹt van chỉ tràn chính); bảng QuanHe bước 0,1 m, Z₂, q₂, V₂ nội suy cùng tỷ lệ w nên cân bằng nước khớp tuyệt đối; kiểm tra LibreOffice: 77,608 / 78,205 / 78,514 / 79,140 m (lệch bản bước 0,01 m dưới 0,3 mm), khớp lời giải Python Δt = 1 giờ |
+| ve_hinh_nang_dinh_dap.py | Vẽ `../TAI_VE/HinhMinhHoa_NangDinhDap.png` – hai cách nâng đỉnh đập giữ hệ số mái (mặt cắt lòng sông C16, tỷ lệ đứng ×2), tính khối lượng đắp trên 1 m dài |
+| tham_suon_doi.py | Tính thấm mặt cắt sườn đồi (= Mặt cắt V – T9 của tư vấn) bằng cùng bộ giải phần tử hữu hạn (tham_fem.py); hệ số thấm hiệu chỉnh theo lưu lượng tư vấn đọc trên Hình PL 3-66 ÷ 3-78 (lõi 1·10⁻⁴ cm/s, nền lớp 4); q, J vào, J ra, J tiếp xúc đệm, J chân khay (phân vị 95 %, vùng bão hòa) cho MNDBT / MNLTK / MNLKT / đệm tắc, hiện trạng và sau sửa chữa (mặt đỉnh nâng +78,50 → +78,85 trong bề rộng đỉnh), Z bão hòa tại tim; hội tụ lưới (1.276 ÷ 63.449 nút); độ nhạy nền lớp 5, lớp I, lõi ĐĐ-I; ghi `ket_qua/tham_suon_doi.json`, `../TAI_VE/Tham_MatCatSuonDoi.png` |
+| xuat_bang_tham_docx.py | Xuất Word hai bảng kết quả tính thấm sau sửa chữa theo mẫu Bảng 5.1 của thuyết minh: Bảng 5.1 mặt cắt lòng sông (thông số thống nhất 21/10/2026) và Bảng 5.2 mặt cắt sườn đồi V – T9, kèm đoạn đánh giá; đọc `ket_qua/tham.json`, `ket_qua/tham_suon_doi.json`; ghi `../TAI_VE/BangTham_LongSong_SuonDoi.docx` |
+| on_dinh_suon_doi.py | Ổn định trượt mặt cắt sườn đồi (Bishop, on_dinh.py; áp lực lỗ rỗng từ tham_suon_doi.py; rút nước nhanh giữ áp lực lỗ rỗng ở mực nước cao): (1) 7 trường hợp như Bảng 2-24 BCNCKT, độ nhạy nền lớp 5; (2) 12 trường hợp như Bảng 5.2 mặt cắt lòng sông (động đất, mưa kéo dài, rút nước, thi công 20 kPa) – hiện trạng và sau sửa chữa (mặt đỉnh +78,85, lớp đắp bù); ghi `ket_qua/on_dinh_suon_doi.json` (mục `chuong5`), `../TAI_VE/OnDinh_MatCatSuonDoi.png`, `../TAI_VE/OnDinh_SuonDoi_SauSC.png` |
+| kt_cung_truot_sau_sc.py | Kiểm chứng dò cung trượt cho hai bảng ổn định sau sửa chữa: lưới cơ sở + tối ưu Nelder – Mead từ 10 điểm xuất phát, lòng sông và sườn đồi, hiện trạng và sau sửa chữa; ghi `ket_qua/kiem_chung_cung_truot_sau_sc.json` |
+| xuat_excel_dong_chay_tran_mai.py | Xuất Excel có công thức cho Bảng 5.5 (dòng chảy tràn trên mái hạ lưu khi mưa, q = C·i·L, Manning dòng màng mỏng, τ = γw·h·sinβ): đoạn mái m = 3,0 và m = 3,5, đường chéo ô 4 × 4 m, độ nhạy C, n, tỷ lệ mưa, biểu đồ τ ~ L; sheet Bang5_6_Ranh – kiểm tra khả năng thoát nước của rãnh (Qtk = C·i·A, Qtn Manning ở 75% chiều cao rãnh, chiều sâu và lưu tốc khi xả Qtk, kiểm tra bất lợi); ghi `../TAI_VE/DongChayTranMai_Bang5_5.xlsx` |
+| xuat_bang_on_dinh_docx.py | Xuất Word hai bảng ổn định sau sửa chữa theo mẫu Bảng 5.2 của thuyết minh: Bảng 5.3 lòng sông, Bảng 5.4 sườn đồi (12 trường hợp, K hiện trạng / sau SC), kèm đoạn đánh giá, kiểm tra dò tâm trượt và hình cung trượt sườn đồi; ghi `../TAI_VE/BangOnDinh_LongSong_SuonDoi.docx` |
+| kt_mua_lu_bien_doi.py | Mưa 1978–2024 (Mann – Kendall, Sen, Welch – du_lieu/mua_luu_vuc.json), điều tiết khi lũ tăng k, mức tăng giới hạn, mực nước đón lũ – mục 4.6 (ket_qua/kt_mua_lu_bien_doi.json) |
+| kt_bo_sung_ket_cau.py | Neo ngưỡng ([K] kể γc = 0,95 – QCVN 04-05:2022; phía bê tông, nhổ khối đá), ổn định trục vít theo sơ đồ gối (μ = 1,0), τ theo đường chéo ô rãnh (ket_qua/kt_bo_sung_ket_cau.json) |
+| kt_kiem_chung_12_10.py | Gradien lớn nhất và vị trí, bất đẳng hướng kh/kv = 5, tìm lại cung trượt (miền mở rộng, lưới lồng, Nelder – Mead, Spencer) – Bảng PL10, PL11 (ket_qua/kiem_chung_*.json) |
+
+Số liệu `du_lieu/can_bang_nuoc.json` (cân bằng nước 44 năm) và `du_lieu/mua_luu_vuc.json` (mưa năm, X1max 1978 ÷ 2024 – Bảng PL12) đã có trong kho (12/10). Các tệp gốc còn lại (can_bang_nuoc.py, thuy_luc_tran.py, mai_ha_luu.py, tong_hop.py, xuat_excel.py) nằm trong thư mục Drive "Hugo/Tinh toan bo sung (chua co tren GitHub)" – chép vào đây để chạy.
+Chạy: `python3 chay_tham_on_dinh.py` (cần numpy, scipy, triangle, matplotlib).
