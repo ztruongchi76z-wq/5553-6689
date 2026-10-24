@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-XUẤT FILE EXCEL: DÒNG CHẢY TRÀN TRÊN MÁI HẠ LƯU KHI MƯA – BẢNG 5.5 (mục 5.4.1 thuyết minh), CÓ CÔNG THỨC
+XUẤT FILE EXCEL: DÒNG CHẢY TRÀN TRÊN MÁI HẠ LƯU KHI MƯA – BẢNG 5.5 (mục 5.4.1 thuyết minh) VÀ KIỂM TRA KHẢ NĂNG THOÁT
+NƯỚC CỦA RÃNH – BẢNG 5.6 (mục 5.4.2), CÓ CÔNG THỨC
   q = C·i·L ;  h = (q·n/√sinβ)^0,6 ;  τ = γw·h·sinβ ;  v = q/h          (Chow [25] – dòng màng mỏng, Manning)
 Hai đoạn mái hạ lưu mặt cắt lòng sông sau sửa chữa: m = 3,0 (đỉnh +78,85 → cơ +68,0) và m = 3,5 (cơ +68,0 → đỉnh lăng
 trụ +59,0); ô rãnh 4 × 4 m xoay 45° nên đường chảy dài nhất là đường chéo ô. Kèm độ nhạy (C, n, tỷ lệ mưa 30 phút)
-và biểu đồ τ ~ L. Mọi ô kết quả là công thức, ô vàng chữ xanh là số liệu nhập.
+và biểu đồ τ ~ L. Rãnh: Qtk = C·i·A, Qtn = (1/n)·ω·R^(2/3)·√S ở chiều sâu 75% chiều cao rãnh, chiều sâu và lưu tốc khi
+xả Qtk (lặp), kiểm tra bất lợi. Mọi ô kết quả là công thức, ô vàng chữ xanh là số liệu nhập.
   python3 xuat_excel_dong_chay_tran_mai.py [đường dẫn .xlsx ra]
 Mặc định: ../TAI_VE/DongChayTranMai_Bang5_5.xlsx
 """
@@ -83,8 +85,8 @@ def in_an(ws, ngang=True, mot_trang=False):
 hd = wb.active
 hd.title = 'HuongDan'
 do_rong(hd, (4, 120))
-ghi(hd, 'A1', 'DÒNG CHẢY TRÀN TRÊN MÁI HẠ LƯU KHI MƯA – HIỆU QUẢ CHỐNG XÓI CỦA VIỆC CHIA Ô MÁI (Bảng 5.5)', f_tieu_de,
-    border=False)
+ghi(hd, 'A1', 'DÒNG CHẢY TRÀN TRÊN MÁI HẠ LƯU KHI MƯA – CHIA Ô MÁI VÀ KIỂM TRA RÃNH THOÁT NƯỚC (mục 5.4.1, 5.4.2)',
+    f_tieu_de, border=False)
 DONG = [
     ('M', '1. Mục đích'),
     ('-', 'Mái hạ lưu bị xói rãnh do nước mưa chảy tràn; lực xói tăng theo chiều dài đường chảy L. Chia mái thành ô bằng rãnh '
@@ -109,6 +111,15 @@ DONG = [
           '(giả thiết – hồ sơ không có mưa thời đoạn ngắn); C = 0,6 (mặt đất dốc lớn, cỏ thưa); n = 0,03 (mặt đất trống); '
           'ứng suất tiếp cho phép của đất không có lớp phủ theo Chow [25].'),
     ('-', 'Chiều dài cả mái trên tính đúng là 34,3 m; bảng làm tròn 34 m như thuyết minh (τ chênh 0,04 Pa).'),
+    ('M', '5. Kiểm tra khả năng thoát nước của rãnh (sheet Bang5_6_Ranh)'),
+    ('c', 'Qtk = C·i·A      – lưu lượng thiết kế: phương pháp cường độ giới hạn, A – diện tích hứng nước (hình chiếu ngang).'),
+    ('c', 'Qtn = (1/n)·ω·R^(2/3)·√S – khả năng thoát (Manning), nước sâu h = 0,75·H; ω = b·h; χ = b + 2h; R = ω/χ; v = Qtn/ω.'),
+    ('-', 'Diện tích hứng nước: rãnh dọc – khoảng cách rãnh 40 m × (bề rộng đỉnh + hình chiếu ngang mái trên); rãnh ngang '
+          'trên cơ – 40 m × (bề rộng cơ + dải chân mái trên); rãnh xiên – một ô 4 × 4 m; rãnh ngang đỉnh – 40 m × bề rộng đỉnh.'),
+    ('-', 'Độ dốc S: rãnh dọc chạy theo đường dốc nhất S = sinβ; rãnh xiên lệch 45° trên mặt mái S = sinβ/√2; rãnh ngang '
+          '(đỉnh, cơ) S = 0,003.'),
+    ('-', 'Bảng b) tính chiều sâu và lưu tốc khi rãnh xả đúng Qtk (lặp 5 lần công thức Manning); bảng c) kiểm tra khi nước '
+          'dồn nhiều hơn giả thiết – vẫn đạt.'),
 ]
 r = 3
 for kieu, t in DONG:
@@ -159,6 +170,17 @@ THONG_SO = [  # (nhãn, giá trị hoặc công thức, đơn vị, tên, ghi ch
     ('Đất pha cát', 1.8, 'Pa', 'tau_cat', '', True, '0.0'),
     ('Đất bụi', 2.3, 'Pa', 'tau_bui', '', True, '0.0'),
     ('Đất thịt chặt', 3.6, 'Pa', 'tau_thit', 'Khi cỏ đã phủ kín, mái chịu được ứng suất tiếp lớn hơn nhiều lần', True, '0.0'),
+    ('E. RÃNH THOÁT NƯỚC MÁI (Bảng 5.6)', None),
+    ('Hệ số nhám rãnh bê tông n', 0.015, '–', 'n_BT', 'Bê tông', True, '0.000'),
+    ('Chiều sâu nước tính khả năng thoát / chiều cao rãnh', 0.75, '–', 'Ty_le_sau', 'Chừa 25% chiều cao an toàn', True, '0.00'),
+    ('Khoảng cách rãnh dọc', 40.0, 'm', 'K_doc', 'TCVN 8216:2018 điều 10.3.4.6: 25 ÷ 50 m', True, '0.0'),
+    ('Bề rộng đỉnh đập', 5.0, 'm', 'B_dinh', 'Dốc ngang về hạ lưu, nước qua khe gờ chắn bánh vào rãnh ngang đỉnh', True, '0.0'),
+    ('Bề rộng cơ hạ lưu', 14.0, 'm', 'B_co', '', True, '0.0'),
+    ('Dải chân mái trên chảy vào rãnh cơ', 3.0, 'm', 'D_chan', 'Giả thiết (khớp diện tích 680 m² của Bảng 5.6); xem bảng c) '
+     'kiểm tra bất lợi', True, '0.0'),
+    ('Độ dốc dọc rãnh ngang (đỉnh, cơ)', 0.003, '–', 'i_ngang', '', True, '0.000'),
+    ('Hình chiếu ngang đoạn mái trên', '=m_tren*(Z_dinh-Z_co)', 'm', 'X_tren', '', False, '0.00'),
+    ('Hình chiếu ngang đoạn mái dưới', '=m_duoi*(Z_co-Z_ltr)', 'm', 'X_duoi', '', False, '0.00'),
 ]
 r = 3
 for dong in THONG_SO:
@@ -321,7 +343,99 @@ for col, mau, net in ((2, '2A78D6', None), (3, '1BAF7A', None), (4, 'EB6834', 'd
 bd.add_chart(ch, 'H3')
 in_an(bd)
 
-for ws, mau in ((hd, 'A65A10'), (sl, 'EDA100'), (bg, '1BAF7A'), (dn, '2A78D6'), (bd, '8A8984')):
+# ================================================================== BẢNG 5.6 – RÃNH THOÁT NƯỚC
+rn = wb.create_sheet('Bang5_6_Ranh')
+do_rong(rn, (34, 8, 8, 10, 34, 11, 10, 9, 9, 9, 9, 10, 9, 10, 10))
+ghi(rn, 'A1', 'BẢNG 5.6 – KIỂM TRA KHẢ NĂNG THOÁT NƯỚC CÁC LOẠI RÃNH MÁI HẠ LƯU', f_tieu_de, border=False)
+ghi(rn, 'A2', 'Qtk = C·i·A;  Qtn = (1/n)·ω·R^(2/3)·√S với chiều sâu nước h = 0,75·H;  ω = b·h;  χ = b + 2h;  R = ω/χ;  '
+              'v = Qtn/ω. Số liệu ở sheet SoLieu (mục A, B, C, E).', f_ghi_chu, border=False)
+ghi(rn, 'A4', 'a) Khả năng thoát nước (cột in đậm là các cột của Bảng 5.6)', f_muc, border=False)
+tieu_de_cot(rn, 5, 1, ['Loại rãnh', 'b (m)', 'H (m)', 'A (m²)', 'Cách lấy diện tích hứng nước A', 'Qtk = C·i·A (m³/s)',
+                       'Độ dốc S', 'h = 0,75·H (m)', 'ω = b·h (m²)', 'χ = b + 2h (m)', 'R = ω/χ (m)', 'Qtn (m³/s)',
+                       'v = Qtn/ω (m/s)', 'Qtn / Qtk (lần)', 'Đánh giá'], cao=45)
+RANH = [  # tên, b, H, A, cách lấy A, S
+    ('Rãnh dọc 40 × 40 cm (theo mái, @ 40 m)', 0.4, 0.4, '=K_doc*(B_dinh+X_tren)',
+     '40 m × (đỉnh 5 m + hình chiếu mái trên)', '=sin_tren'),
+    ('Rãnh ngang trên cơ 40 × 40 cm', 0.4, 0.4, '=K_doc*(B_co+D_chan)', '40 m × (cơ 14 m + dải chân mái 3 m)', '=i_ngang'),
+    ('Rãnh xiên 20 × 20 cm (ô 4 × 4 m)', 0.2, 0.2, '=a_o^2', 'Một ô 4 × 4 m', '=sin_tren/SQRT(2)'),
+    ('Rãnh ngang đỉnh 20 × 20 cm', 0.2, 0.2, '=K_doc*B_dinh', '40 m × đỉnh 5 m', '=i_ngang'),
+]
+RA0 = 6
+for k, (tenr, b, H, A, cach, S) in enumerate(RANH):
+    r = RA0 + k
+    ghi(rn, 'A%d' % r, tenr, f_dam, can=trai)
+    ghi(rn, 'B%d' % r, b, f_nhap, '0.00', nen_nhap, giua)
+    ghi(rn, 'C%d' % r, H, f_nhap, '0.00', nen_nhap, giua)
+    ghi(rn, 'D%d' % r, A, f_dam, '#,##0', nen_kq, giua)
+    ghi(rn, 'E%d' % r, cach, f_ghi_chu, can=trai)
+    ghi(rn, 'F%d' % r, '=HS_C*i_ms*D%d' % r, f_dam, '0.0000', nen_kq, giua)
+    ghi(rn, 'G%d' % r, S, f_dam, '0.000', nen_kq, giua)
+    ghi(rn, 'H%d' % r, '=Ty_le_sau*C%d' % r, fmt='0.000', can=giua)
+    ghi(rn, 'I%d' % r, '=B{r}*H{r}'.format(r=r), fmt='0.0000', can=giua)
+    ghi(rn, 'J%d' % r, '=B{r}+2*H{r}'.format(r=r), fmt='0.000', can=giua)
+    ghi(rn, 'K%d' % r, '=I{r}/J{r}'.format(r=r), fmt='0.0000', can=giua)
+    ghi(rn, 'L%d' % r, '=I{r}*K{r}^(2/3)*SQRT(G{r})/n_BT'.format(r=r), f_dam, '0.000', nen_kq, giua)
+    ghi(rn, 'M%d' % r, '=L{r}/I{r}'.format(r=r), f_dam, '0.00', nen_kq, giua)
+    ghi(rn, 'N%d' % r, '=L{r}/F{r}'.format(r=r), fmt='0', can=giua)
+    ghi(rn, 'O%d' % r, '=IF(L{r}>=F{r},"Đạt","Không đạt")'.format(r=r), f_dam, can=giua)
+
+RB0 = RA0 + len(RANH) + 2
+ghi(rn, 'A%d' % RB0, 'b) Chiều sâu và lưu tốc khi rãnh xả đúng Qtk – giải lặp công thức Manning: '
+                     'h = (Qtk·n/√S)^0,6·(b + 2h)^0,4 / b', f_muc, border=False)
+tieu_de_cot(rn, RB0 + 1, 1, ['Loại rãnh', 'Qtk (m³/s)', 'h₀ (m)', 'h₁ (m)', 'h₂ (m)', 'h₃ (m)', 'h₄ (m)', 'h (cm)',
+                             'v (m/s)', 'h / H (%)'], cao=45)
+for k in range(len(RANH)):
+    r, ra = RB0 + 2 + k, RA0 + k
+    ghi(rn, 'A%d' % r, '=A%d' % ra, f_dam, can=trai)
+    ghi(rn, 'B%d' % r, '=F%d' % ra, fmt='0.0000', can=giua)
+    ghi(rn, 'C%d' % r, '=(B{r}*n_BT/(B{a}*SQRT(G{a})))^0.6'.format(r=r, a=ra), fmt='0.0000', can=giua)
+    for col, truoc in (('D', 'C'), ('E', 'D'), ('F', 'E'), ('G', 'F')):
+        ghi(rn, '%s%d' % (col, r), '=(B{r}*n_BT/SQRT(G{a}))^0.6*(B{a}+2*{t}{r})^0.4/B{a}'.format(r=r, a=ra, t=truoc),
+            fmt='0.0000', can=giua)
+    ghi(rn, 'H%d' % r, '=100*G%d' % r, f_dam, '0.0', nen_kq, giua)
+    ghi(rn, 'I%d' % r, '=B{r}/(B{a}*G{r})'.format(r=r, a=ra), f_dam, '0.00', nen_kq, giua)
+    ghi(rn, 'J%d' % r, '=100*G{r}/C{a}'.format(r=r, a=ra), fmt='0', can=giua)
+
+RC0 = RB0 + 2 + len(RANH) + 1
+ghi(rn, 'A%d' % RC0, 'c) Kiểm tra bất lợi – nước dồn nhiều hơn giả thiết diện tích hứng nước ở bảng a)', f_muc, border=False)
+tieu_de_cot(rn, RC0 + 1, 1, ['Trường hợp', 'b (m)', 'H (m)', 'A (m²)', 'Cách lấy diện tích hứng nước A',
+                             'Qtk (m³/s)', 'Độ dốc S', 'Qtn (m³/s)', 'Qtn / Qtk (lần)', 'Đánh giá'], cao=45)
+BAT_LOI = [
+    ('Rãnh dọc đoạn dưới cơ (m = 3,5)', 0.4, 0.4, '=K_doc*(B_dinh+X_tren+B_co+X_duoi)',
+     'Nhận nước đỉnh, mái trên, cơ và mái dưới', '=sin_duoi'),
+    ('Rãnh ngang trên cơ nhận cả nước mái trên', 0.4, 0.4, '=K_doc*(B_dinh+X_tren+B_co)',
+     'Như rãnh dọc + cả mặt cơ', '=i_ngang'),
+    ('Rãnh xiên nhận nửa khoang mái trên', 0.2, 0.2, '=K_doc/2*X_tren', '20 m × hình chiếu mái trên',
+     '=sin_tren/SQRT(2)'),
+]
+for k, (tenr, b, H, A, cach, S) in enumerate(BAT_LOI):
+    r = RC0 + 2 + k
+    ghi(rn, 'A%d' % r, tenr, f_dam, can=trai)
+    ghi(rn, 'B%d' % r, b, f_nhap, '0.00', nen_nhap, giua)
+    ghi(rn, 'C%d' % r, H, f_nhap, '0.00', nen_nhap, giua)
+    ghi(rn, 'D%d' % r, A, f_dam, '#,##0', nen_kq, giua)
+    ghi(rn, 'E%d' % r, cach, f_ghi_chu, can=trai)
+    ghi(rn, 'F%d' % r, '=HS_C*i_ms*D%d' % r, f_dam, '0.0000', nen_kq, giua)
+    ghi(rn, 'G%d' % r, S, fmt='0.000', can=giua)
+    ghi(rn, 'H%d' % r, '=(B{r}*Ty_le_sau*C{r})*((B{r}*Ty_le_sau*C{r})/(B{r}+2*Ty_le_sau*C{r}))^(2/3)*SQRT(G{r})/n_BT'
+        .format(r=r), f_dam, '0.000', nen_kq, giua)
+    ghi(rn, 'I%d' % r, '=H{r}/F{r}'.format(r=r), fmt='0.0', can=giua)
+    ghi(rn, 'J%d' % r, '=IF(H{r}>=F{r},"Đạt","Không đạt")'.format(r=r), f_dam, can=giua)
+R_GC2 = RC0 + 2 + len(BAT_LOI) + 1
+for k, t in enumerate([
+        'Ghi chú: v ở bảng a) là lưu tốc khi nước sâu 75% chiều cao rãnh; khi xả đúng Qtk (bảng b) rãnh dọc chỉ ngập khoảng '
+        '2,5 cm nhưng lưu tốc ≈ 2,9 m/s – rãnh phải bằng bê tông liền khối, có gờ tiêu năng ở chỗ nối với cơ.',
+        'So với Bảng 5.6 trong thuyết minh: A rãnh dọc 1.460 m² = 40 × (5 + 31,5) ứng với đỉnh +78,50; với đỉnh sau sửa chữa '
+        '+78,85 là 1.502 m² (Qtk 0,0288 m³/s). Rãnh xiên: bảng cũ lấy độ dốc ≈ 0,24 (= tanβ/√2); theo phương dọc rãnh là '
+        'sinβ/√2 = 0,224 nên Qtn 0,145 m³/s, v 4,83 m/s (bảng cũ 0,149; 4,96). Kết luận không đổi.']):
+    ghi(rn, 'A%d' % (R_GC2 + k), t, f_ghi_chu, can=Alignment(horizontal='left', vertical='top', wrap_text=True),
+        border=False)
+    rn.merge_cells('A%d:O%d' % (R_GC2 + k, R_GC2 + k))
+    rn.row_dimensions[R_GC2 + k].height = 30
+rn.freeze_panes = 'B6'
+in_an(rn, mot_trang=True)
+
+for ws, mau in ((hd, 'A65A10'), (sl, 'EDA100'), (bg, '1BAF7A'), (dn, '2A78D6'), (bd, '8A8984'), (rn, 'EB6834')):
     ws.sheet_properties.tabColor = mau
 for ws in wb.worksheets:                       # mở file ở sheet Bang5_5, không chọn nhóm nhiều sheet
     ws.sheet_view.tabSelected = ws is bg
