@@ -2,7 +2,8 @@
 """
 XUẤT FILE EXCEL: ĐIỀU TIẾT LŨ HỒ CÀ GIÂY – PHƯƠNG PHÁP PÔ-TA-PỐP VỚI HAI ĐƯỜNG PHỤ TRỢ q ~ f₁ VÀ q ~ f₂
 Thông số (theo yêu cầu SV, 26/10/2026):
-  tràn chính 9 khoang có cửa van, Σb = 21,6 m (9 × 2,4 m), ngưỡng +74,70, trụ pin dày 0,6 m đầu lượn tròn;
+  tràn chính 9 khoang có cửa van, Σb = 21,6 m (9 × 2,4 m), ngưỡng +74,70; 8 trụ pin đầu lượn tròn: 6 trụ giữa dày 0,6 m
+  (2 trụ mới trong mỗi khoang của tràn 3 khoang ban đầu) và 2 trụ chính ban đầu dày 1,0 m (bổ sung 26/10);
   tràn sự cố 1 khoang có cửa van, b = 5 m, ngưỡng +71,00.
   Vận hành bình thường: khi đón lũ mọi cửa van kéo lên hoàn toàn. Sự cố: 1 cửa tràn chính không mở được (8 khoang).
   Lũ P = 1% và 0,2% (BCNCKT 2022), hồ ở MNDBT khi lũ đến, Δt = 1 giờ.
@@ -75,6 +76,8 @@ def ghi(ws, o, gt, font=f_thuong, fmt=None, fill=None, can=None, border=True):
 
 
 def ten(name, ref):
+    # Excel không phân biệt chữ hoa, chữ thường trong tên (TC_b và TC_B là một tên)
+    assert all(n.upper() != name.upper() for n in wb.defined_names), name
     wb.defined_names[name] = DefinedName(name, attr_text=ref)
 
 
@@ -156,18 +159,22 @@ ND = [
     ('g', 'Mọi ô kết quả là công thức. Sửa thông số tràn, mực nước trước lũ ở sheet SoLieu; đổi tần suất, trường hợp ở ô vàng '
           'đầu mỗi sheet điều tiết.'),
     ('M', '1. Công trình tháo lũ và các trường hợp tính'),
-    ('-', 'Tràn chính: 9 khoang có cửa van, mỗi khoang b = 2,4 m (Σb = 21,6 m), ngưỡng +74,70 m; 8 trụ pin dày 0,6 m đầu lượn '
-          'tròn → tổng bề rộng tràn 26,4 m. Tràn sự cố: 1 khoang có cửa van, b = 5 m, ngưỡng +71,00 m.'),
+    ('-', 'Tràn chính: 9 khoang có cửa van, mỗi khoang b = 2,4 m (Σb = 21,6 m), ngưỡng +74,70 m; 8 trụ pin đầu lượn tròn gồm '
+          '6 trụ giữa dày 0,6 m (2 trụ trong mỗi khoang của tràn 3 khoang ban đầu) và 2 trụ chính ban đầu dày 1,0 m → tổng '
+          'bề rộng tràn 21,6 + 6 × 0,6 + 2 × 1,0 = 27,2 m. Tràn sự cố: 1 khoang có cửa van, b = 5 m, ngưỡng +71,00 m.'),
     ('-', 'Vận hành bình thường: khi đón lũ, tất cả cửa van (9 cửa tràn chính và cửa tràn sự cố) kéo lên hoàn toàn – hai tràn '
           'chảy tự do. Sự cố: 1 cửa tràn chính không mở được – tràn chính còn 8 khoang làm việc (Σb = 19,2 m), tràn sự cố mở '
           'hoàn toàn. Mỗi trường hợp tính cho lũ thiết kế P = 1% (MNLTK) và lũ kiểm tra P = 0,2% (MNLKT).'),
-    ('-', 'Hồ ở MNDBT +74,70 m khi lũ đến (ô SoLieu!B5). Vì ngưỡng tràn sự cố thấp hơn MNDBT 3,7 m, cửa mở hết từ đầu nên những '
+    ('-', 'Hồ ở MNDBT +74,70 m khi lũ đến (ô SoLieu!B6). Vì ngưỡng tràn sự cố thấp hơn MNDBT 3,7 m, cửa mở hết từ đầu nên những '
           'giờ đầu xả khoảng 64 m³/s trong khi lũ đến mới 2 ÷ 50 m³/s – mực nước giảm nhẹ (≈ +74,64 m) rồi mới dâng.'),
     ('M', '2. Lưu lượng qua tràn (TCVN 9147:2012 – công thức đập tràn chảy tự do)'),
-    ('c', 'q = σn·ε·m·n·b·√(2g)·H^1,5        ε = 1 − 0,2·[ξmb + (n − 1)·ξmt]·H / (n·b)'),
-    ('-', 'H = Z − Z ngưỡng; n – số khoang làm việc; b – bề rộng một khoang; m = 0,45; ξmb = 0,70 (mố bên lượn tròn); ξmt = 0,45 '
-          '(trụ pin đầu lượn tròn). Bề dày trụ 0,6 m không có trong công thức – chỉ hình dạng đầu trụ ảnh hưởng tới co hẹp ε. '
-          'Sự cố: n = 8 (coi cửa hỏng ở khoang biên; nếu cửa hỏng ở giữa – hai nhóm 4 khoang – Zmax chỉ cao thêm 0,3 ÷ 0,7 cm). '
+    ('c', 'q = σn·ε·m·n·b·√(2g)·H^1,5        ε = 1 − 0,2·[ξmb + Σξtrụ]·H / (n·b)        Σξtrụ = n₁·ξ₁ + n₂·ξ₂'),
+    ('-', 'H = Z − Z ngưỡng; n – số khoang làm việc; b – bề rộng một khoang; m = 0,45; ξmb = 0,70 (mố bên lượn tròn). Σξtrụ – '
+          'tổng hệ số hình dạng của các trụ nằm giữa các khoang làm việc: 6 trụ giữa ξ₁ = 0,45 và 2 trụ chính ξ₂ = 0,45 (đều '
+          'đầu lượn tròn) → Σξ = 3,60; khi các trụ cùng loại thì Σξ = (n − 1)·ξmt như công thức TCVN 9147:2012. Bề dày trụ '
+          '(0,6 m, 1,0 m) không có trong công thức – chỉ hình dạng đầu trụ ảnh hưởng tới co hẹp ε. '
+          'Sự cố: n = 8 (coi cửa hỏng ở khoang biên – trụ giữa 0,6 m cạnh nó không còn nằm giữa hai khoang làm việc: Σξ = '
+          '5 × 0,45 + 2 × 0,45 = 3,15; nếu cửa hỏng ở giữa – hai nhóm 4 khoang – Zmax chỉ cao thêm 0,3 ÷ 0,7 cm). '
           'Hai tràn cùng một mực nước: q(Z) = q tràn chính(Z) + q tràn sự cố(Z).'),
     ('M', '3. Phương pháp Pô-ta-pốp với hai đường phụ trợ'),
     ('c', '(Q₁ + Q₂)/2·Δt − (q₁ + q₂)/2·Δt = V₂ − V₁    ⇒    V₂/Δt + q₂/2 = (V₁/Δt − q₁/2) + Qtb    ⇒    f₂ = f₁ + Qtb'),
@@ -243,16 +250,26 @@ h = khoi_thong_so(4, 'A. THÔNG SỐ CHUNG', [
 ])
 h = khoi_thong_so(h + 1, 'B. TRÀN CHÍNH (9 khoang có cửa van – mở hoàn toàn khi đón lũ)', [
     ('Cao trình ngưỡng', 74.70, 'm', 'TC_Z', 'Không thay đổi', '0.00'),
-    ('Số khoang n', 9, 'khoang', 'TC_n', '', '0'),
+    ('Số khoang n', 9, 'khoang', 'TC_n', 'Tràn ban đầu 3 khoang, nay chia mỗi khoang thành 3 (QTVH 2026)', '0'),
     ('Bề rộng một khoang b', 2.40, 'm', 'TC_b', 'Σb = 9 × 2,4 = 21,6 m', '0.00'),
-    ('Bề dày trụ pin d', 0.60, 'm', 'TC_d', 'Đầu trụ lượn tròn', '0.00'),
-    ('Tổng bề rộng tràn kể trụ pin', '=TC_n*TC_b+(TC_n-1)*TC_d', 'm', 'TC_B', 'n·b + (n − 1)·d = 21,6 + 8 × 0,6', '0.00'),
+    ('Số trụ giữa n₁', 6, 'trụ', 'TC_n1', '2 trụ mới trong mỗi khoang của tràn ban đầu', '0'),
+    ('Bề dày trụ giữa d₁', 0.60, 'm', 'TC_d1', '', '0.00'),
+    ('Hệ số hình dạng trụ giữa ξ₁', 0.45, '', 'TC_x1', 'Đầu trụ lượn tròn', '0.00'),
+    ('Số trụ chính ban đầu n₂', 2, 'trụ', 'TC_n2', 'Trụ của tràn 3 khoang ban đầu', '0'),
+    ('Bề dày trụ chính d₂', 1.00, 'm', 'TC_d2', '', '0.00'),
+    ('Hệ số hình dạng trụ chính ξ₂', 0.45, '', 'TC_x2', 'Đầu trụ lượn tròn như trụ giữa; đầu trụ hình khác thì tra lại', '0.00'),
+    ('Kiểm tra: n₁ + n₂ = n − 1', '=IF(TC_n1+TC_n2=TC_n-1,"Đúng","Sai – sửa số trụ")', '', None,
+     '9 khoang có 8 trụ nằm giữa các khoang', None),
+    ('Tổng bề rộng tràn kể trụ pin', '=TC_n*TC_b+TC_n1*TC_d1+TC_n2*TC_d2', 'm', 'TC_Btong',
+     '21,6 + 6 × 0,6 + 2 × 1,0 = 27,2 m; bề dày trụ không có trong công thức lưu lượng', '0.00'),
     ('Hệ số lưu lượng m', 0.45, '', 'TC_m', 'Như thuyết minh (mục 2.3.2)', '0.000'),
     ('Hệ số hình dạng mố bên ξmb', 0.70, '', 'TC_xmb', 'Mố bên lượn tròn', '0.00'),
-    ('Hệ số hình dạng trụ pin ξmt', 0.45, '', 'TC_xmt', 'Trụ pin đầu lượn tròn', '0.00'),
+    ('Σξ trụ khi 9 khoang làm việc', '=TC_n1*TC_x1+TC_n2*TC_x2', '', 'TC_sx', 'n₁·ξ₁ + n₂·ξ₂ = 6 × 0,45 + 2 × 0,45', '0.00'),
     ('Hệ số chảy ngập σn', 1.0, '', 'TC_s', 'Chảy không ngập', '0.00'),
-    ('Số cửa không mở được khi sự cố', 1, 'cửa', 'TC_hong', 'Trường hợp sự cố', '0'),
+    ('Số cửa không mở được khi sự cố', 1, 'cửa', 'TC_hong', 'Trường hợp sự cố – coi cửa hỏng ở khoang biên', '0'),
     ('Số khoang làm việc khi sự cố', '=TC_n-TC_hong', 'khoang', 'TC_n_sc', '', '0'),
+    ('Σξ trụ khi sự cố', '=TC_sx-TC_hong*TC_x1', '', 'TC_sx_sc',
+     'Trụ giữa 0,6 m cạnh khoang biên bị đóng không còn nằm giữa hai khoang làm việc: 5 × 0,45 + 2 × 0,45', '0.00'),
 ])
 h = khoi_thong_so(h + 1, 'C. TRÀN SỰ CỐ (1 khoang có cửa van – mở hoàn toàn khi đón lũ)', [
     ('Cao trình ngưỡng', 71.00, 'm', 'SC_Z', 'KTTV Bảng 1-2', '0.00'),
@@ -320,8 +337,8 @@ for i in range(N_QH):
         'C': '=INDEX(Bang_W,{k})+(A{r}-INDEX(Bang_Z,{k}))*(INDEX(Bang_F,{k})+B{r})/2'.format(k=k, r=r),
         'D': '=C%d*1000000/dt_s' % r,
         'E': '=MAX(A%d-TC_Z,0)' % r,
-        'F': '=1-0.2*(TC_xmb+(TC_n-1)*TC_xmt)*E%d/(TC_n*TC_b)' % r,
-        'G': '=1-0.2*(TC_xmb+(TC_n_sc-1)*TC_xmt)*E%d/(TC_n_sc*TC_b)' % r,
+        'F': '=1-0.2*(TC_xmb+TC_sx)*E%d/(TC_n*TC_b)' % r,
+        'G': '=1-0.2*(TC_xmb+TC_sx_sc)*E%d/(TC_n_sc*TC_b)' % r,
         'H': '=TC_s*F{r}*TC_m*TC_n*TC_b*SQRT(2*g_)*E{r}^1.5'.format(r=r),
         'I': '=TC_s*G{r}*TC_m*TC_n_sc*TC_b*SQRT(2*g_)*E{r}^1.5'.format(r=r),
         'J': '=MAX(A%d-SC_Z,0)' % r,

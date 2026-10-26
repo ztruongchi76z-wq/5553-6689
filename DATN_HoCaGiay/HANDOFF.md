@@ -21,7 +21,7 @@
 > `kt_cung_truot_sau_sc.py`, `chay_truot_nong.py`, `bo_sung_giai_tich.py`) chưa chạy lại. Thuyết minh Word, bản vẽ,
 > slide trong kho **chưa** cập nhật theo bộ thông số này (vẫn ghi đỉnh +78,35, cơ thượng lưu +70,0, MNLTK +77,63).
 >
-> **26/10/2026 – điều tiết lũ Pô-ta-pốp hai đường f₁, f₂** (`tinh_toan/xuat_excel_dieu_tiet_lu_potapov.py` → `TAI_VE/DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx`): tràn chính 9 khoang × 2,4 m (trụ pin 0,6 m đầu tròn), tràn sự cố 1 khoang 5 m, mở hết cửa khi đón lũ: MNLTK +77,61, MNLKT +78,51 (như trên); sự cố 1 cửa tràn chính không mở: +77,67 / +78,60 m (thấp hơn đỉnh +78,85 là 0,25 m).
+> **26/10/2026 – điều tiết lũ Pô-ta-pốp hai đường f₁, f₂** (`tinh_toan/xuat_excel_dieu_tiet_lu_potapov.py` → `TAI_VE/DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx`): tràn chính 9 khoang × 2,4 m (6 trụ giữa 0,6 m + 2 trụ chính ban đầu 1,0 m, đầu tròn), tràn sự cố 1 khoang 5 m, mở hết cửa khi đón lũ: MNLTK +77,61, MNLKT +78,51 (như trên); sự cố 1 cửa tràn chính không mở: +77,67 / +78,60 m (thấp hơn đỉnh +78,85 là 0,25 m).
 
 Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_TinhToan.zip` (mục 5 "Kết quả chính" và mục 6
 "Giả thiết" của bản đó vẫn giữ nguyên giá trị).
