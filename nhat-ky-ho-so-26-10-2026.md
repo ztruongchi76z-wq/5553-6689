@@ -45,7 +45,8 @@ Các mục dưới đây được trả về hai thư mục gốc của chủ s�
 
 ## Cập nhật 27/10/2026
 
-- **07.1 - Phụ lục 1 (bản công khai)**: dồn lại trang, từ 32 xuống 29 trang. Bản cũ có các trang gần trống do ngắt trang cứng trước các nhóm mục và tiêu đề bị tách khỏi đoạn sau nó. Nội dung giữ nguyên từng chữ (đã so toàn bộ chữ của hai bản), chỉ đánh lại số trang "Trang x / 29". Thay trên Drive bằng "Quản lý phiên bản → Tải phiên bản mới lên" để giữ nguyên mã tệp và đường dẫn.
+- **07.1 - Phụ lục 1 (bản công khai)**: dồn lại trang, từ 32 xuống 29 trang. Bản cũ có các trang gần trống do ngắt trang cứng trước các nhóm mục và tiêu đề bị tách khỏi đoạn sau nó. Nội dung giữ nguyên từng chữ (đã so toàn bộ chữ của hai bản), chỉ đánh lại số trang "Trang x / 29". Bản mới là tệp mới trong thư mục 3; bản cũ 32 trang chuyển về Cspl. Đường dẫn trong 00.1 và 00.2 đã trỏ sang tệp mới.
+- **07.2 - Phụ lục 2** và **07.3 - Phụ lục 4 (biểu trưng)**: chuyển từ thư mục 2 sang thư mục 3, đặt cạnh Phụ lục 1 và Phụ lục 5 (bốn phụ lục của hồ sơ nộp phường); mã tệp không đổi. Mục lục chuyển hai dòng này sang nhóm 3.
 - **00 - Diễn tiến vụ việc**, mục 2.11, dòng hồ sơ ngày 09/7/2026: thêm rằng Thông báo 5553 và Công văn 6689 không nhắc hồ sơ này, nên trách nhiệm theo khoản 1 Điều 24 Luật Tố cáo (thụ lý, hoặc thông báo lý do không thụ lý) vẫn còn; lý do "trùng nội dung" chỉ được nói bằng lời ngày 04/9/2026 và không có trong các điều kiện tại khoản 1 Điều 29.
 - **00.2 - Ghi chú khi đối chiếu tài liệu**, dòng 3: vị trí trong Phụ lục 1 ghi theo mục ("mục 2.2 điểm b") thay cho "trang PDF 15", để không phụ thuộc số trang.
 
