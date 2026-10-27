@@ -14,17 +14,21 @@ Các mục dưới đây được trả về hai thư mục gốc của chủ s�
 
 ## Các tệp 00
 
-- **00 - ĐỌC TRƯỚC - Hồ sơ tố cáo** (trước đây là "00 - Diễn tiến vụ việc"): đổi ngày cập nhật sang 26/10/2026; tính lại cột "Đã chờ" đến 26/10/2026; viết lại mục 2 thành "Các sai phạm, đối chiếu nguyên văn", gồm 7 mục, mỗi mục một việc kèm nguyên văn và đường dẫn tới bản chụp:
+- **00 - Diễn tiến vụ việc**: đổi ngày cập nhật sang 26/10/2026; tính lại cột "Đã chờ" đến 26/10/2026; viết lại mục 2 thành "Các sai phạm, đối chiếu nguyên văn", mỗi mục một việc kèm nguyên văn và đường dẫn tới bản chụp:
   - 2.1 Bài giảng truyền đạt kiến thức sai, và tự mâu thuẫn
   - 2.2 Công văn 87 kết luận về nội dung tiết dạy bằng cách đếm ý kiến
   - 2.3 Đơn khiếu nại được trả lời như một "đơn phản ánh"
   - 2.4 Việc cộng, trừ điểm: Công văn 87 nói minh bạch, Sở nói không có cơ sở
-  - 2.5 Thông báo 5553 không thụ lý tố cáo bằng một lý do trái với chính điều luật nó viện dẫn (điểm d khoản 1 Điều 29 Luật Tố cáo)
-  - 2.6 Thông báo 5553 kết luận trước, hỏi ý kiến chuyên môn sau
-  - 2.7 Đơn đã quá thời hạn luật định nhưng chưa có văn bản
-  - 2.8 Đề nghị
-- **00.1 - Mục lục chứng cứ**: đổi ngày và tiêu đề; bỏ dòng thư Báo Thanh Niên, nhánh 5.1 và 17.16a; đổi tên các nhóm 1–5 theo tên thư mục mới; đặt lại nhãn các trang trình chiếu 06.01, 06.02, 06.03, 06.08, 06.09 và tệp 06.15 theo nội dung.
-- **00.2 - Đính chính**: đổi ngày; bỏ tham chiếu tệp 02 nhánh 5.1.
+  - 2.5 Phường nhận đơn từ ngày 22/5/2026, đến ngày 04/9/2026 người gửi đơn mới nhận văn bản trả lời đầu tiên
+  - 2.6 Văn bản của phường mô tả các đơn không trùng với đơn nào đã gửi
+  - 2.7 Thông báo 5553 không thụ lý tố cáo bằng một lý do trái với chính điều luật nó viện dẫn (điểm d khoản 1 Điều 29 Luật Tố cáo)
+  - 2.8 Thông báo 5553 kết luận trước, hỏi ý kiến chuyên môn sau
+  - 2.9 Công văn 6689 có kết luận không có trong ý kiến của Sở
+  - 2.10 Tài liệu, chứng cứ đã nộp không được nhắc tới
+  - 2.11 Đơn đã quá thời hạn luật định nhưng chưa có văn bản
+  - 2.12 Đề nghị
+- **00.1 - Mục lục chứng cứ**: đổi ngày và tiêu đề; bỏ dòng thư Báo Thanh Niên, nhánh 5.1 và 17.16a; đổi tên các nhóm 1–5 theo tên thư mục mới; đặt lại nhãn các trang trình chiếu 06.01, 06.02, 06.03, 06.08, 06.09 và tệp 06.15 theo nội dung; nhóm đầu đổi tên "Đọc trước" thành "Tổng hợp"; gắn lại đường dẫn tới tệp 00.
+- **00.2 - Ghi chú khi đối chiếu tài liệu** (trước đây là "Đính chính các chỗ ghi nhầm"): đổi ngày; bỏ tham chiếu tệp 02 nhánh 5.1; đổi cách gọi từ "đính chính" sang "ghi chú", cột "Đã ghi / Đọc đúng là" thành "Trong bản đã nộp / Chi tiết đúng".
 - Ba tệp được khoá ở chế độ chỉ đọc, lý do "Bản công khai cập nhật 26/10/2026". Lịch sử phiên bản của Google Docs vẫn giữ bản 22/10/2026.
 
 ## Đổi tên
