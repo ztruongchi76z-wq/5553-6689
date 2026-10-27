@@ -43,6 +43,11 @@ Các mục dưới đây được trả về hai thư mục gốc của chủ s�
 - 69 tệp đang mang tên không dấu được đổi sang tên tiếng Việt có dấu, khớp từng chữ với Mục lục chứng cứ; giữ nguyên mã tệp và đuôi tệp. Tệp do người viết đơn tự soạn ghi rõ "(tôi soạn để phản biện)" hoặc "(tôi làm để đối chiếu)".
 - Mã tệp (ID) trên Drive không đổi, nên mọi đường dẫn và mã QR đã gửi vẫn mở đúng tệp.
 
+## Cập nhật 27/10/2026
+
+- **07.1 - Phụ lục 1 (bản công khai)**: dồn lại trang, từ 32 xuống 29 trang. Bản cũ có các trang gần trống do ngắt trang cứng trước các nhóm mục và tiêu đề bị tách khỏi đoạn sau nó. Nội dung giữ nguyên từng chữ (đã so toàn bộ chữ của hai bản), chỉ đánh lại số trang "Trang x / 29". Thay trên Drive bằng "Quản lý phiên bản → Tải phiên bản mới lên" để giữ nguyên mã tệp và đường dẫn.
+- **00.2 - Ghi chú khi đối chiếu tài liệu**, dòng 3: vị trí trong Phụ lục 1 ghi theo mục ("mục 2.2 điểm b") thay cho "trang PDF 15", để không phụ thuộc số trang.
+
 ## Kiểm tra trước khi công khai
 
 - Không có số CCCD, tên học sinh hay đường dẫn tới kho tài liệu gốc trong thư mục công khai.
