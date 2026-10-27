@@ -30,6 +30,14 @@ def kw(V):
     return 3e-7 * (1 + 0.3 * V)      # Bảng A2: 2,1·10⁻⁶ (20 m/s) … 4,8·10⁻⁶ (50 m/s)
 
 
+KW_V, KW_K = [20, 30, 40, 50], [2.1e-6, 3.0e-6, 3.9e-6, 4.8e-6]     # TCVN 8421:2010 Bảng A2
+
+
+def kw_bang(V):
+    """kw tra Bảng A2 (nội suy; V ≤ 20 m/s lấy 2,1·10⁻⁶ – bảng không có giá trị nhỏ hơn)."""
+    return float(np.interp(V, KW_V, KW_K))
+
+
 def V_tinh_toan(Vl, dung_kfl=False):
     """Vận tốc gió tính toán Vw = kfl·kl·Vl (TCVN 8421:2010, A.3.3), địa hình dạng A (Bảng A3)."""
     kl = float(np.interp(Vl, [10, 15, 20, 25, 30, 35, 40], [1.10, 1.10, 1.09, 1.09, 1.09, 1.09, 1.08]))
@@ -96,13 +104,15 @@ def krun(lam_h, m):
     return float(np.interp(lam_h, xs, ys))
 
 
-def tinh_truong_hop(Z, V, D, t_h=6.0, Z_day=59.0, m=3.0, delta=0.02, alpha=0.0, quy_doi_gio=True):
-    """V – vận tốc gió trạm Vl; khi quy_doi_gio = True tính với Vw = kfl·kl·Vl (A.3.3)."""
+def tinh_truong_hop(Z, V, D, t_h=6.0, Z_day=59.0, m=3.0, delta=0.02, alpha=0.0, quy_doi_gio=True, kw_tra_bang=False):
+    """V – vận tốc gió trạm Vl; khi quy_doi_gio = True tính với Vw = kfl·kl·Vl (A.3.3).
+    kw_tra_bang = True: kw tra Bảng A2 (bản 27/10 cho SV); False: đường thẳng qua các điểm của bảng (bản cũ)."""
     V_tram = V
     if quy_doi_gio:
         V = V_tinh_toan(V)
     H = Z - Z_day
-    dh = kw(V) * V ** 2 * D / (G * H) * np.cos(np.radians(alpha))
+    k_w = kw_bang(V) if kw_tra_bang else kw(V)
+    dh = k_w * V ** 2 * D / (G * H) * np.cos(np.radians(alpha))
     h, tau, gD, gt, aD, at = song_nuoc_sau(V, D, t_h)
     lam = G * tau ** 2 / (2 * np.pi)
     sau = H > 0.5 * lam
@@ -113,7 +123,7 @@ def tinh_truong_hop(Z, V, D, t_h=6.0, Z_day=59.0, m=3.0, delta=0.02, alpha=0.0, 
     kru = krun(lam / h1, m)
     ka = k_alpha(alpha)
     hsl = kr * kp * ks * kru * ka * h1
-    return dict(Z=Z, H=H, V_tram=V_tram, V=V, D=D, kw=kw(V), dh=dh, gt=gt, gD=gD, a_D=aD, a_t=at, h=h, tau=tau,
+    return dict(Z=Z, H=H, V_tram=V_tram, V=V, D=D, kw=k_w, dh=dh, gt=gt, gD=gD, a_D=aD, a_t=at, h=h, tau=tau,
                 lam=lam, sau=sau, K1=k1, h1=h1, kr=kr, kp=kp, ksp=ks, krun=kru, ka=ka, hsl=hsl)
 
 

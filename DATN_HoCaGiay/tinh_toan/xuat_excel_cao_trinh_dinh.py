@@ -5,7 +5,10 @@ Cùng phương pháp với cao_trinh_dinh.py (đã đối chiếu toàn văn hai
 27/10/2026: MNDBT +74,70; MNLTK +77,43, MNLKT +78,39 (điều tiết lũ QTVH 72 giờ, vận hành bình thường – file
 DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx, sheet KetQua).
   Z1 = MNDBT + Δh + hsl + a (gió P = 4%);  Z2 = MNLTK + Δh′ + h′sl + a′ (gió P = 50%);  Z3 = MNLKT + a″
-  Δh = kw·V²·D/(g·H)·cos α, kw = 3·10⁻⁷·(1 + 0,3V);  sóng nước sâu theo đường bao (công thức xấp xỉ Krưlốp);
+  Δh = kw·V²·D/(g·H)·cos α, kw tra Bảng A2 (V ≤ 20 m/s: 2,1·10⁻⁶);  sóng nước sâu: TCVN 8421:2010 chỉ cho đồ thị
+  (Hình 1, đường bao trên) – Excel dùng công thức xấp xỉ đường bao theo đà gió (Krưlốp); điều kiện thời gian gió
+  thổi t = 6 giờ không khống chế (gt/V ≈ 10⁴), có ô để nhập giá trị đọc đồ thị nếu cần (sửa 27/10 – bỏ công thức quy
+  đổi thời gian → đà gió tự lập, không có nguồn);
   hsl1% = kr·kp·ksp·krun·kα·h1%, h1% = K1%·h̄;  V = Vw = kfl·kl·Vl (Phụ lục A, A.3.3)
 Tính cho các hướng gió thổi vào mái thượng lưu với góc tới ≤ 60°: Bắc, Đông Bắc, Tây Bắc (đà gió lớn nhất cho mọi
 hướng). Mọi ô kết quả là công thức; ô nền vàng chữ xanh là số liệu nhập; bảng tra đọc từ bảng, đồ thị của tiêu chuẩn.
@@ -114,13 +117,17 @@ ND = [
     ('-', 'Điều 10.1.5 – đập có tường chắn sóng thẳng đứng liên kết với bộ phận chống thấm: độ vượt cao tính đến đỉnh tường '
           '(đỉnh tường ≥ Zđ); đỉnh đập không kể tường ≥ MNLKT + 0,3 m; tường cao hơn đỉnh đập không quá 1,2 m.'),
     ('M', '2. Độ dềnh do gió và sóng leo (TCVN 8421:2010)'),
-    ('c', 'Δh = kw·V²·D/(g·H)·cos α ,   kw = 3·10⁻⁷·(1 + 0,3·V)'),
+    ('c', 'Δh = kw·V²·D/(g·H)·cos α ,   kw tra Bảng A2: V = 20; 30; 40; 50 m/s → kw = 2,1; 3,0; 3,9; 4,8·10⁻⁶'),
     ('c', 'gh̄/V² = 0,16·[1 − (1 + 0,006·√(gD/V²))⁻²] ;   gτ̄/V = 19,1·(gh̄/V²)^0,625 ;   λ̄ = gτ̄²/(2π)'),
     ('c', 'hsl1% = kr·kp·ksp·krun·kα·h1% ;   h1% = K1%·h̄'),
     ('-', 'V = Vw = kfl·kl·Vl – vận tốc gió tính toán ở độ cao 10 m trên mặt nước (Phụ lục A, A.3.3): Vl – gió trạm Phan Thiết '
           '(Bảng 1.4 thuyết minh), kl – Bảng A3 (địa hình dạng A, vùng ven biển trống trải), kfl = 1 (thiên an toàn).'),
-    ('-', 'Sóng nước sâu (H > 0,5λ̄): gh̄/V² và gτ̄/V theo đường bao trên của đồ thị (Hình 1) – tính theo công thức xấp xỉ, '
-          'với điều kiện đà gió (gD/V²) và điều kiện thời gian gió thổi t = 6 giờ (gt/V), lấy giá trị nhỏ hơn.'),
+    ('-', 'Sóng nước sâu (H > 0,5λ̄): TCVN 8421:2010 cho gh̄/V² và gτ̄/V bằng đồ thị (Hình 1, đường bao trên), tra theo gD/V² '
+          '(điều kiện đà gió) và gt/V (điều kiện thời gian gió thổi), lấy giá trị nhỏ hơn – tiêu chuẩn không cho công thức. '
+          'Để Excel tự tính, đường bao theo đà gió được thay bằng công thức xấp xỉ của Krưlốp (hai công thức dòng trên, '
+          'λ̄ = gτ̄²/(2π) là công thức của tiêu chuẩn) – nên đọc thử đồ thị 1 ÷ 2 điểm để đối chiếu. Với t = 6 giờ, gt/V ≈ 10⁴: '
+          'sóng gần phát triển hoàn toàn, đồ thị cho gh̄/V² lớn hơn nhiều so với điều kiện đà gió nên điều kiện thời gian '
+          'không khống chế; ô “theo điều kiện thời gian” ở TinhSong để trống, nhập giá trị đọc đồ thị nếu muốn kiểm tra.'),
     ('-', 'K1% – đồ thị Hình 2 theo gD/V²; kr, kp – bảng hệ số nhám, thấm theo Δ/h1% (mái gia cố đá xây, Δ = 0,02 m); ksp – '
           'bảng theo V và hệ số mái (m = 3 ÷ 5); krun – đồ thị Hình 10 theo λ̄/h1% (đường m = 3); kα – Bảng 9 theo góc tới α '
           'giữa hướng gió và pháp tuyến mái. Các bảng tra ở cuối sheet SoLieu (đồ thị đã đọc thành bảng, nội suy tuyến tính).'),
@@ -252,6 +259,8 @@ BANG_TRA = [
      [20, 100, 153, 514, 1000, 5000], [2.00, 2.08, 2.10, 2.13, 2.15, 2.18], '0', '0.00'),
     ('Hệ số krun theo λ̄/h1%, mái m = 3 (đồ thị Hình 10)', 'λ̄/h1%', 'krun', 'KRUN_x', 'KRUN_k',
      [5, 8, 10, 12, 15, 20, 25], [1.20, 1.40, 1.48, 1.57, 1.70, 1.84, 1.95], '0', '0.00'),
+    ('Hệ số kw tính độ dềnh do gió (Bảng A2; V ≤ 20 m/s lấy 2,1·10⁻⁶ – bảng không có giá trị nhỏ hơn)', 'V (m/s)', 'kw',
+     'KW_V', 'KW_k', [20, 30, 40, 50], [2.1e-6, 3.0e-6, 3.9e-6, 4.8e-6], '0', '0.0E+00'),
 ]
 r = HT + 1
 for tieu, nx, ny, tx, ty, xs, ys, fx, fy in BANG_TRA:
@@ -304,13 +313,14 @@ BUOC = [
     ('D', 'Đà gió D', 'm', '=IF({c}{th}="Z1",D_1,D_2)', '0', 'SoLieu mục C'),
     ('gD', 'gD/V²', '', '=g_*{c}{D}/{c}{Vw}^2', '0.0', ''),
     ('gt', 'gt/V (t = 6 giờ)', '', '=g_*t_gio*3600/{c}{Vw}', '0', ''),
-    ('aD', 'gh̄/V² theo điều kiện đà gió', '', '=0.16*(1-(1+0.006*SQRT({c}{gD}))^-2)', '0.0000',
-     '0,16·[1 − (1 + 0,006·√(gD/V²))⁻²]'),
-    ('at', 'gh̄/V² theo điều kiện thời gian gió thổi', '', '=0.16*(1-(1+0.006*SQRT(({c}{gt}/4.03)^1.6))^-2)', '0.0000',
-     'Như trên với đà gió tương đương gD/V² = (gt/V / 4,03)^1,6'),
-    ('a', 'gh̄/V² chọn (giá trị nhỏ hơn)', '', '=MIN({c}{aD},{c}{at})', '0.0000', ''),
+    ('aD', 'gh̄/V² theo điều kiện đà gió (đường bao Hình 1)', '', '=0.16*(1-(1+0.006*SQRT({c}{gD}))^-2)', '0.0000',
+     'Công thức xấp xỉ đường bao (Krưlốp): 0,16·[1 − (1 + 0,006·√(gD/V²))⁻²]'),
+    ('at', 'gh̄/V² theo điều kiện thời gian gió thổi – tra Hình 1 với gt/V (không bắt buộc)', '', None, '0.0000',
+     'Để trống: gt/V ≈ 10⁴ – sóng gần phát triển hoàn toàn, không khống chế'),
+    ('a', 'gh̄/V² chọn (giá trị nhỏ hơn)', '', '=IF(ISNUMBER({c}{at}),MIN({c}{aD},{c}{at}),{c}{aD})', '0.0000', ''),
     ('h', 'Chiều cao sóng trung bình h̄', 'm', '={c}{a}*{c}{Vw}^2/g_', '0.000', 'h̄ = (gh̄/V²)·V²/g'),
-    ('tau', 'Chu kỳ sóng trung bình τ̄', 's', '=19.1*{c}{a}^0.625*{c}{Vw}/g_', '0.00', 'gτ̄/V = 19,1·(gh̄/V²)^0,625'),
+    ('tau', 'Chu kỳ sóng trung bình τ̄', 's', '=19.1*{c}{a}^0.625*{c}{Vw}/g_', '0.00',
+     'Xấp xỉ đường bao (Krưlốp): gτ̄/V = 19,1·(gh̄/V²)^0,625'),
     ('lam', 'Bước sóng trung bình λ̄', 'm', '=g_*{c}{tau}^2/(2*PI())', '0.00', 'λ̄ = g·τ̄²/(2π)'),
     ('sau', 'Kiểm tra sóng nước sâu H > 0,5λ̄', '', '=IF({c}{H}>0.5*{c}{lam},"Đúng","Sai – xem lại")', None, ''),
     ('K1', 'Hệ số K1%', '', '=' + noi_suy('LOG10({c}{gD})', 'K1_lg', 'K1_k'), '0.000', 'Hình 2, theo gD/V²'),
@@ -324,7 +334,7 @@ BUOC = [
     ('ka', 'Hệ số kα', '', '=' + noi_suy('{c}{alpha}', 'KA_goc', 'KA_k'), '0.000', 'Bảng 9, theo α'),
     ('hsl', 'Chiều cao sóng leo hsl1%', 'm', '={c}{kr}*{c}{kp}*{c}{ksp}*{c}{krun}*{c}{ka}*{c}{h1}', '0.000',
      'hsl1% = kr·kp·ksp·krun·kα·h1%'),
-    ('kw', 'Hệ số kw', '', '=3E-7*(1+0.3*{c}{Vw})', '0.00E+00', 'kw = 3·10⁻⁷·(1 + 0,3·Vw)'),
+    ('kw', 'Hệ số kw', '', '=' + noi_suy('{c}{Vw}', 'KW_V', 'KW_k'), '0.00E+00', 'Bảng A2 (V ≤ 20 m/s: 2,1·10⁻⁶)'),
     ('dh', 'Độ dềnh do gió Δh', 'm', '={c}{kw}*{c}{Vw}^2*{c}{D}/(g_*{c}{H})*COS(RADIANS({c}{alpha}))', '0.0000',
      'Δh = kw·V²·D/(g·H)·cos α'),
     ('aa', 'Độ vượt cao an toàn', 'm', '=IF({c}{th}="Z1",a_1,a_2)', '0.00', 'a (Z1), a′ (Z2) – Bảng 3'),
@@ -343,6 +353,8 @@ for i, (k, nhan, dv, ct, fmt, gc) in enumerate(BUOC):
             ghi(ts, '%s%d' % (c, r), huong, f_nhap_dam, None, nen_nhap, cg)
         elif k == 'th':
             ghi(ts, '%s%d' % (c, r), th, f_nhap_dam, None, nen_nhap, cg)
+        elif k == 'at':
+            ghi(ts, '%s%d' % (c, r), None, f_nhap, fmt, nen_nhap, cg)
         else:
             f = ct.format(c=c, **DONG)
             ghi(ts, '%s%d' % (c, r), f, f_dam if k == 'Zyc' else f_thuong, fmt, nen_kq if k in ('hsl', 'dh', 'Zyc') else None, cg)

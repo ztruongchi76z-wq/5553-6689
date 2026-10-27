@@ -41,8 +41,8 @@ KQ = {}
 for ma, ten, az in HUONG:
     k = S.GIO_HUONG.index(ma)
     a = goc_toi(az)
-    r1 = CT.tinh_truong_hop(MNDBT, S.GIO[4][k], D1, alpha=a)
-    r2 = CT.tinh_truong_hop(MNLTK, S.GIO[50][k], D2, alpha=a)
+    r1 = CT.tinh_truong_hop(MNDBT, S.GIO[4][k], D1, alpha=a, kw_tra_bang=True)
+    r2 = CT.tinh_truong_hop(MNLTK, S.GIO[50][k], D2, alpha=a, kw_tra_bang=True)
     KQ[ma] = dict(ten=ten, a=a, r1=r1, r2=r2, Z1=MNDBT + r1['dh'] + r1['hsl'] + A1,
                   Z2=MNLTK + r2['dh'] + r2['hsl'] + A2, Z3=MNLKT + A3)
     KQ[ma]['Zd'] = max(KQ[ma]['Z1'], KQ[ma]['Z2'], KQ[ma]['Z3'])
@@ -155,28 +155,37 @@ def main():
             'khi hồ ở MNLTK (TCVN 8216:2018, Bảng 4 – công trình cấp II); khi hồ ở MNLKT không xét sóng do gió; a, a′, a″ – '
             'độ vượt cao an toàn, theo TCVN 8216:2018 Bảng 3 với đập cấp II: a = %s m; a′ = %s m; a″ = %s m.'
             % (so(A1, 1), so(A2, 1), so(A3, 1)), thut=1.0)
-    doan(d, 'Độ dềnh do gió và sóng leo được tính theo TCVN 8421:2010:', thut=1.0)
+    doan(d, 'Độ dềnh do gió và chiều cao sóng leo được tính theo TCVN 8421:2010:', thut=1.0)
     phuong_trinh(d, [t('Δh = '), k_('w'), t('·'), phan_so([sup(t('V'), t('2')), t('·D')], t('g·H')), t('·'),
-                     t('cos', True), t(' α ;     '), k_('w'), t(' = 3·'), sup(t('10'), t('−7')), t('·(1 + 0,3·V)')], '2-8')
+                     t('cos', True), t(' α')], '2-8')
+    phuong_trinh(d, [sub(t('h'), t('sl1%')), t(' = '), k_('r'), t('·'), k_('p'), t('·'), k_('sp'), t('·'), k_('run'), t('·'),
+                     k_('α'), t('·'), sub(t('h'), t('1%')), t(' ;     '), sub(t('h'), t('1%')), t(' = '),
+                     sub(t('K'), t('1%')), t('·'), gach(t('h'))], '2-9')
+    doan(d, 'Trong đó: V – vận tốc gió tính toán ở độ cao 10 m trên mặt nước, V = V_{w} = k_{fl}·k_{l}·V_{l} (TCVN 8421:2010, '
+            'Phụ lục A, A.3.3), với V_{l} – vận tốc gió quan trắc ở trạm Phan Thiết (Bảng 1.4), k_{l} = 1,10 ÷ 1,09 – hệ số '
+            'quy đổi về mặt nước cho địa hình dạng A (vùng ven biển trống trải, Bảng A3), k_{fl} – hệ số quy đổi số liệu '
+            'phong tiêu, lấy bằng 1 (thiên an toàn); D – đà gió (m); H – chiều sâu nước trước đập (m); α – góc giữa hướng '
+            'gió và pháp tuyến mái thượng lưu; k_{w} – hệ số tra Bảng A2 theo vận tốc gió (V = 20; 30; 40; 50 m/s: k_{w} = '
+            '2,1; 3,0; 3,9; 4,8·10^{-6}; bảng không có giá trị khi V < 20 m/s nên lấy 2,1·10^{-6}); h̄ – chiều cao sóng '
+            'trung bình; K_{1%} – hệ số theo gD/V^{2} (Hình 2 của tiêu chuẩn); k_{r}, k_{p} – hệ số nhám và thấm của lớp gia cố '
+            'mái theo độ nhám tương đối Δ/h_{1%} (mái gia cố đá xây, Δ = 0,02 m); k_{sp} – hệ số theo vận tốc gió và hệ '
+            'số mái (m = 3); k_{run} – hệ số theo độ thoải sóng λ̄/h_{1%} (Hình 10); k_{α} – hệ số giảm sóng leo theo góc α '
+            '(Bảng 9: 0° – 1,00; 20° – 0,96; 40° – 0,87; 60° – 0,76).', thut=1.0)
+    gts = [KQ[m][r]['gt'] for m in KQ for r in ('r1', 'r2')]
+    gDs = [KQ[m][r]['gD'] for m in KQ for r in ('r1', 'r2')]
+    doan(d, 'Chiều cao h̄ và chu kỳ τ̄ của sóng trung bình ở vùng nước sâu (H > 0,5λ̄, bước sóng λ̄ = g·τ̄^{2}/(2π)) được '
+            'tiêu chuẩn cho bằng đồ thị (đường bao trên, Hình 1) theo gD/V^{2} – điều kiện đà gió và gt/V – điều kiện thời '
+            'gian gió thổi t, lấy giá trị nhỏ hơn. Với t = 6 giờ, gt/V = %s ÷ %s: sóng gần phát triển hoàn toàn, đồ thị cho '
+            'giá trị lớn hơn nhiều so với điều kiện đà gió (gD/V^{2} = %s ÷ %s) nên đà gió quyết định. Đường bao theo đà gió '
+            'được tính bằng công thức xấp xỉ của Krưlốp:'
+            % ('{:,.0f}'.format(min(gts)).replace(',', '.'), '{:,.0f}'.format(max(gts)).replace(',', '.'),
+               so(min(gDs), 0), so(max(gDs), 0)), thut=1.0)
     gh = [t('g·'), gach(t('h'))]
     phuong_trinh(d, [phan_so(gh, sup(t('V'), t('2'))), t(' = 0,16·'),
                      ngoac([t('1 − '), sup(ngoac([t('1 + 0,006·'), can(phan_so(t('gD'), sup(t('V'), t('2'))))]), t('−2'))],
                            '[', ']'),
                      t(' ;     '), phan_so([t('g·'), gach(t('τ'))], t('V')), t(' = 19,1·'),
-                     sup(ngoac(phan_so([t('g·'), gach(t('h'))], sup(t('V'), t('2')))), t('0,625'))], '2-9')
-    phuong_trinh(d, [sub(t('h'), t('sl1%')), t(' = '), k_('r'), t('·'), k_('p'), t('·'), k_('sp'), t('·'), k_('run'), t('·'),
-                     k_('α'), t('·'), sub(t('h'), t('1%')), t(' ;     '), sub(t('h'), t('1%')), t(' = '),
-                     sub(t('K'), t('1%')), t('·'), gach(t('h'))], '2-10')
-    doan(d, 'Trong đó: V – vận tốc gió tính toán ở độ cao 10 m trên mặt nước, V = V_{w} = k_{fl}·k_{l}·V_{l} (TCVN 8421:2010, '
-            'Phụ lục A, A.3.3), với V_{l} – vận tốc gió quan trắc ở trạm Phan Thiết (Bảng 1.4), k_{l} = 1,10 ÷ 1,09 – hệ số '
-            'quy đổi về mặt nước cho địa hình dạng A (vùng ven biển trống trải, Bảng A3), k_{fl} – hệ số quy đổi số liệu '
-            'phong tiêu, lấy bằng 1 (thiên an toàn); D – đà gió (m); H – chiều sâu nước trước đập (m); α – góc giữa hướng '
-            'gió và pháp tuyến mái thượng lưu; h̄, τ̄ – chiều cao và chu kỳ sóng trung bình, sóng nước sâu khi H > 0,5λ̄ với '
-            'bước sóng λ̄ = g·τ̄^{2}/(2π), lấy giá trị nhỏ hơn giữa điều kiện đà gió và điều kiện thời gian gió thổi t = 6 '
-            'giờ; K_{1%} – hệ số theo gD/V^{2} (Hình 2 của tiêu chuẩn); k_{r}, k_{p} – hệ số nhám và thấm của lớp gia cố '
-            'mái theo độ nhám tương đối Δ/h_{1%} (mái gia cố đá xây, Δ = 0,02 m); k_{sp} – hệ số theo vận tốc gió và hệ '
-            'số mái (m = 3); k_{run} – hệ số theo độ thoải sóng λ̄/h_{1%} (Hình 10); k_{α} – hệ số giảm sóng leo theo góc α '
-            '(Bảng 9: 0° – 1,00; 20° – 0,96; 40° – 0,87; 60° – 0,76).', thut=1.0)
+                     sup(ngoac(phan_so([t('g·'), gach(t('h'))], sup(t('V'), t('2')))), t('0,625'))], '2-10')
 
     tieu_de(d, '2.3.2 Kết quả tính toán')
     doan(d, 'Mực nước tính toán: MNDBT = +%s m; MNLTK = +%s m và MNLKT = +%s m – kết quả điều tiết lũ khi các cửa van '
