@@ -191,7 +191,8 @@ h = khoi(4, 'A. MỰC NƯỚC HỒ', [
     ('Mực nước lũ thiết kế MNLTK (P = 1%)', MN['MNLTK'], 'm', 'MN_LTK',
      'Điều tiết lũ QTVH 72 giờ, vận hành bình thường (DieuTietLu_Potapov – KetQua)', '0.00'),
     ('Mực nước lũ kiểm tra MNLKT (P = 0,2%)', MN['MNLKT'], 'm', 'MN_LKT', 'Như trên', '0.00'),
-    ('Cao trình đáy hồ trước đập', 59.0, 'm', 'Z_day', 'Tính chiều sâu nước H = Z − Z đáy (H = 15,70 m ở MNDBT)', '0.00'),
+    ('Cao trình đáy lòng hồ trước đập', 59.0, 'm', 'Z_day', 'Bình đồ 2022: F = 0 ở +59,0 (không phải đáy đập +54,0 tính chiều '
+     'cao đập 24,5 m); H = Z − Z đáy nhỏ hơn → Δh lớn hơn: thiên an toàn', '0.00'),
     ('Gia tốc trọng trường g', S.G, 'm/s²', 'g_', '', '0.00'),
 ])
 h = khoi(h + 1, 'B. ĐỘ VƯỢT CAO AN TOÀN – TCVN 8216:2018 Bảng 3, đập cấp II', [
@@ -204,7 +205,9 @@ h = khoi(h + 1, 'C. GIÓ, SÓNG VÀ MÁI ĐẬP', [
     ('Hệ số quy đổi số liệu phong tiêu kfl', 1.0, '', 'k_fl', 'TCVN 8421:2010 A.3.3 – lấy bằng 1 (thiên an toàn)', '0.00'),
     ('Đà gió D khi hồ ở MNDBT', 2970, 'm', 'D_1', 'Như Bảng 2.4 (bản trước); dùng cho mọi hướng – thiên an toàn', '0'),
     ('Đà gió D khi hồ ở MNLTK', 3025, 'm', 'D_2', 'Như trên (ứng với MNLTK +77,43 của hồ sơ BCNCKT)', '0'),
-    ('Hệ số mái thượng lưu m', 3.0, '', 'm_TL', 'Bảng ksp dưới đây dùng hàng m = 3 ÷ 5', '0.0'),
+    ('Hệ số mái thượng lưu m (đoạn trên cơ)', 3.0, '', 'm_TL', 'Dưới cơ m = 3,5 nằm sâu hơn 0,5λ̄ (TinhSong) – không ảnh '
+     'hưởng sóng leo; bảng ksp dùng hàng m = 3 ÷ 5', '0.0'),
+    ('Cao trình cơ thượng lưu', S.Z_CO_TL, 'm', 'Z_co_TL', 'Thống nhất 21/10/2026', '0.00'),
     ('Độ nhám lớp gia cố mái Δ', 0.02, 'm', 'Delta_n', 'Mái gia cố đá xây', '0.000'),
     ('Phương vị pháp tuyến mái thượng lưu', 6.2, '°', 'PT_mai', 'Tuyến đập N96,2°E, lòng hồ phía Bắc', '0.0'),
 ])
@@ -323,6 +326,9 @@ BUOC = [
      'Xấp xỉ đường bao (Krưlốp): gτ̄/V = 19,1·(gh̄/V²)^0,625'),
     ('lam', 'Bước sóng trung bình λ̄', 'm', '=g_*{c}{tau}^2/(2*PI())', '0.00', 'λ̄ = g·τ̄²/(2π)'),
     ('sau', 'Kiểm tra sóng nước sâu H > 0,5λ̄', '', '=IF({c}{H}>0.5*{c}{lam},"Đúng","Sai – xem lại")', None, ''),
+    ('co', 'Độ sâu cơ thượng lưu dưới mực nước', 'm', '={c}{Z}-Z_co_TL', '0.00', 'Cơ thượng lưu +68,0 m'),
+    ('kt_co', 'Kiểm tra cơ sâu hơn 0,5λ̄ (sóng chỉ leo trên đoạn mái m = 3,0)', '',
+     '=IF({c}{co}>0.5*{c}{lam},"Đúng","Xem lại")', None, 'Đoạn mái m = 3,5 dưới cơ không ảnh hưởng sóng leo'),
     ('K1', 'Hệ số K1%', '', '=' + noi_suy('LOG10({c}{gD})', 'K1_lg', 'K1_k'), '0.000', 'Hình 2, theo gD/V²'),
     ('h1', 'Chiều cao sóng h1% = K1%·h̄', 'm', '={c}{K1}*{c}{h}', '0.000', ''),
     ('rel', 'Độ nhám tương đối Δ/h1%', '', '=Delta_n/{c}{h1}', '0.0000', 'Δ = 0,02 m'),

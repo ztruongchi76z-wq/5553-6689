@@ -193,10 +193,22 @@ def main():
             '(lòng hồ ở phía Bắc). Sóng được tính cho các hướng gió thổi vào mái thượng lưu với góc tới không quá 60°: '
             'Bắc (%s°), Đông Bắc (%s°) và Tây Bắc (%s°); các hướng Đông, Tây gần song song với tuyến đập (góc tới 84 ÷ 96°), '
             'các hướng Nam thổi từ phía hạ lưu nên không gây sóng leo lên mái thượng lưu. Đà gió lấy D = %s m khi hồ ở '
-            'MNDBT và %s m khi hồ ở MNLTK, dùng chung cho mọi hướng (thiên an toàn); cao trình đáy hồ trước đập +59,0 m. '
-            'Kết quả tính chi tiết với gió hướng Bắc cho trong Bảng 2.4, tổng hợp theo hướng gió trong Bảng 2.5.'
+            'MNDBT và %s m khi hồ ở MNLTK, dùng chung cho mọi hướng (thiên an toàn). Kết quả tính chi tiết với gió hướng '
+            'Bắc cho trong Bảng 2.4, tổng hợp theo hướng gió trong Bảng 2.5.'
             % (so(MNDBT), so(MNLTK), so(MNLKT), so(KQ['N']['a'], 1), so(KQ['NE']['a'], 1), so(KQ['NW']['a'], 1),
                '{:,.0f}'.format(D1).replace(',', '.'), '{:,.0f}'.format(D2).replace(',', '.')), thut=1.0)
+    doan(d, 'Chiều sâu nước trước đập H tính từ cao trình đáy lòng hồ +59,0 m – cao trình thấp nhất của quan hệ Z ~ F ~ W '
+            'theo bình đồ khảo sát 2022 (F = 0), không phải cao trình đáy đập +54,0 m dùng để tính chiều cao đập 24,5 m. '
+            'Với sóng nước sâu, H chỉ ảnh hưởng đến độ dềnh Δh (tỷ lệ nghịch với H): lấy đáy +59,0 m cho H nhỏ hơn nên Δh '
+            'lớn hơn – thiên an toàn; nếu lấy đáy +54,0 m thì Δh giảm 1 ÷ 3 mm, cao trình đỉnh yêu cầu không đổi.', thut=1.0)
+    lam2 = [0.5 * KQ[m][r]['lam'] for m in KQ for r in ('r1', 'r2')]
+    doan(d, 'Mái thượng lưu có hai đoạn: m = 3,0 từ đỉnh đến cơ +%s m và m = 3,5 dưới cơ. Sóng leo được tính với m = 3,0 '
+            'vì cơ nằm dưới MNDBT %s m và dưới MNLTK %s m, sâu hơn vùng chịu tác động của sóng (0,5λ̄ = %s ÷ %s m – cùng '
+            'tiêu chí sóng nước sâu của TCVN 8421:2010), nên sóng chỉ vỗ và leo trên đoạn mái m = 3,0; mặt khác mái càng '
+            'thoải thì sóng leo càng thấp, nên dùng m = 3,0 là thiên an toàn.'
+            % (so(S.Z_CO_TL, 1), so(MNDBT - S.Z_CO_TL), so(MNLTK - S.Z_CO_TL), so(min(lam2), 1), so(max(lam2), 1)),
+            thut=1.0)
+    assert all(MN - S.Z_CO_TL > max(lam2) for MN in (MNDBT, MNLTK))
 
     n1, n2 = KQ['N']['r1'], KQ['N']['r2']
     du_lieu = [
