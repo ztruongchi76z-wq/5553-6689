@@ -22,6 +22,8 @@
 > slide trong kho **chưa** cập nhật theo bộ thông số này (vẫn ghi đỉnh +78,35, cơ thượng lưu +70,0, MNLTK +77,63).
 >
 > **26/10/2026 – điều tiết lũ Pô-ta-pốp hai đường f₁, f₂** (`tinh_toan/xuat_excel_dieu_tiet_lu_potapov.py` → `TAI_VE/DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx`): tràn chính 9 khoang × 2,4 m (6 trụ giữa 0,6 m + 2 trụ chính ban đầu 1,0 m, đầu tròn), tràn sự cố 1 khoang 5 m, mở hết cửa khi đón lũ. **Bản 26/10 tối – SV đổi lũ đến sang đường quá trình QTVH 2026 (72 giờ, thu phóng trận lũ trạm Đá Bàn)**: MNLTK +77,43, MNLKT +78,39; sự cố 1 cửa tràn chính không mở +77,48 / +78,46 m (mở hết cửa từ giờ 0); nếu giữ MNDBT tới khi lũ đến lớn hơn khả năng xả (ô VH_mo = 2): +77,50 / +78,43, sự cố +77,55 / +78,50 m. Lũ BCNCKT 36 giờ cho 77,61 / 78,51 (sự cố 77,67 / 78,60) – các tính toán thấm, ổn định, cao trình đỉnh đang dùng MNLTK +77,61, MNLKT +78,51 (so_lieu.py) nên vẫn thiên an toàn; chưa đổi so_lieu.py, chờ SV chốt bộ số liệu lũ.
+>
+> **27/10/2026 – cao trình đỉnh đập với MNLTK +77,43, MNLKT +78,39** (SV yêu cầu, lũ QTVH vận hành bình thường): `TAI_VE/CaoTrinhDinhDap_HoCaGiay.xlsx`, `TAI_VE/Muc2.3_CaoTrinhDinhDap.docx`. Gió Bắc: Z1 +76,74, Z2 +78,41, Z3 +78,59; gió Đông Bắc Z2 +78,87 m = Zđ; tường chắn sóng +79,40 đạt; đỉnh đập ≥ MNLKT + 0,3 = +78,69 m (hiện trạng +78,50 thiếu 0,19 m; sau sửa chữa +78,85 dư 0,16 m). Văn bản mục 2.3.1 của SV đang ghi Z3 = MNLKT + Δh″ + a″ và Δh = 2·10⁻⁶·V²D/(gH)·cosβ – đã nhắc SV đổi theo TCVN 8216:2018 (Z3 = MNLKT + a″) và TCVN 8421:2010 (kw theo V).
 
 Bản này nối tiếp `HANDOFF.md` ngày 09/10/2026 trong gói `DATN_HoCaGiay_TinhToan.zip` (mục 5 "Kết quả chính" và mục 6
 "Giả thiết" của bản đó vẫn giữ nguyên giá trị).
