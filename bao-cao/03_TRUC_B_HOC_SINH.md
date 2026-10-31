@@ -2,6 +2,8 @@
 
 > Nghiên cứu độc lập, lập ngày 31/10/2026, **trước khi** đọc Qwe và các góp ý AI. Quy ước tầng chứng cứ [1]–[5] như Sản phẩm 02.
 > Nguyên tắc: không viết "các em đã mất niềm tin" khi chưa có lời kể của các em; nhưng phân tích đầy đủ nguy cơ, cơ chế và cách khắc phục. Không bệnh lý hóa trẻ. Không nêu tên, không mô tả nhận diện được học sinh.
+>
+> *Cập nhật sau commit đầu tiên:* chỉ bổ sung nguyên văn Luật Trẻ em (Điều 5, Điều 34) từ tác vụ kiểm chứng văn bản pháp luật, vào mục B11. Không bổ sung ý từ góp ý AI.
 
 ---
 
@@ -130,6 +132,7 @@ Tóm tắt kết quả kiểm định (chi tiết mục 5.1): biểu trưng có 
 
 ### B11. Chữa sai thế nào là thực chất — đề xuất cụ thể, rẻ, không quy lỗi
 
+0. **Nghe các em trước** (5–10 phút, không quy lỗi): các em còn nhớ gì về trang "xương sống"? Đây vừa là cách kiểm tra mức tác động (B1), vừa đúng quyền của trẻ: Luật Trẻ em 2016, Điều 34 — trẻ em "có quyền được bày tỏ ý kiến, nguyện vọng về các vấn đề liên quan đến trẻ em" và được "cơ sở giáo dục... lắng nghe, tiếp thu, phản hồi"; Điều 5 khoản 4 — "Tôn trọng, lắng nghe, xem xét, phản hồi ý kiến, nguyện vọng của trẻ em". Trong hồ sơ, tiếng nói của các em mới chỉ được dùng *cho* người lớn ("qua tìm hiểu... các em vui vẻ, hào hứng" [01.1]), chưa được nghe *vì* các em.
 1. **Một kết luận chuyên môn ngắn bằng văn bản** về các trang [06.01], [06.03] (và [06.09]), nêu đúng chỗ sai, nêu điều đúng.
 2. **Một tiết học lại (45 phút) cho lớp 9A1**, dựa trên phép thử:
    - dựng khung bốn thanh bằng que và chốt → khung xô lệch; thêm thanh chéo → khung cứng: *tam giác là hình của vững chắc*;
