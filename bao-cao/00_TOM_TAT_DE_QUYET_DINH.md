@@ -29,7 +29,7 @@
 | Chi tiết trong thư/phụ lục | Vấn đề | Việc cần làm |
 |---|---|---|
 | "chưa tạo được chuyển biến thực chất" (Kết luận 24/6/2026) | **Chưa tìm thấy** trong các bản đưa tin về Thông báo 105-TB/VPTW; các bản này ghi "mới là bước đầu" và yêu cầu "tạo chuyển biến thực chất" | Đối chiếu nguyên văn; thư gửi chính người đã ký kết luận ấy |
-| Câu trích bài PA03 | Trang của Công an tỉnh bị chặn trong môi trường làm việc nên chưa đối chiếu được với bài gốc | Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu |
+| Câu trích bài PA03 | Đã đối chiếu ngày 01/11/2026 với bản chép trang báo người viết gửi: bốn câu trong thư khớp từng chữ, dấu “…” chỉ lược ba câu (về bác sĩ, nhà kinh tế và kế toán, học giả tôn giáo) | Xong |
 | "Đảo chủ ngữ" trong CV87 | Câu ngay trước là "nhận xét là sinh động, hiệu quả" → cách đọc tự nhiên là "một ý kiến nhận xét rằng tiết dạy còn nội dung chưa chính xác" | Thay bằng "lược bỏ phần cụ thể" |
 | Biểu trưng: "tên cơ quan chủ quản biến mất", "Dạy học tốt tốt", "Quốc kỳ, Quốc huy" | Tên trên biểu trưng gốc là Phòng GD&ĐT Phan Thiết — đã giải thể năm 2025; khẩu hiệu trong bức vẽ có thể là bố cục hai trang sách ("Dạy tốt" – "Học tốt"); bức vẽ là của học sinh | Giữ biểu trưng ở dạng "khoảnh khắc giáo dục bị bỏ lỡ" |
 | "Tôi đã đi hết các cửa" | Về pháp lý chưa hết: còn khiếu nại lần hai, khởi kiện hành chính | Sửa chữ, ví dụ "gần hết những cửa mà một phụ huynh có thể gõ" |

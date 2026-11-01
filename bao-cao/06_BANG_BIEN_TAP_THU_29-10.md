@@ -39,7 +39,7 @@
 
 ## 3. Kiểm tra cuối trước khi gửi (danh sách ngắn)
 
-1. Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu.
+1. Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu. *(Đã xong ngày 01/11/2026: khớp từng chữ.)*
 2. Đối chiếu nguyên văn Kết luận 24/6/2026 (Thông báo 105-TB/VPTW) trước khi trích bất kỳ cụm nào.
 3. Nếu giữ Quy định 225-QĐ/TW, luôn ghi "ngày 14/10/2026" (có một Quy định 225 khác năm 2024).
 4. Không còn câu nào nhận định ý đồ, động cơ của người khác, dù để buộc tội hay thanh minh; không còn từ "vô sự", "bình đẳng hơn", "xuyên tạc", "trái luật" ở thân thư.

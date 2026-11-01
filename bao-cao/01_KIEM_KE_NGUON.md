@@ -8,7 +8,7 @@
 - **Tài liệu của người viết** (PL1, PL2, PL I, 07.9, 12.10, các tệp 00) dùng để đối chiếu, **không** dùng làm xác nhận độc lập.
 - **Văn bản pháp luật, văn kiện**: trang chính thức (thuvienphapluat.vn, datafiles.chinhphu.vn, vbpl.moj.gov.vn) bị chặn trong môi trường làm việc; đã kiểm chứng qua bản sao nguyên văn của văn bản chính thức (có mã văn bản gốc) và bản tin báo chí. Mức tin cậy ghi từng dòng.
 - **Nguồn học thuật**: kiểm chứng thư mục qua trang nhà xuất bản, thư viện, kho lưu trữ, tóm tắt. Không bịa số trang, không bịa trích dẫn; chỗ nào chưa xác nhận DOI thì ghi rõ.
-- **Bài PA03 Công an Lai Châu**: **không truy cập được bản gốc** (mạng của môi trường làm việc chặn tên miền). Chỉ đọc được bản phục dựng do người viết lưu trong Drive (văn phong cho thấy do một công cụ AI soạn). Mọi nhận định về bài này ở mức tin cậy trung bình.
+- **Bài PA03 Công an Lai Châu**: **không truy cập được bản gốc** (mạng của môi trường làm việc chặn tên miền). Chỉ đọc được bản phục dựng do người viết lưu trong Drive (văn phong cho thấy do một công cụ AI soạn). Mọi nhận định về bài này ở mức tin cậy trung bình. *(Cập nhật 01/11/2026: người viết đã gửi bản chép trang báo; câu trích trong thư khớp từng chữ với bài.)*
 
 ## 2. Phân biệt các văn bản trong chuỗi xử lý
 
@@ -31,7 +31,7 @@
 | K1 | Thông báo 105-TB/VPTW (24/6/2026): **chưa tìm thấy** cụm "chưa tạo được chuyển biến thực chất"; các bản tin ghi kết quả "mới là bước đầu" và yêu cầu "tạo chuyển biến thực chất" | Đối chiếu nguyên văn trước khi gửi; nếu không có, sửa câu trích (thư gửi chính người đã ký kết luận ấy) |
 | K2 | NQ 71: "Hiện tượng tiêu cực, bệnh hình thức trong giáo dục còn phổ biến." — **đúng nguyên văn** | Giữ |
 | K3 | QĐ 225-QĐ/TW ngày 14/10/2026, Điều 2 khoản 5 — **đúng nội dung**; có một QĐ 225 khác (30/12/2024) | Nếu giữ, luôn ghi kèm ngày |
-| K4 | Câu trích PA03 trong thư chưa được đối chiếu với bài gốc (trang của Công an tỉnh bị chặn trong môi trường làm việc) | Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu |
+| K4 | Câu trích PA03 trong thư: đã đối chiếu ngày 01/11/2026 với bản chép trang báo người viết gửi, khớp từng chữ; dấu “…” chỉ lược ba câu (về bác sĩ, nhà kinh tế và kế toán, học giả tôn giáo) | Xong |
 | K5 | Ảnh cầu AI có ghi chú "Đây là hình ảnh được công nghệ AI tạo ra" | Không gọi là học liệu giả mạo |
 | K6 | Biểu trưng gốc ghi tên Phòng GD&ĐT Phan Thiết — cơ quan không còn sau năm 2025; khẩu hiệu trong bức vẽ có thể là bố cục hai trang sách | Bỏ hai chi tiết này khỏi thư |
 | K7 | Luật Tố cáo Điều 18: Chủ tịch UBND phường có thẩm quyền giải quyết tố cáo đối với Hiệu trưởng | "Một người ngồi hai ghế" là thiết kế đúng luật → dễ bị bác |

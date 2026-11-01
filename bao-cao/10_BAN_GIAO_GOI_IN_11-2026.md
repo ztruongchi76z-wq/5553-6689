@@ -50,7 +50,7 @@ Tệp 00, 00.1, 00.4 đổi ngày sang 01/11/2026 và khoá lại ("Hồ sơ ch�
 
 ## 5. Còn phải người viết tự kiểm
 
-1. Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu.
+1. Đối chiếu câu trích với bài gốc: đã xong ngày 01/11/2026. Bốn câu trong thư khớp từng chữ với bản chép trang báo người viết gửi; dấu “…” chỉ lược ba câu (về bác sĩ, nhà kinh tế và kế toán, học giả tôn giáo). Tiêu đề, đơn vị đăng và ngày 07/9/2023 cũng khớp.
 2. Hiệu lực năm 2026 của Thông tư 05/2021/TT-TTCP (01 K9).
 3. Nguyên văn Kết luận ngày 24/6/2026 (chỉ còn trong đơn UBTVQH).
 4. Số ngày trong hai đơn: đã xong. Người viết xác nhận ngoài Công văn 3292 (đã có trong hồ sơ và trong đơn gửi Tổng Thanh tra) không nhận thêm văn bản trả lời nào, nên các số giữ nguyên.
