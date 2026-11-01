@@ -19,5 +19,6 @@ Thư mục [`bao-cao/`](bao-cao/) chứa kết quả nghiên cứu theo "Yêu c�
 | [`08_PHIEU_DOI_CHIEU_ASTRA.md`](bao-cao/08_PHIEU_DOI_CHIEU_ASTRA.md) | Sản phẩm 08 — phiếu đối chiếu với kết quả Astra (chưa có kết quả Astra) |
 | [`09_DOI_CHIEU_QWE_VA_GOP_Y_AI.md`](bao-cao/09_DOI_CHIEU_QWE_VA_GOP_Y_AI.md) | Bước 5 / Phụ lục C — đối chiếu Qwe và các góp ý AI khác |
 | [`BAO_CAO_TONG_HOP_CV87.docx`](bao-cao/BAO_CAO_TONG_HOP_CV87.docx) | Toàn bộ báo cáo trong một tệp Word |
+| [`10_BAN_GIAO_GOI_IN_11-2026.md`](bao-cao/10_BAN_GIAO_GOI_IN_11-2026.md) | Báo cáo đã được áp dụng vào tâm thư (bản A, bản B) và hai đơn của gói in tháng 11/2026 như thế nào; những điểm người viết còn phải tự kiểm |
 
 **Lưu ý về quyền riêng tư:** kho này đang ở chế độ công khai. Báo cáo gọi người liên quan theo chức danh, không nêu tên học sinh, giáo viên; không có số điện thoại, địa chỉ, số căn cước.
