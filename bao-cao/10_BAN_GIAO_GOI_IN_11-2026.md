@@ -53,7 +53,7 @@ Tệp 00, 00.1, 00.4 đổi ngày sang 01/11/2026 và khoá lại ("Hồ sơ ch�
 1. Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu.
 2. Hiệu lực năm 2026 của Thông tư 05/2021/TT-TTCP (01 K9).
 3. Nguyên văn Kết luận ngày 24/6/2026 (chỉ còn trong đơn UBTVQH).
-4. Số ngày trong hai đơn giả định không có văn bản trả lời mới từ 28/10 đến 01/11/2026.
+4. Số ngày trong hai đơn: đã xong. Người viết xác nhận ngoài Công văn 3292 (đã có trong hồ sơ và trong đơn gửi Tổng Thanh tra) không nhận thêm văn bản trả lời nào, nên các số giữ nguyên.
 5. Cách ghi tên lớp ("8.1" hay "8A1").
 
 ## 6. Sửa lần hai ngày 01/11/2026: bài của Công an tỉnh Lai Châu và đoạn cuối
@@ -66,6 +66,7 @@ Theo góp ý của người viết: chỉ kiểm chứng đúng nguồn được
 | "Nhưng hậu quả mà bài viết nói tới không cần đến kẻ phá hoại; nó chỉ cần những cái sai nhỏ được cho qua, được xác nhận, rồi trở thành tiền lệ cho nơi khác." | Thay bằng: "Lời cảnh báo nói đến việc “cho phép gian lận”; ở trường con tôi, một kiến thức sai và một biểu trưng bị cắt xén không chỉ được cho phép, mà còn được ký xác nhận." | "Không cần đến kẻ phá hoại" là suy diễn của AI và gián tiếp nói về động cơ; "cái sai nhỏ" làm nhẹ vấn đề đã có chứng cứ. Câu mới đặt lời cảnh báo cạnh hai chứng cứ (kiến thức sai, biểu trưng) và trách nhiệm phòng ngừa (cho phép, ký xác nhận) |
 | "Tháng 9/2023, Công an tỉnh Lai Châu đăng bài ..., nhắc lời cảnh báo rằng muốn phá huỷ một quốc gia không cần bom nguyên tử hay tên lửa tầm xa, chỉ cần hạ thấp nền giáo dục." | Thay bằng ngày đăng 07/9/2023, đơn vị đăng, trang thông tin chính thức và nguyên văn đoạn trích người viết đã chọn (có câu về kỹ sư và thẩm phán) | Câu cũ chỉ tóm ý nên làm nhẹ lời cảnh báo, và không còn là câu trích để đối chiếu với bài gốc |
 | "Một lỗi về cầu giàn có thể được sửa ở lớp trên." và câu kế tiếp | Gộp thành: "Nếu không được sửa, cả cái sai về cầu giàn lẫn thói quen chấp nhận một điều sai vì nó đã có chữ ký sẽ theo các em vào nghề nghiệp, vào cách các em làm việc với người dân." | Câu cũ làm nhẹ một lỗi đã có chứng cứ, không có căn cứ, và trái với đoạn 8 (sau năm học này không dạy lại các em được nữa) |
+| Trích yếu dưới tiêu đề: "(Về quyền được học điều đúng của học sinh)" | Thay bằng "(V/v: sự sụp đổ giáo dục)" | Theo ý người viết: đây là lý do gửi thư |
 | "Hơn một năm qua, vì trách nhiệm ấy, với gia đình nhỏ của mình tôi như một tội đồ." | Thay bằng câu của người viết, đặt cuối đoạn 9, ngay trước câu kết: "Tôi biết tôi đã và đang làm tội đồ của gia đình bé nhỏ của mình, nhưng nếu được quay về quá khứ để chọn lại, tôi vẫn chọn phản ánh." | Ý người viết muốn có ở cuối thư |
 
 Đoạn về bài của Công an tỉnh Lai Châu nay là đoạn riêng (đoạn 6), nên thân thư có mười đoạn; thư vẫn 3 trang, ký ở trang 3. Câu kết giữ nguyên. Bản B cũ (17.18B, nằm trong thư mục lưu, không in) đã bỏ hai câu "Tôi không nghĩ ai ở trường con tôi muốn phá hoại giáo dục. Điều tôi lo là cơ chế trong lời cảnh báo ấy không cần đến kẻ phá hoại: chỉ cần cái sai được cho qua."; hand-off cũ đã bỏ dòng về Nelson Mandela.
