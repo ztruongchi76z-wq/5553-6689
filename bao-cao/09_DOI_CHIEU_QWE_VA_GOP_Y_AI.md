@@ -40,7 +40,7 @@ Một chuỗi trao đổi giữa người viết và một AI tự xưng "cố v
 
 ### 2.3. Những gì Qwe không nhận ra (có trong phân tích độc lập)
 
-Bất đối xứng điểm/kiến thức (A8) · chuyển hóa thể loại sinh hoạt chuyên môn (A3) · phép thử bốn câu của Sở (A5) · vòng xác minh kéo tới tầng Sở và Đoàn ĐBQH (A6) · khoảng trống thủ tục (A10) · rủi ro Luật Nhà giáo (A13) · tầng "ý nghĩa thực tế" của cái sai (B1) · ba tầng tiếp xúc của học sinh (mục 2 SP03) · chuẩn chứng cứ hai tầng (B7) · mô hình thang nâng chứa đúng tính chất của bài (B11) · kiểm định biểu trưng bằng hình ảnh (SP03 mục 5.1) · cách đọc tự nhiên của câu CV87 trái với "đảo chủ ngữ" (A2) · câu trích Kết luận 24/6/2026 chưa tìm thấy · lời cảnh báo PA03 "không cần kẻ phá hoại" (X-P1).
+Bất đối xứng điểm/kiến thức (A8) · chuyển hóa thể loại sinh hoạt chuyên môn (A3) · phép thử bốn câu của Sở (A5) · vòng xác minh kéo tới tầng Sở và Đoàn ĐBQH (A6) · khoảng trống thủ tục (A10) · rủi ro Luật Nhà giáo (A13) · tầng "ý nghĩa thực tế" của cái sai (B1) · ba tầng tiếp xúc của học sinh (mục 2 SP03) · chuẩn chứng cứ hai tầng (B7) · mô hình thang nâng chứa đúng tính chất của bài (B11) · kiểm định biểu trưng bằng hình ảnh (SP03 mục 5.1) · cách đọc tự nhiên của câu CV87 trái với "đảo chủ ngữ" (A2) · câu trích Kết luận 24/6/2026 chưa tìm thấy · lời cảnh báo PA03 "không cần kẻ phá hoại" (X-P1; người viết không dùng khung này, xem đính chính ở tệp 00).
 
 ## 3. GPT (Gpt.txt, Gpt6.txt) và Gem (Gem.txt)
 

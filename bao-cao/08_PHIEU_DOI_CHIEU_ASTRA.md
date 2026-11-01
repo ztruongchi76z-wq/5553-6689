@@ -19,7 +19,7 @@
 | 11 | "Một người ngồi hai ghế" | Thẩm quyền của Chủ tịch phường đúng Điều 18 Luật Tố cáo → dễ bị bác | SP01 K7 | Astra có giữ luận điểm này? | | |
 | 12 | Biểu trưng | Giữ, nhưng chỉ ở dạng "khoảnh khắc giáo dục bị bỏ lỡ"; bỏ tên cơ quan chủ quản (đã giải thể), "Dạy học tốt tốt" (có thể là bố cục hai trang sách), Quốc kỳ/Quốc huy | SP03 mục 5.1 | Astra có xem trực tiếp hai hình? Có nhận ra cơ quan chủ quản trên biểu trưng gốc đã không còn? | | |
 | 13 | Mô hình thang nâng | Cơ cấu cắt kéo **chứa đúng** dấu hiệu "hai đường chéo cắt nhau tại trung điểm" → dùng lại để dạy đúng; không dùng làm "lỗi nội dung" trong thư | B11 | Astra có lặp lại khẳng định "thang nâng không thể hiện đường chéo" của PL1, PL2? | | |
-| 14 | Bài PA03 | Dùng cho loại hậu quả, "không cần kẻ phá hoại"; không ghi Mandela; đối chiếu nguyên văn | SP04; X-P1 | Astra có đọc được bản gốc? Câu trích nguyên văn là gì? Astra có giữ khung "âm mưu"? | | |
+| 14 | Bài PA03 | Căn cứ tham chiếu chính thức, đặt cạnh kiến thức sai và biểu trưng; không nhận định động cơ; đối chiếu chính xác câu trích với bài gốc | SP04 | Astra có đọc được bản gốc? Câu trích có khớp bài gốc không? | | |
 | 15 | Kết luận 24/6/2026 | Cụm "chưa tạo được chuyển biến thực chất" chưa tìm thấy | SP01 K1 | Astra có kiểm chứng câu trích này? | | |
 | 16 | Độ trễ nhân sự | Đứng được ở mức hệ thống, ở dạng có điều kiện; không đứng được ở dạng "các em sẽ mãi..." | SP04 mục 4 | Astra dùng ở dạng nào? | | |
 | 17 | Lời xin cuối thư | Cụ thể, nhỏ, có hạn (kết luận chuyên môn + một buổi học lại trước 5/2027) | A10; SP07 D1 | Astra đề xuất lời xin nào? | | |

@@ -2,6 +2,8 @@
 
 > Báo cáo nghiên cứu hai trục: (A) thể chế – pháp quyền, (B) học sinh – nhân cách – niềm tin. Lập ngày 31/10/2026. Đây không phải bản thư viết lại. Chưa có kết quả Astra.
 
+> **Đính chính ngày 01/11/2026, theo yêu cầu người viết.** Bài “Cảnh giác trước âm mưu phá hoại giáo dục” do Phòng An ninh chính trị nội bộ Công an tỉnh Lai Châu đăng ngày 07/9/2023 trên trang thông tin chính thức của Công an tỉnh là căn cứ tham chiếu chính thức về nguy cơ đối với giáo dục, nhận thức, giá trị xã hội và trách nhiệm phòng ngừa; thư đặt nó cạnh chứng cứ cụ thể (kiến thức sai, biểu trưng nhà trường). Việc cần kiểm chỉ là bài viết có trên trang chính thức và câu trích khớp với bài. Báo cáo không còn yêu cầu xác minh tác giả câu nói, không dùng khung “không cần kẻ phá hoại” và không gợi ý câu nhận định động cơ nào, dù để buộc tội hay thanh minh. Các chỗ liên quan trong tệp 01, 04, 05, 05a, 06, 07, 08 đã sửa theo; thay đổi trong thư ghi ở tệp 10, mục 6.
+
 ## 1. Luận đề hợp nhất
 
 **Một cái sai rẻ nhất để sửa — một trang bài giảng tự bác chính nó — đã đi qua cả một chuỗi văn bản mà không ai gọi tên, vì mỗi văn bản trả lời lá đơn chứ không trả lời câu hỏi, và vì trong ngôn ngữ của các văn bản ấy, nhận một cái sai đồng nghĩa với nhận một vi phạm. Học sinh là bên duy nhất không có lá đơn nào đại diện, nhưng mang hậu quả lâu nhất. Bài học ngầm các em có thể rút ra chưa đóng lại: một kết luận chuyên môn ngắn và một buổi học lại trước khi các em rời trường — không cần quy lỗi cho ai — đủ để biến chính câu chuyện này thành một bài học tốt về sự thật.**
@@ -27,7 +29,7 @@
 | Chi tiết trong thư/phụ lục | Vấn đề | Việc cần làm |
 |---|---|---|
 | "chưa tạo được chuyển biến thực chất" (Kết luận 24/6/2026) | **Chưa tìm thấy** trong các bản đưa tin về Thông báo 105-TB/VPTW; các bản này ghi "mới là bước đầu" và yêu cầu "tạo chuyển biến thực chất" | Đối chiếu nguyên văn; thư gửi chính người đã ký kết luận ấy |
-| Câu trích bài PA03 | Khác chữ với bản phục dựng; không có căn cứ ghi là của Nelson Mandela; bản gốc không truy cập được từ môi trường làm việc | Đối chiếu bản in |
+| Câu trích bài PA03 | Trang của Công an tỉnh bị chặn trong môi trường làm việc nên chưa đối chiếu được với bài gốc | Đối chiếu chính xác câu trích với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu |
 | "Đảo chủ ngữ" trong CV87 | Câu ngay trước là "nhận xét là sinh động, hiệu quả" → cách đọc tự nhiên là "một ý kiến nhận xét rằng tiết dạy còn nội dung chưa chính xác" | Thay bằng "lược bỏ phần cụ thể" |
 | Biểu trưng: "tên cơ quan chủ quản biến mất", "Dạy học tốt tốt", "Quốc kỳ, Quốc huy" | Tên trên biểu trưng gốc là Phòng GD&ĐT Phan Thiết — đã giải thể năm 2025; khẩu hiệu trong bức vẽ có thể là bố cục hai trang sách ("Dạy tốt" – "Học tốt"); bức vẽ là của học sinh | Giữ biểu trưng ở dạng "khoảnh khắc giáo dục bị bỏ lỡ" |
 | "Tôi đã đi hết các cửa" | Về pháp lý chưa hết: còn khiếu nại lần hai, khởi kiện hành chính | Sửa chữ, ví dụ "gần hết những cửa mà một phụ huynh có thể gõ" |

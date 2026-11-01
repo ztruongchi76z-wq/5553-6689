@@ -39,4 +39,4 @@ Văn bản gốc (ảnh chụp có dấu, đọc bằng nhận dạng chữ và 
 
 | Mã | Phát hiện |
 |---|---|
-| X-P1 | Lời cảnh báo **không cần kẻ thù**: cơ chế "hạ thấp chất lượng + cho phép gian lận → hậu quả nghề nghiệp đến muộn" có thể vận hành hoàn toàn bằng sự dễ dãi nội bộ; dùng bài báo cho **loại hậu quả**, nói rõ không quy kết ý đồ. Câu trích không nên ghi là của Nelson Mandela; nguyên văn cần đối chiếu bản in. |
+| X-P1 | Lời cảnh báo **không cần kẻ thù**: cơ chế "hạ thấp chất lượng + cho phép gian lận → hậu quả nghề nghiệp đến muộn" có thể vận hành hoàn toàn bằng sự dễ dãi nội bộ; dùng bài báo cho **loại hậu quả**, nói rõ không quy kết ý đồ. Câu trích cần đối chiếu chính xác với bài viết gốc trên cổng thông tin Công an tỉnh Lai Châu. *(Đính chính 01/11/2026: người viết không dùng khung "không cần kẻ thù"; thư không có câu nhận định động cơ nào. Xem tệp 00.)* |
