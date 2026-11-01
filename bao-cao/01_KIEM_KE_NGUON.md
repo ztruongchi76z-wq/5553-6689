@@ -1,6 +1,6 @@
 # SẢN PHẨM 01 — KIỂM KÊ NGUỒN VÀ BẢNG CHỨNG CỨ
 
-> Bảng đầy đủ (117 dòng, 12 cột): [`01_bang_chung_cu.csv`](01_bang_chung_cu.csv) và [`01_bang_chung_cu.xlsx`](01_bang_chung_cu.xlsx). Tệp này tóm tắt cách đọc, phạm vi và giới hạn.
+> Bảng đầy đủ (121 dòng, 12 cột): [`01_bang_chung_cu.csv`](01_bang_chung_cu.csv) và [`01_bang_chung_cu.xlsx`](01_bang_chung_cu.xlsx). Tệp này tóm tắt cách đọc, phạm vi và giới hạn.
 
 ## 1. Cách làm
 

@@ -8,7 +8,7 @@ Thư mục [`bao-cao/`](bao-cao/) chứa kết quả nghiên cứu theo "Yêu c�
 | Tệp | Nội dung |
 |---|---|
 | [`00_TOM_TAT_DE_QUYET_DINH.md`](bao-cao/00_TOM_TAT_DE_QUYET_DINH.md) | Tóm tắt 1–2 trang để người viết quyết định — **đọc tệp này trước** |
-| [`01_KIEM_KE_NGUON.md`](bao-cao/01_KIEM_KE_NGUON.md) · [`01_bang_chung_cu.csv`](bao-cao/01_bang_chung_cu.csv) · [`01_bang_chung_cu.xlsx`](bao-cao/01_bang_chung_cu.xlsx) | Sản phẩm 01 — kiểm kê nguồn, bảng chứng cứ (117 dòng: văn bản gốc, học liệu, tài liệu của người viết, văn bản pháp luật, nguồn học thuật, nguồn chưa đọc) |
+| [`01_KIEM_KE_NGUON.md`](bao-cao/01_KIEM_KE_NGUON.md) · [`01_bang_chung_cu.csv`](bao-cao/01_bang_chung_cu.csv) · [`01_bang_chung_cu.xlsx`](bao-cao/01_bang_chung_cu.xlsx) | Sản phẩm 01 — kiểm kê nguồn, bảng chứng cứ (121 dòng: văn bản gốc, học liệu, tài liệu của người viết, văn bản pháp luật, nguồn học thuật, góp ý AI, nguồn chưa đọc) |
 | [`02_TRUC_A_THE_CHE.md`](bao-cao/02_TRUC_A_THE_CHE.md) | Sản phẩm 02 — Trục A: bản đồ nhân quả, năm mức đánh giá pháp lý, 10 luận điểm + bổ trợ, giả thuyết "bảo vệ lẫn nhau" |
 | [`03_TRUC_B_HOC_SINH.md`](bao-cao/03_TRUC_B_HOC_SINH.md) | Sản phẩm 03 — Trục B: ba tầng tiếp xúc của học sinh, 12 luận điểm, kiểm định biểu trưng, Animal Farm, khoảng cách giá trị – hành vi |
 | [`04_DOI_CHIEU_A_B.md`](bao-cao/04_DOI_CHIEU_A_B.md) | Sản phẩm 04 — chất vấn chéo A ↔ B, kiểm tra các "câu nói lớn", luận đề hợp nhất |
