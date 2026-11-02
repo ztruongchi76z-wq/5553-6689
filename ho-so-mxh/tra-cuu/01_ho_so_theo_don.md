@@ -65,7 +65,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 14/5/2026. **Gửi:** 14/5/2026, bưu chính EMS, mã bưu gửi ES805564955VN
 - **Nơi nhận:** Sở GD&ĐT tỉnh Lâm Đồng (ghi trên đơn: Chánh Thanh tra Sở GD&ĐT)
 - **Cơ quan nhận:** 16/5/2026 lúc 11:40 (nguồn: ngày gửi theo vận đơn 11.2; giờ phát theo tra cứu ems.com.vn của người lập (ảnh tra cứu chưa có trong thư mục))
-- **Văn bản đơn:** 12.5†. **Chứng từ gửi, nhận:** 11.2†
+- **Văn bản đơn:** 12.5†. **Chứng từ gửi, nhận:** 11.2
 - **Văn bản cơ quan:** 2707/SGDĐT-VP ngày 08/6/2026 (không có trong thư mục) (chưa xác định có phải văn bản xử lý đơn này)
 - **Tình trạng chung:** chưa có văn bản gửi người lập
 - **Đối chiếu bảng cũ:** số 3 trong danh sách 16 hồ sơ của tài liệu 00; số 4 trong bảng 07.10
@@ -106,7 +106,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 14/5/2026. **Gửi:** 14/5/2026, bưu chính EMS, mã bưu gửi ES805564941VN
 - **Nơi nhận:** Sở GD&ĐT tỉnh Lâm Đồng (ghi trên đơn: Giám đốc Sở (vận đơn); đơn ghi thêm Chánh Thanh tra Sở)
 - **Cơ quan nhận:** 16/5/2026 lúc 11:40 (nguồn: ngày gửi theo vận đơn 11.1; giờ phát theo tra cứu của người lập)
-- **Văn bản đơn:** 12.4. **Chứng từ gửi, nhận:** 11.1†
+- **Văn bản đơn:** 12.4. **Chứng từ gửi, nhận:** 11.1
 - **Văn bản cơ quan:** 2707/SGDĐT-VP ngày 08/6/2026 (không có trong thư mục) (chưa xác định có phải văn bản xử lý đơn này)
 - **Tình trạng chung:** chưa có văn bản gửi người lập
 - **Đối chiếu bảng cũ:** số 4 trong danh sách 16 hồ sơ của tài liệu 00; số 5 trong bảng 07.10
@@ -138,7 +138,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 07/7/2026. **Gửi:** 07/7/2026, bưu chính Viettel Post, mã bưu gửi VTP1824030477775
 - **Nơi nhận:** UBND phường Phan Thiết (ghi trên đơn: Chủ tịch UBND phường)
 - **Cơ quan nhận:** 09/7/2026 lúc 08:39 (nguồn: vận đơn 11.3; báo phát 11.4)
-- **Văn bản đơn:** 12.9†. **Chứng từ gửi, nhận:** 11.3†; 11.4†
+- **Văn bản đơn:** 12.9†. **Chứng từ gửi, nhận:** 11.3; 11.4
 - **Tình trạng chung:** chưa có văn bản (giải thích bằng lời 04/9/2026: "trùng nội dung")
 - **Đối chiếu bảng cũ:** số 5 trong danh sách 16 hồ sơ của tài liệu 00; số 8 trong bảng 07.10
 - **Ghi chú:** TB5553 và CV6689 không nhắc hồ sơ này
@@ -166,7 +166,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 14/7/2026. **Gửi:** 14/7/2026, bưu chính EMS, mã bưu gửi ES807558135VN
 - **Nơi nhận:** UBND tỉnh Lâm Đồng (ghi trên đơn: Chủ tịch UBND tỉnh)
 - **Cơ quan nhận:** chưa xác định (nguồn: vận đơn 16.1 (ngày gửi))
-- **Văn bản đơn:** 17.01†. **Chứng từ gửi, nhận:** 16.1†
+- **Văn bản đơn:** 17.01†. **Chứng từ gửi, nhận:** 16.1
 - **Tình trạng chung:** chưa có phản hồi
 - **Đối chiếu bảng cũ:** số 6 trong danh sách 16 hồ sơ của tài liệu 00; số 13 (báo cáo, không tính) trong bảng 07.10
 - **Ghi chú:** 00†/00.3† xếp "không đề nghị trả lời" – không khớp Mục VII (KT18)
@@ -187,7 +187,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 16/7/2026. **Gửi:** 16/7/2026, bưu chính EMS, mã bưu gửi ES807632468VN
 - **Nơi nhận:** UBND phường Phan Thiết (ghi trên đơn: Chủ tịch UBND phường)
 - **Cơ quan nhận:** 19/7/2026 (nguồn: vận đơn 11.5; báo phát 11.6)
-- **Văn bản đơn:** 12.11; 07.4†. **Chứng từ gửi, nhận:** 11.5†; 11.6†
+- **Văn bản đơn:** 12.11; 07.4†. **Chứng từ gửi, nhận:** 11.5; 11.6
 - **Tình trạng chung:** chưa có văn bản
 - **Đối chiếu bảng cũ:** số 7 trong danh sách 16 hồ sơ của tài liệu 00; số 9 (bổ sung, không tính) trong bảng 07.10
 - **Ghi chú:** Không làm phát sinh yêu cầu mới ngoài việc đưa vào hồ sơ HS08
@@ -221,7 +221,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 21/8/2026. **Gửi:** 21/8/2026, bưu chính EMS, mã bưu gửi ES805344322VN
 - **Nơi nhận:** Bộ GD&ĐT (ghi trên đơn: Bộ trưởng)
 - **Cơ quan nhận:** có báo phát (ngày chưa ghi trong bảng) (nguồn: bảng kê 11.8; báo phát EX139130389VN (16.2))
-- **Văn bản đơn:** -. **Chứng từ gửi, nhận:** 11.8†; 16.2†
+- **Văn bản đơn:** -. **Chứng từ gửi, nhận:** 11.8; 16.2
 - **Tình trạng chung:** chưa có văn bản
 - **Đối chiếu bảng cũ:** số 8 trong danh sách 16 hồ sơ của tài liệu 00; số 15 trong bảng 07.10
 - **Ghi chú:** BẢN ĐƠN KHÔNG CÓ TRONG THƯ MỤC – không xác định được yêu cầu cụ thể
@@ -236,7 +236,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 21/8/2026. **Gửi:** 21/8/2026, bưu chính EMS, mã bưu gửi ES805344336VN
 - **Nơi nhận:** Thanh tra tỉnh Lâm Đồng (ghi trên đơn: Chánh Thanh tra tỉnh)
 - **Cơ quan nhận:** 24/8/2026 (nguồn: theo VB2644)
-- **Văn bản đơn:** 15.2a. **Chứng từ gửi, nhận:** 11.8†
+- **Văn bản đơn:** 15.2a. **Chứng từ gửi, nhận:** 11.8
 - **Văn bản cơ quan:** 2644/TTr-TCDKNTC ngày 27/8/2026 (15.3)
 - **Tình trạng chung:** đã đôn đốc phường
 - **Đối chiếu bảng cũ:** số 12c trong bảng 07.10
@@ -253,7 +253,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 29/8/2026 (theo 00.3). **Gửi:** -, bưu chính Viettel Post, mã bưu gửi TOM150884302145
 - **Nơi nhận:** Ban Tuyên giáo và Dân vận Trung ương
 - **Cơ quan nhận:** đã giao (ảnh không ghi ngày) (nguồn: 16.3)
-- **Văn bản đơn:** -. **Chứng từ gửi, nhận:** 16.3†
+- **Văn bản đơn:** -. **Chứng từ gửi, nhận:** 16.3
 - **Tình trạng chung:** chưa có phản hồi
 - **Đối chiếu bảng cũ:** số 9 trong danh sách 16 hồ sơ của tài liệu 00; số 18 (báo cáo, không tính) trong bảng 07.10
 - **Ghi chú:** BẢN BÁO CÁO KHÔNG CÓ TRONG THƯ MỤC
@@ -268,7 +268,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 14/9/2026. **Gửi:** 15/9/2026, bưu chính Viettel Post, mã bưu gửi TOM152242469648
 - **Nơi nhận:** UBND tỉnh Lâm Đồng (ghi trên đơn: Chủ tịch UBND tỉnh)
 - **Cơ quan nhận:** 17/9/2026 lúc 10:09 (nguồn: ảnh tra cứu 16.4)
-- **Văn bản đơn:** 17.02-03†. **Chứng từ gửi, nhận:** 16.4†
+- **Văn bản đơn:** 17.02-03†. **Chứng từ gửi, nhận:** 16.4
 - **Tình trạng chung:** chưa có văn bản
 - **Đối chiếu bảng cũ:** số 10 trong danh sách 16 hồ sơ của tài liệu 00; số 14 trong bảng 07.10
 - **Ghi chú:** Không tố cáo Hiệu trưởng; tố cáo việc tiếp nhận, phân loại, xử lý đơn
@@ -301,7 +301,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 14/9/2026. **Gửi:** -, bưu chính Viettel Post, mã bưu gửi TOM152242329595
 - **Nơi nhận:** Thanh tra tỉnh Lâm Đồng (ghi trên đơn: Chánh Thanh tra tỉnh)
 - **Cơ quan nhận:** 18/9/2026 (TTr ghi nhận 21/9/2026) (nguồn: ảnh tra cứu 16.5; PHD2960)
-- **Văn bản đơn:** 17.05†. **Chứng từ gửi, nhận:** 16.5†
+- **Văn bản đơn:** 17.05†. **Chứng từ gửi, nhận:** 16.5
 - **Văn bản cơ quan:** 2960/HD-TTr ngày 28/9/2026 (15.4)
 - **Tình trạng chung:** đã hướng dẫn tách đơn; bộ hồ sơ giấy trả lại
 - **Đối chiếu bảng cũ:** số 12d trong bảng 07.10
@@ -352,7 +352,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 29/9/2026. **Gửi:** -, bưu chính Viettel Post, mã bưu gửi TOM153619772013
 - **Nơi nhận:** Đoàn ĐBQH tỉnh Lâm Đồng (ghi trên đơn: Đoàn ĐBQH tỉnh)
 - **Cơ quan nhận:** 03/10/2026 (nguồn: ảnh tra cứu 16.7)
-- **Văn bản đơn:** 17.13. **Chứng từ gửi, nhận:** 16.7†
+- **Văn bản đơn:** 17.13. **Chứng từ gửi, nhận:** 16.7
 - **Văn bản cơ quan:** 592/ĐĐBQH-DNTT ngày 14/10/2026 (16.11a)
 - **Tình trạng chung:** có giấy báo tin (dẫn CV6689)
 - **Đối chiếu bảng cũ:** số 12 trong danh sách 16 hồ sơ của tài liệu 00; số 16 trong bảng 07.10
@@ -375,7 +375,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 29/9/2026. **Gửi:** -, bưu chính Viettel Post, mã bưu gửi TOM153621923737
 - **Nơi nhận:** Sở GD&ĐT tỉnh Lâm Đồng (ghi trên đơn: Giám đốc Sở)
 - **Cơ quan nhận:** 05/10/2026 lúc 09:07 (nguồn: ảnh tra cứu 16.6)
-- **Văn bản đơn:** 17.11-12. **Chứng từ gửi, nhận:** 16.6†
+- **Văn bản đơn:** 17.11-12. **Chứng từ gửi, nhận:** 16.6
 - **Tình trạng chung:** chưa có văn bản
 - **Đối chiếu bảng cũ:** số 13 trong danh sách 16 hồ sơ của tài liệu 00; số 6 trong bảng 07.10
 
@@ -418,7 +418,7 @@ Tổng cộng 25 hồ sơ, 150 yêu cầu. Trạng thái nội dung: chưa giả
 - **Ngày đề:** 06/10/2026. **Gửi:** 08/10/2026, bưu chính Viettel Post, mã bưu gửi VTP1831199744141
 - **Nơi nhận:** Thanh tra tỉnh Lâm Đồng (ghi trên đơn: Chánh Thanh tra tỉnh)
 - **Cơ quan nhận:** 12/10/2026 lúc 15:08 (nguồn: báo phát 17.15a)
-- **Văn bản đơn:** 17.15. **Chứng từ gửi, nhận:** 17.15a†
+- **Văn bản đơn:** 17.15. **Chứng từ gửi, nhận:** 17.15a
 - **Văn bản cơ quan:** 3292/TTr-PKNTC.1 ngày 19/10/2026 (15.5a; 15.5b)
 - **Tình trạng chung:** có văn bản trả lời (một phần)
 - **Đối chiếu bảng cũ:** số 15 trong danh sách 16 hồ sơ của tài liệu 00; số 12e trong bảng 07.10

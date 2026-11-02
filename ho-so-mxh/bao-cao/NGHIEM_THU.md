@@ -7,8 +7,9 @@ Kết quả: sáu phép thử tra cứu đều đạt trên tài liệu thật t
 | Hạng mục | Kết quả |
 |---|---|
 | Bộ làm việc riêng tư | 117/117 tệp của thư mục nguồn được sao chép phía máy chủ, đối chiếu đủ; 5 tài liệu tra cứu và 1 tài liệu “việc cần người lập quyết định” |
-| Bộ chuẩn bị công khai | 55 tệp đã rà soát; 6 bản chép văn bản cơ quan đã che thông tin cá nhân; 5 tài liệu tra cứu (00, 01, 02, 04, 05) |
-| Chưa đưa vào bộ công khai | 21 tệp chờ quyết định (D); 29 tệp chỉ dùng trong bộ làm việc (X); 3 đơn PDF còn số điện thoại, địa chỉ cần người lập tự xuất bản che |
+| Bộ chuẩn bị công khai | 77 tệp đã rà soát (gồm 15 chứng từ gửi, nhận); 6 bản chép văn bản cơ quan thay họ tên giáo viên, chuyên viên, người bị tố cáo bằng chức danh; 5 tài liệu tra cứu (00, 01, 02, 04, 05) |
+| Chưa đưa vào bộ công khai | 21 tệp chờ quyết định (D); 5 tệp chỉ công khai dạng bản chép (T); 14 tệp chỉ dùng trong bộ làm việc (X) |
+| Quyết định của người lập ngày 02/11/2026 | Thông tin cá nhân của người lập được công khai; chỉ yêu cầu che mặt học sinh. 22 tệp trước đó bị giữ lại vì thông tin của người lập đã được đưa vào bộ công khai và gắn liên kết trong tài liệu tra cứu |
 | Quyền chia sẻ | Bộ làm việc, bộ công khai: chỉ chủ sở hữu. Thư mục nguồn: giữ nguyên như trước (bất kỳ ai có đường liên kết được xem) |
 
 ## Sáu phép thử
@@ -18,7 +19,7 @@ Kết quả: sáu phép thử tra cứu đều đạt trên tài liệu thật t
 3. **Văn bản “Công văn 3292”.** Tài liệu 05: cơ quan, người ký theo chức danh, nơi gửi, trích yếu, chức năng pháp lý, hồ sơ liên quan, liên kết hai trang ảnh; tài liệu 01 mục HS21 ánh xạ từng yêu cầu với nội dung Công văn 3292. Tìm toàn văn số hiệu “3292/TTr-PKNTC.1” trả về tài liệu 05. Đạt.
 4. **Một luận điểm truy về chứng cứ.** Tài liệu 04, LD01 (“xương sống cầu giàn” mâu thuẫn với trang “thêm thanh chéo thành 2 tam giác”): liên kết thẳng tới ảnh trang bài giảng 06.03 và 06.01 trong bộ công khai, kèm điểm rà soát KT10 (nhóm D, đã vững). Đạt.
 5. **Người phản biện.** Tài liệu 04, phần 2, liệt kê sẵn các điểm yếu: KT07 (nhận định “không đơn nào đề ngày 18/5” chưa đủ chứng cứ), KT08 (mệnh đề góc nhọn của thang nâng chỉ đúng khi góc tại khớp nhỏ hơn 90°), KT11 (thang nâng là ứng dụng đúng của hình bình hành), KT14 (“đảo chủ ngữ” không vững), KT21, KT22 (cáo buộc vượt chứng cứ, suy diễn động cơ). Đạt.
-6. **Tính độc lập của bản sao.** Mã tệp của bản làm việc, bản công khai và tệp nguồn không trùng nhau (0 trùng ở cả ba cặp). 371 liên kết trong các tài liệu tra cứu công khai đều trỏ tới tệp hoặc thư mục của bộ công khai; không liên kết nào trỏ về bộ làm việc hay thư mục nguồn. Quyền của hai bộ mới chỉ gồm chủ sở hữu. Đạt.
+6. **Tính độc lập của bản sao.** Mã tệp của bản làm việc, bản công khai và tệp nguồn không trùng nhau (0 trùng ở cả ba cặp). 371 liên kết (sau cập nhật ngày 02/11: 353 liên kết trong bốn tài liệu 00, 01, 02, 04 được kiểm tra lại) trong các tài liệu tra cứu công khai đều trỏ tới tệp hoặc thư mục của bộ công khai; không liên kết nào trỏ về bộ làm việc hay thư mục nguồn. Quyền của hai bộ mới chỉ gồm chủ sở hữu. Đạt.
 
 ## Kiểm tra tự động
 

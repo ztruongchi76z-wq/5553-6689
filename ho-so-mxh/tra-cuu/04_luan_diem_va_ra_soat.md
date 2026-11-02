@@ -78,7 +78,7 @@ Phần 1 liệt kê các luận điểm chính của hồ sơ, tách sự kiện
 ### LD11. Hồ sơ tố cáo phường nhận 09/7/2026 chưa được xử lý bằng văn bản nào
 
 - **Nguồn nhận định:** 00† §2.11; 17.19; 17.20
-- **Chứng cứ trực tiếp:** 11.4†; TB5553; CV6689; CV3292 (không nhắc)
+- **Chứng cứ trực tiếp:** 11.4; TB5553; CV6689; CV3292 (không nhắc)
 - **Phần suy luận:** “Quá hạn” phụ thuộc quy định sửa đổi 2025
 - **Trạng thái:** vững về sự kiện; mốc cần đối chiếu (xem KT25)
 
@@ -103,6 +103,13 @@ Phần 1 liệt kê các luận điểm chính của hồ sơ, tách sự kiện
 - **Phần suy luận:** -
 - **Trạng thái:** không khớp nguyên văn (xem KT13)
 
+### LD15. CV87 lấy việc đã xử lý sau phản ánh (giảm một mô hình; trả lại điểm cộng) và cảm nhận của học sinh sau điều chỉnh để kết luận phản ánh không có cơ sở
+
+- **Nguồn nhận định:** người lập, 02/11/2026 (luận điểm F0 của phụ lục phản biện CV87)
+- **Chứng cứ trực tiếp:** 01.1 mục 1 (“Sau khi nghe ý kiến phụ huynh phản ánh, trao đổi, giáo viên đã giảm bớt một mô hình giao cho nhóm 3 để phù hợp hơn với mục tiêu bài học, năng lực của học sinh”; “Không có ý kiến nào của học sinh và phụ huynh học sinh cho rằng...”); 01.2 mục 3 (hạ còn 01 điểm cộng theo “thông tin” chưa kiểm chứng, sau tìm hiểu trả lại 02 điểm; “Nhà trường nhận thấy không có sự thiếu minh bạch”) (nguyên văn)
+- **Phần suy luận:** Khắc phục sau phản ánh không chứng minh phản ánh sai; cụm “để phù hợp hơn” cho thấy trạng thái trước điều chỉnh kém phù hợp hơn. Luận điểm này không chứng minh được ý định (“trù dập”)
+- **Trạng thái:** vững về lập luận: Mục 3 trực tiếp; Mục 1 qua việc đánh giá tình trạng sau điều chỉnh
+
 ## Phần 2. Rà soát độc lập
 
 ### A. Sai, cần sửa (5)
@@ -121,7 +128,7 @@ Phần 1 liệt kê các luận điểm chính của hồ sơ, tách sự kiện
 - **KT12** (13.1 (góp ý dự giờ)): Góp ý "thang nâng, cầu treo và cầu vòm như các ứng dụng của HBH là chưa chính xác" đúng với cầu treo, cầu vòm (06.01 tự ghi HBH ở cầu dây văng, cầu treo chỉ là hoa văn); với thang nâng là điểm tranh luận (KT11) _Chứng cứ:_ 13.1; 06.01. _Đề xuất:_ Khi trích góp ý, nêu rõ phạm vi đúng của từng phần. _Ảnh hưởng:_ trung bình.
 - **KT15** (12.3 (Đơn khiếu nại 11/12/2025)): Một số viện dẫn cần đối chiếu nguyên văn trước khi dùng lại: "Khoản 1 Điều 5 Luật Giáo dục 2019 – bình đẳng cơ hội" (Điều 5 là giải thích từ ngữ; quyền bình đẳng cơ hội học tập ở Điều 13); "Điều 42 khoản 3"; "Điều 28"; "Thông tư 26/2020" cho đánh giá học sinh lớp 8 năm 2025-2026 (CV4809, CV6689 áp dụng TT 22/2021) _Chứng cứ:_ 12.3; 10.2–10.3; 09.3. _Đề xuất:_ Không sửa bản đã nộp; ghi vào bảng ghi chú; văn bản mới dẫn theo TT 22/2021 và điều khoản đã đối chiếu. _Ảnh hưởng:_ thấp.
 - **KT16** (15.0 mục III.2; 17.02-03† VI.1; 00† §2.11; 07.10 B.3): Ba cách tính mốc cho hồ sơ 09/7: 15.0 (k2: 16/7; k1: 20/7); 17.02-03† (15/7; 17/7; tối đa 22/7 – tính cả ngày nhận); 00†, 07.10 (20/7; tối đa 23/7). Cách thông dụng: ngày đầu của thời hạn là ngày liền sau ngày nhận (Điều 147 Bộ luật Dân sự 2015) _Chứng cứ:_ ho_so.tsv; kiem_tra.py (tính lại). _Đề xuất:_ Thống nhất phương pháp tính; kết luận "đã qua mốc" không đổi. _Ảnh hưởng:_ thấp.
-- **KT21** (17.02-03† VII.3; 17.05† VI.15): Cáo buộc "mở bì thư không ghi tên cơ quan mình" (Điều 159 BLHS) vượt chứng cứ: bì thư gửi chức danh Chánh Thanh tra Sở tại địa chỉ Sở; văn thư Sở tiếp nhận là thủ tục thông thường; hồ sơ không có chứng cứ về người mở _Chứng cứ:_ 11.2† (người nhận: Chánh Thanh tra Sở, địa chỉ Sở). _Đề xuất:_ Không dùng lại trong văn bản mới; giữ câu hỏi thủ tục "đơn được giao đơn vị nào xử lý". _Ảnh hưởng:_ trung bình.
+- **KT21** (17.02-03† VII.3; 17.05† VI.15): Cáo buộc "mở bì thư không ghi tên cơ quan mình" (Điều 159 BLHS) vượt chứng cứ: bì thư gửi chức danh Chánh Thanh tra Sở tại địa chỉ Sở; văn thư Sở tiếp nhận là thủ tục thông thường; hồ sơ không có chứng cứ về người mở _Chứng cứ:_ 11.2 (người nhận: Chánh Thanh tra Sở, địa chỉ Sở). _Đề xuất:_ Không dùng lại trong văn bản mới; giữ câu hỏi thủ tục "đơn được giao đơn vị nào xử lý". _Ảnh hưởng:_ trung bình.
 - **KT22** (Đơn B† III.6; 12.9† hành vi 4.2; 17.01† VII; 17.05† VIII): Các đơn cũ gắn bài cảnh báo của Công an tỉnh Lai Châu (07/9/2023) với hành vi của cá nhân cụ thể ("tương ứng với cơ chế... thông qua chính người có thẩm quyền") – tức suy diễn động cơ, trái nguyên tắc người lập đặt ra. Thư 17.18 (01/11) dùng đúng phạm vi: trích nguyên văn, đặt cạnh chứng cứ, không nhận định động cơ _Chứng cứ:_ 17.01† mục VII; 17.18 đoạn 6. _Đề xuất:_ Bộ công khai không dùng các đoạn suy diễn động cơ; nếu công bố đơn cũ, kèm ghi chú phạm vi. _Ảnh hưởng:_ cao.
 
 ### C. Phát hiện mới có chứng cứ (9)
@@ -129,8 +136,8 @@ Phần 1 liệt kê các luận điểm chính của hồ sơ, tách sự kiện
 - **KT01** (00† mục 3; 00.3†; 07.10 phần A; 17.18; 17.20): “16 hồ sơ” (00†) và "18 hồ sơ" (07.10) đếm theo hai tiêu chí khác nhau: 00† đếm hồ sơ CHƯA giải quyết đến 27/10 (gồm 2 báo cáo, 2 tài liệu bổ sung; loại các đơn đã có văn bản); 07.10 đếm mọi đơn có chứng từ tiếp nhận (loại 2 báo cáo và 1 tài liệu bổ sung). Cả hai đều không tính đơn phản ánh 16/5/2026 gửi Ban Tuyên giáo Tỉnh ủy và Ban Dân tộc tỉnh _Chứng cứ:_ ho_so.tsv cột dem_00_27_10, dem_0710_28_10; 17.13 bảng Mục III. _Đề xuất:_ Dùng bảng hợp nhất 25 hồ sơ (22 đã gửi, 3 đã soạn chưa xác nhận gửi), ghi rõ tiêu chí mỗi con số; giữ nguyên số trong bản đã nộp. _Ảnh hưởng:_ trung bình.
 - **KT17** (07.10 dòng 1, 2): “Ngày nhận 20/11/2025” của đơn đề nghị xác định đúng – sai là ngày đề đơn; theo 17.02-03† và 17.05† đơn gửi bưu điện 21/11/2025 (ES802657264VN) nên ngày nhận thực tế sau đó và chưa xác định; số ngày chờ tính từ 20/11 lệch vài ngày. Dòng 1 (30/10/2025, có số tiếp nhận) chưa có chứng từ trong thư mục _Chứng cứ:_ 17.02-03† danh mục B dòng 5; 17.05† V.2. _Đề xuất:_ Ghi "ngày gửi 21/11/2025; ngày nhận chưa xác định"; bổ sung chứng từ. _Ảnh hưởng:_ thấp.
 - **KT18** (00† mục 3 dòng 6; 00.3† phần B; 07.10 dòng 13): Báo cáo công dân 14/7/2026 được xếp "không đề nghị trả lời" nhưng Mục VII có 6 kiến nghị, gồm "thông báo kết quả bằng văn bản đến người báo cáo"; 17.02-03† VIII.1 đề nghị đưa báo cáo vào hồ sơ giải quyết _Chứng cứ:_ 17.01† Mục VII. _Đề xuất:_ Xếp lại là "báo cáo có kiến nghị" để thống nhất. _Ảnh hưởng:_ thấp.
-- **KT19** (07.10 B.2; 17.20 Việc 4): Giờ phát Đơn A, Đơn C "11g40 16/5/2026" lấy từ tra cứu ems.com.vn (17.11-12); vận đơn 11.1†, 11.2† chỉ chứng minh ngày gửi 14/5; ảnh tra cứu không có trong thư mục _Chứng cứ:_ 17.11-12 mục B dòng 11.1†–11.2†; 11.2† (OCR). _Đề xuất:_ Bổ sung ảnh chụp kết quả tra cứu. _Ảnh hưởng:_ trung bình.
-- **KT20** (15.2a mục V): Đơn 21/8 viện dẫn "vận đơn EMS mã ES805564955VN" cho hồ sơ chuyên môn gửi Sở; mã này là Đơn A (Chánh Thanh tra Sở); Đơn C (thẩm định chuyên môn) là ES805564941VN _Chứng cứ:_ 11.1†; 11.2†. _Đề xuất:_ Ghi vào bảng ghi chú. _Ảnh hưởng:_ thấp.
+- **KT19** (07.10 B.2; 17.20 Việc 4): Giờ phát Đơn A, Đơn C "11g40 16/5/2026" lấy từ tra cứu ems.com.vn (17.11-12); vận đơn 11.1, 11.2 chỉ chứng minh ngày gửi 14/5; ảnh tra cứu không có trong thư mục _Chứng cứ:_ 17.11-12 mục B dòng 11.1–11.2; 11.2 (OCR). _Đề xuất:_ Bổ sung ảnh chụp kết quả tra cứu. _Ảnh hưởng:_ trung bình.
+- **KT20** (15.2a mục V): Đơn 21/8 viện dẫn "vận đơn EMS mã ES805564955VN" cho hồ sơ chuyên môn gửi Sở; mã này là Đơn A (Chánh Thanh tra Sở); Đơn C (thẩm định chuyên môn) là ES805564941VN _Chứng cứ:_ 11.1; 11.2. _Đề xuất:_ Ghi vào bảng ghi chú. _Ảnh hưởng:_ thấp.
 - **KT25** (00† §2.5, §2.11; 07.10; 17.19 III.3; 17.20 Việc 2): Hồ sơ nhận sau 01/7/2026 (09/7, 17/9, 06/10) chịu Luật số 136/2025/QH15 sửa đổi Luật Tố cáo, Luật Khiếu nại (hiệu lực 01/7/2026 theo người lập). Nội dung sửa đổi của Đ24 LTC và Đ27 LKN ("07 ngày làm việc") chưa được đối chiếu nguyên văn trong hồ sơ (Luật Khiếu nại 2011 gốc quy định 10 ngày) _Chứng cứ:_ can_cu.tsv. _Đề xuất:_ Đối chiếu bản hợp nhất chính thức trước khi khẳng định "quá hạn"; đến lúc đó ghi "đã qua mốc tính theo quy định người lập viện dẫn". _Ảnh hưởng:_ cao.
 - **KT26** (00† §2.6; 07.9 mục 4.5; 17.19 V; 17.20 Việc 5): “CV3292 không trả lời câu hỏi có văn bản nào đề ngày 18/5” – chính xác hơn: không trả lời trực tiếp có/không, nhưng tự khẳng định đã nhận "đơn ghi ngày 18/5/2026" mà không nêu tiêu đề, ngày nhận để đối chiếu với đơn nhận 20/5 _Chứng cứ:_ 15.5 tr.1. _Đề xuất:_ Trình bày đầy đủ cả hai vế để người phản biện không bắt bẻ được. _Ảnh hưởng:_ trung bình.
 - **KT29** (17.11-12 mục IV.2c): Tệp 02.4† được mô tả là "do trí tuệ nhân tạo tạo ra" – chưa kiểm chứng được (tệp video chưa được xem trong phiên này) _Chứng cứ:_ 02.4†. _Đề xuất:_ Ghi "chưa kiểm chứng". _Ảnh hưởng:_ thấp.

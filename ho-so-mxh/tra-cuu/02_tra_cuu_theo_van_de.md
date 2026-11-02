@@ -56,7 +56,7 @@ Mỗi vấn đề ghi câu hỏi trung tâm, chứng cứ gốc, văn bản liê
 ## VD06. Xử lý hồ sơ tố cáo nộp ngày 09/7/2026
 
 - **Câu hỏi trung tâm:** Hồ sơ tố cáo phường nhận 08g39 09/7/2026 đã được xử lý bằng văn bản nào?
-- **Chứng cứ gốc:** 11.3†; 11.4†; 12.9†; 11.5†; 11.6†; 12.11; 07.4†
+- **Chứng cứ gốc:** 11.3; 11.4; 12.9†; 11.5; 11.6; 12.11; 07.4†
 - **Văn bản liên quan:** PC2329; VB2644; CV3292; TB5553 (không nhắc); CV6689 (không nhắc)
 - **Đã xác lập:** Có chứng từ nhận; TTr tỉnh hai lần yêu cầu phường xử lý và báo kết quả (2329, 2644); TB5553, CV6689 không nhắc hồ sơ này; chỉ có giải thích bằng lời ngày 04/9
 - **Còn tồn đọng:** Đến 01/11/2026 chưa có văn bản thụ lý, không thụ lý hay chuyển đơn
@@ -86,7 +86,7 @@ Mỗi vấn đề ghi câu hỏi trung tâm, chứng cứ gốc, văn bản liê
 ## VD09. Thực hiện yêu cầu giám sát của Đoàn ĐBQH
 
 - **Câu hỏi trung tâm:** Giấy báo tin 592 đáp ứng 5 nhóm yêu cầu giám sát đến đâu?
-- **Chứng cứ gốc:** 17.13; 16.7†; 16.11a; 17.17a†
+- **Chứng cứ gốc:** 17.13; 16.7; 16.11a; 17.17a†
 - **Văn bản liên quan:** GBT592; CV6689
 - **Đã xác lập:** 592 báo tin phường đã trả lời bằng CV6689 (21/9) – ban hành trước đơn 29/9
 - **Còn tồn đọng:** 5 nhóm yêu cầu chưa có kết quả
@@ -116,7 +116,7 @@ Mỗi vấn đề ghi câu hỏi trung tâm, chứng cứ gốc, văn bản liê
 ## VD12. Các đơn tháng 5/2026 tại Sở GD&ĐT và Phiếu chuyển 2707
 
 - **Câu hỏi trung tâm:** Đơn A, Đơn C được xử lý thế nào?
-- **Chứng cứ gốc:** 11.1†; 11.2†; 12.4; 12.5†
+- **Chứng cứ gốc:** 11.1; 11.2; 12.4; 12.5†
 - **Văn bản liên quan:** PC2707 (không có trong thư mục); CV6689 trang 1
 - **Đã xác lập:** Sở có hai bưu gửi ngày 14/5 (phát 16/5 theo tra cứu); CV6689 dẫn PC2707 chuyển "đơn của ông..."
 - **Còn tồn đọng:** Người lập chưa nhận văn bản nào của Sở; chưa rõ đơn nào được chuyển
