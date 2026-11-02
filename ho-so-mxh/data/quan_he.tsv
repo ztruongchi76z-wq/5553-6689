@@ -1,0 +1,28 @@
+tu	den	loai	chung_cu	muc_chac_chan
+HS03	CV87	được trả lời bởi	CV87: "Nhà trường nhận được đơn của Ông phản ánh..."; 3 mục trùng 3 phần đơn 11/12/2025	cao (CV87 không ghi ngày đơn)
+HS05	CV1436	được chuyển bằng	TB5553 tr.1; CV3292 tr.1 ("Sau khi nhận được đơn ghi ngày 18/5/2026...")	trung bình: cơ quan ghi "đơn ghi ngày 18/5", HS05 bản chép ghi 16/5 (KT07)
+CV1436	TB5553	dẫn đến	TB5553 tr.1	cao
+CV416	BC49	dẫn đến	TB5553 tr.1; CV6689 tr.1	cao
+BC49	TB5553	làm căn cứ	TB5553 ("tài liệu hồ sơ có liên quan do nhà trường cung cấp")	trung bình (TB5553 không nêu số BC49)
+HS04	PC2707	có thể được chuyển bằng	CV6689 tr.1 ("chuyển đơn của ông...")	thấp: chưa xác định đơn nào
+HS06	PC2707	có thể được chuyển bằng	CV6689 tr.1	thấp: chưa xác định đơn nào
+PC2707	CV6689	được trả lời bởi	CV6689 tr.1	cao
+CV5609	CV4809	được trả lời bởi	CV4809 trích yếu	cao
+CV4809	CV6689	làm căn cứ	CV6689 tr.1	cao
+BC49	CV6689	làm căn cứ	CV6689 tr.1	cao
+HS11	PC2329	được chuyển bằng	PC2329 ("nhận được đơn ghi ngày 27 tháng 7 năm 2026")	cao
+PC2329	HS08	liên quan	HS11 kèm bản sao HS08 (theo người lập); PC2329 không nêu HS08	trung bình
+HS13	VB2644	được chuyển, đôn đốc bằng	VB2644 ("nhận được đơn đề ngày 21/8/2026")	cao
+VB2644	PC2329	đôn đốc thực hiện	VB2644 gửi kèm PC2329	cao
+HS16	PHD2960	được hướng dẫn bằng	PHD2960 ("nhận được đơn ghi ngày 14 tháng 9 năm 2026")	cao
+HS18	GBT592	được báo tin bằng	GBT592 ("nhận được đơn ghi ngày 29/9/2026")	cao
+GBT592	CV6689	viện dẫn	GBT592	cao (CV6689 ban hành trước HS18)
+HS21	CV3292	được trả lời bởi	CV3292 ("nhận được đơn ghi ngày 06/10/2026")	cao
+HS10	HS08	bổ sung cho	12.11	cao
+HS17	CV6689	nộp theo lời mời của	12.6 mục II; CV6689 tr.5	cao
+HS20	TB5553	khiếu nại đối với	17.14	cao
+HS24	GBT592	kiến nghị về	17.19	cao
+HS25	PHD2960	kiến nghị về	17.20	cao
+HS25	CV3292	kiến nghị về	17.20	cao
+GM06	HS05	thủ tục liên quan	14.1 ("tham mưu giải quyết đơn")	trung bình (không nêu đơn nào)
+GM301	TB5553	trao văn bản	14.2; 00 (nhận TB5553 ngày 04/9)	cao
