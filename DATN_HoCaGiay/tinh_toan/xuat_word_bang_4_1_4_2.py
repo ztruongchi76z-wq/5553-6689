@@ -3,8 +3,9 @@
 XUẤT WORD: BẢNG 4.1 (CÁC TRỊ SỐ THIẾT KẾ CỦA CÔNG TRÌNH THÁO LŨ) VÀ BẢNG 4.2 (PHÂN LOẠI CÁC TÌNH HUỐNG LŨ VÀ YÊU CẦU ĐỐI VỚI
 ĐỈNH ĐẬP, TƯỜNG CHẮN SÓNG) – SV yêu cầu thống kê lại 03/11/2026 (bảng cũ: tràn chính độc lập +78,28 / +79,15, đỉnh đập
 +78,75).
-Số liệu đọc từ file Excel điều tiết lũ của SV (TAI_VE/DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx: 6 sheet điều tiết tràn hiện
-trạng – bình thường, 1 cửa tràn chính không mở, kẹt cửa tràn sự cố; đỉnh đập, đỉnh tường ở KetQua). File được LibreOffice
+Số liệu đọc từ file Excel điều tiết lũ của SV (TAI_VE/DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx: 4 sheet điều tiết tràn hiện
+trạng – bình thường, 1 cửa tràn chính không mở; đỉnh đập, đỉnh tường ở KetQua). Tràn sự cố luôn làm việc bình thường – SV
+chốt 03/11/2026 không xét trường hợp kẹt cửa tràn sự cố (sự cố cực đoan). File được LibreOffice
 tính lại trước khi đọc nên số trong Word trùng số trong Excel (sheet Bang4_1_4_2); chữ soạn bằng Python (dấu phẩy thập
 phân).
   python3 xuat_word_bang_4_1_4_2.py [đường dẫn .docx ra]
@@ -34,16 +35,11 @@ TH = [
      'Đạt yêu cầu an toàn chống tràn; sóng do gió được tường chắn sóng chắn (Z_{2}, mục 2.3)'),
     ('P1_SuCo', 'Lũ thiết kế P = 1% – 1 cửa tràn chính không mở', 'Lũ thiết kế P = 1%, 1 cửa tràn chính không mở',
      'Tổ hợp đặc biệt (sự cố cửa van)', 'Đạt – không tràn đỉnh đập'),
-    ('P1_KetTranSuCo', 'Lũ thiết kế P = 1% – kẹt cửa tràn sự cố (tràn chính độc lập)',
-     'Lũ thiết kế P = 1%, kẹt cửa tràn sự cố', 'Tổ hợp đặc biệt (sự cố cửa van)', 'Đạt – không tràn đỉnh đập'),
     ('P02_BinhThuong', 'Lũ kiểm tra P = 0,2% – vận hành bình thường (mở hết cửa hai tràn)',
      'Lũ kiểm tra P = 0,2%, vận hành bình thường', 'Tổ hợp đặc biệt (lũ kiểm tra)',
      'Đạt – đỉnh đập ≥ MNLKT + 0,3 m (TCVN 8216:2018, 10.1.5)'),
     ('P02_SuCo', 'Lũ kiểm tra P = 0,2% – 1 cửa tràn chính không mở', 'Lũ kiểm tra P = 0,2%, 1 cửa tràn chính không mở',
      'Lũ kiểm tra + sự cố cửa van', 'Đạt – không tràn đỉnh đập'),
-    ('P02_KetTranSuCo', 'Lũ kiểm tra P = 0,2% – kẹt cửa tràn sự cố (tràn chính độc lập)',
-     'Lũ kiểm tra P = 0,2%, kẹt cửa tràn sự cố', 'Sự cố chồng sự cố (lũ kiểm tra + kẹt cửa tràn sự cố)',
-     'Đạt – không tràn đỉnh đập'),
 ]
 T_VUOT = ('Vượt đỉnh đập, thấp hơn đỉnh tường: tường làm việc như tường chắn nước nhưng chưa được kiểm tra chịu lực, chống '
           'thấm – không coi là điều kiện bảo đảm an toàn. Biện pháp: kiểm tra, bảo dưỡng cửa van tràn sự cố trước mùa lũ; có '
@@ -101,8 +97,8 @@ def main():
     st.font.name, st.font.size = 'Times New Roman', Pt(13)
 
     doan(d, 'Kết quả điều tiết lũ (phương pháp Pô-ta-pốp, lũ đến theo QTVH 2026, hồ ở MNDBT +74,70 m khi lũ đến, cửa van kéo '
-            'lên hoàn toàn khi đón lũ) cho ba trạng thái làm việc của công trình tháo lũ – vận hành bình thường, 1 cửa tràn chính '
-            'không mở được và cửa van tràn sự cố bị kẹt – được thống kê trong Bảng 4.1.', thut=1.0)
+            'lên hoàn toàn khi đón lũ) cho hai trạng thái làm việc của công trình tháo lũ – vận hành bình thường và 1 cửa tràn '
+            'chính không mở được – được thống kê trong Bảng 4.1.', thut=1.0)
     hang = []
     for s_, nhan, *_ in TH:
         r = kq[s_]
@@ -114,19 +110,15 @@ def main():
           'H tràn sự cố (m)', 'q tràn sự cố (m^{3}/s)', 'q tổng (m^{3}/s)'], hang,
          cot=[3070, 780, 860, 800, 900, 800, 900, 960])
 
-    bt, sc, ket1, ket = kq['P02_BinhThuong'], kq['P02_SuCo'], kq['P1_KetTranSuCo'], kq['P02_KetTranSuCo']
-    assert max(kq[s_]['Z'] for s_, *_ in TH if s_ != 'P02_KetTranSuCo') < dinh < ket['Z'] < tuong   # đoạn văn viết cho thứ tự này
-    p = doan(d, 'Các tình huống lũ được phân loại trong Bảng 4.2. Khi vận hành bình thường hoặc khi 1 cửa tràn chính không mở '
-                'được, mực nước hồ lớn nhất đều thấp hơn đỉnh đập sau sửa chữa +%s m; với lũ kiểm tra, đỉnh đập cao hơn MNLKT '
-                '%s m (≥ 0,3 m) và cao hơn mực nước khi 1 cửa tràn chính không mở %s m. Cửa van tràn sự cố bị kẹt trong lũ thiết '
-                'kế làm mực nước lên +%s m, vẫn thấp hơn đỉnh đập %s m. Khi cửa van tràn sự cố bị kẹt trong lũ kiểm tra (sự cố '
-                'chồng sự cố), tràn chính phải xả một mình, mực nước hồ lên +%s m – vượt đỉnh đập sau sửa chữa %s m nhưng còn '
-                'thấp hơn đỉnh tường chắn sóng (+%s m) %s m; tường chắn sóng khi đó làm việc như tường chắn nước nhưng chưa được '
-                'kiểm tra chịu lực, chống thấm cho trạng thái này nên '
-             % (so(dinh), so(dinh - bt['Z']), so(dinh - sc['Z']), so(ket1['Z']), so(dinh - ket1['Z']), so(ket['Z']),
-                so(ket['Z'] - dinh), so(tuong), so(tuong - ket['Z'])), thut=1.0, truoc=8)
-    chu(p, 'không được coi là điều kiện bảo đảm an toàn', dam=True)
-    chu(p, '.')
+    bt, sc = kq['P02_BinhThuong'], kq['P02_SuCo']
+    assert max(kq[s_]['Z'] for s_, *_ in TH) + 0.3 <= dinh          # đoạn văn viết cho trường hợp mọi tình huống đều đạt
+    p = doan(d, 'Các tình huống lũ được phân loại trong Bảng 4.2. Với cả lũ thiết kế và lũ kiểm tra, khi vận hành bình thường '
+                'cũng như khi 1 cửa tràn chính không mở được, mực nước hồ lớn nhất đều thấp hơn đỉnh đập sau sửa chữa +%s m; với '
+                'lũ kiểm tra, đỉnh đập cao hơn MNLKT %s m (≥ 0,3 m) và cao hơn mực nước khi 1 cửa tràn chính không mở %s m. Như '
+                'vậy ' % (so(dinh), so(dinh - bt['Z']), so(dinh - sc['Z'])), thut=1.0, truoc=8)
+    chu(p, 'đỉnh đập sau sửa chữa bảo đảm an toàn chống tràn trong mọi tình huống tính toán', dam=True)
+    chu(p, '. Tràn sự cố được coi là luôn làm việc bình thường (cửa van được kiểm tra, bảo dưỡng trước mùa lũ theo quy trình '
+           'vận hành); trường hợp cửa van tràn sự cố bị kẹt là sự cố cực đoan, không xét trong đồ án.')
     hang = []
     for s_, _, nhan, loai, dat in TH:
         z = kq[s_]['Z']
