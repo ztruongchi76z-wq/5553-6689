@@ -182,7 +182,7 @@ def bieu_do(ws, tieu_de, truc_x, truc_y, day, vi_tri, x_lim=None, y_lim=None, ro
         s.graphicalProperties.line.solidFill = mau
         s.graphicalProperties.line.width = 22225
         if net:
-            s.graphicalProperties.line.dashStyle = 'dash'
+            s.graphicalProperties.line.dashStyle = net if isinstance(net, str) else 'dash'
         ch.series.append(s)
     ws.add_chart(ch, vi_tri)
 
@@ -229,7 +229,8 @@ ND = [
           % (vn(TRU['x1']), vn(TRU['x2']))),
     ('-', 'Vận hành bình thường: khi đón lũ, tất cả cửa van (9 cửa tràn chính và cửa tràn sự cố) kéo lên hoàn toàn – hai tràn '
           'chảy tự do. Sự cố: 1 cửa tràn chính không mở được – tràn chính còn 8 khoang làm việc (Σb = 19,2 m), tràn sự cố mở '
-          'hoàn toàn. Mỗi trường hợp tính cho lũ thiết kế P = 1% (MNLTK) và lũ kiểm tra P = 0,2% (MNLKT).'),
+          'hoàn toàn. Kẹt cửa tràn sự cố: cửa van tràn sự cố không mở được – chỉ tràn chính 9 khoang làm việc (tràn chính độc '
+          'lập). Mỗi trường hợp tính cho lũ thiết kế P = 1% (MNLTK) và lũ kiểm tra P = 0,2% (MNLKT).'),
     ('-', 'Lũ đến: đường quá trình 72 giờ của QTVH 2026 (thu phóng trận lũ trạm Đá Bàn), 8 tần suất 0,1 ÷ 20%. Hồ ở MNDBT '
           '+74,70 m khi lũ đến (ô SoLieu!B6). 16 giờ đầu lưu lượng nhỏ (P = 1%: 8 ÷ 85 m³/s), đỉnh lũ chính ở giờ 21 ÷ 25.'),
     ('-', 'Ô VH_mo (SoLieu!B10) chọn cách vận hành trước đỉnh lũ. 1 – mở hết cửa từ giờ 0 (như yêu cầu): ngưỡng tràn sự cố thấp '
@@ -260,12 +261,14 @@ ND = [
     ('-', 'SoLieu: thông số hai tràn, mực nước trước lũ, cách vận hành trước đỉnh lũ, đường quá trình lũ 72 giờ của 8 tần suất '
           '(QTVH 2026) kèm tổng lượng lũ ghi trong QTVH và tính lại để kiểm tra số liệu nhập, bảng Z ~ F ~ W 2022.'),
     ('-', 'QuanHe: bảng Z ~ V ~ q (tràn chính 9 / 8 khoang, tràn sự cố) ~ f₁ ~ f₂ cho hai trường hợp (101 dòng, +71,00 ÷ '
-          '+81,00 m).'),
+          '+81,00 m); cột S ÷ U: trường hợp kẹt cửa tràn sự cố (chỉ tràn chính).'),
     ('-', 'BieuDoPhuTro: hai đường q ~ f₁, q ~ f₂ (bình thường, sự cố) và ví dụ tra một giờ.'),
     ('-', 'P1_BinhThuong, P1_SuCo, P02_BinhThuong, P02_SuCo: bốn bảng điều tiết giống nhau, chỉ khác ô tần suất (C3 – chọn '
-          'được 0,1 ÷ 20%) và trường hợp (F3); mỗi sheet có biểu đồ đường quá trình lũ đến và xả.'),
-    ('-', 'BangIn: bảng quan hệ phụ trợ để in vào thuyết minh (chọn Z đầu, cuối, bước và phương án). KetQua: tổng hợp 4 trường '
-          'hợp và biểu đồ.'),
+          'được 0,1 ÷ 20%) và trường hợp (F3); mỗi sheet có biểu đồ đường quá trình lũ đến và xả. P1_KetTranSuCo, '
+          'P02_KetTranSuCo: kẹt cửa tràn sự cố (tra cột S ÷ U của QuanHe).'),
+    ('-', 'BangIn: bảng quan hệ phụ trợ để in vào thuyết minh (chọn Z đầu, cuối, bước và phương án). KetQua: tổng hợp 6 trường '
+          'hợp và biểu đồ. Bang4_1_4_2: Bảng 4.1, 4.2 của thuyết minh (trị số thiết kế của công trình tháo lũ; phân loại tình '
+          'huống lũ so với đỉnh đập, đỉnh tường chắn sóng) – tự cập nhật.'),
     ('M', '5. Hai phương án mở rộng tràn chính (để so sánh – SV yêu cầu 03/11/2026)'),
     ('-', 'PA1 – xây thêm 1 khoang: thêm 1 khoang 2,4 m và 1 trụ giữa mới cùng loại (0,6 m, ξ₁ = %s) → tràn chính 10 khoang × '
           '2,4 m = 24,0 m có cửa van, 7 trụ giữa + 2 trụ chính, tổng bề rộng 24,0 + 7 × 0,6 + 2 × 1,0 = 30,2 m; Σξ = %s. Tính '
@@ -431,17 +434,21 @@ R_QH = 4 + N_QH
 
 def bang_quan_he(ten_ws, ts, qh, tieu_de, ghi_chu, nhan_tc, goc=False):
     """Bảng Z ~ V ~ q ~ f₁ ~ f₂ bước 0,1 m. ts: tiền tố tên ô thông số tràn chính (TC_, TK_, MR_); qh: tiền tố tên bảng tra.
-    goc: sheet QuanHe – tự tính Z, F, V, q tràn sự cố; sheet phương án lấy các cột đó từ QuanHe (cùng lưới mực nước)."""
+    goc: sheet QuanHe – tự tính Z, F, V, q tràn sự cố và thêm cột S ÷ U cho trường hợp kẹt cửa tràn sự cố (chỉ tràn chính);
+    sheet phương án lấy Z, F, V, q tràn sự cố từ QuanHe (cùng lưới mực nước)."""
     ws = wb.create_sheet(ten_ws)
-    for k, w in enumerate(RONG):
+    cot_qh = 'ABCDEFGHIJKLMNOPQR' + ('STU' if goc else '')
+    for k, w in enumerate(RONG + ((11, 10, 10) if goc else ())):
         ws.column_dimensions[get_column_letter(k + 1)].width = w
     ghi(ws, 'A1', tieu_de, f_tieu_de, border=False)
     ghi(ws, 'A2', ghi_chu, f_ghi_chu, border=False)
     tieu_de_cot(ws, 4, 1, ['Z (m)', 'F (km²)', 'V (10⁶ m³)', 'V/Δt (m³/s)', 'H tràn chính (m)'] + nhan_tc
                 + ['H tràn sự cố (m)', 'ε tràn sự cố', 'q tràn sự cố (m³/s)', 'q BT (m³/s)', 'q SC (m³/s)',
-                   'f₁ BT (m³/s)', 'f₁ SC (m³/s)', 'f₂ BT (m³/s)', 'f₂ SC (m³/s)'], cao=58)
+                   'f₁ BT (m³/s)', 'f₁ SC (m³/s)', 'f₂ BT (m³/s)', 'f₂ SC (m³/s)']
+                + (['q kẹt cửa tràn sự cố – chỉ tràn chính (m³/s)', 'f₁ kẹt cửa TSC (m³/s)', 'f₂ kẹt cửa TSC (m³/s)']
+                   if goc else []), cao=58)
     fmts = dict(A='0.00', B='0.000', C='0.000', D='0.0', E='0.00', F='0.000', G='0.000', H='0.0', I='0.0', J='0.00',
-                K='0.000', L='0.0', M='0.0', N='0.0', O='0.0', P='0.0', Q='0.0', R='0.0')
+                K='0.000', L='0.0', M='0.0', N='0.0', O='0.0', P='0.0', Q='0.0', R='0.0', S='0.0', T='0.0', U='0.0')
     for i in range(N_QH):
         r = 5 + i
         if goc:
@@ -470,18 +477,24 @@ def bang_quan_he(ten_ws, ts, qh, tieu_de, ghi_chu, nhan_tc, goc=False):
             'Q': '=D%d+M%d/2' % (r, r),
             'R': '=D%d+N%d/2' % (r, r),
         })
-        for col in 'ABCDEFGHIJKLMNOPQR':
+        if goc:                                   # kẹt cửa tràn sự cố: chỉ tràn chính 9 khoang
+            ct.update({'S': '=H%d' % r, 'T': '=D%d-S%d/2' % (r, r), 'U': '=D%d+S%d/2' % (r, r)})
+        for col in cot_qh:
             c = ws['%s%d' % (col, r)]
             c.value = ct[col]
-            c.font = f_dam if col in 'AMN' else f_thuong
+            c.font = f_dam if col in 'AMNS' else f_thuong
             c.number_format = fmts[col]
             c.alignment = cg
-            c.fill = nen_tc if col in 'EFGHI' else (nen_sc if col in 'JKL' else (nen_f if col in 'OPQR' else PatternFill()))
+            c.fill = nen_tc if col in 'EFGHIS' else (nen_sc if col in 'JKL' else (nen_f if col in 'OPQRTU' else PatternFill()))
     w = sh(ten_ws)
     if goc:
         ten('QH_Z', '%s!$A$5:$A$%d' % (w, R_QH))
         ten('QH_V', '%s!$C$5:$C$%d' % (w, R_QH))
         ten('QH_qsc', '%s!$L$5:$L$%d' % (w, R_QH))
+        ten('QHDL_qtc', '%s!$H$5:$H$%d' % (w, R_QH))
+        ten('QHDL_q', '%s!$S$5:$S$%d' % (w, R_QH))
+        ten('QHDL_f1', '%s!$T$5:$T$%d' % (w, R_QH))
+        ten('QHDL_f2', '%s!$U$5:$U$%d' % (w, R_QH))
     ten(qh + 'qtc', '%s!$H$5:$I$%d' % (w, R_QH))
     ten(qh + 'q', '%s!$M$5:$N$%d' % (w, R_QH))
     ten(qh + 'f1', '%s!$O$5:$P$%d' % (w, R_QH))
@@ -494,7 +507,8 @@ def bang_quan_he(ten_ws, ts, qh, tieu_de, ghi_chu, nhan_tc, goc=False):
 qh = bang_quan_he('QuanHe', 'TC_', 'QH_',
                   'BẢNG QUAN HỆ PHỤ TRỢ Z ~ V ~ q ~ f₁ ~ f₂ (bước 0,1 m) – dùng để tra trong các sheet điều tiết',
                   'f₁ = V/Δt − q/2;  f₂ = V/Δt + q/2 (m³/s). BT – vận hành bình thường (tràn chính 9 khoang); SC – sự cố '
-                  '(tràn chính 8 khoang). q của hồ = q tràn chính + q tràn sự cố tại CÙNG mực nước Z.',
+                  '(tràn chính 8 khoang); cột S ÷ U – kẹt cửa tràn sự cố (chỉ tràn chính 9 khoang). q của hồ = q tràn chính + q '
+                  'tràn sự cố tại CÙNG mực nước Z.',
                   ['ε tràn chính 9 khoang', 'ε tràn chính 8 khoang', 'q tràn chính 9 khoang (m³/s)',
                    'q tràn chính 8 khoang (m³/s)'], goc=True)
 
@@ -571,8 +585,9 @@ def nd(bang, kc, wc, r, cot=True):
     return 'INDEX({b},{k}{r}{c})+{w}{r}*(INDEX({b},{k}{r}+1{c})-INDEX({b},{k}{r}{c}))'.format(b=bang, k=kc, w=wc, r=r, c=c)
 
 
-def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co=True):
-    """qh_: tiền tố bảng tra của phương án (QH_, QHTK_, QHMR_); ts: tiền tố tên ô thông số tràn chính."""
+def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co=True, tsc=True):
+    """qh_: tiền tố bảng tra của phương án (QH_, QHTK_, QHMR_; QHDL_ – kẹt cửa tràn sự cố); ts: tiền tố tên ô thông số tràn
+    chính; tsc = False: cửa van tràn sự cố bị kẹt – chỉ tràn chính làm việc."""
     ws = wb.create_sheet(ten_ws)
     for k, w in enumerate((7, 10, 11, 11, 12, 11, 12, 10, 11, 11, 11, 12, 8, 8, 8, 8, 11)):
         ws.column_dimensions[get_column_letter(k + 1)].width = w
@@ -592,10 +607,12 @@ def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co
     ws.merge_cells('D4:E4')
     ghi(ws, 'F4', '=IF(F3="Sự cố",2,1)', fmt='0', can=cg)
     ghi(ws, 'H3', '← sửa ô vàng: P (%) = 0,1 ÷ 20 như bảng lũ ở SoLieu; ' +
-        ('trường hợp “Bình thường” hoặc “Sự cố” (1 cửa tràn chính không mở)' if co_su_co else
+        ('cửa van tràn sự cố bị kẹt (đóng) – chỉ tràn chính 9 khoang làm việc' if not tsc else
+         'trường hợp “Bình thường” hoặc “Sự cố” (1 cửa tràn chính không mở)' if co_su_co else
          'tràn chính chảy tự do, không có cửa van nên chỉ có trường hợp “Bình thường”'), f_ghi_chu, border=False)
     dv1 = DataValidation(type='list', formula1='"%s"' % ','.join('%g' % p for p in P_LU), allow_blank=False)
-    dv2 = DataValidation(type='list', formula1='"Bình thường,Sự cố"' if co_su_co else '"Bình thường"', allow_blank=False)
+    dv2 = DataValidation(type='list', formula1='"%s"' % ('Kẹt cửa tràn sự cố' if not tsc else
+                                                         'Bình thường,Sự cố' if co_su_co else 'Bình thường'), allow_blank=False)
     ws.add_data_validation(dv1)
     ws.add_data_validation(dv2)
     dv1.add('C3')
@@ -618,7 +635,7 @@ def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co
         ws.merge_cells('A%d:E%d' % (r, r))
         ghi(ws, 'F%d' % r, ct, f_dam, fmt, nen_kq, cg)
     ghi(ws, 'G9', '=INDEX(%s,%s)' % (rg('J'), vt), f_dam, '0.0', nen_kq, cg)
-    ghi(ws, 'G10', '=F6-SC_Z', f_dam, '0.00', nen_kq, cg)
+    ghi(ws, 'G10', '=F6-SC_Z' if tsc else '–', f_dam, '0.00', nen_kq, cg)
     ghi(ws, 'A13', 'Khả năng xả khi mở hết cửa ở mực nước trước lũ q(Z0) (m³/s)', f_dam)
     ws.merge_cells('A13:E13')
     ghi(ws, 'F13', '=' + nd(qh_ + 'q', 'O', 'P', R0), f_dam, '0.0', nen_kq, cg)
@@ -639,8 +656,8 @@ def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co
             'A': t,
             'B': '=IFERROR(INDEX(Lu_Q,MATCH(A{r},Lu_t,0),$C$4),0)'.format(r=r),
             'G': '=IF({g},B{r},{f})'.format(g=giu, r=r, f=nd(qh_ + 'q', 'O', 'P', r)),
-            'I': '=IF({g},0,{f})'.format(g=giu, f=nd(qh_ + 'qtc', 'O', 'P', r)),
-            'J': '=IF({g},B{r},{f})'.format(g=giu, r=r, f=nd('QH_qsc', 'O', 'P', r, cot=False)),
+            'I': '=IF({g},0,{f})'.format(g=giu, f=nd(qh_ + 'qtc', 'O', 'P', r)) if tsc else '=G%d' % r,
+            'J': '=IF({g},B{r},{f})'.format(g=giu, r=r, f=nd('QH_qsc', 'O', 'P', r, cot=False)) if tsc else 0,
         }
         if t == 0:
             ct.update({'C': '', 'D': '', 'E': '', 'F': '', 'M': '', 'N': '',
@@ -691,7 +708,8 @@ def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co
     ghi(ws, 'H5', 'Giờ 0: Z = MNDBT. Giờ “Mở hết”: q₁ → tra đường q ~ f₁ được f₁ → f₂ = f₁ + Qtb → tra đường q ~ f₂ được q₂, '
                   'Z₂, V₂. Giờ “Giữ MNDBT” (chỉ khi VH_mo = 2): q₂ = Q₂, Z₂ = MNDBT.', f_ghi_chu, border=False)
     ghi(ws, 'H6', 'Cột M, N: vị trí tra q₁; cột O, P: vị trí tra f₂ trong bảng %s. Cột L kiểm tra V₂/Δt + q₂/2 = f₂.'
-        % ('QuanHe' if qh_ == 'QH_' else next(pa['ws_qh'] for pa in PA if pa['qh'] == qh_)), f_ghi_chu, border=False)
+        % ('QuanHe' if qh_ == 'QH_' else 'QuanHe (cột S ÷ U)' if qh_ == 'QHDL_' else
+           next(pa['ws_qh'] for pa in PA if pa['qh'] == qh_)), f_ghi_chu, border=False)
     x = Reference(ws, min_col=1, min_row=R0, max_row=R1)
     bieu_do(ws, 'Đường quá trình lũ đến và xả', 't (giờ)', 'Lưu lượng (m³/s)',
             [(x, Reference(ws, min_col=2, min_row=R0, max_row=R1), 'Q đến', '52514E', False),
@@ -704,8 +722,12 @@ def sheet_dieu_tiet(ten_ws, P, th, qh_='QH_', ts='TC_', mo_ta=MO_TA_HT, co_su_co
     return ws
 
 
+CA_KET = [('P1_KetTranSuCo', 1, 'Kẹt cửa tràn sự cố'), ('P02_KetTranSuCo', 0.2, 'Kẹt cửa tràn sự cố')]
 for ten_ws, P, th in CA:
     sheet_dieu_tiet(ten_ws, P, th)
+for ten_ws, P, th in CA_KET:
+    sheet_dieu_tiet(ten_ws, P, th, qh_='QHDL_', mo_ta='Tràn chính hiện trạng 9 khoang × 2,4 m = 21,6 m; cửa van tràn sự cố bị '
+                    'kẹt (đóng) – chỉ tràn chính làm việc (tràn chính độc lập)', tsc=False)
 
 # ================================================================== BẢNG IN THUYẾT MINH
 bi = wb.create_sheet('BangIn')
@@ -775,7 +797,7 @@ bi.defined_names['Print_Area'] = DefinedName('Print_Area', attr_text='OFFSET(Ban
 
 # ================================================================== KẾT QUẢ
 kq = wb.create_sheet('KetQua')
-for k, w in enumerate((30, 22, 11, 9, 11, 12, 12, 13, 12, 34, 13, 12)):
+for k, w in enumerate((32, 27, 11, 9, 11, 12, 12, 13, 12, 34, 13, 12)):
     kq.column_dimensions[get_column_letter(k + 1)].width = w
 ghi(kq, 'A1', 'KẾT QUẢ ĐIỀU TIẾT LŨ – HỒ CÀ GIÂY – TRÀN CHÍNH HIỆN TRẠNG 9 KHOANG × 2,4 m (Pô-ta-pốp; lũ đến QTVH 72 giờ; '
               'cửa van kéo lên hoàn toàn khi đón lũ)', f_tieu_de, border=False)
@@ -787,9 +809,12 @@ tieu_de_cot(kq, 3, 1, ['Sheet', 'P (%) – trường hợp', 'Zmax (m)', 't (gi�
 Y_NGHIA = {'P1_BinhThuong': 'MNLTK – lũ thiết kế, vận hành bình thường',
            'P1_SuCo': 'Lũ thiết kế, 1 cửa tràn chính không mở',
            'P02_BinhThuong': 'MNLKT – lũ kiểm tra, vận hành bình thường',
-           'P02_SuCo': 'Lũ kiểm tra, 1 cửa tràn chính không mở'}
+           'P02_SuCo': 'Lũ kiểm tra, 1 cửa tràn chính không mở',
+           'P1_KetTranSuCo': 'Lũ thiết kế, kẹt cửa tràn sự cố – chỉ tràn chính làm việc',
+           'P02_KetTranSuCo': 'Lũ kiểm tra, kẹt cửa tràn sự cố (sự cố chồng sự cố)'}
+CA_KQ = CA + CA_KET
 DONG_KQ = {}
-for k, (ten_ws, P, th) in enumerate(CA):
+for k, (ten_ws, P, th) in enumerate(CA_KQ):
     r = 4 + k
     DONG_KQ[ten_ws] = r
     ghi(kq, 'A%d' % r, ten_ws, f_dam)
@@ -799,55 +824,145 @@ for k, (ten_ws, P, th) in enumerate(CA):
         ghi(kq, '%s%d' % (col, r), "='%s'!%s" % (ten_ws, src), f_dam if col == 'C' else f_thuong, fmt, nen_kq, cg)
     ghi(kq, 'I%d' % r, '=Z_dinh_SC-C%d' % r, fmt='0.00', can=cg)
     ghi(kq, 'J%d' % r, Y_NGHIA[ten_ws], f_ghi_chu)
-    ghi(kq, 'K%d' % r, Z_TRUOC['%g%%' % P][th == 'Sự cố'], f_nhap, '0.00', nen_nhap, cg)
-    ghi(kq, 'L%d' % r, '=C{r}-K{r}'.format(r=r), fmt='+0.00;-0.00;0.00', can=cg)
-ghi(kq, 'A9', 'Cao trình đỉnh đập sau sửa chữa (m)', f_dam)
-ghi(kq, 'B9', S.Z_DINH_DAP_SC, f_nhap_dam, '0.00', nen_nhap, cg)
-ten('Z_dinh_SC', 'KetQua!$B$9')
-ghi(kq, 'A10', 'Ảnh hưởng của sự cố (Zmax tăng thêm, m): P = 1% / P = 0,2%', f_dam)
-ghi(kq, 'B10', '=C%d-C%d' % (DONG_KQ['P1_SuCo'], DONG_KQ['P1_BinhThuong']), f_dam, '0.00', nen_kq, cg)
-ghi(kq, 'C10', '=C%d-C%d' % (DONG_KQ['P02_SuCo'], DONG_KQ['P02_BinhThuong']), f_dam, '0.00', nen_kq, cg)
-ghi(kq, 'A11', 'Kết luận: MNLTK = Zmax (P = 1%, bình thường) =', f_dam, border=False)
-ghi(kq, 'D11', '=C%d' % DONG_KQ['P1_BinhThuong'], f_dam, '0.00', nen_kq, cg)
-ghi(kq, 'A12', '             MNLKT = Zmax (P = 0,2%, bình thường) =', f_dam, border=False)
-ghi(kq, 'D12', '=C%d' % DONG_KQ['P02_BinhThuong'], f_dam, '0.00', nen_kq, cg)
-ghi(kq, 'A13', 'Cột K: kết quả bản trước (lũ BCNCKT 36 giờ, ξ₁ = 0,45). Lũ QTVH có tổng lượng lớn hơn nhưng phần lớn nằm ở 16 giờ '
-               'đầu và đuôi lũ kéo dài với lưu lượng nhỏ; phần đỉnh lũ (Q > 300 m³/s) có thể tích nhỏ hơn (P = 1%: 14,8 so '
-               'với 16,5 triệu m³). Sự cố 1 cửa làm mực nước cao thêm vài cm, vẫn thấp hơn đỉnh đập sau sửa chữa.',
-    f_ghi_chu, border=False)
-ghi(kq, 'A14', 'So sánh với hai phương án mở rộng tràn chính (xây thêm 1 khoang – Σb = 24 m; mở rộng về 25 m): sheet PhuongAn.',
-    f_ghi_chu, border=False)
+    if th in ('Bình thường', 'Sự cố'):
+        ghi(kq, 'K%d' % r, Z_TRUOC['%g%%' % P][th == 'Sự cố'], f_nhap, '0.00', nen_nhap, cg)
+        ghi(kq, 'L%d' % r, '=C{r}-K{r}'.format(r=r), fmt='+0.00;-0.00;0.00', can=cg)
+    else:
+        ghi(kq, 'K%d' % r, '–', can=cg)
+        ghi(kq, 'L%d' % r, '–', can=cg)
+r = 4 + len(CA_KQ) + 1
+ghi(kq, 'A%d' % r, 'Cao trình đỉnh đập sau sửa chữa (m)', f_dam)
+ghi(kq, 'B%d' % r, S.Z_DINH_DAP_SC, f_nhap_dam, '0.00', nen_nhap, cg)
+ten('Z_dinh_SC', 'KetQua!$B$%d' % r)
+ghi(kq, 'A%d' % (r + 1), 'Cao trình đỉnh tường chắn sóng (m)', f_dam)
+ghi(kq, 'B%d' % (r + 1), S.Z_TUONG_CS, f_nhap_dam, '0.00', nen_nhap, cg)
+ten('Z_tuong', 'KetQua!$B$%d' % (r + 1))
+ghi(kq, 'C%d' % (r + 1), 'KTTV Bảng 1-2', f_ghi_chu, border=False)
+for k, (nhan, s1, s2) in enumerate((
+        ('Zmax tăng khi 1 cửa tràn chính không mở (m): P = 1% / P = 0,2%', 'SuCo', 'SuCo'),
+        ('Zmax tăng khi kẹt cửa tràn sự cố (m): P = 1% / P = 0,2%', 'KetTranSuCo', 'KetTranSuCo'))):
+    rr = r + 2 + k
+    ghi(kq, 'A%d' % rr, nhan, f_dam, can=trai_giua)
+    kq.row_dimensions[rr].height = 30
+    ghi(kq, 'B%d' % rr, '=C%d-C%d' % (DONG_KQ['P1_' + s1], DONG_KQ['P1_BinhThuong']), f_dam, '0.00', nen_kq, cg)
+    ghi(kq, 'C%d' % rr, '=C%d-C%d' % (DONG_KQ['P02_' + s2], DONG_KQ['P02_BinhThuong']), f_dam, '0.00', nen_kq, cg)
+ghi(kq, 'A%d' % (r + 4), 'Kết luận: MNLTK = Zmax (P = 1%, bình thường) =', f_dam, border=False)
+ghi(kq, 'D%d' % (r + 4), '=C%d' % DONG_KQ['P1_BinhThuong'], f_dam, '0.00', nen_kq, cg)
+ghi(kq, 'A%d' % (r + 5), '             MNLKT = Zmax (P = 0,2%, bình thường) =', f_dam, border=False)
+ghi(kq, 'D%d' % (r + 5), '=C%d' % DONG_KQ['P02_BinhThuong'], f_dam, '0.00', nen_kq, cg)
+ghi(kq, 'A%d' % (r + 6), 'Cột K: kết quả bản trước (lũ BCNCKT 36 giờ, ξ₁ = 0,45). Lũ QTVH có tổng lượng lớn hơn nhưng phần lớn nằm ở '
+                         '16 giờ đầu và đuôi lũ kéo dài với lưu lượng nhỏ; phần đỉnh lũ (Q > 300 m³/s) có thể tích nhỏ hơn (P = 1%: '
+                         '14,8 so với 16,5 triệu m³). Sự cố 1 cửa tràn chính làm mực nước cao thêm vài cm; kẹt cửa tràn sự cố làm mực '
+                         'nước cao thêm 0,8 m (tràn sự cố xả gần 40% lưu lượng).', f_ghi_chu, border=False)
+ghi(kq, 'A%d' % (r + 7), 'Bảng 4.1, 4.2 của thuyết minh: sheet Bang4_1_4_2. So sánh với hai phương án mở rộng tràn chính (xây thêm '
+                         '1 khoang – Σb = 24 m; mở rộng về 25 m): sheet PhuongAn.', f_ghi_chu, border=False)
 # số liệu biểu đồ
-HB = 16
+HB = r + 10
 ghi(kq, 'A%d' % (HB - 1), 'SỐ LIỆU VẼ BIỂU ĐỒ (lấy từ các sheet điều tiết)', f_muc, border=False)
 COT_BD = [('t (giờ)', 'P1_BinhThuong', 'A', '0')]
 for P, tp in ((1, '1%'), (0.2, '0,2%')):
     pre = 'P1' if P == 1 else 'P02'
     COT_BD += [('Q đến P = %s' % tp, pre + '_BinhThuong', 'B', '0.0'),
                ('q xả P = %s bình thường' % tp, pre + '_BinhThuong', 'G', '0.0'),
-               ('q xả P = %s sự cố' % tp, pre + '_SuCo', 'G', '0.0')]
-for ten_ws, P, th in CA:
+               ('q xả P = %s sự cố' % tp, pre + '_SuCo', 'G', '0.0'),
+               ('q xả P = %s kẹt cửa TSC' % tp, pre + '_KetTranSuCo', 'G', '0.0')]
+for ten_ws, P, th in CA_KQ:
     COT_BD.append(('Z P = %s %s' % ('1%' if P == 1 else '0,2%', th.lower()), ten_ws, 'H', '0.00'))
 tieu_de_cot(kq, HB, 1, [c[0] for c in COT_BD], cao=58)
 for t in range(0, T_MAX + 1):
-    r = HB + 1 + t
+    r_ = HB + 1 + t
     for jj, (_, ws_ten, col, fmt) in enumerate(COT_BD):
-        ghi(kq, '%s%d' % (get_column_letter(1 + jj), r), "='%s'!%s%d" % (ws_ten, col, R0 + t), fmt=fmt, can=cg)
+        ghi(kq, '%s%d' % (get_column_letter(1 + jj), r_), "='%s'!%s%d" % (ws_ten, col, R0 + t), fmt=fmt, can=cg)
 COT_SO = {c[0]: jj + 1 for jj, c in enumerate(COT_BD)}
 HB1 = HB + 1 + T_MAX
 xk = Reference(kq, min_col=1, min_row=HB + 1, max_row=HB1)
 cot = lambda c: Reference(kq, min_col=COT_SO[c], min_row=HB + 1, max_row=HB1)
-for P, tp, vt in ((1, '1%', 'M3'), (0.2, '0,2%', 'M24')):
+NET_TH = {'Bình thường': False, 'Sự cố': True, 'Kẹt cửa tràn sự cố': 'sysDot'}
+for P, tp, vt in ((1, '1%', 'Q3'), (0.2, '0,2%', 'Q24')):
     bieu_do(kq, 'Đường quá trình lũ đến và xả – P = %s' % tp, 't (giờ)', 'Lưu lượng (m³/s)',
             [(xk, cot('Q đến P = %s' % tp), 'Q đến', '52514E', False),
              (xk, cot('q xả P = %s bình thường' % tp), 'q xả – bình thường', '2A78D6', False),
-             (xk, cot('q xả P = %s sự cố' % tp), 'q xả – sự cố', 'EB6834', True)], vt, x_lim=(0, T_MAX, 12),
-            y_lim=(0, Q_LU_MAX, 200))
+             (xk, cot('q xả P = %s sự cố' % tp), 'q xả – 1 cửa tràn chính không mở', 'EB6834', True),
+             (xk, cot('q xả P = %s kẹt cửa TSC' % tp), 'q xả – kẹt cửa tràn sự cố', '7E57C2', 'sysDot')], vt,
+            x_lim=(0, T_MAX, 12), y_lim=(0, Q_LU_MAX, 200))
 bieu_do(kq, 'Mực nước hồ theo thời gian', 't (giờ)', 'Z (m)',
         [(xk, cot('Z P = %s %s' % ('1%' if P == 1 else '0,2%', th.lower())), 'P = %s – %s' % ('1%' if P == 1 else '0,2%',
-          th.lower()), '2A78D6' if P == 1 else 'EB6834', th == 'Sự cố') for ten_ws, P, th in CA],
-        'M45', x_lim=(0, T_MAX, 12), y_lim=(74, 79, 0.5), so=('0', '0.0'))
+          th.lower()), '2A78D6' if P == 1 else 'EB6834', NET_TH[th]) for ten_ws, P, th in CA_KQ],
+        'Q45', x_lim=(0, T_MAX, 12), y_lim=(74, 79.5, 0.5), so=('0', '0.0'))
 in_an(kq)
+
+
+# ================================================================== BẢNG 4.1, 4.2 CỦA THUYẾT MINH
+def xl_chu(t):
+    """Chuỗi trong công thức Excel: mỗi hằng chuỗi không quá 255 ký tự → cắt và nối bằng &."""
+    return '&'.join('"%s"' % t[i:i + 200] for i in range(0, len(t), 200))
+
+
+T_VUOT = ('Vượt đỉnh đập, thấp hơn đỉnh tường chắn sóng: tường làm việc như tường chắn nước nhưng chưa được kiểm tra chịu lực, '
+          'chống thấm – không coi là điều kiện bảo đảm an toàn. Biện pháp: kiểm tra, bảo dưỡng cửa van tràn sự cố trước mùa lũ; '
+          'có nguồn điện và cơ cấu kéo cửa dự phòng; xả trước khi có dự báo lũ lớn')
+# (sheet, nhãn Bảng 4.1, nhãn Bảng 4.2, phân loại, câu khi đỉnh đập cao hơn Zmax ≥ 0,3 m)
+TH_TM = [
+    ('P1_BinhThuong', 'Lũ thiết kế P = 1% – vận hành bình thường (mở hết cửa hai tràn)',
+     'Lũ thiết kế P = 1%, vận hành bình thường', 'Tổ hợp cơ bản (lũ thiết kế)',
+     'Đạt yêu cầu an toàn chống tràn; sóng do gió được tường chắn sóng chắn (Z₂, mục 2.3)'),
+    ('P1_SuCo', 'Lũ thiết kế P = 1% – 1 cửa tràn chính không mở', 'Lũ thiết kế P = 1%, 1 cửa tràn chính không mở',
+     'Tổ hợp đặc biệt (sự cố cửa van)', 'Đạt – không tràn đỉnh đập'),
+    ('P1_KetTranSuCo', 'Lũ thiết kế P = 1% – kẹt cửa tràn sự cố (tràn chính độc lập)',
+     'Lũ thiết kế P = 1%, kẹt cửa tràn sự cố', 'Tổ hợp đặc biệt (sự cố cửa van)', 'Đạt – không tràn đỉnh đập'),
+    ('P02_BinhThuong', 'Lũ kiểm tra P = 0,2% – vận hành bình thường (mở hết cửa hai tràn)',
+     'Lũ kiểm tra P = 0,2%, vận hành bình thường', 'Tổ hợp đặc biệt (lũ kiểm tra)',
+     'Đạt – đỉnh đập ≥ MNLKT + 0,3 m (TCVN 8216:2018, 10.1.5)'),
+    ('P02_SuCo', 'Lũ kiểm tra P = 0,2% – 1 cửa tràn chính không mở', 'Lũ kiểm tra P = 0,2%, 1 cửa tràn chính không mở',
+     'Lũ kiểm tra + sự cố cửa van', 'Đạt – không tràn đỉnh đập'),
+    ('P02_KetTranSuCo', 'Lũ kiểm tra P = 0,2% – kẹt cửa tràn sự cố (tràn chính độc lập)',
+     'Lũ kiểm tra P = 0,2%, kẹt cửa tràn sự cố', 'Sự cố chồng sự cố (lũ kiểm tra + kẹt cửa tràn sự cố)',
+     'Đạt – không tràn đỉnh đập'),
+]
+b4 = wb.create_sheet('Bang4_1_4_2')
+for c, w in zip('ABCDEFGH', (52, 11, 17, 17, 16, 12, 12, 12)):
+    b4.column_dimensions[c].width = w
+ghi(b4, 'A1', 'BẢNG 4.1, 4.2 CỦA THUYẾT MINH – TRÀN CHÍNH HIỆN TRẠNG (tự cập nhật theo các sheet điều tiết)', f_tieu_de,
+    border=False)
+ghi(b4, 'A2', 'Đỉnh đập, đỉnh tường chắn sóng sửa ở KetQua (ô vàng). Bản Word đã định dạng: TAI_VE/Bang4.1_4.2_CongTrinhThaoLu.docx.',
+    f_ghi_chu, border=False)
+ghi(b4, 'A4', 'Bảng 4.1 Các trị số thiết kế của công trình tháo lũ', f_muc, border=False)
+tieu_de_cot(b4, 5, 1, ['Trường hợp', 'Qmax đến (m³/s)', 'Zmax (m)', 'H tràn chính (m)', 'q tràn chính (m³/s)',
+                       'H tràn sự cố (m)', 'q tràn sự cố (m³/s)', 'q tổng (m³/s)'], cao=45)
+for k, (s_, nhan, *_) in enumerate(TH_TM):
+    r = 6 + k
+    w = sh(s_)
+    co_tsc = 'KetTranSuCo' not in s_
+    ghi(b4, 'A%d' % r, nhan, f_dam, can=trai_giua)
+    for col, ct, fmt in (('B', '=MAX(%s!B%d:B%d)' % (w, R0, R1), '#,##0'), ('C', '=%s!F6' % w, '+0.00'),
+                         ('D', '=%s!F10' % w, '0.00'), ('E', '=%s!F9' % w, '0.00'),
+                         ('F', ('=%s!G10' % w) if co_tsc else '–', '0.00'), ('G', ('=%s!G9' % w) if co_tsc else '–', '0.00'),
+                         ('H', '=%s!F9+%s!G9' % (w, w), '0.00')):
+        ghi(b4, '%s%d' % (col, r), ct, f_dam if col == 'C' else f_thuong, fmt, nen_kq, giua)
+H42 = 6 + len(TH_TM) + 2
+ghi(b4, 'A%d' % H42, 'Bảng 4.2 Phân loại các tình huống lũ và yêu cầu đối với đỉnh đập, tường chắn sóng', f_muc, border=False)
+tieu_de_cot(b4, H42 + 1, 1, ['Tình huống', 'Zmax (m)', '="So với đỉnh đập +"&FIXED(Z_dinh_SC,2)&" m"',
+                             '="So với đỉnh tường +"&FIXED(Z_tuong,2)&" m"', 'Phân loại', 'Yêu cầu, biện pháp'], cao=45)
+b4.merge_cells('F%d:H%d' % (H42 + 1, H42 + 1))
+SO_VOI = '"thấp hơn "0.00" m";"cao hơn "0.00" m";"bằng"'
+for k, (s_, _, nhan, loai, dat) in enumerate(TH_TM):
+    r = H42 + 2 + k
+    z = 'B%d' % r
+    ghi(b4, 'A%d' % r, nhan, f_dam, can=trai_giua)
+    ghi(b4, z, '=C%d' % (6 + k), f_dam, '+0.00', nen_kq, giua)
+    ghi(b4, 'C%d' % r, '=Z_dinh_SC-%s' % z, f_thuong, SO_VOI, nen_kq, giua)
+    ghi(b4, 'D%d' % r, '=Z_tuong-%s' % z, f_thuong, SO_VOI, nen_kq, giua)
+    ghi(b4, 'E%d' % r, loai, f_thuong, can=giua)
+    ghi(b4, 'F%d' % r, '=IF({z}+0.3<=Z_dinh_SC,{ok},IF({z}<=Z_dinh_SC,"Không tràn đỉnh đập, độ vượt cao "&FIXED(Z_dinh_SC-{z},2)'
+                       '&" m < 0,3 m",IF({z}<=Z_tuong,{vuot},"Tràn qua đỉnh tường chắn sóng – không đạt")))'
+        .format(z=z, ok=xl_chu(dat), vuot=xl_chu(T_VUOT)), f_thuong, None, None, trai_giua)
+    for c in 'GH':
+        ghi(b4, '%s%d' % (c, r), None)
+    b4.merge_cells('F%d:H%d' % (r, r))
+    b4.row_dimensions[r].height = 104 if 'KetTranSuCo' in s_ and s_.startswith('P02') else 42
+ghi(b4, 'A%d' % (H42 + 3 + len(TH_TM)), 'Cột “So với”: đỉnh đập (đỉnh tường) − Zmax; Yêu cầu: đỉnh đập cao hơn Zmax ≥ 0,3 m thì đạt, '
+                                       'Zmax vượt đỉnh đập thì xét tường chắn sóng.', f_ghi_chu, border=False)
+in_an(b4, ngang=False)
 
 # ================================================================== PHƯƠNG ÁN MỞ RỘNG TRÀN CHÍNH – THÔNG SỐ, SO SÁNH
 pa_ws = wb.create_sheet('PhuongAn')
@@ -1051,7 +1166,7 @@ for pa in PA:
         sheet_dieu_tiet(ten_ws, P, th, qh_=pa['qh'], ts=p, mo_ta=pa['dai'], co_su_co=bool(pa['hong']))
 
 MAU_TAB = {'HuongDan': 'A65A10', 'SoLieu': 'EDA100', 'QuanHe': '8A8984', 'BieuDoPhuTro': '1BAF7A', 'BangIn': '8A8984',
-           'KetQua': '1BAF7A', 'PhuongAn': 'D03B3B', 'QuanHe_PA1': '8A8984', 'QuanHe_PA2': '8A8984'}
+           'KetQua': '1BAF7A', 'Bang4_1_4_2': '1BAF7A', 'PhuongAn': 'D03B3B', 'QuanHe_PA1': '8A8984', 'QuanHe_PA2': '8A8984'}
 for ws in wb.worksheets:
     ws.sheet_properties.tabColor = MAU_TAB.get(ws.title) or next(
         (pa['mau'] for pa in PA if ws.title.startswith(pa['ma'] + '_')), '2A78D6')
