@@ -5,7 +5,8 @@ THỦY LỰC TRÀN CHÍNH HỒ CÀ GIÂY THEO TRÌNH TỰ FILE MẪU “THIẾT 
      file điều tiết lũ), m, σn; so Q_tt ở MNLTK, MNLKT với lưu lượng tràn chính trong kết quả điều tiết lũ, sai số δ.
   2. Thủy lực dốc nước: độ sâu đầu dốc (độ sâu co hẹp sau bậc hạ P = 1,40 m – khác mẫu tràn đỉnh rộng h_đd = h_k), độ sâu
      phân giới h_k, độ dốc phân giới i_k, độ sâu dòng đều h_0 (Agơrốtskin), đường mặt nước (cộng trực tiếp; đoạn thu hẹp
-     31 → 18 m chọn trước ΔL), kiểm tra không xói, chiều cao tường bên (hàm khí), chiều dày bản đáy (Đômbrốpxki).
+     chọn trước ΔL = 2,5 / 5 m, thử dần độ sâu), kiểm tra không xói, chiều cao tường bên (hàm khí), chiều dày bản đáy
+     (Đômbrốpxki).
 Thông số tràn, kết quả điều tiết đọc từ file Excel điều tiết lũ (TAI_VE/DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx – LibreOffice
 tính lại trước khi đọc); hình học dốc nước, tường bên theo so_lieu.TRAN_CHINH.
   python3 thuy_luc_tran_chinh.py      (in kết quả)
@@ -35,8 +36,7 @@ A_TUONG = 0.50           # độ vượt cao an toàn tường bên (m) – mẫ
 ALPHA_NEN = 1.0          # hệ số nền trong công thức Đômbrốpxki (mẫu: nền sét 0,8 ÷ 1,0)
 V_KX = (19.2, 21.1)      # lưu tốc không xói bê tông cốt thép M200, h = 0,5 / 1 m (mẫu: TCVN 4118:2012, phụ lục I, Bảng I5)
 TC = S.TRAN_CHINH
-DL_THU_HEP = 2.5         # bước chọn trước trên đoạn thu hẹp (m)
-N_BUOC_LT = 8            # số đoạn chọn độ sâu trên đoạn lăng trụ
+N_BUOC_LT = 8            # số bước trên mỗi đoạn dốc: thu hẹp 20/8 = 2,5 m; lăng trụ 40/8 = 5 m
 
 
 # ------------------------------------------------------------------ số liệu từ file Excel điều tiết lũ
@@ -140,46 +140,23 @@ def buoc_co_dinh(Q, x1, h1, dL):
     return brentq(g_, 0.02, h_k(Q, B2))
 
 
-def duong_mat_nuoc(Q, h_dau, dx_min=None):
-    """Bảng cộng trực tiếp: đoạn thu hẹp – ΔL chọn trước; đoạn lăng trụ – chọn độ sâu, tính ΔL, bước cuối tới L = L_dốc."""
+def duong_mat_nuoc(Q, h_dau):
+    """Bảng cộng trực tiếp, chọn trước ΔL (đoạn thu hẹp L_tt/8 = 2,5 m; đoạn lăng trụ (L_dốc − L_tt)/8 = 5 m) và thử dần độ
+    sâu cuối đoạn – có chiều sâu tại các mặt cắt kiểm tra tường bên x = 0, 5, …, 60 m (như file Excel)."""
     L_tt, L_d = TC['L_chuyen_tiep'], TC['L_doc']
     hang = [dict(x=0.0, **yeu_to(Q, B_doc(0), h_dau))]
     x, h = 0.0, h_dau
-    while x < L_tt - 1e-9:
-        h = buoc_co_dinh(Q, x, h, DL_THU_HEP)
-        x += DL_THU_HEP
+    for k in range(2 * N_BUOC_LT):
+        dL = L_tt / N_BUOC_LT if k < N_BUOC_LT else (L_d - L_tt) / N_BUOC_LT
+        h = buoc_co_dinh(Q, x, h, dL)
+        x = round(x + dL, 9)
         hang.append(dict(x=x, **yeu_to(Q, B_doc(x), h)))
-    # độ sâu cuối dốc theo bước nhỏ → chia đều khoảng độ sâu của đoạn lăng trụ
-    xx, hh = x, h
-    while xx < L_d - 1e-9:
-        hh = buoc_co_dinh(Q, xx, hh, 0.25)
-        xx += 0.25
-    dh = (hh - h) / N_BUOC_LT
-    for k in range(1, N_BUOC_LT):
-        a = hang[-1]
-        b = yeu_to(Q, TC['b_doc_cuoi'], h + k * dh)
-        dL = (b['E'] - a['E']) / (TC['i_doc'] - 0.5 * (a['J'] + b['J']))
-        if a['x'] + dL >= L_d:
-            break
-        hang.append(dict(x=a['x'] + dL, **b))
-    a = hang[-1]
-    hang.append(dict(x=L_d, **yeu_to(Q, TC['b_doc_cuoi'], buoc_co_dinh(Q, a['x'], a['h'], L_d - a['x']))))
     for a, b in zip(hang, hang[1:]):
         b['dE'] = b['E'] - a['E']
         b['Jtb'] = 0.5 * (a['J'] + b['J'])
         b['i_J'] = TC['i_doc'] - b['Jtb']
         b['dL'] = b['x'] - a['x']
     return hang
-
-
-def mat_nuoc_min(Q, h_dau, dL=0.5):
-    """Đường mặt nước bước nhỏ – dùng cho bảng chiều cao tường bên tại x = 0, 5, …, 60 m."""
-    x, h, kq = 0.0, h_dau, {0.0: h_dau}
-    while x < TC['L_doc'] - 1e-9:
-        h = buoc_co_dinh(Q, x, h, dL)
-        x = round(x + dL, 6)
-        kq[x] = h
-    return kq
 
 
 def thuy_luc_doc(ts):
@@ -194,7 +171,7 @@ def thuy_luc_doc(ts):
                        ik_dau=i_k(Q, TC['b_doc_dau']), h0=h_0(Q, TC['b_doc_cuoi']), bang=bang))
     # tường bên với lưu lượng lớn nhất qua tràn chính (lũ kiểm tra)
     lon = kq[-1]
-    mn = mat_nuoc_min(lon['Q'], lon['hc'])
+    mn = {r['x']: r['h'] for r in lon['bang']}
     tuong = []
     for j, x in enumerate(range(0, int(TC['L_doc']) + 1, 5)):
         y = yeu_to(lon['Q'], B_doc(x), mn[float(x)])

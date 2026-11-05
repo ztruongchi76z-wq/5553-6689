@@ -5,7 +5,8 @@ Kiểm tra khả năng tháo (lưu tốc tới gần, ε, m, σn, so với kết
 lực dốc nước (độ sâu đầu dốc, h_k, i_k, h_0, đường mặt nước 5 cấp lưu lượng, không xói, tường bên, bản đáy). Tính ở
 thuy_luc_tran_chinh.py. Phần tiêu năng mũi phun của mẫu chưa tính (cần số liệu mũi phun, kênh xả hạ lưu).
   python3 xuat_word_thuy_luc_tran_chinh.py [đường dẫn .docx ra]
-Mặc định: ../TAI_VE/ThuyLuc_TranChinh_TheoMau.docx (hình: ../TAI_VE/DuongMatNuoc_DocTranChinh.png)
+Mặc định: ../TAI_VE/ThuyLuc_TranChinh_TheoMau.docx (hình: ../TAI_VE/DuongMatNuoc_DocTranChinh.png). Bảng tính Excel cùng
+nội dung: xuat_excel_thuy_luc_tran_chinh.py → ../TAI_VE/ThuyLuc_TranChinh_TheoMau.xlsx
 """
 import math
 import os
@@ -77,7 +78,7 @@ def ve_hinh(tl, ra):
     xs = [r['x'] for r in tl['tuong']]
     day = [Z_dau - TC['i_doc'] * x for x in xs]
     tk, kt = tl['cap'][3], tl['cap'][4]
-    mn_tk, mn_kt = T.mat_nuoc_min(tk['Q'], tk['hc']), T.mat_nuoc_min(kt['Q'], kt['hc'])
+    mn_tk, mn_kt = ({r['x']: r['h'] for r in c['bang']} for c in (tk, kt))
     x_min = sorted(mn_kt)
     z_day = [Z_dau - TC['i_doc'] * x for x in x_min]
     plt.rcParams.update({'font.family': 'Liberation Serif', 'font.size': 9})
@@ -333,12 +334,14 @@ def main():
     phuong_trinh(d, [t('ΔЭ = '), sub(t('Э'), t('2')), t(' − '), sub(t('Э'), t('1')), t(' ;   Э = h + '),
                      phan_so([t('α·'), sup(t('v'), t('2'))], t('2g')), t(' ;   J = '),
                      phan_so(sup(t('v'), t('2')), [sup(t('C'), t('2')), t('·R')])])
-    p('Trên đoạn thu hẹp bề rộng thay đổi theo x nên chọn trước ΔL = %s m và thử dần h_{2} thỏa mãn (4-%d); trên đoạn lăng '
-      'trụ chọn h_{2} (chia đều khoảng chiều sâu tới cuối dốc) rồi tính ΔL; bước cuối tìm h_{2} để L = L_{dốc} = %s m. '
-      'Các cột của bảng: (1) thứ tự mặt cắt; (2) bề rộng dốc B; (3) chiều sâu h; (4) lưu tốc v = Q/ω; (5) tỷ năng '
+    p('Bề rộng dốc thay đổi trên đoạn thu hẹp, đồng thời cần chiều sâu tại các mặt cắt kiểm tra tường bên (x = 0, 5, …, %s '
+      'm), nên chọn trước ΔL (%s m trên đoạn thu hẹp, %s m trên đoạn lăng trụ) và thử dần h_{2} thỏa mãn (4-%d) – cột (14) '
+      'ΔL = ΔЭ/(i − J̄) tính lại đúng bằng ΔL đã chọn. Các cột của bảng: (1) thứ tự mặt cắt; (2) bề rộng dốc B; (3) chiều sâu h; (4) lưu tốc v = Q/ω; (5) tỷ năng '
       'Э = h + αv^{2}/2g; (6) ΔЭ = Э_{i+1} − Э_{i}; (7) diện tích ướt ω = B·h; (8) chu vi ướt χ = B + 2h; (9) bán kính thủy '
       'lực R = ω/χ; (10) hệ số Sê-di C = R^{1/6}/n, n = %s; (11) độ dốc thủy lực J; (12) độ dốc thủy lực trung bình '
-      'J_{tb} = J̄; (13) i − J_{tb}; (14) ΔL; (15) khoảng cách cộng dồn L.' % (so(T.DL_THU_HEP, 1), dem.ct - 1, so(TC['L_doc'], 0), so(T.N_NHAM, 3)))
+      'J_{tb} = J̄; (13) i − J_{tb}; (14) ΔL; (15) khoảng cách cộng dồn L.'
+      % (so(TC['L_doc'], 0), so(TC['L_chuyen_tiep'] / T.N_BUOC_LT, 1), so((TC['L_doc'] - TC['L_chuyen_tiep']) / T.N_BUOC_LT, 0),
+         dem.ct - 1, so(T.N_NHAM, 3)))
     COT15 = [380, 560, 600, 580, 600, 600, 640, 600, 580, 600, 660, 660, 640, 600, 640]
     for c in cap:
         hang = []
@@ -396,7 +399,7 @@ def main():
     phuong_trinh(d, [sub(t('h'), t('t', True)), t(' = '), sub(t('h'), t('hk', True)), t(' + a')], dem.c())
     tw = tl['tuong']
     p('với a – độ vượt cao an toàn, chọn a = %s m. Tính với lưu lượng lớn nhất qua tràn chính (lũ kiểm tra Q = %s m^{3}/s); '
-      'chiều sâu tại các mặt cắt x = 0, 5, …, %s m lấy từ đường mặt nước tính với ΔL = 0,5 m; chiều cao tường hiện trạng '
+      'chiều sâu tại các mặt cắt x = 0, 5, …, %s m lấy từ bảng đường mặt nước lũ kiểm tra ở trên; chiều cao tường hiện trạng '
       'theo phụ lục tính toán của BCNCKT (Bảng PL1-4) đến x = %s m, sau x = %s m giả thiết bằng %s m.'
       % (s2(T.A_TUONG), s2(cap[-1]['Q']), so(TC['L_doc'], 0), so(5 * (len(TC['h_tuong']) - 1), 0),
          so(5 * (len(TC['h_tuong']) - 1), 0), s2(TC['h_tuong'][-1])))
