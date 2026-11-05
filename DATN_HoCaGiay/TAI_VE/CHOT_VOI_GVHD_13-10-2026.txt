@@ -1,0 +1,224 @@
+NỘI DUNG CẦN CHỐT VỚI GVHD – ĐATN HỒ CÀ GIÂY
+Gặp TS. Phạm Ngọc Thịnh (có thể có TS. Nguyễn Thị Phương Mai) · 13/10/2026 · SV Trần Quốc Thanh · thuyết minh bản 13/10/2026 (122 trang; số mục, số bảng theo bản này) · ☐ đánh dấu khi đã chốt
+
+========================================================================
+PHẦN I – TỜ HỎI THẦY, CÔ
+========================================================================
+
+TRƯỚC KHI VÀO GẶP (5 phút)
+1. Mở bản “Nhiệm vụ đồ án tốt nghiệp” (nếu đã có chữ ký) hoặc tin nhắn Thầy giao chuyên đề: dòng chuyên đề và tên đề tài ghi gì? Đây là căn cứ chính để trả lời “có đúng nhiệm vụ không”; phiếu này đóng vào quyển nên tên chuyên đề trong phiếu phải khớp tên Chương 8.
+2. Thứ tự hỏi: Vấn đề 0 (chuyên đề) → mục 1 ÷ 8 → mục 9 ÷ 17 nếu còn thời gian. Nếu cô Mai có mặt: hỏi mục 8 sớm.
+3. Ghi quyết định vào bảng V (cuối Phần I), chụp ảnh gửi lại để cập nhật thuyết minh, bản vẽ, slide.
+
+VẤN ĐỀ 0 – CHUYÊN ĐỀ KỸ THUẬT CÓ ĐÚNG NHIỆM VỤ THẦY GIAO? (hỏi đầu tiên)
+- Đề cương nháp (chưa ký): Chương 5 “Chuyên đề kỹ thuật (đề nghị Thầy giao) – dự kiến: tính thấm và ổn định mái đập đất bằng GeoStudio (SEEP/W, SLOPE/W)”; mục 11 xin Thầy chọn: thấm – ổn định mái, kết cấu một bộ phận hay lập dự toán. Khoan phụt chống thấm mang tràn sự cố nằm ở Chương 4 (hạng mục thiết kế).
+- Thuyết minh 13/10: Chương 8 “Đánh giá hiệu quả và hợp lý hóa màng khoan phụt chống thấm mang trái tràn sự cố”: mô hình thấm PTHH 2D bão hòa – không bão hòa (chương trình Python, đã đối chiếu với kết quả SEEP/W của hồ sơ), 4 mực nước, 5 nhóm phân tích độ nhạy (Bảng 8.3 ÷ 8.6, 8.8), đề xuất hợp lý hóa có điều kiện (giảm 27,85% khoan, 29,01% phụt); phương án chọn vẫn là TKCS 3 hàng.
+- Thấm – ổn định mái đập: Không bỏ: mục 2.5 (hiện trạng – Bảng 2.6: 4 trường hợp thấm; Bảng 2.7: 10 trường hợp ổn định), mục 5.2 ÷ 5.4 (sau sửa chữa – Bảng 5.1 ÷ 5.3: 12 trường hợp, trượt nông lớp mặt); kiểm tra chéo Spencer, hội tụ lưới, bất đẳng hướng (PL3, PL4, PL6 ÷ PL11).
+
+Câu hỏi (nói nguyên văn):
+“Thưa Thầy, trong đề cương em dự kiến chuyên đề thấm – ổn định mái đập bằng GeoStudio và xin Thầy giao. Khi làm, phần thấm – ổn định mái em đã tính đầy đủ ở Chương 2 và Chương 5; chuyên đề Chương 8 em đi sâu vào bài toán thấm qua mang tràn sự cố để đánh giá hiệu quả và hợp lý hóa màng khoan phụt – hạng mục chống thấm chính của dự án. Em xin Thầy xác nhận hướng này có đúng nhiệm vụ Thầy giao không, và có cần bổ sung tính đối chứng bằng GeoStudio không ạ?”
+
+Phương án để Thầy chọn:
+[ ] PA1 – Giữ Chương 8 như hiện tại; chỉ chốt tên chuyên đề ghi trong phiếu nhiệm vụ (khớp tên Chương 8). (Khối lượng: không phát sinh)
+[ ] PA2 – PA1 + phụ lục đối chứng bằng GeoStudio: SEEP/W mặt cắt mang tràn (chưa/có màng, MNLTK) và mặt cắt lòng sông (MNDBT); SLOPE/W mái hạ lưu 2 trường hợp (TH1, TH5). (Khối lượng: 1 ÷ 2 ngày; cần máy có GeoStudio)
+[ ] PA3 – Đổi tên chương cho rõ là chuyên đề thấm: “Tính toán thấm, đánh giá hiệu quả và hợp lý hóa màng khoan phụt chống thấm mang trái tràn sự cố” (nội dung giữ nguyên). Có thể kết hợp PA2. (Khối lượng: nửa ngày (bìa chương, mục lục, slide))
+[ ] PA4 – Chuyển chuyên đề sang “Tính thấm và ổn định mái đập bằng GeoStudio”. Để không lặp Chương 2, 5 cần nội dung mới (ví dụ thấm không ổn định khi rút nước nhanh, mưa thấm → SLOPE/W); phần khoan phụt chuyển thành mục thiết kế hoặc phụ lục. (Khối lượng: 3 ÷ 5 ngày)
+Đề xuất của em: PA1, hoặc PA1 + PA2 nếu Thầy muốn có kết quả bằng phần mềm chuyên ngành.
+Thầy chốt: ....................
+
+I. PHẢI CHỐT – ẢNH HƯỞNG SỐ LIỆU, KẾT LUẬN
+
+[ ] 1. Cửa van tràn chính (mục 1.6.2, 2.3, Bảng 4.2)
+    Đồ án: Đã xác nhận theo QTVH (mục 6): đơn vị quản lý chia tràn chính thành 9 khoang × 2,4 m (mố 0,6 m), lắp cửa van để tích thêm nước cuối mùa lũ; đầu mùa lũ mở hoàn toàn. Thuyết minh đã sửa: tính lũ với 9 cửa mở hết; thêm trường hợp 1 (2) cửa không mở: P = 1%: Zmax +77,69 (+77,75) m, đỉnh dư 0,86 (0,80) m so với Zmax + 0,3 m; P = 0,2%: Zmax +78,62 (+78,70) m – không tràn đỉnh +78,85 m nhưng thiếu 7 (15) cm so với Zmax + 0,3 m, xếp trường hợp đánh giá rủi ro (QCVN 04-05:2022 điều 2.6.3.10b); kiến nghị kiểm tra, mở hết 9 cửa trước mùa lũ.
+    HỎI: Phân loại trường hợp 1 – 2 cửa không mở như Bảng 4.2 được chưa? Có cần đề xuất thêm cho cửa tràn chính (thiết bị nâng, nguồn điện dự phòng, kiểm định)?
+
+[ ] 2. Hệ số lưu lượng tràn chính (mục 2.3.2, Bảng PL7)
+    Đồ án: QTVH: m = 0,40 (TCVN 9147:2012 mục 7.6), ε = Σb/(Σb + Σd) = 21,6/26,4 = 0,82 – tỷ lệ bề rộng thông thủy, không phải co hẹp do mố; Bảng 7-5 ứng với 0,40 × 21,6 m. BCNCKT: m = 0,467, ε theo ξmb = 0,70, ξmt = 0,25. Đồ án: m = 0,45 × co hẹp bên (0,85 ÷ 0,88) → ε·m = 0,38 ÷ 0,40 → MNLKT +78,54 m (dùng hệ số như QTVH: +78,52 m). Nếu lấy m = 0,40 rồi nhân thêm co hẹp bên: MNLKT +78,62 m → đỉnh +78,92 m (cao thêm 7 cm, đất ≈ +320 m³). Đỉnh +78,85 m đạt khi m ≥ 0,441.
+    HỎI: Chốt m = 0,45 có co hẹp bên (như đồ án) hay m = 0,40 kèm co hẹp bên (đỉnh +78,92)? Kiến nghị đo quan hệ Q ~ Z khi có lũ được không?
+
+[ ] 3. Bộ số liệu lũ (mục 1.4.3, 2.3)
+    Đồ án: Dùng đường quá trình BCNCKT (36 giờ, bất lợi hơn): MNLTK +77,63, MNLKT +78,54 → đỉnh +78,85 m. Với lũ QTVH 2026: MNLKT +78,44 → đỉnh TKCS +78,75 m cũng đạt.
+    HỎI: Giữ lũ BCNCKT làm cơ sở (thiên an toàn)?
+
+[ ] 4. Dự phòng lún (mục 5.1.1)
+    Đồ án: 0,13 m theo TCVN 8216:2018 điều 11.4.4 (≥ 0,5%H): đất đắp thi công +78,73 m, nghiệm thu ≥ +78,98 m, đắp bù 2.210 m³ (BV-04). Lún bổ sung tính cho đập cũ đã cố kết chỉ 0,5 ÷ 1 cm.
+    HỎI: Giữ 0,13 m hay giảm (mỗi 1 cm ≈ 46 m³ đất)?
+
+[ ] 5. Ngưỡng tràn chính, neo D25 (mục 4.5)
+    Đồ án: [K] = γn·γlc/γc = 1,21 / 1,09 (γc = 0,95 – QCVN 04-05:2022 Bảng B.2). Khi c = 0: K = 0,82 / 0,65 < [K] → 36 neo D25, lực cần 48 ÷ 65 kN/thanh (≤ 38% Ntt), thử kéo nhổ 100 kN.
+    HỎI: Neo là hạng mục thiết kế (kèm thử kéo nhổ, hồ sơ hoàn công) hay chỉ kiến nghị?
+
+[ ] 6. Tổn thất thấm lòng hồ (mục 2.2.3)
+    Đồ án: kt = 1%/tháng (thiên an toàn): TH1A 86,7% (đạt), TH2 82,2% (không đạt). Nếu 0,5%/tháng: TH2 86,7% (đạt) – chênh QTVH chỉ 1 năm.
+    HỎI: Giữ 1%/tháng? Kết luận TH2 “sát ngưỡng, cần quan trắc cân bằng nước” được chưa?
+
+[ ] 7. Kết luận chuyên đề (Chương 8)
+    Đồ án: Phương án chọn = TKCS 3 hàng; phương án 2 hàng A, B (giảm 27,85% khoan, 29,01% phụt; η giảm ≈ 6 điểm %) chỉ áp dụng khi phụt thí nghiệm đạt và lớp II q ≤ 1 Lu.
+    HỎI: Cách kết luận “đề xuất có điều kiện” như vậy được chưa? (gắn với Vấn đề 0)
+
+[ ] 8. Yêu cầu của cô Mai (mục 4.6, 5.6)
+    Đồ án: Mưa 2000 ÷ 2024 không tăng có ý nghĩa thống kê (mưa năm −0,1%; X1max −4,1%); MNLTK +77,63 > thiết kế 1996 +77,24 m; lũ kiểm tra tăng 9 ÷ 12% thì chạm đỉnh → kiến nghị xả trước theo dự báo, cập nhật thủy văn 5 năm; so sánh trước/sau: Bảng 4.9 (tràn), 5.7 (đập).
+    HỎI: Đủ ý cô yêu cầu chưa? Có cần thêm kịch bản lũ (5%, 15%)?
+
+II. NÊN HỎI – PHẠM VI, TRÌNH BÀY, THỦ TỤC
+
+[ ] 9. Chương 4, 6 – mức “thiết kế sửa chữa”
+    Đồ án: Tràn giữ nguyên B, ngưỡng; chỉ sửa cục bộ (nạo vét kênh dẫn, trát mặt dốc nước, khe co giãn, neo ngưỡng, tấm lát mang tràn sự cố). Cống: kiểm tra khả năng tháo (TCVN 9151), máy VĐ20, trục vít 02 giá đỡ dẫn hướng; khung cống tham khảo.
+    HỎI: Mức này đủ chưa? Tên chương giữ “Thiết kế sửa chữa, nâng cấp…” được không?
+
+[ ] 10. Gió tính sóng
+    Đồ án: Địa hình A (kl = 1,10), xét hướng NE, đà gió lớn nhất → Z2 +79,07 < tường +79,40 m.
+    HỎI: Chấp nhận giả thiết?
+
+[ ] 11. Vị trí khống chế đỉnh
+    Đồ án: Mép thượng lưu (chân tường) +78,85; mép hạ lưu tấm +78,76 (dốc 2%).
+    HỎI: Kiểm tra MNLKT + 0,3 m tại mép thượng lưu được không?
+
+[ ] 12. Khai báo dùng AI (mục 1.7)
+    Đồ án: Có đoạn khai báo dùng AI hỗ trợ soạn, kiểm tra mã và rà soát trình bày.
+    HỎI: Giữ, sửa hay bỏ?
+
+[ ] 13. Cách viết so với hồ sơ dự án
+    Đồ án: “Cập nhật, thống nhất số liệu theo hiện trạng, tiêu chuẩn hiện hành”, không đánh giá đúng/sai.
+    HỎI: Cách trình bày được chưa?
+
+[ ] 14. Độ dài, phụ lục
+    Đồ án: 122 trang; PL5 danh mục chương trình, PL6 ÷ PL11 kiểm chứng, độ nhạy; PL12 số liệu mưa.
+    HỎI: Có cần rút gọn?
+
+[ ] 15. Bản vẽ, slide
+    Đồ án: 7 tờ A0; slide 22 + dự phòng (≈ 15 phút).
+    HỎI: Khổ giấy, số tờ, thời lượng?
+
+[ ] 16. Thủ tục
+    Đồ án: Trang nhiệm vụ có chữ ký (bản gốc); bản gửi cô Mai.
+    HỎI: Hạn nộp, số bản, gửi cô Mai khi nào?
+
+[ ] 17. Tên đề tài trên bìa
+    Đồ án: Bìa: “Tính toán, thiết kế sửa chữa nâng cấp cụm công trình đầu mối hồ chứa nước Cà Giây – tỉnh Lâm Đồng”. Đề cương nháp: “Thiết kế sửa chữa, nâng cấp bảo đảm an toàn hồ chứa nước Cà Giây, huyện Bắc Bình, tỉnh Bình Thuận”.
+    HỎI: Tên chính thức theo quyết định giao đề tài? (bìa phải khớp từng chữ)
+
+III. MANG THEO
+- PDF thuyết minh 13/10; Phần I tờ này; phiếu nhiệm vụ (nếu có); đề cương nháp.
+- Báo cáo thực tập tốt nghiệp – nếu chuyên đề CĐ4 đã làm bằng GeoStudio thì đây là bằng chứng đã dùng phần mềm chuyên ngành.
+- QTVH mục 6 (đoạn 9 cửa van; công thức m = 0,40, ε = Σb/(Σb + Σd)) và Bảng 7-5; BCNCKT mục tính m = 0,467.
+- Bảng PL6 (kiểm chứng), PL7 (độ nhạy); Hình 8.3, 8.4 (thấm mang tràn chưa/có màng); máy tính có thư mục tinh_toan nếu Thầy muốn xem chạy thử.
+
+IV. TRẢ LỜI SẴN NẾU ĐƯỢC HỎI
+- Sửa chữa mà K giảm? Giảm 0,9 ÷ 1,6% do tải trọng phần đắp nâng đỉnh; giải pháp chủ yếu xử lý lớp mặt; mọi trường hợp vẫn lớn hơn [K] ≥ 15%. Hiệu quả: lớp mặt K 0,52 → 4,41, đỉnh đạt MNLKT + 0,3 m.
+- Mức bảo đảm khác QTVH? Do công thức P = m/(n + 1) và tổn thất thấm 1%/tháng; với 0,5%/tháng chỉ chênh 1 năm.
+- Số liệu khác đề cương nháp (MNLTK +77,43, MNLKT +78,25, đỉnh +78,75, tràn 25 m tự do)? Đề cương lấy theo TKCS; đồ án cập nhật theo QTVH 2026 (tràn 9 khoang × 2,4 m = 21,6 m, có cửa van) và tiêu chuẩn hiện hành → MNLTK +77,63, MNLKT +78,54, đỉnh +78,85 m. Tính lại cùng thông số BCNCKT sai khác 0,05 ÷ 0,07 m; cùng thông số QTVH 0,10 ÷ 0,13 m (dung tích tính lại nhỏ hơn) – phương pháp thống nhất, khác ở số liệu đầu vào (Bảng PL6).
+- Đề cương ghi QCVN 04-05:2012, TCVN 10778:2015? Đồ án dùng QCVN 04-05:2022 và TCVN 10778:2024 – các bản thay thế đang có hiệu lực.
+
+V. GHI QUYẾT ĐỊNH (gửi lại sau buổi gặp)
+0 – Chuyên đề: ....................
+1 – Cửa van tràn: ....................
+2 – Hệ số m: ....................
+3 – Bộ lũ: ....................
+4 – Dự phòng lún: ....................
+5 – Neo D25: ....................
+6 – k_{t} thấm hồ: ....................
+7 – KL chuyên đề: ....................
+8 – Ý cô Mai: ....................
+9 – Chương 4, 6: ....................
+10 – Gió: ....................
+11 – Vị trí đỉnh: ....................
+12 – Khai báo AI: ....................
+13 – Cách viết: ....................
+14 – Độ dài: ....................
+15 – Bản vẽ, slide: ....................
+16 – Thủ tục: ....................
+17 – Tên đề tài: ....................
+
+========================================================================
+PHẦN II – CHUẨN BỊ RIÊNG (không đưa Thầy): LẬP LUẬN KHI BỊ CHO LÀ “LẠC ĐỀ”
+========================================================================
+
+1. ĐIỀU CẦN BIẾT TRƯỚC
+- Đề cương nháp chưa có chữ ký, chuyên đề ghi “đề nghị Thầy giao”, “dự kiến”. Chuyên đề chính thức là theo phiếu nhiệm vụ hoặc ý kiến Thầy. Nếu phiếu ghi đích danh “GeoStudio” thì đó là yêu cầu – không tranh luận, chọn PA2 hoặc PA4.
+- “Lạc đề” thường hiểu theo 3 nghĩa: (a) ngoài phạm vi đề tài; (b) khác nội dung được giao; (c) không đủ chiều sâu của một chuyên đề. Chương 8 vững ở (a) và (c); (b) chỉ Thầy quyết định.
+- Phiếu nhiệm vụ được đóng vào quyển đồ án → Hội đồng sẽ đối chiếu tên chuyên đề trong phiếu với Chương 8, nên phải chốt ngay hôm nay.
+- Theo tôi, điểm dễ bị hỏi nhất không phải đề tài mà là phần mềm: đề cương học phần TTTN của Bộ môn (K64, 27/06/2023) mục V.2 ghi “Dùng phần mềm chuyên ngành để tính toán”, chuẩn đầu ra nêu “SAP, Ansys, Geo-Slope, Plaxis…”. Nếu Thầy nhấn vào ý này → đề xuất ngay PA2.
+- Thái độ: cầu thị, ngắn gọn – “Em xin phép trình bày lý do em chọn hướng này; nếu Thầy thấy chưa phù hợp em xin điều chỉnh theo ý Thầy.” Nói đúng sự thật ai đề xuất hướng khoan phụt và khi nào; nếu Thầy chưa giao chính thức thì xin Thầy chốt luôn trong buổi gặp.
+
+2. NĂM LẬP LUẬN (theo thứ tự nói)
+
+(1) Đúng phạm vi đề tài
+  - Đề tài là thiết kế sửa chữa, nâng cấp cụm đầu mối. Khoan phụt chống thấm mang tràn sự cố là hạng mục thiết kế của dự án (TKCS: màng 3 hàng, dài 50 m, T = 4,8 m, đỉnh +77,00 m, Kmàng ≤ 1·10⁻⁵ cm/s); đề cương nháp đặt nó ở Chương 4; tài liệu định hướng xếp vào nhóm “Đập → THIẾT KẾ giải pháp sửa chữa”.
+  - Hư hỏng thực tế: khi MN hồ ≥ +74,0 m xuất hiện thấm trên mái hạ lưu mang tràn, tường cánh lún làm gãy tấm lát → chuyên đề trả lời đúng vấn đề an toàn đang tồn tại của công trình.
+  → Câu nói mẫu: “Chuyên đề của em đi sâu vào chính hạng mục thiết kế chống thấm của đồ án, không phải một công trình hay bài toán khác.”
+
+(2) Vẫn là chuyên đề thấm – nhóm “địa kỹ thuật” Bộ môn quy định
+  - Đề cương học phần TTTN (Bộ môn Thủy công, K64) mục V.2: “Chuyên đề Địa kỹ thuật: các chuyên đề về thấm, ổn định, ứng suất – biến dạng đập vật liệu địa phương…”. Chương 8 là bài toán thấm qua thân và nền đập tại mang tràn sự cố – cùng nhóm với “thấm – ổn định mái” trong đề cương nháp; khác đối tượng (mang tràn thay vì mặt cắt lòng sông) và mục tiêu (thiết kế màng). Lưu ý: đây là đề cương học phần thực tập, chỉ dùng để minh họa các loại chuyên đề Bộ môn công nhận.
+  - Chương 8 có đủ cấu trúc một báo cáo chuyên đề mà đề cương nêu (Đặt vấn đề – Phương pháp và trình tự tính – Kết quả), cộng thêm phân tích độ nhạy, đề xuất và kiến nghị.
+  → Câu nói mẫu: “Chuyên đề vẫn là chuyên đề thấm, em chỉ chọn vị trí xung yếu nhất về thấm của công trình để tính.”
+
+(3) Phần thấm – ổn định mái trong đề cương không bị bỏ
+  - Chương 2 (mục 2.5): thấm PTHH 4 trường hợp; ổn định Bishop 10 trường hợp (thấm ổn định ở MNDBT, MNLTK, MNLKT; thoát nước tắc; động đất; mưa kéo dài; mái thượng lưu; rút nước) – đối chiếu BCNCKT.
+  - Chương 5 (mục 5.2 ÷ 5.4): sau sửa chữa 12 trường hợp (thêm thi công), trượt nông lớp mặt theo chiều sâu bão hòa (Bảng 5.3).
+  - Kiểm tra chéo: Spencer (sai khác ≤ 0,5%; TH8 2,7%), miền mở rộng, lưới lồng, Nelder – Mead từ 10 điểm (K giảm 0,12 ÷ 0,83%), hội tụ lưới (q thay đổi ≈ 0,24%), bất đẳng hướng kh/kv = 5 (q tăng 44 ÷ 61%, K giảm ≤ 2,4%), độ nhạy α, kh động đất (PL6 ÷ PL11).
+  → Câu nói mẫu: “Nếu chuyên đề lại là thấm – ổn định mái mặt cắt lòng sông thì Chương 8 sẽ lặp Chương 2 và 5; em chọn bài toán mà hồ sơ xác định chủ yếu theo công thức kinh nghiệm: màng khoan phụt hiệu quả đến đâu và có hợp lý hóa được không.”
+
+(4) Giá trị kỹ thuật – trả lời 3 câu hỏi thiết kế
+  - Màng thiết kế giảm q 52 ÷ 54% ở mực nước lũ; điểm thấm ra trên mái (+74,95 ÷ +75,14 m) lùi về chân mái +74,75 m; Jra 0,29 → 0,08 (MNLTK), 0,34 → 0,17 (MNLKT).
+  - Yếu tố quyết định: chất lượng phụt Kmàng (η 71% → 11% khi Kmàng 1·10⁻⁶ → 1·10⁻⁴ cm/s), cắt hết lớp I (đáy +74,0 m: η = 7%), tính thấm lớp II (KII = 1·10⁻⁴: η = 26%); số hàng, đỉnh màng ảnh hưởng ít (2 → 3 hàng: +6 điểm %).
+  - ΔHm lớn nhất 2,46 m (≈ 15% H = 16,5 m) → T ≥ 0,68 m; 2 hàng (T = 3,3 m) đủ cả 3 điều kiện chiều dày; TKCS lấy toàn bộ cột nước (T₁ = 4,60 m) là thiên an toàn.
+  - Hợp lý hóa: giảm 27,85% khoan, 29,01% phụt, η 47% so với 54% – có điều kiện (phụt thí nghiệm, ép nước lớp II); không đạt thì giữ 3 hàng như TKCS.
+  → Câu nói mẫu: “Chuyên đề không thay thiết kế của hồ sơ mà xác nhận màng TKCS hiệu quả, chỉ ra thông số cần kiểm soát và điều kiện để có thể giảm khối lượng.”
+
+(5) Phương pháp đã kiểm chứng, sẵn sàng đối chứng GeoStudio
+  - Cùng phương trình và phương pháp với SEEP/W: thấm bão hòa – không bão hòa (2-11), PTHH Galerkin phần tử tam giác, biên mặt thấm ra xác định lặp (tài liệu [18] là sổ tay phương pháp của SEEP/W). Khác ở công cụ giải, không khác ở bài toán.
+  - Đối chiếu với kết quả SEEP/W của hồ sơ: q MNDBT 6,22 so với 5,71·10⁻⁶ m³/s/m (+9%), MNLTK 7,73 so với 7,61 (+2%); K ổn định −1,4 ÷ +5,6% so với BCNCKT; điều tiết lũ 0,05 ÷ 0,13 m (Bảng PL6).
+  - Lý do lập trình: chạy tự động trên 50 lời giải độ nhạy cùng lưới, cùng biên (so sánh công bằng); kiểm soát từng giả thiết; mã nguồn và số liệu lưu kèm (PL5) để Thầy, Hội đồng kiểm tra lại.
+  → Câu nói mẫu: “Nếu Thầy cần kết quả bằng phần mềm chuyên ngành, em xin bổ sung phụ lục đối chứng GeoStudio cho các trường hợp đại diện.”
+
+3. NẮM CHẮC CHƯƠNG TRÌNH PTHH
+- Bước 1 – lưới: tam giác chất lượng (thư viện Triangle); phần tử ≤ 0,3 m² trong lớp 5, lớp I và ≤ 0,08 m² trong màng.
+- Bước 2 – ma trận phần tử: [Ke] = Ae·[B]ᵀ·ke·[B], ke = ks·kr(ψe); lắp ghép thành [K]{H} = {Q}.
+- Bước 3 – biên: H = Zhồ trên mái, đáy hồ ngập nước; biên mặt thấm ra tiềm năng ở mái và mặt đất hạ lưu; còn lại không thấm.
+- Bước 4 – lặp Picard (có hệ số giảm dư) cho k(ψ) và cho biên mặt thấm ra đến khi hội tụ.
+- Bước 5 – kết quả: q = tổng phản lực nút biên thượng lưu; J = |∇H| từng phần tử; η = 1 − qSC/qHT.
+- Tệp: tham_fem.py (lời giải), chuyen_de_khoan_phut.py (mô hình, độ nhạy), kt_hai_hang.py, kt_dinh.py, kt_lop_II_lu.py. Nếu hỏi về AI: trả lời như mục 1.7 – AI hỗ trợ soạn, kiểm tra mã và rà soát; số liệu, giả thiết, kết quả em đã chạy lại, kiểm chứng và chịu trách nhiệm.
+
+4. CÂU HỎI KIẾN THỨC CÓ THỂ GẶP
+
+H1. Phương trình thấm dùng trong chuyên đề?
+    ∂/∂x(k·∂H/∂x) + ∂/∂z(k·∂H/∂z) = 0, k = ks·kr(ψ), ψ = H − z; kr = 1 khi ψ ≥ 0, kr = max(e^αψ; 10⁻⁴) khi ψ < 0 (Gardner, α = 1 m⁻¹). Đường bão hòa là đường ψ = 0 nên không phải giả định trước.
+
+H2. Biên mặt thấm ra xử lý thế nào?
+    Nút có áp lực dương gán H = z; nút có dòng đi vào miền trả về biên không thấm; lặp đến khi không đổi.
+
+H3. Chiều dày màng – 3 điều kiện?
+    T ≥ ΔHm/[Jm] với [Jm] = 3 ÷ 4 (TCVN 8216:2018 mục 9.2.3.2; TKCS ≈ 3,6) → T ≥ 0,68 m; T ≥ H/10 = 1,65 m (mục 10.4.2); T = Bb + 0,6A (SDJ 218-84): 3 hàng 4,8 m; 2 hàng kề nhau 3,3 m; 1 hàng 1,8 m.
+
+H4. Chiều sâu màng?
+    Cắt hết lớp I (K ≈ 4,3·10⁻⁴ cm/s), cắm vào lớp II. TCVN 8216:2018 mục 9.2.2.9: đập cấp II trở xuống, phạm vi khoan không vượt quá vị trí q = 5 ÷ 7 Lu cộng 3 m, không sâu quá 1H. Mô hình: đáy +74,0 m η = 7%; qua mặt lớp II η = 54%; sâu hơn không tăng nếu KII = Kmàng.
+
+H5. Vì sao không bỏ hàng giữa B?
+    Hai hàng biên A, C cách nhau 3,0 m, vùng lan vữa không giao nhau → còn dải đất chưa phụt, không thành màng liên tục; giữ 2 hàng kề A, B (1,5 m, hố so le).
+
+H6. Có nguy cơ mất ổn định thấm không?
+    Jra chưa có màng 0,29 ÷ 0,34 < Jth = (Δ − 1)(1 − n) = (2,69 − 1)(1 − 0,398) ≈ 1,02 → chưa đẩy trồi theo mô hình phẳng; nhưng xói tiếp xúc đất – bê tông và khe nứt lớp I (ba chiều) làm gradien cục bộ lớn hơn – thực tế đã lún sụt sau tường cánh → cần màng, nhất là đoạn sát tường.
+
+H7. Hạn chế của mô hình?
+    Bài toán phẳng: không mô tả thấm vòng quanh tường bên và đường tiếp xúc đất – bê tông; ranh giới lớp số hóa (± 0,2 m), KII giả thiết; chưa tái hiện ngưỡng thấm +74,0 m → dùng so sánh tương đối; kiến nghị ép nước, phụt thí nghiệm, 2 giếng đo áp sau màng để hiệu chỉnh.
+
+H8. Lưu lượng thấm có lớn không?
+    Nhỏ: 50 m mang tràn ở MNLTK ≈ 4,2 m³/ngày đêm (chưa có màng) → 1,9 m³/ngày đêm (có màng). Mục tiêu của màng là an toàn thấm (chống xói ngầm, xói tiếp xúc), không phải giảm tổn thất nước.
+
+H9. 1 Lu là gì?
+    Lượng mất nước 1 lít/phút trên 1 m đoạn ép dưới áp lực 1 MPa. Đồ án quy đổi gần đúng 1 Lu ≈ 1,3·10⁻⁵ cm/s [38] → lớp II 1·10⁻⁵ cm/s ≈ 0,8 Lu.
+
+H10. Đề xuất hợp lý hóa cụ thể?
+    3 hàng ở 15 m sát tường tràn (kèm phụt tiếp xúc bằng hố nghiêng), 2 hàng A, B ở 35 m còn lại; đáy màng = mặt lớp II − 3 m nếu q ≤ 5 Lu, không sâu hơn đáy TKCS → khoan 506,0 → 365,1 m (−27,85%), phụt 430,9 → 305,9 m (−29,01%). Điều kiện: (1) màng 2 hàng K ≤ 1·10⁻⁵ cm/s; (2) lớp II q ≤ 1 Lu, tính lại gradien và thấm vòng; (3) không đạt → giữ 3 hàng toàn tuyến.
+
+H11. Mô hình dùng đỉnh +78,75 m?
+    Tính lại với +78,85 m: q và η thay đổi không quá 0,4% (mục 8.3.1).
+
+5. CÂU CHỐT NẾU THẦY VẪN CHO LÀ LẠC ĐỀ
+“Dạ, em hiểu ý Thầy. Em xin giữ phần khoan phụt vì đó là hạng mục thiết kế của đồ án, và bổ sung [phụ lục đối chứng GeoStudio – PA2] / [chuyển chuyên đề sang GeoStudio – PA4] theo ý Thầy. Thầy cho em xin hạn hoàn thành ạ.”
+
+6. SAU BUỔI GẶP
+- Gửi lại bảng V (chụp ảnh hoặc gõ lại từng mục 0 ÷ 17).
+- Nếu chọn PA2: tôi chuẩn bị bảng số liệu đầu vào cho GeoStudio (tọa độ các vùng, K, điều kiện biên, các trường hợp) và bảng so sánh kết quả; bạn dựng mô hình, chạy, chụp hình; tôi cập nhật thuyết minh, slide.
+- Nếu đổi tên (PA3) hoặc đổi chuyên đề (PA4): tôi sửa bìa chương, mục lục, kết luận, slide, bản vẽ BV-05 theo quyết định.

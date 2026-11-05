@@ -1,0 +1,13 @@
+Gỡ mục lục cũ (218 dòng, 218 bookmark) để điền lại sau khi sửa.
+Chương 2: TH2 (82,2% < 85%) ghi rõ "chưa đạt"; dẫn chiếu phân loại tình huống lũ sửa thành Bảng 4.2; tổn thất thấm cho phép dẫn [13] (TCVN 10778 đã có bản 2024).
+Mục 4.3: tràn sự cố – độ sâu đầu dốc lấy bằng h_k (P = 0, mặt cắt khống chế); nêu rõ (4-1) không có nghiệm với P = 1% (Q_max = 138,2 m3/s); cuối dốc h = 2,56 ÷ 2,91 m; tường yêu cầu 5,5 → 3,7 m.
+Mục 4.5.3: neo D25 – nêu rõ neo thụ động, cơ chế ma sát – cắt (EN 1992-1-1 mục 6.2.5 [40]); khả năng thiết kế N_tt = min(thép, bám dính vữa – đá theo FHWA [41], bám dính thép – vữa) – công thức (4-7) mới; lực cần 40 ÷ 57 kN = 23 ÷ 33% N_tt, bám dính cần 0,08 ÷ 0,12 MPa, độ mở 0,1 ÷ 0,2 mm; K 2,23/1,81 là trạng thái giới hạn; thí nghiệm kéo nhổ trước thi công đại trà.
+Mục 5.1.1, 5.1.3: tách cao trình thiết kế sau lún (+78,85 / +78,76) và cao độ nghiệm thu trước lún (≥ +78,87 / +78,78; đất đắp đến +78,62).
+Mục 5.5.1: kết luận chống xói có điều kiện – τ = 1,4 ÷ 2,2 Pa so với [τ] ≈ 1,8 ÷ 2,3 Pa (đất pha cát, đất màu) và 3,6 Pa (đất thịt chặt) theo Chow [23]; bảo vệ tạm bằng cỏ vầng/thảm xơ dừa khi cỏ chưa phủ kín.
+Mục 5.3, Bảng PL6: lưới tâm mịn – "chưa tìm thấy cung bất lợi hơn trong phạm vi khảo sát".
+Mục 6.3.1: điều kiện áp dụng công thức (6-1) sửa thành H ≤ (1,2 ÷ 1,4)h_c = 2,4 ÷ 2,8 m; H0 = 2,34 m = 1,17h_c vẫn chảy không áp; kiểm tra sơ đồ chảy qua lỗ cho +67,97 m.
+Chương 7: Bảng 7.1 đất đắp bù 1.610 → 1.700 m3 (kể dự phòng lún 2 cm); thí nghiệm kéo nhổ neo trước thi công đại trà; trồng cỏ vầng/thảm xơ dừa.
+Chương 8: "6%" → "6 điểm phần trăm"; nêu rõ η ứng với K lớp II = 1e-5 cm/s (≈ 0,8 Lu); thêm Bảng 8.8 η theo K lớp II (1e-5 ÷ 1e-4): với 5 Lu màng TKCS 32%, hợp lý hóa 26%; điều kiện q ≤ 1 Lu để giữ kết luận.
+Kết luận, kiến nghị: neo thụ động (lực cần ≤ 33% khả năng); chống xói có điều kiện; hiệu quả màng phụ thuộc K lớp II; bổ sung thí nghiệm kéo nhổ neo, đo tường bên tràn sự cố.
+Tài liệu tham khảo: [14] → TCVN 10778:2024; thêm [40] EN 1992-1-1 (mặt tiếp giáp có cốt thép), [41] FHWA GEC-4 (bám dính vữa – đá).
+Phụ lục: Bảng PL5 thêm kt_tran_su_co.py, kt_lop_II_lu.py; dòng độ nhạy mưa ghi kết luận có điều kiện.
