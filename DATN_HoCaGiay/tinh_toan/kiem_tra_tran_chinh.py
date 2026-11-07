@@ -17,6 +17,7 @@ import math
 
 import numpy as np
 
+import kiem_tra_tran_su_co as SC
 import thuy_luc_tran_chinh as T
 
 G = 9.81
@@ -59,16 +60,37 @@ def mui_phun(Q, MNL, hH, vH):
 def quan_he_Q_Z(ts, Z_ds):
     """Quan hệ Q ~ Z: tràn chính 9 / 8 khoang, tràn sự cố (như file điều tiết lũ)."""
     def q_sc(z):
-        H = max(z - ts['SC_Z'], 0.0)
-        return (1 - 0.2 * 0.70 * H / 5.0) * 0.45 * 5.0 * math.sqrt(2 * G) * H ** 1.5
+        return SC.q_sc(z - ts['SC_Z'], ts)
     kq = []
     for z in Z_ds:
         H = max(z - ts['TC_Z'], 0.0)
         kq.append(dict(Z=z, H=H, eps=T.eps(H, ts), eps_sc=T.eps(H, ts, su_co=True), q9=T.q_tran(H, ts) if H > 0 else 0.0,
-                       q8=T.q_tran(H, ts, su_co=True) if H > 0 else 0.0, qsc=q_sc(z)))
+                       q8=T.q_tran(H, ts, su_co=True) if H > 0 else 0.0, qsc=q_sc(z),
+                       eps_tsc=SC.eps_sc(max(z - ts['SC_Z'], 0.0), ts)))
     for r in kq:
         r['q_bt'], r['q_su_co'] = r['q9'] + r['qsc'], r['q8'] + r['qsc']
     return kq
+
+
+def do_nhay_doc(ts, i):
+    """Độ nhạy theo độ dốc dốc nước (hồ sơ kiểm định ghi i = 10 %): tính lại đường mặt nước lũ thiết kế, lũ kiểm tra với độ
+    dốc i (P₂ giữ nguyên) – lưu tốc cuối dốc lớn nhất, độ vượt cao tường bên nhỏ nhất."""
+    i0 = TC['i_doc']
+    TC['i_doc'] = i
+    try:
+        du_min, v_max = float('inf'), 0.0
+        for s in ('P1_BinhThuong', 'P02_BinhThuong'):
+            Q = ts[s]['qtc']
+            hc, _ = T.h_co_hep(Q, T.H0_theo_Q(Q, ts))
+            bang = T.duong_mat_nuoc(Q, hc)
+            for j, x in enumerate(range(0, int(TC['L_doc']) + 1, 5)):
+                r = [b for b in bang if abs(b['x'] - x) < 1e-6][0]
+                ht = TC['h_tuong'][j] if j < len(TC['h_tuong']) else TC['h_tuong'][-1]
+                du_min = min(du_min, ht - r['h'] * (1 + r['v'] / 100))
+            v_max = max(v_max, bang[-1]['v'])
+    finally:
+        TC['i_doc'] = i0
+    return dict(i=i, v_max=v_max, du_min=du_min)
 
 
 def tinh(ts=None):
@@ -93,7 +115,8 @@ def tinh(ts=None):
         ht = TC['h_tuong'][j] if j < len(TC['h_tuong']) else TC['h_tuong'][-1]
         hhk_a, hhk_b = a['h'] * (1 + a['v'] / 100), b['h'] * (1 + b['v'] / 100)
         doc.append(dict(x=x, B=a['B'], h_tk=a['h'], hhk_tk=hhk_a, v_tk=a['v'], h_kt=b['h'], hhk_kt=hhk_b, v_kt=b['v'], ht=ht,
-                        du_tk=ht - hhk_a, du_kt=ht - hhk_b, gia_thiet=j >= len(TC['h_tuong'])))
+                        du_tk=ht - hhk_a, du_kt=ht - hhk_b, ht_can=max(hhk_a, hhk_b) + T.A_TUONG,
+                        gia_thiet=j >= len(TC['h_tuong'])))
     Z_ds = sorted(set([round(74.70 + 0.25 * k, 2) for k in range(0, 20)] + [round(tk['MNL'], 2), round(kt['MNL'], 2)]))
     return dict(ts=ts, cap=ds, tk=tk, kt=kt, doc=doc, qz=quan_he_Q_Z(ts, Z_ds))
 

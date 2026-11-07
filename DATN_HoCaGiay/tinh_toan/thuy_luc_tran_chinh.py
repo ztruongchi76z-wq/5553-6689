@@ -47,7 +47,8 @@ def doc_excel(xlsx=XLSX):
         wb = load_workbook(os.path.join(tmp, os.path.basename(xlsx)), data_only=True)
         o = lambda ten: (lambda ws, dc: wb[ws][dc.replace('$', '')].value)(*next(wb.defined_names[ten].destinations))
         ts = {k: o(k) for k in ('TC_Z', 'TC_n', 'TC_b', 'TC_n1', 'TC_d1', 'TC_x1', 'TC_n2', 'TC_d2', 'TC_x2', 'TC_Btong',
-                                'TC_m', 'TC_xmb', 'TC_sx', 'TC_s', 'TC_n_sc', 'TC_sx_sc', 'SC_Z', 'Z0', 'Z_dinh_SC', 'Z_tuong')}
+                                'TC_m', 'TC_xmb', 'TC_sx', 'TC_s', 'TC_n_sc', 'TC_sx_sc', 'SC_Z', 'SC_n', 'SC_b', 'SC_m',
+                                'SC_xmb', 'SC_xmt', 'SC_s', 'Z0', 'Z_dinh_SC', 'Z_tuong')}
         for s in ('P1_BinhThuong', 'P02_BinhThuong', 'P1_SuCo', 'P02_SuCo'):
             ws = wb[s]
             ts[s] = dict(Z=ws['F6'].value, t=ws['F7'].value, q=ws['F8'].value, qtc=ws['F9'].value, qsc=ws['G9'].value,
@@ -57,8 +58,9 @@ def doc_excel(xlsx=XLSX):
 
 # ------------------------------------------------------------------ khả năng tháo
 def eps(H0, ts, su_co=False):
+    """ε = 1 − 0,2·(ξmb + Σξ)·(H₀/b)/n, lấy H₀/b ≤ 1 (như file điều tiết lũ, hồ sơ kiểm định)."""
     n, sx = (ts['TC_n_sc'], ts['TC_sx_sc']) if su_co else (ts['TC_n'], ts['TC_sx'])
-    return 1 - 0.2 * (ts['TC_xmb'] + sx) * H0 / (n * ts['TC_b'])
+    return 1 - 0.2 * (ts['TC_xmb'] + sx) * min(H0 / ts['TC_b'], 1.0) / n
 
 
 def q_tran(H0, ts, su_co=False):

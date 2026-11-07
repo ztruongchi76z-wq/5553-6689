@@ -5,6 +5,8 @@ Thông số (theo yêu cầu SV, 26/10/2026; ξ₁ = 0,80 theo SV 03/11/2026):
   tràn chính hiện trạng 9 khoang có cửa van, Σb = 21,6 m (9 × 2,4 m), ngưỡng +74,70; 8 trụ pin: 6 trụ giữa dày 0,6 m
   (2 trụ mới trong mỗi khoang của tràn 3 khoang ban đầu, ξ₁ = 0,80) và 2 trụ chính ban đầu dày 1,0 m (ξ₂ = 0,45);
   tràn sự cố 1 khoang có cửa van, b = 5 m, ngưỡng +71,00.
+  Co hẹp bên (SV chốt 07/11/2026 theo bình đồ cửa vào): mố bên tràn chính lượn tròn ξmb = 0,70 (tường cánh thượng lưu cong),
+  mố bên tràn sự cố vuông góc ξmb = 1,00; công thức ε lấy H/b ≤ 1 (khi H/b > 1 thì lấy H/b = 1, như hồ sơ kiểm định).
   Vận hành bình thường: khi đón lũ mọi cửa van kéo lên hoàn toàn. Sự cố: 1 cửa tràn chính không mở được (8 khoang).
   Lũ đến: đường quá trình QTVH 2026 (thu phóng trận lũ trạm Đá Bàn, 72 giờ, 8 tần suất – SV sửa 26/10, thay lũ BCNCKT
   36 giờ), tính P = 1% và 0,2%; hồ ở MNDBT khi lũ đến, Δt = 1 giờ. Vận hành trước đỉnh lũ (ô VH_mo): 1 – mở hết cửa từ
@@ -238,8 +240,9 @@ ND = [
           'mới dâng. 2 – giữ MNDBT: mở cửa từng phần cho xả đúng bằng lưu lượng đến, tới khi lũ đến lớn hơn khả năng xả khi mở '
           'hết cửa ở MNDBT thì kéo hết cửa – không hạ mực nước trước lũ, Zmax cao hơn so với cách 1 khoảng 4 ÷ 7 cm.'),
     ('M', '2. Lưu lượng qua tràn (TCVN 9147:2012 – công thức đập tràn chảy tự do)'),
-    ('c', 'q = σn·ε·m·n·b·√(2g)·H^1,5        ε = 1 − 0,2·[ξmb + Σξtrụ]·H / (n·b)        Σξtrụ = n₁·ξ₁ + n₂·ξ₂'),
-    ('-', 'H = Z − Z ngưỡng; n – số khoang làm việc; b – bề rộng một khoang; m = 0,45; ξmb = 0,70 (mố bên lượn tròn). Σξtrụ – '
+    ('c', 'q = σn·ε·m·n·b·√(2g)·H^1,5        ε = 1 − 0,2·[ξmb + Σξtrụ]·(H/b) / n,  lấy H/b ≤ 1        Σξtrụ = n₁·ξ₁ + n₂·ξ₂'),
+    ('-', 'H = Z − Z ngưỡng; n – số khoang làm việc; b – bề rộng một khoang; m = 0,45; ξmb = 0,70 (tràn chính – mố bên lượn tròn), 1,00 (tràn sự cố – mố bên vuông góc); khi H/b > 1 thì lấy H/b = 1 '
+          '(như hồ sơ kiểm định). Σξtrụ – '
           'tổng hệ số hình dạng của các trụ nằm giữa các khoang làm việc: 6 trụ giữa ξ₁ = %s và 2 trụ chính ξ₂ = %s → Σξ = %s; '
           'khi các trụ cùng loại thì Σξ = (n − 1)·ξmt như công thức TCVN 9147:2012. Bề dày trụ không có trong công thức – chỉ '
           'hình dạng đầu trụ ảnh hưởng tới co hẹp ε. Sự cố: n = 8 (coi cửa hỏng ở khoang biên – trụ giữa 0,6 m cạnh nó không '
@@ -361,7 +364,8 @@ h = khoi_thong_so(h + 1, 'B. TRÀN CHÍNH HIỆN TRẠNG (9 khoang có cửa van
     ('Tổng bề rộng tràn kể trụ pin', '=TC_n*TC_b+TC_n1*TC_d1+TC_n2*TC_d2', 'm', 'TC_Btong',
      '21,6 + 6 × 0,6 + 2 × 1,0 = 27,2 m; bề dày trụ không có trong công thức lưu lượng', '0.00'),
     ('Hệ số lưu lượng m', 0.45, '', 'TC_m', 'Như thuyết minh (mục 2.3.2)', '0.000'),
-    ('Hệ số hình dạng mố bên ξmb', 0.70, '', 'TC_xmb', 'Mố bên lượn tròn', '0.00'),
+    ('Hệ số hình dạng mố bên ξmb', 0.70, '', 'TC_xmb', 'Mố bên lượn tròn (tường cánh thượng lưu cong – bình đồ cửa vào)',
+     '0.00'),
     ('Σξ trụ khi 9 khoang làm việc', '=TC_n1*TC_x1+TC_n2*TC_x2', '', 'TC_sx',
      'n₁·ξ₁ + n₂·ξ₂ = 6 × %s + 2 × %s' % (vn(TRU['x1']), vn(TRU['x2'])), '0.00'),
     ('Hệ số chảy ngập σn', 1.0, '', 'TC_s', 'Chảy không ngập', '0.00'),
@@ -375,7 +379,7 @@ h = khoi_thong_so(h + 1, 'C. TRÀN SỰ CỐ (1 khoang có cửa van – mở ho
     ('Số khoang n', 1, 'khoang', 'SC_n', '', '0'),
     ('Bề rộng khoang b', 5.00, 'm', 'SC_b', '', '0.00'),
     ('Hệ số lưu lượng m', 0.45, '', 'SC_m', 'Như tràn chính', '0.000'),
-    ('Hệ số hình dạng mố bên ξmb', 0.70, '', 'SC_xmb', '', '0.00'),
+    ('Hệ số hình dạng mố bên ξmb', 1.00, '', 'SC_xmb', 'Mố bên vuông góc (bình đồ cửa vào, SV chốt 07/11/2026)', '0.00'),
     ('Hệ số hình dạng trụ pin ξmt', 0.45, '', 'SC_xmt', 'Không dùng khi n = 1', '0.00'),
     ('Hệ số chảy ngập σn', 1.0, '', 'SC_s', 'Chảy không ngập', '0.00'),
 ])
@@ -454,15 +458,15 @@ def bang_quan_he(ten_ws, ts, qh, tieu_de, ghi_chu, nhan_tc, goc=False):
                 'C': '=INDEX(Bang_W,{k})+(A{r}-INDEX(Bang_Z,{k}))*(INDEX(Bang_F,{k})+B{r})/2'.format(k=k, r=r),
                 'D': '=C%d*1000000/dt_s' % r,
                 'J': '=MAX(A%d-SC_Z,0)' % r,
-                'K': '=1-0.2*(SC_xmb+(SC_n-1)*SC_xmt)*J%d/(SC_n*SC_b)' % r,
+                'K': '=1-0.2*(SC_xmb+(SC_n-1)*SC_xmt)*MIN(J%d/SC_b,1)/SC_n' % r,
                 'L': '=SC_s*K{r}*SC_m*SC_n*SC_b*SQRT(2*g_)*J{r}^1.5'.format(r=r),
             }
         else:
             ct = {c: '=QuanHe!%s%d' % (c, r) for c in 'ABCDJKL'}
         ct.update({
             'E': '=MAX(A{r}-{p}Z,0)'.format(r=r, p=ts),
-            'F': '=1-0.2*({p}xmb+{p}sx)*E{r}/({p}n*{p}b)'.format(r=r, p=ts),
-            'G': '=1-0.2*({p}xmb+{p}sx_sc)*E{r}/({p}n_sc*{p}b)'.format(r=r, p=ts),
+            'F': '=1-0.2*({p}xmb+{p}sx)*MIN(E{r}/{p}b,1)/{p}n'.format(r=r, p=ts),
+            'G': '=1-0.2*({p}xmb+{p}sx_sc)*MIN(E{r}/{p}b,1)/{p}n_sc'.format(r=r, p=ts),
             'H': '={p}s*F{r}*{p}m*{p}n*{p}b*SQRT(2*g_)*E{r}^1.5'.format(r=r, p=ts),
             'I': '={p}s*G{r}*{p}m*{p}n_sc*{p}b*SQRT(2*g_)*E{r}^1.5'.format(r=r, p=ts),
             'M': '=H%d+L%d' % (r, r),
