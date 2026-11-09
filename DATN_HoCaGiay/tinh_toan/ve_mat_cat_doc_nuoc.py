@@ -67,9 +67,12 @@ def mat_cat_doc(kq):
     x_moi = xb[-1]
     # ---- nền đá, kết cấu bê tông (sân trước, ngưỡng, bản đáy dốc, mũi phun)
     x_san0 = -16.0
-    x_ng_tl = -TC['delta'] - TC['P2'] * TC['S_HL'] - TC['P1'] * TC['S_TL']
-    x_ng_dinh0 = -TC['delta'] - TC['P2'] * TC['S_HL']
-    x_ng_dinh1 = -TC['P2'] * TC['S_HL']
+    # mái hạ lưu ngưỡng: SV đo trên bình đồ (lớp "mai doc") dài 3,0 m theo phương dòng chảy (≈ 1:2,1 với P₂ = 1,40 m);
+    # dãy trụ pin cách chân ngưỡng ≈ 4,0 m
+    L_MAI_HL = 3.0
+    x_ng_dinh1 = -L_MAI_HL
+    x_ng_dinh0 = x_ng_dinh1 - TC['delta']
+    x_ng_tl = x_ng_dinh0 - TC['P1'] * TC['S_TL']
     tren = [(x_san0, Z_SAN), (x_ng_tl, Z_SAN), (x_ng_dinh0, Z_NG), (x_ng_dinh1, Z_NG), (0, Z_DD), (L, Z_CUOI)] + \
            list(zip(xb[1:], zb[1:]))
     z_day_hl = mp['Z_day']
@@ -140,7 +143,7 @@ def mat_cat_doc(kq):
                 color='#0b0b0b', zorder=8, arrowprops=dict(arrowstyle='-', color=C_PHU, lw=0.6))
     ghi = [((x_san0 + 0.4, 72.25), 'Sân lát đá ≈ +74,0'),
            ((x_ng_dinh1 + 0.3, Z_CAU_TREN + 0.2), 'Cầu giao thông ≈ +78,5 (ước lượng từ ảnh)'),
-           ((x_san0 + 0.4, 70.7), 'Ngưỡng +74,70 (TP5), sân trước +74,0 (P₁ = 0,7 m)\nbậc hạ P₂ = 1,40 m → đầu dốc +73,30 (TP7)'),
+           ((x_san0 + 0.4, 70.2), 'Ngưỡng +74,70 (TP5), sân trước +74,0 (P₁ = 0,7 m)\nbậc hạ P₂ = 1,40 m, mái hạ lưu dài 3,0 m (bình đồ)\n→ đầu dốc +73,30 (TP7), cách dãy trụ pin ≈ 4,0 m'),
            ((8, 66.9), 'DỐC NƯỚC: L = %s m, i = %s %% (QTVH); bình đồ: chân ngưỡng → cuối mũi phun 61,87 m\nđoạn thu hẹp 31 → 18 m (x = 0 ÷ 20 m), sau đó rộng 18 m' % (s1(L).replace(',0', ''), s1(I * 100).replace(',0', ''))),
            ((x_moi + 0.6, 66.25), 'Mũi phun +%s, α = %d°\n(TP11 +68,90; sơ họa, R ≈ %s m)' % (s2(K.Z_MUI), K.ALPHA_MP, s1(R))),
            ((x_moi + 15.0, mp['MNHL'] + 0.3), 'MNHL lũ kiểm tra +%s' % s2(mp['MNHL'])),
