@@ -202,7 +202,7 @@ for k, x in enumerate(X_T):
     rr = r0 + 2 + k
     ghi(sl, 'A%d' % rr, x, f_nhap, '0', nen_nhap)
     ghi(sl, 'B%d' % rr, TC['h_tuong'][k] if k < len(TC['h_tuong']) else TC['h_tuong'][-1], f_nhap, '0.00', nen_nhap)
-    ghi(sl, 'D%d' % rr, 'Hồ sơ' if k < len(TC['h_tuong']) else 'Giả thiết (bằng đoạn x = 10 ÷ 40 m)', f_ghi_chu, can=trai)
+    ghi(sl, 'D%d' % rr, 'Hồ sơ' if k < len(TC['h_tuong']) else 'Giả thiết (bằng đoạn x = 10 ÷ 40 m); ảnh: cuối dốc ≈ 2,0 m', f_ghi_chu, can=trai)
 ten('SL_xt', 'SoLieu!$A$%d:$A$%d' % (r0 + 2, r0 + 1 + len(X_T)))
 ten('SL_htgc', 'SoLieu!$D$%d:$D$%d' % (r0 + 2, r0 + 1 + len(X_T)))
 ten('SL_ht', 'SoLieu!$B$%d:$B$%d' % (r0 + 2, r0 + 1 + len(X_T)))
@@ -702,7 +702,9 @@ DONG_KL = [
     'sau ngưỡng TP7 ≈ +73,30 m → P₁ ≈ 0,7 m, P₂ ≈ 1,40 m (khớp số liệu đang dùng; hồ sơ kiểm định ghi 2,3 / 3,3 m); cuối dốc TP11 '
     '+68,90 m ≈ cao trình mũi phun +69,0 m; chân ngưỡng → cuối mũi phun dài 61,87 m (dốc 60 m, i = 8 % + mũi phun ≈ 1,9 m). Nếu '
     'coi cả đoạn là dốc đều (i = 7,1 %) hoặc theo hồ sơ kiểm định (i = 10 %): lưu tốc cuối dốc 11,4 ÷ 12,7 m/s, độ vượt cao tường '
-    'nhỏ nhất 0,74 ÷ 0,85 m – kết luận không đổi. Còn cần đo: chiều cao tường sau x = 40 m (nhất là cuối dốc), góc hắt mũi phun.',
+    'nhỏ nhất 0,74 ÷ 0,85 m – kết luận không đổi. Ảnh hiện trạng: cuối dốc là mũi phun có răng (8 ÷ 9 răng, cao ≈ 1,0 ÷ 1,35 m; '
+    '+70,24 / +70,25 là hai đầu hàng răng), tường cuối dốc ≈ 2,0 m – độ vượt cao lũ kiểm tra ≈ 0,6 m, đạt; kênh dẫn hạ lưu là lòng đá, '
+    'nhiều cây bụi – phát quang trước mùa lũ. Còn cần đo để chốt: chiều cao tường x = 40 ÷ 60 m, kích thước răng.',
     '="Tràn sự cố – khả năng xả: ε = "&FIXED(TSC_DauDoc!E5,3)&" (mố bên vuông góc, H/b ≤ 1), ε·m = "&FIXED(TSC_DauDoc!F5,3)&'
     '" ≤ giới hạn "&FIXED(TSC_mmax,3)&" của ngưỡng không có bậc hạ; xả "&FIXED(TSC_DauDoc!G5,1)&" m³/s (P = 1%) và "&'
     'FIXED(TSC_DauDoc!G7,1)&" m³/s (P = 0,2%), chiếm "&FIXED(MIN(TSC_DauDoc!I5:I8),0)&" ÷ "&FIXED(MAX(TSC_DauDoc!I5:I8),0)&'

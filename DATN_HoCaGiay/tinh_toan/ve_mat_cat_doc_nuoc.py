@@ -3,7 +3,7 @@
 HÌNH MINH HỌA (SV nhờ 09/11/2026 – "chưa hình dung được dốc nước"): mặt cắt dọc theo tim tràn chính và mặt cắt ngang dốc nước
 tại 3 vị trí. Số liệu: so_lieu.TRAN_CHINH (ngưỡng, bậc hạ, dốc), Bảng 6-7 hồ sơ kiểm định (chiều cao tường x = 0 ÷ 40 m), kết quả
 kiem_tra_tran_chinh.tinh() (mặt nước có kể hàm khí, mũi phun – hố xói lũ kiểm tra), bình đồ hiện trạng (TP5, TP7, TP11,
-+70,24/+70,25 ở hai đầu tường cuối dốc), ảnh SV chụp (cầu giao thông ≈ +78,5). Các phần chưa có số liệu (trụ pin, cửa van, mũi
++70,24/+70,25 ở hai đầu hàng răng mũi phun), ảnh SV gửi (cầu giao thông ≈ +78,5; mũi phun có răng, tường cuối dốc ≈ 2,0 m). Các phần chưa có số liệu (trụ pin, cửa van, mũi
 phun, bề dày tường, bản đáy) vẽ sơ họa – ghi rõ trên hình.
   python3 ve_mat_cat_doc_nuoc.py      → ../TAI_VE/MinhHoa_MatCatDoc_TranChinh.png, ../TAI_VE/MinhHoa_MatCatNgang_DocNuoc.png
 """
@@ -134,10 +134,14 @@ def mat_cat_doc(kq):
         ax.plot(xp, zp, 'o', ms=4.5, mfc='white', mec='#0b0b0b', mew=1.0, zorder=7)
         ax.annotate(ten, xy=(xp, zp), xytext=(dx, dy), textcoords='offset points', fontsize=7.5, color='#0b0b0b',
                     arrowprops=dict(arrowstyle='-', color=C_PHU, lw=0.6))
-    ax.plot(L, 70.25, 'X', ms=7, color=C_CANH, zorder=7)
-    ax.annotate('+70,24 / +70,25 (bình đồ, hai đầu tường cuối dốc):\nnếu là đỉnh tường thì tường chỉ cao ≈ 1,4 ÷ 1,8 m – cần kiểm tra',
-                xy=(L, 70.25), xytext=(L - 33, 74.3), fontsize=7.5, color='#0b0b0b',
-                arrowprops=dict(arrowstyle='-', color=C_CANH, lw=0.8))
+    # răng mũi phun (ảnh hiện trạng; bình đồ: +70,24 / +70,25 ở hai đầu hàng răng) và tường cuối dốc ≈ 2,0 m (ảnh)
+    ax.add_patch(Rectangle((x_moi - 1.0, 68.90), 1.0, 70.25 - 68.90, fc='#bdbcb6', ec=C_NET, lw=0.9, zorder=6))
+    ax.annotate('Răng mũi phun (8 ÷ 9 răng, bước ≈ 2 m)\nđỉnh ≈ +70,25 (bình đồ +70,24 / +70,25; ảnh hiện trạng)',
+                xy=(x_moi - 0.5, 70.25), xytext=(L - 31, 74.3), fontsize=7.5, color='#0b0b0b',
+                arrowprops=dict(arrowstyle='-', color=C_PHU, lw=0.7))
+    ax.plot(L, Z_CUOI + 2.0, 's', ms=4.5, mfc='white', mec='#0b0b0b', mew=1.0, zorder=7)
+    ax.annotate('tường cuối dốc ≈ 2,0 m (ảnh)', xy=(L, Z_CUOI + 2.0), xytext=(L - 18, 73.0), fontsize=7.5,
+                color='#0b0b0b', arrowprops=dict(arrowstyle='-', color=C_PHU, lw=0.6))
     # ---- ghi chú các bộ phận
     ax.annotate('Trụ pin, cửa van (sơ họa)', xy=(x_ng_dinh0 - 0.6, 76.2), xytext=(x_san0 + 0.4, 75.35), fontsize=7.5,
                 color='#0b0b0b', zorder=8, arrowprops=dict(arrowstyle='-', color=C_PHU, lw=0.6))
@@ -173,7 +177,7 @@ def mat_cat_ngang(kq):
     doc = {int(r['x']): r for r in kq['doc']}
     vi_tri = [(0, 'A–A: đầu dốc, x = 0 (B = %s m; tường %s m – Bảng 6-7)'),
               (30, 'B–B: đoạn lăng trụ, x = 30 m (B = %s m; tường %s m – Bảng 6-7)'),
-              (60, 'C–C: cuối dốc, x = 60 m (B = %s m; tường %s m – giả thiết)')]
+              (60, 'C–C: cuối dốc, x = 60 m (B = %s m; tường %s m – giả thiết, theo ảnh ≈ 2,0 m)')]
     fig, axs = plt.subplots(3, 1, figsize=(11.5, 9.0))
     for ax, (x, ten) in zip(axs, vi_tri):
         r = doc[x]
@@ -203,25 +207,29 @@ def mat_cat_ngang(kq):
         xk = B / 2 + T_TUONG + 0.9
         ax.annotate('', xy=(xk, z0), xytext=(xk, z0 + ht), arrowprops=dict(arrowstyle='<->', color=C_NET, lw=0.8))
         ax.text(xk + 0.3, z0 + ht / 2, 'tường %s m' % s2(ht), fontsize=8, va='center', color='#0b0b0b')
-        du = ht - r['hhk_kt']
-        ax.annotate('', xy=(B / 2 - 1.0, z0 + r['hhk_kt']), xytext=(B / 2 - 1.0, z0 + ht),
+        ht_v = 2.0 if x == 60 else ht                    # cuối dốc: độ vượt cao theo chiều cao tường ước lượng từ ảnh
+        du = ht_v - r['hhk_kt']
+        ax.annotate('', xy=(B / 2 - 1.0, z0 + r['hhk_kt']), xytext=(B / 2 - 1.0, z0 + ht_v),
                     arrowprops=dict(arrowstyle='<->', color=C_KT, lw=0.8))
-        ax.text(B / 2 - 1.3, z0 + r['hhk_kt'] + du / 2, 'vượt cao %s m' % s2(du), fontsize=8, va='center', ha='right',
-                color='#0b0b0b')
+        ax.text(B / 2 - 1.3, z0 + r['hhk_kt'] + du / 2, 'vượt cao %s m%s' % (s2(du), ' (tường ≈ 2,0 m – ảnh)' if x == 60 else ''),
+                fontsize=8, va='center', ha='right', color='#0b0b0b')
         ax.annotate('', xy=(-B / 2, z0 - T_DAY - 0.55), xytext=(B / 2, z0 - T_DAY - 0.55),
                     arrowprops=dict(arrowstyle='<->', color=C_NET, lw=0.8))
         ax.text(0, z0 - T_DAY - 0.5, 'B = %s m' % s1(B).replace(',0', ''), fontsize=8, ha='center', va='bottom', color='#0b0b0b')
         ax.text(-B / 2 + 0.3, z0 + 0.12, 'đáy +%s' % s2(z0), fontsize=7.5, color='#0b0b0b', zorder=5)
-        ax.text(-B / 2 + 0.4, z0 + ht - 0.42, 'đỉnh tường +%s' % s2(z0 + ht), fontsize=7.5, ha='left', color='#0b0b0b', zorder=5)
+        if x == 60:
+            ax.text(-B / 2 - T_TUONG - 0.2, z0 + ht + 0.12, 'đỉnh tường: giả thiết +%s; theo ảnh ≈ +%s' % (s2(z0 + ht), s2(z0 + 2.0)),
+                    fontsize=7.5, ha='right', color='#0b0b0b', zorder=5)
+        else:
+            ax.text(-B / 2 + 0.4, z0 + ht - 0.42, 'đỉnh tường +%s' % s2(z0 + ht), fontsize=7.5, ha='left', color='#0b0b0b', zorder=5)
         if x == 0:
             ax.text(-17.8, z0 + ht + 0.75, 'Bề dày tường, bản đáy vẽ sơ họa 0,5 m – đo bề dày tường trong CAD', fontsize=7.5,
                     color='#52514e', style='italic')
         if x == 60:
-            ax.plot([-B / 2 - T_TUONG, B / 2 + T_TUONG], [70.25] * 2, color=C_CANH, lw=1.2, ls=(0, (2, 2)), zorder=5)
-            ax.text(-18.2, z0 + 3.0, 'Đường đỏ: +70,25 (bình đồ, hai đầu tường cuối dốc). Nếu đây là đỉnh tường thì tường\n'
-                    'chỉ cao %s m (%s m nếu đáy là +68,90), thấp hơn mức cần = h_hk lũ kiểm tra + 0,5 m = %s m\n'
-                    '→ cần đo kiểm tra tường cuối dốc.' % (s2(70.25 - z0), s2(70.25 - 68.90), s2(r['hhk_kt'] + 0.5)),
-                    fontsize=7.5, color='#0b0b0b', va='bottom')
+            ax.plot([-B / 2 - T_TUONG, B / 2 + T_TUONG], [z0 + 2.0] * 2, color='#0b0b0b', lw=1.0, ls=(0, (1, 1.5)), zorder=5)
+            ax.text(-18.2, z0 + 3.0, 'Đường chấm: tường cuối dốc ≈ 2,0 m theo ảnh hiện trạng → vượt cao lũ kiểm tra %s m (cần ≥ 0,5 m).\n'
+                    '+70,24 / +70,25 trên bình đồ là hai đầu hàng răng mũi phun ngay sau mặt cắt này, không phải đỉnh tường.'
+                    % s2(2.0 - r['hhk_kt']), fontsize=7.5, color='#0b0b0b', va='bottom')
         ax.set_xlim(-18.5, 18.5)
         ax.set_ylim(z0 - T_DAY - 1.0, z0 + 6.4)
         ax.set_aspect(1.0)

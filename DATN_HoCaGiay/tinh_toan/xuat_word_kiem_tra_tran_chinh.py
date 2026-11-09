@@ -429,9 +429,11 @@ def main():
     gt = [r for r in doc_ if r['gia_thiet']]
     p('Đoạn x = %s ÷ %s m hồ sơ chưa ghi chiều cao tường bên, đồ án giả thiết %s m như đoạn x = 10 ÷ 40 m. Tường cần tối thiểu ở '
       'đoạn này chỉ %s ÷ %s m (mặt nước giảm dần về cuối dốc), thấp hơn chiều cao giả thiết %s m nên giả thiết không quyết định '
-      'kết luận; cần đo kiểm tra chiều cao tường thực tế để bỏ giả thiết.'
+      'kết luận. Ảnh hiện trạng đoạn cuối dốc cho thấy tường cuối dốc cao khoảng 2,0 m so với đáy (ước lượng theo bề rộng dốc '
+      '18 m); với chiều cao này độ vượt cao lũ kiểm tra ở cuối dốc là %s m, vẫn lớn hơn 0,5 m. Cần đo chiều cao tường thực tế để '
+      'bỏ giả thiết.'
       % (so(gt[0]['x'], 0), so(gt[-1]['x'], 0), s2(gt[0]['ht']), s2(min(r['ht_can'] for r in gt)), s2(max(r['ht_can'] for r in gt)),
-         s2(gt[0]['ht'] - max(r['ht_can'] for r in gt))))
+         s2(gt[0]['ht'] - max(r['ht_can'] for r in gt)), s2(2.0 - gt[-1]['hhk_kt'])))
     dn10 = K.do_nhay_doc(ts, 0.10)
     L_BD, Z_CUOI_BD = 61.87, 68.90                      # bình đồ: chân ngưỡng → cuối mũi phun (SV đo 09/11/2026); TP11
     i_tb = (TC['Z_nguong'] - TC['P2'] - Z_CUOI_BD) / L_BD
@@ -448,7 +450,12 @@ def main():
 
     # ================================================================ 4.2.3
     tieu_de(d, '4.2.3 Tiêu năng mũi phun – hố xói', 2)
-    p('Kiểm tra theo TCVN 8420:2010 (như hồ sơ kiểm định). Chiều dài phóng xa của luồng chảy khỏi mũi phun:')
+    p('Ảnh hiện trạng (đáy dốc nước, mũi phun; mũi phun, hố xói và kênh dẫn) cho thấy cuối dốc là mũi phun có răng: một hàng '
+      'khoảng 8 ÷ 9 răng bê tông xen khe ngang hết bề rộng dốc, bước khoảng 2 m, răng cao khoảng 1,0 ÷ 1,35 m (bình đồ: hai điểm '
+      '+70,24 / +70,25 ở hai đầu hàng răng, đáy cuối dốc trên tim +68,90 m). Hạ lưu là lòng dẫn đá tự nhiên, cây bụi mọc nhiều, '
+      'chưa thấy hố xói sâu sát mũi phun. Răng chia luồng phun, tăng tiêu hao năng lượng nên hố xói thực tế nhỏ hơn khi tính '
+      'theo công thức cho mũi phun trơn dưới đây – kết quả thiên an toàn. Kiểm tra theo TCVN 8420:2010 (như hồ sơ kiểm định). '
+      'Chiều dài phóng xa của luồng chảy khỏi mũi phun:')
     phuong_trinh(d, [t('L = k·'), sup(t('φ'), t('2')), t('·'), sub(t('Z'), t('H')), t('·sin2α·'),
                      ngoac([t('1 + '), can([t('1 + '), phan_so([sub(t('Z'), t('0')), t(' − '), sub(t('Z'), t('H'))],
                                                                  [sup(t('φ'), t('2')), t('·'), sub(t('Z'), t('H')), t('·'),
@@ -502,11 +509,12 @@ def main():
     gach_dau(d, 'Dốc nước: tường bên đủ chiều cao (độ vượt cao nhỏ nhất %s m); lưu tốc lớn nhất %s m/s, không xói theo lý thuyết '
                 'nhưng bề mặt nửa cuối dốc đã mài mòn – sửa chữa bề mặt bằng lớp vữa, bê tông chống mài mòn (mục 4.4).'
              % (s2(du_min['du_kt']), s2(v_max)))
-    gach_dau(d, 'Tiêu năng mũi phun – hố xói: chân mũi phun nằm ngoài đường bao hố xói (x_{TL} ≥ %s m); không sửa chữa, quan trắc '
-                'sau lũ lớn.' % s2(x_min))
+    gach_dau(d, 'Tiêu năng mũi phun có răng – hố xói: chân mũi phun nằm ngoài đường bao hố xói (x_{TL} ≥ %s m, tính theo mũi phun '
+                'trơn – thiên an toàn); không sửa chữa kết cấu; phát quang cây bụi, dọn đá lăn trong kênh dẫn hạ lưu trước mùa lũ, '
+                'quan trắc hố xói sau lũ lớn.' % s2(x_min))
     gach_dau(d, 'Số liệu: P_{1}, P_{2}, cao độ đầu và cuối dốc, chiều dài từ chân ngưỡng đến cuối mũi phun (61,87 m) đã đối chiếu '
-                'bình đồ hiện trạng; còn cần đo: chiều cao tường bên sau x = 40 m, nhất là cuối dốc (+70,24 / +70,25 trên bình đồ), '
-                'hình dạng mũi phun (góc hắt, bán kính).')
+                'bình đồ hiện trạng; ảnh hiện trạng cho tường cuối dốc cao khoảng 2,0 m và mũi phun có răng. Còn cần đo để chốt: '
+                'chiều cao tường bên đoạn x = 40 ÷ 60 m, kích thước răng mũi phun.')
 
     # ================================================================ PHỤ LỤC: bảng đường mặt nước
     tieu_de(d, 'Bảng tính đường mặt nước trên dốc nước (dùng cho %s)' % b_doc, 2)
