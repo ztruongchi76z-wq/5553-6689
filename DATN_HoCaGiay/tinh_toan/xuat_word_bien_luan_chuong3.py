@@ -3,12 +3,17 @@
 XUẤT WORD: BIỆN LUẬN CHƯƠNG 3 – GIỮ NGUYÊN HAY MỞ RỘNG TRÀN XẢ LŨ CHÍNH; GIỮ NGUYÊN CỐNG LẤY NƯỚC (cống ngầm)
 Theo gợi ý GVHD (SV gửi 02/11/2026): so sánh với mực nước lũ của thiết kế ban đầu, điều chỉnh dòng chảy (vận hành cửa van)
 để đỉnh lũ không vượt đỉnh đập; cống ngầm chôn sâu, còn tốt theo BCNCKT nên giữ nguyên.
-Số liệu:
-  - TK 1996: MNLTK +77,24 (Q1% = 847 m³/s, tràn 25 m) [KTTV Bảng 1-2]; BCNCKT 2022: +77,43 / +78,25 (tràn 25 m).
+Mục 3.3.1 không nhắc BCNCKT (SV yêu cầu 07/11/2026): chỉ so với thiết kế ban đầu; Bảng 3.1 theo mẫu bảng so sánh các phương
+án trong thuyết minh của SV (= sheet PhuongAn, mục C của file điều tiết lũ).
+Số liệu (bản 09/11/2026 – trụ pin đầu tròn ξ₁ = ξ₂ = 0,45, mố bên tràn chính ξmb = 0,70, tràn sự cố 1,00, ε lấy H/b ≤ 1):
+  - TK 1996: MNLTK +77,24 (Q1% = 847 m³/s, tràn 25 m).
   - Đồ án: lũ QTVH 72 giờ, tràn chính 9 × 2,4 m + tràn sự cố 5 m, hồ ở MNDBT khi lũ đến (DieuTietLu_Potapov_f1f2 –
-    VH_mo = 1: 77,430 / 78,389; 1 cửa không mở 77,477 / 78,458; VH_mo = 2: 78,433; VH_mo = 2 + 1 cửa: 78,504).
-  - Phương án so sánh (cùng chương trình, mở hết cửa): 10 × 2,4 = 24 m: 77,384 / 78,327; 25 m 3 khoang: 77,339 / 78,251.
-  - Dự trữ: lũ P = 0,2% tăng 4,5% thì MNLKT + 0,3 m = +78,85; tăng 12,9% thì MNLKT chạm +78,85.
+    VH_mo = 1: 77,457 / 78,388; 1 cửa không mở 77,505 / 78,455; VH_mo = 2: 77,517 / 78,429; VH_mo = 2 + 1 cửa:
+    77,567 / 78,495 – LibreOffice tính lại file với ô VH_mo = 2).
+  - Phương án so sánh (cùng chương trình, mở hết cửa): PA1 10 × 2,4 = 24 m: 77,411 / 78,329 (1 cửa không mở 77,457 /
+    78,388); PA2 25 m 3 khoang: 77,368 / 78,271; qmax lũ P = 1% / 0,2%: 309,1 / 435,9; 322,7 / 457,5; 338,0 / 477,3 m³/s.
+  - Dự trữ: lũ P = 0,2% tăng 4,6% thì MNLKT + 0,3 m = +78,85; tăng 13,4% thì MNLKT chạm +78,85 (điều tiết Python cùng
+    công thức, kiểm tra lại Zmax của file Excel sai khác ≤ 0,3 mm).
   - Cống: BTCT 1,8 × 2,0 m, dài 67 m, đặt trên lớp đá II; đỉnh cống tại tim đập ≈ +67,10; γ đất đắp 20,6 kN/m³ (Chương 6);
     Q ở MNC = 7,31 > 6,54 m³/s.
   python3 xuat_word_bien_luan_chuong3.py [đường dẫn .docx ra]
@@ -28,15 +33,21 @@ RA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DIR, '..', 'TAI_VE', 'Bi
 
 Z_DINH_TK, Z_DINH_SC, Z_TUONG = 78.50, 78.85, 79.40
 MNLTK_1996 = 77.24
-BCNCKT = (77.43, 78.25)
-HT = (77.430, 78.389)                       # tràn hiện trạng, mở hết cửa từ đầu trận lũ
-PA = [('Đồ án – thêm 1 khoang', '10 × 2,4 = 24 m', (77.384, 78.327)),
-      ('Đồ án – mở rộng về 25 m', '25 m, 3 khoang chảy tự do', (77.339, 78.251))]
-VAN_HANH = [('Kéo hết cửa van từ đầu trận lũ', 78.389),
-            ('Giữ MNDBT, khi lũ đến lớn hơn khả năng xả mới kéo hết cửa', 78.433),
-            ('Kéo hết cửa, 1 cửa tràn chính không mở được', 78.458),
-            ('Giữ MNDBT và 1 cửa tràn chính không mở được', 78.504)]
-K_DU_TRU = (4.5, 12.9)                      # % tăng lũ P = 0,2%: MNLKT + 0,3 m = +78,85; MNLKT = +78,85
+# Zmax (m) mở hết cửa từ đầu trận lũ: lũ P = 1% bình thường, P = 1% 1 cửa không mở, P = 0,2% bình thường, P = 0,2% 1 cửa
+# không mở (PA2 không có cửa van – None); qmax (m³/s) P = 1%, 0,2% bình thường
+PHUONG_AN = [
+    dict(ten='Hiện trạng 9 × 2,4 m', Sb=21.6, cua='9 cửa', Z=(77.4573, 77.5051, 78.3881, 78.4545), q=(309.1404, 435.9204)),
+    dict(ten='PA1 – xây thêm 1 khoang (Σb = 24 m)', Sb=24.0, cua='10 cửa', Z=(77.4109, 77.4573, 78.3289, 78.3881),
+         q=(322.6693, 457.4919)),
+    dict(ten='PA2 – mở rộng về 25 m (3 khoang tự do)', Sb=25.0, cua='Không (chảy tự do)', Z=(77.3684, None, 78.2711, None),
+         q=(337.9516, 477.2518)),
+]
+HT = (PHUONG_AN[0]['Z'][0], PHUONG_AN[0]['Z'][2])          # tràn hiện trạng: MNLTK, MNLKT
+VAN_HANH = [('Kéo hết cửa van từ đầu trận lũ', 78.3881),
+            ('Giữ MNDBT, khi lũ đến lớn hơn khả năng xả mới kéo hết cửa', 78.4291),
+            ('Kéo hết cửa, 1 cửa tràn chính không mở được', 78.4545),
+            ('Giữ MNDBT và 1 cửa tràn chính không mở được', 78.4952)]
+K_DU_TRU = (4.6, 13.4)                      # % tăng lũ P = 0,2%: MNLKT + 0,3 m = +78,85; MNLKT = +78,85
 GAMMA, Z_DINH_CONG = 20.6, 67.10
 
 
@@ -59,36 +70,56 @@ def main():
       'quản lý đã chia tràn thành 9 khoang × 2,4 m (Σb = 21,6 m) và lắp cửa van để tích thêm nước cuối mùa lũ; đồng thời '
       'lũ thiết kế được cập nhật tăng (Q_{1%} từ 847 m^{3}/s năm 1996 lên 921 m^{3}/s theo QTVH 2026). Cả hai thay đổi đều '
       'làm giảm khả năng tháo lũ so với thiết kế ban đầu, vì vậy cần xem xét giữ nguyên quy mô tràn chính hay phải mở rộng. '
-      'Tiêu chí đánh giá: mực nước lũ so với mực nước lũ của thiết kế ban đầu và hồ sơ BCNCKT; đỉnh lũ không vượt đỉnh đập, '
+      'Tiêu chí đánh giá: mực nước lũ so với mực nước lũ của thiết kế ban đầu; đỉnh lũ không vượt đỉnh đập, '
       'với điều kiện của TCVN 8216:2018 điều 10.1.5: đỉnh đập (không kể tường chắn sóng) ≥ MNLKT + 0,3 m, đỉnh tường chắn '
       'sóng ≥ cao trình đỉnh yêu cầu Z_{đ}.')
-    doan(d, 'a) So sánh với mực nước lũ của thiết kế ban đầu và hồ sơ BCNCKT', dam=True, nghieng=False, truoc=6, sau=2,
+    doan(d, 'a) So sánh với mực nước lũ của thiết kế ban đầu', dam=True, nghieng=False, truoc=6, sau=2,
          can=WD_ALIGN_PARAGRAPH.LEFT)
-    p('Mực nước lũ của các nguồn tài liệu và của các phương án tràn (tính cùng chương trình điều tiết, cùng điều kiện vận '
-      'hành) được tổng hợp trong Bảng 3.1.')
-    hang = [['Thiết kế ban đầu (1996)', '847 / –', '25 m, 3 khoang chảy tự do', '+' + so(MNLTK_1996), '–'],
-            ['Hồ sơ BCNCKT (2022)', '914 / 1.239', '25 m (theo thiết kế ban đầu)', '+' + so(BCNCKT[0]), '+' + so(BCNCKT[1])],
-            ['Đồ án – tràn hiện trạng', '921 / 1.239', '9 × 2,4 = 21,6 m', '+' + so(HT[0]), '+' + so(HT[1])]]
-    hang += [[ten, '921 / 1.239', b, '+' + so(z[0]), '+' + so(z[1])] for ten, b, z in PA]
-    bang(d, 'Bảng 3.1 Mực nước lũ theo các nguồn tài liệu và các phương án tràn chính',
-         ['Nguồn – trường hợp', 'Q_{max} lũ P = 1% / 0,2% (m^{3}/s)', 'Tràn chính', 'MNLTK (m)', 'MNLKT (m)'], hang,
-         cot=[2671, 1600, 2400, 1200, 1200])
-    doan(d, 'Ghi chú: các trường hợp của đồ án dùng đường quá trình lũ QTVH 2026 (72 giờ), hồ ở MNDBT khi lũ đến, cửa van tràn '
-            'chính và tràn sự cố (5 m, ngưỡng +71,00 m) kéo lên hoàn toàn khi đón lũ.', co=11, nghieng=True, truoc=2)
-    lech_kt = HT[1] - BCNCKT[1]
-    p('Nhận xét: (1) với tràn hiện trạng, MNLTK +%s m bằng trị số của hồ sơ BCNCKT và cao hơn MNLTK thiết kế ban đầu %s m; '
-      'MNLKT +%s m cao hơn BCNCKT %s m. Chênh lệch nhỏ, do lũ thiết kế cập nhật lớn hơn (+8,7%%) và tràn chính thực tế hẹp hơn '
-      'thiết kế ban đầu (21,6 so với 25 m). (2) MNLKT +%s m vẫn thấp hơn đỉnh đập thiết kế +%s m và đỉnh tường chắn sóng +%s m: '
-      'khi các cửa van được kéo hết, lũ kiểm tra không tràn qua đỉnh đập; điều chưa thỏa mãn là độ vượt cao của đỉnh đập so '
-      'với MNLKT – đỉnh đập phải ≥ MNLKT + 0,3 = +%s m. (3) Mở rộng tràn chỉ hạ MNLKT %s m (thêm 1 khoang) đến %s m (mở rộng '
-      'về 25 m); ngay cả khi mở rộng về 25 m, MNLKT + 0,3 m = +%s m vẫn cao hơn đỉnh đập +%s m, nghĩa là vẫn phải nâng đỉnh '
-      'đập. Ngược lại, chỉ cần nâng đỉnh đập thêm %s m (lên +%s m, mục 3.2) đã thỏa điều kiện với dự trữ %s m mà không phải '
-      'mở rộng tràn. (4) Mở rộng tràn phải phá dỡ và làm lại mố, trụ pin, tường bên, cầu giao thông, cửa van và có thể cả '
-      'dốc nước dài 60 m, mũi phun – các hạng mục đang còn tốt; thi công trên công trình đang khai thác, phải hạ mực nước hồ, '
-      'kinh phí lớn hơn nhiều so với đắp nâng đỉnh đập. Vì vậy mở rộng tràn chính không hợp lý về kinh tế – kỹ thuật.'
-      % (so(HT[0]), so(HT[0] - MNLTK_1996), so(HT[1]), so(lech_kt), so(HT[1]), so(Z_DINH_TK), so(Z_TUONG),
-         so(HT[1] + 0.3), so(HT[1] - PA[0][2][1]), so(HT[1] - PA[1][2][1]), so(PA[1][2][1] + 0.3), so(Z_DINH_TK),
-         so(Z_DINH_SC - Z_DINH_TK), so(Z_DINH_SC), so(Z_DINH_SC - HT[1] - 0.3)))
+    p('Hai phương án mở rộng tràn chính được tính cùng chương trình điều tiết lũ, cùng điều kiện vận hành với tràn hiện '
+      'trạng: PA1 – xây thêm 1 khoang 2,4 m có cửa van (Σb = 24 m); PA2 – đập bỏ 6 trụ phân khoang, trở về 3 khoang chảy tự do '
+      'như thiết kế ban đầu (Σb = 25 m). Kết quả so sánh cho trong Bảng 3.1.')
+    A, B, C = PHUONG_AN
+    z2 = lambda z: '–' if z is None else so(z)
+    hang = [['Bề rộng thông nước Σb'] + [so(x['Sb']) for x in PHUONG_AN] + ['m'],
+            ['Cửa van tràn chính'] + [x['cua'] for x in PHUONG_AN] + [''],
+            ['MNLTK – Zmax lũ P = 1%, vận hành bình thường'] + [z2(x['Z'][0]) for x in PHUONG_AN] + ['m'],
+            ['Zmax lũ P = 1%, sự cố 1 cửa không mở'] + [z2(x['Z'][1]) for x in PHUONG_AN] + ['m'],
+            ['MNLKT – Zmax lũ P = 0,2%, vận hành bình thường'] + [z2(x['Z'][2]) for x in PHUONG_AN] + ['m'],
+            ['Zmax lũ P = 0,2%, sự cố 1 cửa không mở'] + [z2(x['Z'][3]) for x in PHUONG_AN] + ['m'],
+            ['q_{max} lũ P = 1%, vận hành bình thường'] + [so(x['q'][0], 1) for x in PHUONG_AN] + ['m^{3}/s'],
+            ['q_{max} lũ P = 0,2%, vận hành bình thường'] + [so(x['q'][1], 1) for x in PHUONG_AN] + ['m^{3}/s'],
+            ['MNLTK thấp hơn hiện trạng', '–'] + [so(100 * (A['Z'][0] - x['Z'][0]), 1) for x in (B, C)] + ['cm'],
+            ['MNLKT thấp hơn hiện trạng', '–'] + [so(100 * (A['Z'][2] - x['Z'][2]), 1) for x in (B, C)] + ['cm'],
+            ['Đỉnh đập sau SC − MNLKT'] + [so(Z_DINH_SC - x['Z'][2]) for x in PHUONG_AN] + ['m'],
+            ['Đỉnh đập sau SC − Zmax lớn nhất (kể cả sự cố 1 cửa)']
+            + [so(Z_DINH_SC - max(z for z in x['Z'][2:] if z is not None)) for x in PHUONG_AN] + ['m']]
+    bang(d, 'Bảng 3.1 Bảng so sánh các phương án',
+         ['Chỉ tiêu', 'Hiện trạng 9 × 2,4 m', 'PA1 – xây thêm 1 khoang (Σb = 24 m)', 'PA2 – mở rộng về 25 m (3 khoang tự do)',
+          'Đơn vị'], hang, cot=[3671, 1300, 1600, 1700, 800])
+    doan(d, 'Ghi chú: các phương án dùng đường quá trình lũ QTVH 2026 (72 giờ), hồ ở MNDBT khi lũ đến, cửa van tràn chính và '
+            'tràn sự cố (5 m, ngưỡng +71,00 m) kéo lên hoàn toàn khi đón lũ; hệ số co hẹp bên: mố bên tràn chính lượn tròn '
+            'ξ_{mb} = 0,70, trụ pin đầu tròn ξ = 0,45, mố bên tràn sự cố vuông góc ξ_{mb} = 1,00, lấy H/b ≤ 1. PA2 không có '
+            'cửa van nên không có trường hợp sự cố cửa.', co=11, nghieng=True, truoc=2)
+    zt, zk, z_sc = A['Z'][0], A['Z'][2], A['Z'][3]
+    p('Nhận xét:')
+    p('(1) Với tràn hiện trạng, MNLTK +%s m, cao hơn MNLTK thiết kế ban đầu (+%s m) %s m. Chênh lệch không lớn, do lũ thiết kế '
+      'cập nhật lớn hơn (+8,7%%) và tràn chính thực tế hẹp hơn thiết kế ban đầu (21,6 so với 25 m). Thiết kế ban đầu không có '
+      'lũ kiểm tra nên chỉ so sánh được MNLTK; MNLKT của tràn hiện trạng là +%s m.'
+      % (so(zt), so(MNLTK_1996), so(zt - MNLTK_1996), so(zk)))
+    p('(2) MNLKT +%s m vẫn thấp hơn đỉnh đập thiết kế +%s m và đỉnh tường chắn sóng +%s m: khi các cửa van được kéo hết, lũ '
+      'kiểm tra không tràn qua đỉnh đập. Tuy nhiên, khi 1 cửa tràn chính không mở được, mực nước lũ lớn nhất lên tới +%s m, chỉ '
+      'thấp hơn đỉnh đập thiết kế %s m. Đồng thời độ vượt cao của đỉnh đập so với MNLKT chưa thỏa mãn, vì đỉnh đập phải ≥ '
+      'MNLKT + 0,3 = +%s m.' % (so(zk), so(Z_DINH_TK), so(Z_TUONG), so(z_sc), so(Z_DINH_TK - z_sc), so(zk + 0.3)))
+    p('(3) Mở rộng tràn chỉ hạ MNLTK %s ÷ %s cm và hạ MNLKT %s cm (thêm 1 khoang) đến %s cm (mở rộng về 25 m). Ngay cả khi mở '
+      'rộng về 25 m, MNLKT + 0,3 m = +%s m vẫn cao hơn đỉnh đập +%s m, nghĩa là vẫn phải nâng đỉnh đập. Ngược lại, chỉ cần nâng '
+      'đỉnh đập thêm %s m (lên +%s m, mục 3.2) đã thỏa điều kiện với dự trữ %s m mà không phải mở rộng tràn; kể cả khi 1 cửa '
+      'tràn chính không mở, đỉnh đập vẫn cao hơn mực nước lũ lớn nhất %s m.'
+      % (so(100 * (zt - B['Z'][0]), 1), so(100 * (zt - C['Z'][0]), 1), so(100 * (zk - B['Z'][2]), 1),
+         so(100 * (zk - C['Z'][2]), 1), so(C['Z'][2] + 0.3), so(Z_DINH_TK), so(Z_DINH_SC - Z_DINH_TK), so(Z_DINH_SC),
+         so(Z_DINH_SC - zk - 0.3), so(Z_DINH_SC - z_sc)))
+    p('(4) Mở rộng tràn phải phá dỡ và làm lại mố, trụ pin, tường bên, cầu giao thông, cửa van và có thể cả dốc nước dài 60 m, '
+      'mũi phun – các hạng mục đang còn tốt; thi công trên công trình đang khai thác, phải hạ mực nước hồ, kinh phí lớn hơn '
+      'nhiều so với đắp nâng đỉnh đập. Vì vậy mở rộng tràn chính không hợp lý về kinh tế – kỹ thuật.')
 
     doan(d, 'b) Điều chỉnh dòng chảy để đỉnh lũ không vượt đỉnh đập', dam=True, truoc=6, sau=2, can=WD_ALIGN_PARAGRAPH.LEFT)
     p('Khả năng tháo nêu trên chỉ đạt được khi các cửa van được kéo lên hoàn toàn khi đón lũ (tràn làm việc như đập tràn chảy '

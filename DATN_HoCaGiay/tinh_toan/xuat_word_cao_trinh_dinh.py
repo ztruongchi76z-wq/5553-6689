@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 XUẤT WORD MỤC 2.3 – XÁC ĐỊNH CAO TRÌNH ĐỈNH ĐẬP (đánh giá an toàn phòng lũ) ĐỂ SV DÁN VÀO THUYẾT MINH
-Mực nước theo yêu cầu SV 27/10/2026: MNDBT +74,70; MNLTK +77,43; MNLKT +78,39 (điều tiết lũ QTVH, vận hành bình
-thường). Số liệu tính bằng cao_trinh_dinh.py – cùng công thức với file Excel xuat_excel_cao_trinh_dinh.py.
+Mực nước (SV yêu cầu 27/10/2026, cập nhật 09/11/2026 – trụ pin đầu tròn ξ₁ = 0,45, ε lấy H/b ≤ 1): MNDBT +74,70;
+MNLTK +77,46; MNLKT +78,39 (điều tiết lũ QTVH, vận hành bình thường; bản 27/10: +77,43 / +78,39). Số liệu tính bằng cao_trinh_dinh.py – cùng công thức với file Excel xuat_excel_cao_trinh_dinh.py.
 Công thức là phương trình Word (OMML), bảng Times New Roman 10 pt như các bảng đã gửi.
   python3 xuat_word_cao_trinh_dinh.py [đường dẫn .docx ra]
 Mặc định: ../TAI_VE/Muc2.3_CaoTrinhDinhDap.docx
@@ -23,7 +23,7 @@ from xuat_bang_tham_docx import bang, chu, doan, so
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 RA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DIR, '..', 'TAI_VE', 'Muc2.3_CaoTrinhDinhDap.docx')
-MNDBT, MNLTK, MNLKT = 74.70, 77.43, 78.39
+MNDBT, MNLTK, MNLKT = 74.70, 77.46, 78.39
 A1, A2, A3 = CT.A_AN_TOAN['II']
 D1, D2 = 2970.0, 3025.0
 PT_MAI = 6.2                                   # phương vị pháp tuyến mái thượng lưu (°)

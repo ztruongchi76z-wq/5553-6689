@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 XUẤT FILE EXCEL: XÁC ĐỊNH CAO TRÌNH ĐỈNH ĐẬP CÀ GIÂY (mục 2.3 thuyết minh của SV) – TCVN 8216:2018, TCVN 8421:2010
-Cùng phương pháp với cao_trinh_dinh.py (đã đối chiếu toàn văn hai tiêu chuẩn đợt 6), mực nước theo yêu cầu SV
-27/10/2026: MNDBT +74,70; MNLTK +77,43, MNLKT +78,39 (điều tiết lũ QTVH 72 giờ, vận hành bình thường – file
-DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx, sheet KetQua).
+Cùng phương pháp với cao_trinh_dinh.py (đã đối chiếu toàn văn hai tiêu chuẩn đợt 6), mực nước (SV yêu cầu
+27/10/2026; cập nhật 09/11/2026 – trụ pin đầu tròn ξ₁ = 0,45, ε lấy H/b ≤ 1): MNDBT +74,70; MNLTK +77,46,
+MNLKT +78,39 (điều tiết lũ QTVH 72 giờ, vận hành bình thường – file DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx, sheet KetQua;
+bản 27/10 dùng +77,43 / +78,39).
   Z1 = MNDBT + Δh + hsl + a (gió P = 4%);  Z2 = MNLTK + Δh′ + h′sl + a′ (gió P = 50%);  Z3 = MNLKT + a″
   Δh = kw·V²·D/(g·H)·cos α, kw tra Bảng A2 (V ≤ 20 m/s: 2,1·10⁻⁶);  sóng nước sâu: TCVN 8421:2010 chỉ cho đồ thị
   (Hình 1, đường bao trên) – Excel dùng công thức xấp xỉ đường bao theo đà gió (Krưlốp); điều kiện thời gian gió
@@ -29,7 +30,7 @@ import so_lieu as S
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 RA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DIR, '..', 'TAI_VE', 'CaoTrinhDinhDap_HoCaGiay.xlsx')
-MN = dict(MNDBT=74.70, MNLTK=77.43, MNLKT=78.39)
+MN = dict(MNDBT=74.70, MNLTK=77.46, MNLKT=78.39)
 
 FONT = 'Times New Roman'
 f_thuong = Font(name=FONT, size=11)
@@ -204,7 +205,7 @@ h = khoi(h + 1, 'C. GIÓ, SÓNG VÀ MÁI ĐẬP', [
     ('Thời gian gió thổi t', 6, 'giờ', 't_gio', 'Điều kiện thời gian khi tính sóng', '0'),
     ('Hệ số quy đổi số liệu phong tiêu kfl', 1.0, '', 'k_fl', 'TCVN 8421:2010 A.3.3 – lấy bằng 1 (thiên an toàn)', '0.00'),
     ('Đà gió D khi hồ ở MNDBT', 2970, 'm', 'D_1', 'Như Bảng 2.4 (bản trước); dùng cho mọi hướng – thiên an toàn', '0'),
-    ('Đà gió D khi hồ ở MNLTK', 3025, 'm', 'D_2', 'Như trên (ứng với MNLTK +77,43 của hồ sơ BCNCKT)', '0'),
+    ('Đà gió D khi hồ ở MNLTK', 3025, 'm', 'D_2', 'Như trên (ứng với MNLTK +77,43 của hồ sơ BCNCKT; MNLTK đồ án cao hơn 3 cm – đà gió thay đổi không đáng kể)', '0'),
     ('Hệ số mái thượng lưu m (đoạn trên cơ)', 3.0, '', 'm_TL', 'Dưới cơ m = 3,5 nằm sâu hơn 0,5λ̄ (TinhSong) – không ảnh '
      'hưởng sóng leo; bảng ksp dùng hàng m = 3 ÷ 5', '0.0'),
     ('Cao trình cơ thượng lưu', S.Z_CO_TL, 'm', 'Z_co_TL', 'Thống nhất 21/10/2026', '0.00'),
