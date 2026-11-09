@@ -355,7 +355,8 @@ def main():
          cot=[2600, 2500, 2300, 1671], co=10, cot_trai=(0, 3))
     p('Hồ sơ kiểm định ghi ngưỡng có P_{1} = 2,3 m, P = 3,3 m, δ = 2,7 m, mái thượng lưu 1,75, hạ lưu 3,00. Bình đồ hiện trạng '
       '(mặt bằng nâng cấp cụm công trình đầu mối) cho cao độ sân lát đá trước ngưỡng +73,7 ÷ +74,2 m, ngưỡng +74,70 m, đáy ngay sau '
-      'ngưỡng +73,30 m, tức P_{1} ≈ 0,7 m, P_{2} ≈ 1,4 m – phù hợp số liệu đồ án sử dụng: P_{1} = %s m, P_{2} = %s m, δ = %s m, '
+      'ngưỡng +73,30 m (đường chân ngưỡng cách dãy trụ pin ≈ 4,0 m), tức P_{1} ≈ 0,7 m, P_{2} ≈ 1,4 m – phù hợp số liệu đồ án sử '
+      'dụng: P_{1} = %s m, P_{2} = %s m, δ = %s m, '
       'mái thượng lưu 1:3,0, hạ lưu 1:1,75. Hệ số lưu lượng của hai bên tương đương (0,45 và 0,445).'
       % (s2(TC['P1']), s2(TC['P2']), s2(TC['delta'])), truoc=6)
     qz = kq['qz']
@@ -432,9 +433,16 @@ def main():
       % (so(gt[0]['x'], 0), so(gt[-1]['x'], 0), s2(gt[0]['ht']), s2(min(r['ht_can'] for r in gt)), s2(max(r['ht_can'] for r in gt)),
          s2(gt[0]['ht'] - max(r['ht_can'] for r in gt))))
     dn10 = K.do_nhay_doc(ts, 0.10)
-    p('Hồ sơ kiểm định ghi độ dốc dốc nước i = 10 %% (đồ án: i = %s %% theo QTVH; P_{2} = %s m theo bình đồ). Tính lại với '
-      'i = 10 %%: lưu tốc cuối dốc lớn nhất %s m/s, độ vượt cao tường bên nhỏ nhất %s m – kết luận không đổi.'
-      % (so(TC['i_doc'] * 100, 0), s2(TC['P2']), s1(dn10['v_max']), s2(dn10['du_min'])))
+    L_BD, Z_CUOI_BD = 61.87, 68.90                      # bình đồ: chân ngưỡng → cuối mũi phun (SV đo 09/11/2026); TP11
+    i_tb = (TC['Z_nguong'] - TC['P2'] - Z_CUOI_BD) / L_BD
+    dn_tb = K.do_nhay_doc(ts, i_tb)
+    p('Trên bình đồ hiện trạng, từ chân ngưỡng (đầu dốc +73,30 m) đến cuối mũi phun (+68,90 m) theo tim tràn dài %s m: phù hợp '
+      'dốc nước dài %s m với i = %s %% (QTVH; đáy cuối dốc +%s m) và mũi phun dài khoảng %s m nâng lên khoảng %s m. Nếu coi cả '
+      'đoạn là dốc đều thì i = %s %%; tính lại với độ dốc này: lưu tốc cuối dốc lớn nhất %s m/s, độ vượt cao tường bên nhỏ nhất '
+      '%s m. Hồ sơ kiểm định ghi i = 10 %%: lưu tốc cuối dốc lớn nhất %s m/s, độ vượt cao nhỏ nhất %s m. Kết luận không đổi.'
+      % (s2(L_BD), so(TC['L_doc'], 0), so(TC['i_doc'] * 100, 0), s2(TC['Z_nguong'] - TC['P2'] - TC['i_doc'] * TC['L_doc']),
+         s1(L_BD - TC['L_doc']), s1(Z_CUOI_BD - (TC['Z_nguong'] - TC['P2'] - TC['i_doc'] * TC['L_doc'])), s1(i_tb * 100),
+         s1(dn_tb['v_max']), s2(dn_tb['du_min']), s1(dn10['v_max']), s2(dn10['du_min'])))
     ve_mat_nuoc(kq, H_MN)
     hinh(d, H_MN, '%s Đường mặt nước (có kể hàm khí) trên dốc tràn chính và đỉnh tường bên hiện trạng' % dem.hinh())
 
@@ -496,8 +504,9 @@ def main():
              % (s2(du_min['du_kt']), s2(v_max)))
     gach_dau(d, 'Tiêu năng mũi phun – hố xói: chân mũi phun nằm ngoài đường bao hố xói (x_{TL} ≥ %s m); không sửa chữa, quan trắc '
                 'sau lũ lớn.' % s2(x_min))
-    gach_dau(d, 'Số liệu: P_{1}, P_{2} và cao độ cuối dốc đã đối chiếu bình đồ hiện trạng; còn cần đối chiếu bản vẽ hoàn công hoặc '
-                'đo đạc: độ dốc và chiều dài dốc nước, chiều cao tường bên sau x = 40 m, góc hắt mũi phun.')
+    gach_dau(d, 'Số liệu: P_{1}, P_{2}, cao độ đầu và cuối dốc, chiều dài từ chân ngưỡng đến cuối mũi phun (61,87 m) đã đối chiếu '
+                'bình đồ hiện trạng; còn cần đo: chiều cao tường bên sau x = 40 m, nhất là cuối dốc (+70,24 / +70,25 trên bình đồ), '
+                'hình dạng mũi phun (góc hắt, bán kính).')
 
     # ================================================================ PHỤ LỤC: bảng đường mặt nước
     tieu_de(d, 'Bảng tính đường mặt nước trên dốc nước (dùng cho %s)' % b_doc, 2)

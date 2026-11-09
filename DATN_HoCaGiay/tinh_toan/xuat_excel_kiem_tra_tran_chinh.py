@@ -156,7 +156,7 @@ khoi('B. NGƯỠNG TRÀN, DỐC NƯỚC (QTVH Bảng 13, hồ sơ dự án, bìn
     ('Chiều cao bậc hạ sau ngưỡng P₂', TC['P2'], 'm', 'SL_P2',
      'Bình đồ: ngưỡng TP5 +74,70, đáy sau ngưỡng TP7 ≈ +73,30 (hồ sơ kiểm định ghi P = 3,3 m)', '0.00'),
     ('Cao trình đầu dốc = Z_ngưỡng − P₂', '=SL_Zn-SL_P2', 'm', 'SL_Zdd', '', '0.00'),
-    ('Chiều dài dốc', TC['L_doc'], 'm', 'SL_Ld', 'QTVH Bảng 13', '0.0'),
+    ('Chiều dài dốc', TC['L_doc'], 'm', 'SL_Ld', 'QTVH Bảng 13; bình đồ: chân ngưỡng → cuối mũi phun 61,87 m', '0.0'),
     ('Độ dốc đáy i', TC['i_doc'], '', 'SL_i', 'QTVH Bảng 13 (hồ sơ kiểm định ghi 10 %)', '0.000'),
     ('Hệ số nhám n', T.N_NHAM, '', 'SL_nn', 'Bê tông', '0.000'),
     ('Bề rộng đầu dốc', TC['b_doc_dau'], 'm', 'SL_Bd', 'Hồ sơ dự án', '0.00'),
@@ -700,8 +700,9 @@ DONG_KL = [
     '="Tiêu năng mũi phun: "&MuiPhun!A%d' % (RM1 + 2),
     'Số liệu đã đối chiếu bình đồ hiện trạng (mặt bằng nâng cấp cụm đầu mối): sân trước ngưỡng ≈ +74,0 m, ngưỡng TP5 +74,70 m, đáy '
     'sau ngưỡng TP7 ≈ +73,30 m → P₁ ≈ 0,7 m, P₂ ≈ 1,40 m (khớp số liệu đang dùng; hồ sơ kiểm định ghi 2,3 / 3,3 m); cuối dốc TP11 '
-    '+68,90 m ≈ cao trình mũi phun +69,0 m. Còn cần đối chiếu: độ dốc dốc nước (8 % – hồ sơ kiểm định 10 %), chiều cao tường sau '
-    'x = 40 m, góc hắt. Tính lại với i = 10 %: lưu tốc cuối dốc 12,7 m/s, độ vượt cao tường nhỏ nhất 0,85 m – kết luận không đổi.',
+    '+68,90 m ≈ cao trình mũi phun +69,0 m; chân ngưỡng → cuối mũi phun dài 61,87 m (dốc 60 m, i = 8 % + mũi phun ≈ 1,9 m). Nếu '
+    'coi cả đoạn là dốc đều (i = 7,1 %) hoặc theo hồ sơ kiểm định (i = 10 %): lưu tốc cuối dốc 11,4 ÷ 12,7 m/s, độ vượt cao tường '
+    'nhỏ nhất 0,74 ÷ 0,85 m – kết luận không đổi. Còn cần đo: chiều cao tường sau x = 40 m (nhất là cuối dốc), góc hắt mũi phun.',
     '="Tràn sự cố – khả năng xả: ε = "&FIXED(TSC_DauDoc!E5,3)&" (mố bên vuông góc, H/b ≤ 1), ε·m = "&FIXED(TSC_DauDoc!F5,3)&'
     '" ≤ giới hạn "&FIXED(TSC_mmax,3)&" của ngưỡng không có bậc hạ; xả "&FIXED(TSC_DauDoc!G5,1)&" m³/s (P = 1%) và "&'
     'FIXED(TSC_DauDoc!G7,1)&" m³/s (P = 0,2%), chiếm "&FIXED(MIN(TSC_DauDoc!I5:I8),0)&" ÷ "&FIXED(MAX(TSC_DauDoc!I5:I8),0)&'

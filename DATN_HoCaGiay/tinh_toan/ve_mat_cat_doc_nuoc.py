@@ -141,7 +141,7 @@ def mat_cat_doc(kq):
     ghi = [((x_san0 + 0.4, 72.25), 'Sân lát đá ≈ +74,0'),
            ((x_ng_dinh1 + 0.3, Z_CAU_TREN + 0.2), 'Cầu giao thông ≈ +78,5 (ước lượng từ ảnh)'),
            ((x_san0 + 0.4, 70.7), 'Ngưỡng +74,70 (TP5), sân trước +74,0 (P₁ = 0,7 m)\nbậc hạ P₂ = 1,40 m → đầu dốc +73,30 (TP7)'),
-           ((8, 66.9), 'DỐC NƯỚC: L = %s m, i = %s %% (QTVH)\nđoạn thu hẹp 31 → 18 m (x = 0 ÷ 20 m), sau đó rộng 18 m' % (s1(L).replace(',0', ''), s1(I * 100).replace(',0', ''))),
+           ((8, 66.9), 'DỐC NƯỚC: L = %s m, i = %s %% (QTVH); bình đồ: chân ngưỡng → cuối mũi phun 61,87 m\nđoạn thu hẹp 31 → 18 m (x = 0 ÷ 20 m), sau đó rộng 18 m' % (s1(L).replace(',0', ''), s1(I * 100).replace(',0', ''))),
            ((x_moi + 0.6, 66.25), 'Mũi phun +%s, α = %d°\n(TP11 +68,90; sơ họa, R ≈ %s m)' % (s2(K.Z_MUI), K.ALPHA_MP, s1(R))),
            ((x_moi + 15.0, mp['MNHL'] + 0.3), 'MNHL lũ kiểm tra +%s' % s2(mp['MNHL'])),
            ((x_moi + 3.0, 61.0), 'Hố xói lũ kiểm tra: sâu %s m, cách mũi phun %s ÷ %s m' % (s2(hx), s2(mp['x_tl']), s2(mp['x_hl']))),
