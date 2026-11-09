@@ -137,9 +137,11 @@ khoi('A. TRÀN CHÍNH HIỆN TRẠNG VÀ TRÀN SỰ CỐ (file điều tiết l�
     ('Số khoang n', ts['TC_n'], 'khoang', 'SL_nk', '', '0'),
     ('Bề rộng một khoang b', ts['TC_b'], 'm', 'SL_b', '', '0.00'),
     ('Số trụ giữa n₁ / hệ số ξ₁', ts['TC_n1'], 'trụ', 'SL_n1', '', '0'),
-    ('Hệ số hình dạng trụ giữa ξ₁', ts['TC_x1'], '', 'SL_x1', 'Số liệu SV (03/11/2026)', '0.00'),
+    ('Hệ số hình dạng trụ giữa ξ₁', ts['TC_x1'], '', 'SL_x1', 'Đầu trụ phía thượng lưu lượn tròn (bình đồ, SV chốt 09/11/2026)',
+     '0.00'),
     ('Số trụ chính n₂', ts['TC_n2'], 'trụ', 'SL_n2', '', '0'),
-    ('Hệ số hình dạng trụ chính ξ₂', ts['TC_x2'], '', 'SL_x2', '', '0.00'),
+    ('Hệ số hình dạng trụ chính ξ₂', ts['TC_x2'], '', 'SL_x2', 'Đầu trụ lượn tròn như trụ giữa; đuôi trụ không ảnh hưởng (chảy '
+     'không ngập)', '0.00'),
     ('Hệ số hình dạng mố bên ξmb', ts['TC_xmb'], '', 'SL_xmb', 'Mố bên lượn tròn (tường cánh thượng lưu cong – bình đồ)',
      '0.00'),
     ('Hệ số lưu lượng m', ts['TC_m'], '', 'SL_m', 'Hồ sơ kiểm định: 0,445', '0.000'),
@@ -689,6 +691,12 @@ in_an(st)
 kl = wb.create_sheet('KetLuan')
 rong(kl, (3, 130))
 tieu_de_sheet(kl, 'KẾT LUẬN KIỂM TRA TRÀN CHÍNH, TRÀN SỰ CỐ (tự cập nhật)')
+_KQ = K.tinh(ts)
+_L_BD, _Z_CUOI_BD = 61.87, 68.90                    # bình đồ: chân ngưỡng → cuối mũi phun; TP11 (SV đo 09/11/2026)
+_I_TB = (TC['Z_nguong'] - TC['P2'] - _Z_CUOI_BD) / _L_BD
+_DN = [K.do_nhay_doc(ts, _I_TB), K.do_nhay_doc(ts, 0.10)]
+_DU_ANH = 2.0 - _KQ['doc'][-1]['hhk_kt']             # tường cuối dốc ≈ 2,0 m (ảnh hiện trạng)
+_vn = lambda x, n=2: ('%.*f' % (n, x)).replace('.', ',')
 DONG_KL = [
     '="Khả năng xả: MNLTK = +"&FIXED(SL_ZTK,2)&" m, MNLKT = +"&FIXED(SL_ZKT,2)&" m (1 cửa tràn chính không mở: +"&FIXED(SL_ZTKs,2)&'
     '" / +"&FIXED(SL_ZKTs,2)&" m); đỉnh đập sau sửa chữa +"&FIXED(SL_Zdinh,2)&" m cao hơn MNLKT "&FIXED(SL_Zdinh-SL_ZKT,2)&" m."',
@@ -698,13 +706,16 @@ DONG_KL = [
     % (RT1, RT1, RT1),
     '="Dốc nước – đoạn tường giả thiết: "&DocNuoc!A%d' % (RT1 + 3),
     '="Tiêu năng mũi phun: "&MuiPhun!A%d' % (RM1 + 2),
-    'Số liệu đã đối chiếu bình đồ hiện trạng (mặt bằng nâng cấp cụm đầu mối): sân trước ngưỡng ≈ +74,0 m, ngưỡng TP5 +74,70 m, đáy '
+    ('Số liệu đã đối chiếu bình đồ hiện trạng (mặt bằng nâng cấp cụm đầu mối): sân trước ngưỡng ≈ +74,0 m, ngưỡng TP5 +74,70 m, đáy '
     'sau ngưỡng TP7 ≈ +73,30 m → P₁ ≈ 0,7 m, P₂ ≈ 1,40 m (khớp số liệu đang dùng; hồ sơ kiểm định ghi 2,3 / 3,3 m); cuối dốc TP11 '
     '+68,90 m ≈ cao trình mũi phun +69,0 m; chân ngưỡng → cuối mũi phun dài 61,87 m (dốc 60 m, i = 8 % + mũi phun ≈ 1,9 m). Nếu '
-    'coi cả đoạn là dốc đều (i = 7,1 %) hoặc theo hồ sơ kiểm định (i = 10 %): lưu tốc cuối dốc 11,4 ÷ 12,7 m/s, độ vượt cao tường '
-    'nhỏ nhất 0,74 ÷ 0,85 m – kết luận không đổi. Ảnh hiện trạng: cuối dốc là mũi phun có răng (8 ÷ 9 răng, cao ≈ 1,0 ÷ 1,35 m; '
-    '+70,24 / +70,25 là hai đầu hàng răng), tường cuối dốc ≈ 2,0 m – độ vượt cao lũ kiểm tra ≈ 0,6 m, đạt; kênh dẫn hạ lưu là lòng đá, '
-    'nhiều cây bụi – phát quang trước mùa lũ. Còn cần đo để chốt: chiều cao tường x = 40 ÷ 60 m, kích thước răng.',
+    'coi cả đoạn là dốc đều (i = {0} %) hoặc theo hồ sơ kiểm định (i = 10 %): lưu tốc cuối dốc {1} ÷ {2} m/s, độ vượt cao tường '
+    'nhỏ nhất {3} ÷ {4} m – kết luận không đổi. Ảnh hiện trạng: cuối dốc là mũi phun có răng (8 ÷ 9 răng, cao ≈ 1,0 ÷ 1,35 m; '
+    '+70,24 / +70,25 là hai đầu hàng răng), tường cuối dốc ≈ 2,0 m – độ vượt cao lũ kiểm tra ≈ {5} m, {6}; kênh dẫn hạ lưu là lòng '
+    'đá, nhiều cây bụi – phát quang trước mùa lũ. Còn cần đo để chốt: chiều cao tường x = 40 ÷ 60 m, kích thước răng.').format(
+        _vn(_I_TB * 100, 1), _vn(min(d['v_max'] for d in _DN), 1), _vn(max(d['v_max'] for d in _DN), 1),
+        _vn(min(d['du_min'] for d in _DN)), _vn(max(d['du_min'] for d in _DN)), _vn(_DU_ANH),
+        'đạt' if _DU_ANH >= T.A_TUONG else 'chưa đạt – cần đo, nâng tường'),
     '="Tràn sự cố – khả năng xả: ε = "&FIXED(TSC_DauDoc!E5,3)&" (mố bên vuông góc, H/b ≤ 1), ε·m = "&FIXED(TSC_DauDoc!F5,3)&'
     '" ≤ giới hạn "&FIXED(TSC_mmax,3)&" của ngưỡng không có bậc hạ; xả "&FIXED(TSC_DauDoc!G5,1)&" m³/s (P = 1%) và "&'
     'FIXED(TSC_DauDoc!G7,1)&" m³/s (P = 0,2%), chiếm "&FIXED(MIN(TSC_DauDoc!I5:I8),0)&" ÷ "&FIXED(MAX(TSC_DauDoc!I5:I8),0)&'

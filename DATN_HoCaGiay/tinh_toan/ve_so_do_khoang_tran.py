@@ -6,7 +6,9 @@ SƠ ĐỒ KHOANG TRÀN CHÍNH – TRƯỜNG HỢP SỰ CỐ 1 CỬA KHÔNG MỞ 
   2 trụ chính ban đầu 1,0 m (T3, T6) – tổng bề rộng 27,2 m.
   (a) cửa khoang biên K1 không mở – trường hợp tính trong file Excel: 8 khoang xả liền nhau K2 ÷ K9, trụ T1 cạnh khoang
       đóng làm việc như tường bên của nhóm → 7 trụ giữa các khoang xả: Σξ = 5 × 0,45 + 2 × 0,45 = 3,15.
-  (b) cửa khoang giữa K5 không mở – để so sánh: hai nhóm 4 khoang, Zmax cao hơn (a) 0,3 ÷ 0,6 cm (lũ QTVH 72 giờ).
+  (b) cửa khoang giữa K5 không mở – để so sánh: hai nhóm 4 khoang, Zmax cao hơn (a) 0,2 ÷ 0,4 cm (lũ QTVH 72 giờ; tính lại
+      09/11/2026 với ξ₁ = ξ₂ = 0,45 – đầu trụ phía thượng lưu lượn tròn, ε lấy H/b ≤ 1; trụ cạnh khoang đóng coi như mố
+      bên ξ = 0,70).
 
   python3 ve_so_do_khoang_tran.py [đường dẫn .png ra]
 Mặc định: ../TAI_VE/SoDo_KhoangTranChinh_SuCo.png
@@ -101,10 +103,10 @@ ve(axs[0], 1, '(a) Sự cố tính trong file Excel: cửa khoang biên K1 khôn
    '• Khoang biên = khoang sát mố bên: K1 hoặc K9 (đối xứng – kết quả như nhau).\n'
    '• K1 đóng → còn 8 khoang xả liền nhau K2 ÷ K9. Trụ T1 nằm giữa khoang đóng và khoang xả nên làm việc như\n'
    '   tường bên của nhóm, không tính là trụ giữa hai khoang xả → còn 7 trụ T2 ÷ T8 (5 trụ 0,6 m + 2 trụ 1,0 m):\n'
-   '   Σξ = 5 × 0,45 + 2 × 0,45 = 3,15;  ε = 1 − 0,2·(ξmb + Σξ)·H / (8 × 2,4).')
+   '   Σξ = 5 × 0,45 + 2 × 0,45 = 3,15 (đầu trụ phía thượng lưu lượn tròn);  ε = 1 − 0,2·(ξmb + Σξ)·(H/b) / 8, lấy H/b ≤ 1.')
 ve(axs[1], 5, '(b) Để so sánh: cửa khoang giữa K5 không mở',
    '• Hai nhóm 4 khoang xả K1 ÷ K4 và K6 ÷ K9; T4 và T5 cạnh khoang đóng làm việc như tường bên của mỗi nhóm.\n'
-   '• Thêm một chỗ co hẹp bên nên xả kém hơn (a) một chút: Zmax chỉ cao hơn 0,3 ÷ 0,6 cm (lũ QTVH, P = 1% và 0,2%)\n'
+   '• Thêm một chỗ co hẹp bên nên xả kém hơn (a) một chút: Zmax chỉ cao hơn 0,2 ÷ 0,4 cm (lũ QTVH, P = 1% và 0,2%)\n'
    '   → chọn (a) để tính là đủ, chênh lệch không đáng kể.')
 fig.legend(handles=[Patch(fc=MAU['tru6'], ec=MAU['chu'], lw=0.6, label='trụ giữa 0,6 m (mới)'),
                     Patch(fc=MAU['tru10'], ec=MAU['chu'], lw=0.6, label='trụ chính ban đầu 1,0 m'),

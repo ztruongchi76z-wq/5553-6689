@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 XUẤT FILE EXCEL: ĐIỀU TIẾT LŨ HỒ CÀ GIÂY – PHƯƠNG PHÁP PÔ-TA-PỐP VỚI HAI ĐƯỜNG PHỤ TRỢ q ~ f₁ VÀ q ~ f₂
-Thông số (theo yêu cầu SV, 26/10/2026; ξ₁ = 0,80 theo SV 03/11/2026):
+Thông số (theo yêu cầu SV, 26/10/2026; ξ₁ = 0,45 – đầu trụ phía thượng lưu lượn tròn theo bình đồ, SV chốt 09/11/2026;
+  bản 03/11 – 08/11 dùng ξ₁ = 0,80):
   tràn chính hiện trạng 9 khoang có cửa van, Σb = 21,6 m (9 × 2,4 m), ngưỡng +74,70; 8 trụ pin: 6 trụ giữa dày 0,6 m
-  (2 trụ mới trong mỗi khoang của tràn 3 khoang ban đầu, ξ₁ = 0,80) và 2 trụ chính ban đầu dày 1,0 m (ξ₂ = 0,45);
+  (2 trụ mới trong mỗi khoang của tràn 3 khoang ban đầu, ξ₁ = 0,45) và 2 trụ chính ban đầu dày 1,0 m (ξ₂ = 0,45);
   tràn sự cố 1 khoang có cửa van, b = 5 m, ngưỡng +71,00.
   Co hẹp bên (SV chốt 07/11/2026 theo bình đồ cửa vào): mố bên tràn chính lượn tròn ξmb = 0,70 (tường cánh thượng lưu cong),
   mố bên tràn sự cố vuông góc ξmb = 1,00; công thức ε lấy H/b ≤ 1 (khi H/b > 1 thì lấy H/b = 1, như hồ sơ kiểm định).
@@ -40,8 +41,9 @@ import so_lieu as S
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 RA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DIR, '..', 'TAI_VE', 'DieuTietLu_Potapov_f1f2_HoCaGiay.xlsx')
-# Tràn chính hiện trạng. Trụ giữa 0,6 m: ξ₁ = 0,80, trụ chính ban đầu 1,0 m: ξ₂ = 0,45 (số liệu SV 03/11/2026)
-TRU = dict(d1=0.60, x1=0.80, d2=1.00, x2=0.45)
+# Tràn chính hiện trạng. Trụ giữa 0,6 m và trụ chính ban đầu 1,0 m đều có đầu phía thượng lưu lượn tròn (bình đồ, SV chốt
+# 09/11/2026): ξ₁ = ξ₂ = 0,45. Đuôi trụ phía hạ lưu (6 trụ giữa vuông, 2 trụ chính bo tròn) không ảnh hưởng – chảy tự do.
+TRU = dict(d1=0.60, x1=0.45, d2=1.00, x2=0.45)
 N_K, B_K, N1 = 9, 2.40, 6
 SB = N_K * B_K                                     # 21,6 m
 SX = N1 * TRU['x1'] + 2 * TRU['x2']                # Σξ trụ khi 9 khoang làm việc
@@ -354,11 +356,11 @@ h = khoi_thong_so(h + 1, 'B. TRÀN CHÍNH HIỆN TRẠNG (9 khoang có cửa van
     ('Bề rộng một khoang b', B_K, 'm', 'TC_b', 'Σb = 9 × 2,4 = 21,6 m', '0.00'),
     ('Số trụ giữa n₁', N1, 'trụ', 'TC_n1', '2 trụ mới trong mỗi khoang của tràn ban đầu', '0'),
     ('Bề dày trụ giữa d₁', TRU['d1'], 'm', 'TC_d1', '', '0.00'),
-    ('Hệ số hình dạng trụ giữa ξ₁', TRU['x1'], '', 'TC_x1', 'Theo số liệu SV (03/11/2026); kiểm tra theo hình dạng đầu trụ',
+    ('Hệ số hình dạng trụ giữa ξ₁', TRU['x1'], '', 'TC_x1', 'Đầu trụ phía thượng lưu lượn tròn (bình đồ, SV chốt 09/11/2026)',
      '0.00'),
     ('Số trụ chính ban đầu n₂', 2, 'trụ', 'TC_n2', 'Trụ của tràn 3 khoang ban đầu (giữ lại)', '0'),
     ('Bề dày trụ chính d₂', TRU['d2'], 'm', 'TC_d2', '', '0.00'),
-    ('Hệ số hình dạng trụ chính ξ₂', TRU['x2'], '', 'TC_x2', 'Đầu trụ lượn tròn', '0.00'),
+    ('Hệ số hình dạng trụ chính ξ₂', TRU['x2'], '', 'TC_x2', 'Đầu trụ lượn tròn như trụ giữa', '0.00'),
     ('Kiểm tra: n₁ + n₂ = n − 1', '=IF(TC_n1+TC_n2=TC_n-1,"Đúng","Sai – sửa số trụ")', '', None,
      '9 khoang có 8 trụ nằm giữa các khoang', None),
     ('Tổng bề rộng tràn kể trụ pin', '=TC_n*TC_b+TC_n1*TC_d1+TC_n2*TC_d2', 'm', 'TC_Btong',
