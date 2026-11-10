@@ -235,7 +235,8 @@ def muc_tran_su_co(d, dem, kq):
     can_cuoi = max(c['cuoi']['ht_can'] for c in ca)
     v_max = max(c['v_max'] for c in ca)
     p('Tường bên dốc nước tràn sự cố cần cao tối thiểu %s m ở đầu dốc và %s m ở cuối dốc (Hình %s). Hồ sơ hiện có chưa ghi chiều '
-      'cao tường bên dốc nước tràn sự cố nên cần đo đạc đối chiếu với các trị số này. Lưu tốc lớn nhất %s m/s nhỏ hơn lưu tốc cho '
+      'cao tường bên dốc nước tràn sự cố (chỉ có bình đồ tổng thể, không có bản vẽ tràn); các trị số này dùng để đối chiếu khi '
+      'khảo sát lập bản vẽ thi công. Lưu tốc lớn nhất %s m/s nhỏ hơn lưu tốc cho '
       'phép không xói %s m/s (bê tông M200, như dốc tràn chính) – dốc nước không xói theo lý thuyết; nửa cuối dốc có lưu tốc trên '
       '10 m/s nên khi lát lại tấm, sửa bề mặt cần bảo đảm độ phẳng như dốc tràn chính (mục 4.4).'
       % (s2(can_dau), s2(can_cuoi), '4.%d' % dem.h, s2(v_max), so(SC.V_KX, 1)), truoc=6)
@@ -259,8 +260,8 @@ def muc_tran_su_co(d, dem, kq):
     gach_dau(d, 'Khả năng xả: tràn sự cố xả %s m^{3}/s (lũ thiết kế) và %s m^{3}/s (lũ kiểm tra), chiếm %s ÷ %s %% lưu lượng xả của '
                 'hồ; hệ số ε·m = %s (mố bên vuông góc, H_{0}/b ≤ 1) không vượt giới hạn %s của ngưỡng không có bậc hạ.'
              % (s2(tk['Q']), s2(kt['Q']), so(min(ty), 0), so(max(ty), 0), s3(tk['m0']), s3(sc['m_max'])))
-    gach_dau(d, 'Dốc nước: dòng xiết từ h_{k} ở đầu dốc; tường bên cần cao tối thiểu %s m (đầu dốc) ÷ %s m (cuối dốc) – cần đo '
-                'chiều cao tường thực tế để đối chiếu; lưu tốc lớn nhất %s m/s, không xói theo lý thuyết.'
+    gach_dau(d, 'Dốc nước: dòng xiết từ h_{k} ở đầu dốc; tường bên cần cao tối thiểu %s m (đầu dốc) ÷ %s m (cuối dốc) – kiến nghị '
+                'đo kiểm tra chiều cao tường thực tế khi khảo sát lập bản vẽ thi công; lưu tốc lớn nhất %s m/s, không xói theo lý thuyết.'
              % (s2(can_dau), s2(can_cuoi), s2(v_max)))
     gach_dau(d, 'Tiêu năng cuối dốc: chưa có hồ sơ để kiểm tra; khảo sát kênh xả, hố xói hạ lưu và quan trắc sau lũ lớn.')
     gach_dau(d, 'Sửa chữa tràn sự cố: chống thấm mang trái (chương 8), lát lại tấm mái bị gãy và xử lý hố sụt sau tường cánh (mục '
@@ -434,18 +435,18 @@ def main():
     gt = [r for r in doc_ if r['gia_thiet']]
     H_ANH = 2.0                                          # tường cuối dốc ước lượng theo ảnh hiện trạng (m)
     thieu = [r for r in gt if H_ANH - max(r['hhk_tk'], r['hhk_kt']) < T.A_TUONG]
-    p('Đoạn x = %s ÷ %s m hồ sơ chưa ghi chiều cao tường bên, đồ án giả thiết %s m như đoạn x = 10 ÷ 40 m. Tường cần tối thiểu ở '
-      'đoạn này chỉ %s ÷ %s m (mặt nước giảm dần về cuối dốc), thấp hơn chiều cao giả thiết %s m nên giả thiết không quyết định '
-      'kết luận. Ảnh hiện trạng đoạn cuối dốc cho thấy tường cuối dốc cao khoảng %s m so với đáy (ước lượng theo bề rộng dốc '
-      '18 m); với chiều cao này độ vượt cao lũ kiểm tra ở cuối dốc là %s m, %s 0,5 m. %s'
+    p('Đoạn x = %s ÷ %s m hồ sơ chưa ghi chiều cao tường bên; tài liệu hiện có chỉ gồm bình đồ tổng thể cụm đầu mối, không có '
+      'bản vẽ tràn, nên đồ án tạm lấy chiều cao tường đoạn này bằng %s m như đoạn x = 10 ÷ 40 m. Tường cần tối thiểu ở đoạn này '
+      '%s ÷ %s m (mặt nước giảm dần về cuối dốc), thấp hơn chiều cao giả thiết %s m – với giả thiết này tường đủ chiều cao. '
+      'Ảnh hiện trạng cho thấy tường cuối dốc có thể chỉ cao khoảng %s m so với đáy (ước lượng theo bề rộng dốc 18 m): ở cuối '
+      'dốc độ vượt cao lũ kiểm tra là %s m (%s 0,5 m)%s. Vì vậy kiến nghị khi khảo sát lập bản vẽ thi công đo kiểm tra chiều '
+      'cao tường đoạn x = 40 ÷ 60 m; chỗ nào thấp hơn tường cần tối thiểu (cột cuối %s) thì nâng tường cho đủ.'
       % (so(gt[0]['x'], 0), so(gt[-1]['x'], 0), s2(gt[0]['ht']), s2(min(r['ht_can'] for r in gt)), s2(max(r['ht_can'] for r in gt)),
          s2(gt[0]['ht'] - max(r['ht_can'] for r in gt)), so(H_ANH, 1), s2(H_ANH - gt[-1]['hhk_kt']),
-         'vẫn lớn hơn' if H_ANH - gt[-1]['hhk_kt'] >= T.A_TUONG else 'nhỏ hơn',
-         ('Nếu đoạn x = %s ÷ %s m tường cũng chỉ cao khoảng %s m thì độ vượt cao còn %s ÷ %s m, thiếu vài cm so với 0,5 m – cần đo '
-          'chiều cao tường thực tế đoạn x = 40 ÷ 60 m để chốt (tường cần tối thiểu ghi ở cột cuối %s).'
+         'lớn hơn' if H_ANH - gt[-1]['hhk_kt'] >= T.A_TUONG else 'nhỏ hơn',
+         (', nhưng nếu đoạn x = %s ÷ %s m tường cũng chỉ cao khoảng %s m thì độ vượt cao còn %s ÷ %s m, thiếu vài cm'
           % (so(thieu[0]['x'], 0), so(thieu[-1]['x'], 0), so(H_ANH, 1), s2(min(H_ANH - r['hhk_kt'] for r in thieu)),
-             s2(max(H_ANH - r['hhk_kt'] for r in thieu)), b_doc)) if thieu else
-         'Cần đo chiều cao tường thực tế để bỏ giả thiết.'))
+             s2(max(H_ANH - r['hhk_kt'] for r in thieu)))) if thieu else '', b_doc))
     dn10 = K.do_nhay_doc(ts, 0.10)
     L_BD, Z_CUOI_BD = 61.87, 68.90                      # bình đồ: chân ngưỡng → cuối mũi phun (SV đo 09/11/2026); TP11
     i_tb = (TC['Z_nguong'] - TC['P2'] - Z_CUOI_BD) / L_BD
@@ -527,8 +528,9 @@ def main():
                 'trơn – thiên an toàn); không sửa chữa kết cấu; phát quang cây bụi, dọn đá lăn trong kênh dẫn hạ lưu trước mùa lũ, '
                 'quan trắc hố xói sau lũ lớn.' % s2(x_min))
     gach_dau(d, 'Số liệu: P_{1}, P_{2}, cao độ đầu và cuối dốc, chiều dài từ chân ngưỡng đến cuối mũi phun (61,87 m) đã đối chiếu '
-                'bình đồ hiện trạng; ảnh hiện trạng cho tường cuối dốc cao khoảng 2,0 m và mũi phun có răng. Còn cần đo để chốt: '
-                'chiều cao tường bên đoạn x = 40 ÷ 60 m, kích thước răng mũi phun.')
+                'bình đồ hiện trạng; chiều cao tường bên đoạn x = 45 ÷ 60 m tạm lấy theo giả thiết 2,5 m (không có bản vẽ tràn). Kiến '
+                'nghị khi khảo sát lập bản vẽ thi công: đo chiều cao tường đoạn x = 40 ÷ 60 m (ảnh hiện trạng cho thấy tường cuối '
+                'dốc có thể chỉ khoảng 2,0 m – chỗ nào thấp hơn tường cần tối thiểu thì nâng tường) và kích thước răng mũi phun.')
 
     # ================================================================ PHỤ LỤC: bảng đường mặt nước
     tieu_de(d, 'Bảng tính đường mặt nước trên dốc nước (dùng cho %s)' % b_doc, 2)

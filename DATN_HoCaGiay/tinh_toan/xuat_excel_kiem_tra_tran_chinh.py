@@ -204,7 +204,7 @@ for k, x in enumerate(X_T):
     rr = r0 + 2 + k
     ghi(sl, 'A%d' % rr, x, f_nhap, '0', nen_nhap)
     ghi(sl, 'B%d' % rr, TC['h_tuong'][k] if k < len(TC['h_tuong']) else TC['h_tuong'][-1], f_nhap, '0.00', nen_nhap)
-    ghi(sl, 'D%d' % rr, 'Hồ sơ' if k < len(TC['h_tuong']) else 'Giả thiết (bằng đoạn x = 10 ÷ 40 m); ảnh: cuối dốc ≈ 2,0 m', f_ghi_chu, can=trai)
+    ghi(sl, 'D%d' % rr, 'Hồ sơ' if k < len(TC['h_tuong']) else 'Giả thiết – không có bản vẽ tràn, tạm lấy bằng đoạn x = 10 ÷ 40 m; ảnh: cuối dốc ≈ 2,0 m', f_ghi_chu, can=trai)
 ten('SL_xt', 'SoLieu!$A$%d:$A$%d' % (r0 + 2, r0 + 1 + len(X_T)))
 ten('SL_htgc', 'SoLieu!$D$%d:$D$%d' % (r0 + 2, r0 + 1 + len(X_T)))
 ten('SL_ht', 'SoLieu!$B$%d:$B$%d' % (r0 + 2, r0 + 1 + len(X_T)))
@@ -385,8 +385,8 @@ ghi(dn, 'A%d' % (RT1 + 2), '="Độ vượt cao nhỏ nhất "&FIXED(MIN(K5:K%d)
                            '" m/s so với [v]kx = "&FIXED(SL_vkx,1)&" m/s"' % (RT1, RT1), f_dam, can=None, border=False)
 RGT = 5 + len(TC['h_tuong'])                  # hàng đầu tiên của đoạn tường giả thiết (x > 40 m)
 ghi(dn, 'A%d' % (RT1 + 3), '="Đoạn x = "&A{a}&" ÷ "&A{b}&" m (hồ sơ không ghi chiều cao tường, giả thiết "&FIXED(MIN(I{a}:I{b}),2)&'
-                           '" m): tường cần tối thiểu "&FIXED(MAX(N{a}:N{b}),2)&" m – giả thiết không quyết định kết luận; đo kiểm '
-                           'tra thực tế để bỏ giả thiết."'.format(a=RGT, b=RT1), f_dam, can=None, border=False)
+                           '" m): tường cần tối thiểu "&FIXED(MAX(N{a}:N{b}),2)&" m – tạm chấp nhận giả thiết (không có bản vẽ tràn); kiến '
+                           'nghị đo kiểm tra khi khảo sát lập bản vẽ thi công."'.format(a=RGT, b=RT1), f_dam, can=None, border=False)
 # số liệu vẽ hình
 tieu_de_cot(dn, 4, 17, ['x (m)', 'Đáy dốc', 'MN lũ thiết kế (hàm khí)', 'MN lũ kiểm tra (hàm khí)', 'Đỉnh tường'], cao=45)
 for k in range(len(X_T)):
@@ -618,7 +618,7 @@ st = wb.create_sheet('TSC_DocNuoc')
 rong(st, (7, 10, 9, 9, 9, 11, 9, 9, 9, 11, 10, 12, 11, 3, 8, 10, 11, 11, 11))
 tieu_de_sheet(st, 'TRÀN SỰ CỐ – KẾT QUẢ THỦY LỰC DỐC NƯỚC: CHIỀU SÂU CÓ KỂ HÀM KHÍ, CHIỀU CAO TƯỜNG CẦN, LƯU TỐC',
               'h_hk = h·(1 + v/100); tường cần = h_hk lớn nhất + a; không xói khi v < [v]kx. Hồ sơ hiện có chưa ghi chiều cao tường bên dốc '
-              'nước tràn sự cố – cần đo đạc đối chiếu với chiều cao tường cần.')
+              'nước tràn sự cố (chỉ có bình đồ tổng thể) – chiều cao tường cần dùng để đối chiếu khi khảo sát lập bản vẽ thi công.')
 tieu_de_cot(st, 4, 1, ['x (m)', 'Cao trình đáy (m)', 'h TK (m)', 'h_hk TK (m)', 'v TK (m/s)', 'h_hk TK kẹt 1 cửa TC (m)', 'h KT (m)',
                        'h_hk KT (m)', 'v KT (m/s)', 'h_hk KT kẹt 1 cửa TC (m)', 'v lớn nhất (m/s)', 'Tường cần h_hk + a (m)',
                        'Không xói'], cao=48)
@@ -712,7 +712,8 @@ DONG_KL = [
     'coi cả đoạn là dốc đều (i = {0} %) hoặc theo hồ sơ kiểm định (i = 10 %): lưu tốc cuối dốc {1} ÷ {2} m/s, độ vượt cao tường '
     'nhỏ nhất {3} ÷ {4} m – kết luận không đổi. Ảnh hiện trạng: cuối dốc là mũi phun có răng (8 ÷ 9 răng, cao ≈ 1,0 ÷ 1,35 m; '
     '+70,24 / +70,25 là hai đầu hàng răng), tường cuối dốc ≈ 2,0 m – độ vượt cao lũ kiểm tra ≈ {5} m, {6}; kênh dẫn hạ lưu là lòng '
-    'đá, nhiều cây bụi – phát quang trước mùa lũ. Còn cần đo để chốt: chiều cao tường x = 40 ÷ 60 m, kích thước răng.').format(
+    'đá, nhiều cây bụi – phát quang trước mùa lũ. Tường x = 45 ÷ 60 m tạm lấy giả thiết 2,5 m (không có bản vẽ tràn); kiến nghị khi khảo sát lập bản vẽ thi công đo '
+    'chiều cao tường x = 40 ÷ 60 m (thấp hơn tường cần thì nâng tường) và kích thước răng.').format(
         _vn(_I_TB * 100, 1), _vn(min(d['v_max'] for d in _DN), 1), _vn(max(d['v_max'] for d in _DN), 1),
         _vn(min(d['du_min'] for d in _DN)), _vn(max(d['du_min'] for d in _DN)), _vn(_DU_ANH),
         'đạt' if _DU_ANH >= T.A_TUONG else 'chưa đạt – cần đo, nâng tường'),
@@ -720,7 +721,7 @@ DONG_KL = [
     '" ≤ giới hạn "&FIXED(TSC_mmax,3)&" của ngưỡng không có bậc hạ; xả "&FIXED(TSC_DauDoc!G5,1)&" m³/s (P = 1%) và "&'
     'FIXED(TSC_DauDoc!G7,1)&" m³/s (P = 0,2%), chiếm "&FIXED(MIN(TSC_DauDoc!I5:I8),0)&" ÷ "&FIXED(MAX(TSC_DauDoc!I5:I8),0)&'
     '" % lưu lượng xả của hồ."',
-    '="Tràn sự cố – dốc nước: "&TSC_DocNuoc!A%d&" Hồ sơ chưa ghi chiều cao tường – cần đo đối chiếu."' % (RT2 + 2),
+    '="Tràn sự cố – dốc nước: "&TSC_DocNuoc!A%d&" Hồ sơ chưa ghi chiều cao tường – kiến nghị đo kiểm tra khi khảo sát lập bản vẽ thi công."' % (RT2 + 2),
     'Tràn sự cố – tiêu năng cuối dốc: hồ sơ chưa ghi hình thức, kích thước công trình tiêu năng và mực nước hạ lưu nên chưa kiểm tra '
     'được như mũi phun tràn chính; thông số dòng chảy cuối dốc (sheet TSC_DocNuoc) dùng để kiểm tra khi có số liệu khảo sát kênh xả, '
     'hố xói hạ lưu.',
@@ -767,7 +768,8 @@ ND = [
     ('-', 'Hệ số co hẹp bên: mố bên tràn chính lượn tròn ξmb = 0,70 (tường cánh thượng lưu cong), mố bên tràn sự cố vuông góc '
           'ξmb = 1,00 (bình đồ cửa vào); ε lấy H/b ≤ 1 (khi H/b > 1 lấy H/b = 1) – như file điều tiết lũ, hồ sơ kiểm định.'),
     ('-', 'Chiều cao tường bên dốc tràn chính sau x = 40 m chưa có trong hồ sơ (Bảng 6-7 hồ sơ kiểm định lập đến x = 40 m): giả '
-          'thiết 2,5 m; tường cần tối thiểu ở đoạn này nhỏ hơn nhiều (sheet DocNuoc) nên giả thiết không quyết định kết luận. Tràn '
+          'thiết 2,5 m – tài liệu chỉ có bình đồ tổng thể, không có bản vẽ tràn, nên tạm chấp nhận; tường cần tối thiểu ở đoạn này '
+          'nhỏ hơn giả thiết (sheet DocNuoc) – kiến nghị đo kiểm tra khi khảo sát lập bản vẽ thi công. Tràn '
           'sự cố: hồ sơ chưa có chiều cao tường bên và kích thước công trình tiêu năng – chỉ tính chiều cao tường cần và thông số '
           'dòng chảy cuối dốc.'),
 ]
