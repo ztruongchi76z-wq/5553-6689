@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 HÌNH MINH HỌA (SV nhờ 09/11/2026 – "chưa hình dung được dốc nước"): mặt cắt dọc theo tim tràn chính và mặt cắt ngang dốc nước
-tại 3 vị trí. Số liệu: so_lieu.TRAN_CHINH (ngưỡng, bậc hạ, dốc), Bảng 6-7 hồ sơ kiểm định (chiều cao tường x = 0 ÷ 40 m), kết quả
+tại 3 vị trí. Số liệu: so_lieu.TRAN_CHINH (ngưỡng, bậc hạ, dốc), tài liệu hiện trạng công trình (chiều cao tường x = 0 ÷ 40 m), kết quả
 kiem_tra_tran_chinh.tinh() (mặt nước có kể hàm khí, mũi phun – hố xói lũ kiểm tra), bình đồ hiện trạng (TP5, TP7, TP11,
 +70,24/+70,25 ở hai đầu hàng răng mũi phun), ảnh SV gửi (cầu giao thông ≈ +78,5; mũi phun có răng, tường cuối dốc ≈ 2,0 m). Các phần chưa có số liệu (trụ pin, cửa van, mũi
 phun, bề dày tường, bản đáy) vẽ sơ họa – ghi rõ trên hình.
@@ -40,7 +40,7 @@ T_DAY, T_TUONG = 0.5, 0.5                             # bản đáy, tường �
 
 
 def tuong_day(x):
-    """Cao trình đỉnh tường bên theo Bảng 6-7 (x = 0 ÷ 40 m), sau đó giả thiết 2,5 m."""
+    """Cao trình đỉnh tường bên theo tài liệu hiện trạng (x = 0 ÷ 40 m), sau đó giả thiết 2,5 m."""
     xs = [0, 5, 10, 15, 20, 25, 30, 35, 40]
     if x <= 40:
         return Z_DD - I * x + float(np.interp(x, xs, TC['h_tuong']))
@@ -117,12 +117,12 @@ def mat_cat_doc(kq):
         ax.plot(xx, zz, color=mau, lw=2.0, zorder=6, label=nhan + ' – mặt nước có kể hàm khí')
         ax.annotate('%s +%s' % ('MNLTK' if khoa == 'tk' else 'MNLKT', s2(mnl)), xy=(x_san0 + 0.3, mnl), xytext=(0, 3),
                     textcoords='offset points', fontsize=8, color='#0b0b0b')
-    # ---- đỉnh tường bên (Bảng 6-7; sau x = 40 m giả thiết) và trụ pin, cầu (sơ họa)
+    # ---- đỉnh tường bên (tài liệu hiện trạng; sau x = 40 m giả thiết) và trụ pin, cầu (sơ họa)
     xt = np.linspace(0, 40, 41)
     ax.plot(xt, [tuong_day(x) for x in xt], color='#0b0b0b', lw=1.2, ls=(0, (1, 1.5)), zorder=5,
-            label='Đỉnh tường bên – Bảng 6-7 hồ sơ kiểm định (x = 0 ÷ 40 m)')
+            label='Đỉnh tường bên – tài liệu hiện trạng (x = 0 ÷ 40 m)')
     ax.plot([40, L], [tuong_day(40), tuong_day(L)], color=C_PHU, lw=1.2, ls=(0, (4, 3)), zorder=5,
-            label='Đỉnh tường bên – giả thiết 2,5 m (hồ sơ không ghi)')
+            label='Đỉnh tường bên – giả thiết 2,5 m (chưa có số liệu)')
     ax.plot([x_ng_dinh0 - 0.4, 0], [Z_CAU_TREN, tuong_day(0)], color='#0b0b0b', lw=1.2, ls=(0, (1, 1.5)), zorder=5)
     ax.add_patch(Rectangle((x_ng_dinh0 - 1.6, Z_NG), 2.4, Z_CAU_DUOI - Z_NG, fc='#bdbcb6', ec=C_NET, lw=0.8,
                            alpha=0.55, zorder=4))
@@ -152,7 +152,7 @@ def mat_cat_doc(kq):
            ((x_moi + 0.6, 66.25), 'Mũi phun +%s, α = %d°\n(TP11 +68,90; sơ họa, R ≈ %s m)' % (s2(K.Z_MUI), K.ALPHA_MP, s1(R))),
            ((x_moi + 15.0, mp['MNHL'] + 0.3), 'MNHL lũ kiểm tra +%s' % s2(mp['MNHL'])),
            ((x_moi + 3.0, 61.0), 'Hố xói lũ kiểm tra: sâu %s m, cách mũi phun %s ÷ %s m' % (s2(hx), s2(mp['x_tl']), s2(mp['x_hl']))),
-           ((x_moi + 11.5, z_day_hl + 0.25), 'Đáy lòng dẫn ≈ +%s (Bảng 6-8)' % s2(z_day_hl)),
+           ((x_moi + 11.5, z_day_hl + 0.25), 'Đáy lòng dẫn ≈ +%s' % s2(z_day_hl)),
            ((25, 61.6), 'Nền đá lớp II')]
     for (xg, zg), txt in ghi:
         ax.text(xg, zg, txt, fontsize=7.5, color='#0b0b0b', zorder=8, va='bottom')
@@ -175,8 +175,8 @@ def mat_cat_doc(kq):
 def mat_cat_ngang(kq):
     plt.rcParams.update({'font.family': 'Liberation Serif', 'font.size': 9})
     doc = {int(r['x']): r for r in kq['doc']}
-    vi_tri = [(0, 'A–A: đầu dốc, x = 0 (B = %s m; tường %s m – Bảng 6-7)'),
-              (30, 'B–B: đoạn lăng trụ, x = 30 m (B = %s m; tường %s m – Bảng 6-7)'),
+    vi_tri = [(0, 'A–A: đầu dốc, x = 0 (B = %s m; tường %s m – tài liệu hiện trạng)'),
+              (30, 'B–B: đoạn lăng trụ, x = 30 m (B = %s m; tường %s m – tài liệu hiện trạng)'),
               (60, 'C–C: cuối dốc, x = 60 m (B = %s m; tường %s m – giả thiết, theo ảnh ≈ 2,0 m)')]
     fig, axs = plt.subplots(3, 1, figsize=(11.5, 9.0))
     for ax, (x, ten) in zip(axs, vi_tri):

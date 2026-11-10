@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-XUẤT WORD: KIỂM TRA TRÀN CHÍNH (MỤC 4.2) VÀ TRÀN SỰ CỐ (MỤC 4.3) HIỆN TRẠNG TRONG ĐỒ ÁN SỬA CHỮA – theo cách làm của hồ sơ
-kiểm định an toàn đập (QTVH, chương 6, SV gửi trích 05/11/2026), thay cho trình tự file mẫu thiết kế tràn mới. Tính ở
+XUẤT WORD: KIỂM TRA TRÀN CHÍNH (MỤC 4.2) VÀ TRÀN SỰ CỐ (MỤC 4.3) HIỆN TRẠNG TRONG ĐỒ ÁN SỬA CHỮA. Bản 10/11/2026: thủy lực
+dốc nước, mũi phun tính với 5 cấp lưu lượng như file mẫu; không nhắc hồ sơ kiểm định (SV yêu cầu – số liệu của đồ án đã độc
+lập; số liệu hiện trạng ghi nguồn chung "tài liệu hiện trạng công trình"). Tính ở
 kiem_tra_tran_chinh.py, kiem_tra_tran_su_co.py (tràn sự cố – SV yêu cầu 08/11/2026).
   python3 xuat_word_kiem_tra_tran_chinh.py [đường dẫn .docx ra]
 Mặc định: ../TAI_VE/KiemTra_TranChinh_SuaChua.docx (hình: ../TAI_VE/KTTC_DuongMatNuoc.png, KTTC_DuongBaoHoXoi.png,
@@ -79,19 +80,23 @@ def ve_mat_nuoc(kq, ra):
     day = [Z0 - TC['i_doc'] * x for x in xs]
     ax.fill_between(xs, [z - 0.6 for z in day], day, color='#e7e6e1', lw=0)
     ax.plot(xs, day, color='#52514e', lw=1.2, label='Đáy dốc nước')
-    for c, mau, nhan in ((kq['tk'], '#2a78d6', 'Lũ thiết kế'), (kq['kt'], '#eb6834', 'Lũ kiểm tra')):
+    nho = [c for c in kq['cap'] if not c['ten'].startswith('Lũ')]
+    for c, mau in zip(nho, ('#b7d3f6', '#8bb7ee', '#5b97e2')):
+        ax.plot(xs, [z + r['h'] * (1 + r['v'] / 100) for z, r in zip(day, c['bang'])], color=mau, lw=1.2,
+                label='%s, q = %s m³/s' % (c['ten'], s2(c['Q'])))
+    for c, mau, nhan in ((kq['tk'], '#2a78d6', 'Q – lũ thiết kế'), (kq['kt'], '#eb6834', 'Lũ kiểm tra')):
         ax.plot(xs, [z + r['h'] * (1 + r['v'] / 100) for z, r in zip(day, c['bang'])], color=mau, lw=2,
-                label='%s, q = %s m³/s (có kể hàm khí)' % (nhan, s2(c['Q'])))
+                label='%s, q = %s m³/s' % (nhan, s2(c['Q'])))
     xt = [r['x'] for r in kq['doc']]
     ax.plot(xt, [Z0 - TC['i_doc'] * x + r['ht'] for x, r in zip(xt, kq['doc'])], color='#0b0b0b', lw=1.2, ls=(0, (1, 1.5)),
-            marker='o', ms=3.5, label='Đỉnh tường bên hiện trạng')
+            marker='o', ms=3.5, label='Đỉnh tường bên (sau x = 40 m: giả thiết 2,5 m)')
     ax.set_xlim(0, TC['L_doc'])
     ax.set_xlabel('Khoảng cách từ đầu dốc x (m)')
     ax.set_ylabel('Cao trình (m)')
     ax.grid(True, color='#e1e0d9', lw=0.5)
     for s in ('top', 'right'):
         ax.spines[s].set_visible(False)
-    ax.legend(loc='upper right', fontsize=7.5, frameon=False)
+    ax.legend(loc='upper right', fontsize=7, frameon=False)
     fig.tight_layout()
     fig.savefig(ra, dpi=220, facecolor='white')
     plt.close(fig)
@@ -108,7 +113,9 @@ def ve_ho_xoi(kq, ra):
         p = c['mp']
         x = [p['x_tl'], p['x_tl'] + K.M_HO_TL * p['hx'], p['x_hl'] - K.M_HO_HL * p['hx'], p['x_hl']]
         y = [0, -p['hx'], -p['hx'], 0]
-        ax.plot(x, y, color=m_, lw=1.0, label='Q = %s m³/s' % so(c['Q'], 0 if c['Q'] == round(c['Q']) else 2))
+        ten_ = ('Q – lũ thiết kế' if c['ten'].startswith('Lũ thiết kế') else 'Lũ kiểm tra' if c['ten'].startswith('Lũ kiểm tra')
+                else c['ten'])
+        ax.plot(x, y, color=m_, lw=1.0, label='%s: %s m³/s' % (ten_, so(c['Q'], 0 if c['Q'] == round(c['Q']) else 2)))
         for k, xv in enumerate(xx):
             if x[0] <= xv <= x[-1]:
                 d_ = min(p['hx'], (xv - x[0]) / K.M_HO_TL, (x[-1] - xv) / K.M_HO_HL)
@@ -125,7 +132,7 @@ def ve_ho_xoi(kq, ra):
     ax.grid(True, color='#e1e0d9', lw=0.5)
     for s in ('top', 'right'):
         ax.spines[s].set_visible(False)
-    ax.legend(loc='lower right', fontsize=7, frameon=False, ncol=2)
+    ax.legend(loc='upper right', fontsize=7, frameon=False, ncol=2)
     fig.tight_layout()
     fig.savefig(ra, dpi=220, facecolor='white')
     plt.close(fig)
@@ -172,16 +179,16 @@ def muc_tran_su_co(d, dem, kq):
     p('Tràn sự cố đặt ở vai phải đập: 1 khoang b = %s m có cửa van phẳng, ngưỡng +%s m – thấp hơn ngưỡng tràn chính %s m, sau '
       'ngưỡng không có bậc hạ; dốc nước lăng trụ rộng %s m, dài %s m, i = %s %% (QTVH Bảng 13). Theo quy trình vận hành, cửa van '
       'tràn sự cố được mở ngay khi lũ về, nên khi xả lũ thiết kế và lũ kiểm tra tràn sự cố xả %s ÷ %s %% tổng lưu lượng xả của hồ; '
-      'lưu lượng đơn vị trên dốc %s ÷ %s m^{3}/s/m, gấp %s ÷ %s lần ở cuối dốc tràn chính. Hồ sơ kiểm định mới đưa tràn sự cố vào '
-      'khả năng xả và điều tiết lũ, chưa kiểm tra dốc nước; đồ án kiểm tra tràn sự cố theo cùng trình tự với tràn chính: khả năng '
+      'lưu lượng đơn vị trên dốc %s ÷ %s m^{3}/s/m, gấp %s ÷ %s lần ở cuối dốc tràn chính. Đồ án kiểm tra tràn sự cố theo cùng '
+      'trình tự với tràn chính: khả năng '
       'xả, thủy lực dốc nước (chiều cao tường cần, xói). Phần tiêu năng cuối dốc chỉ nêu thông số dòng chảy vì hồ sơ chưa có số liệu '
       'công trình tiêu năng.'
       % (so(B, 0), s2(ts['SC_Z']), s2(ts['TC_Z'] - ts['SC_Z']), so(B, 0), so(sc['L'], 0), so(sc['i'] * 100, 0), so(min(ty), 0),
          so(max(ty), 0), s2(min(c['q'] for c in ca)), s2(max(c['q'] for c in ca)), s1(min(boi)), s1(max(boi))))
 
     tieu_de(d, '4.3.1 Khả năng xả', 2)
-    p('Lưu lượng qua tràn sự cố tính theo (4-1) với Σb = b = %s m, σ_{n} = 1; hệ số co hẹp bên của tràn một khoang (như hồ sơ kiểm '
-      'định):' % so(B, 0))
+    p('Lưu lượng qua tràn sự cố tính theo (4-1) với Σb = b = %s m, σ_{n} = 1; hệ số co hẹp bên của tràn một khoang (TCVN '
+      '9147:2012):' % so(B, 0))
     phuong_trinh(d, [t('ε = 1 − 0,2·'), sub(t('ξ'), t('mb', True)), t('·'), phan_so(sub(t('H'), t('0')), t('b')), t(' ;   '),
                      phan_so(sub(t('H'), t('0')), t('b')), t(' ≤ 1')], dem.c())
     hb = [c['H_b'] for c in ca]
@@ -193,7 +200,7 @@ def muc_tran_su_co(d, dem, kq):
     phuong_trinh(d, [sub(t('m'), t('max', True)), t(' = φ·'), phan_so(t('2'), t('3')), t('·'), can(phan_so(t('1'), t('3'))),
                      t(' = %s·%s = %s' % (s2(T.PHI), s3(2 / 3 * math.sqrt(1 / 3)), s3(sc['m_max'])))], dem.c())
     p('Hệ số đồ án dùng (ε·m = %s) sát giới hạn này và gần bằng hệ số của QTVH 2026 (m = 0,37), phù hợp điều kiện chảy phân giới '
-      'ở đầu dốc; hồ sơ kiểm định dùng m_{0} = 0,40 cho cả hai tràn. Lưu lượng tràn sự cố khi xả lũ cho trong Bảng %s.'
+      'ở đầu dốc. Lưu lượng tràn sự cố khi xả lũ cho trong Bảng %s.'
       % (s3(tk['m0']), '4.%d' % dem.b))
     bang(d, '%s Lưu lượng tràn sự cố khi xả lũ' % dem.bg(),
          ['Trường hợp', 'Z_{max} (m)', 'H_{0} (m)', 'H_{0}/b', 'ε', 'ε·m', 'Q tràn sự cố (m^{3}/s)', 'q xả của hồ (m^{3}/s)',
@@ -295,31 +302,30 @@ def main():
     st.font.name, st.font.size = 'Times New Roman', Pt(13)
     p = lambda txt, **kw: doan(d, txt, thut=1.0, **kw)
 
-    doan(d, 'Ghi chú (xoá khi dán vào thuyết minh): thay cho mục 4.2 tính theo file mẫu thiết kế tràn mới và mục 4.3 (tràn sự '
-            'cố) cũ; trình tự theo hồ sơ '
-            'kiểm định an toàn đập (QTVH, chương 6); thông số tràn và kết quả điều tiết lấy từ file DieuTietLu_Potapov_f1f2. '
+    doan(d, 'Ghi chú (xoá khi dán vào thuyết minh): mục 4.2 (tràn chính) và 4.3 (tràn sự cố); thủy lực dốc nước tính với 5 cấp '
+            'lưu lượng như file mẫu; thông số tràn và kết quả điều tiết lấy từ file DieuTietLu_Potapov_f1f2. '
             'Số hiệu công thức, bảng, hình đánh liên tục từ (4-1), Bảng 4.3, Hình 4.1 – sửa lại theo thuyết minh.', co=11,
          nghieng=True, can=WD_ALIGN_PARAGRAPH.LEFT)
     tieu_de(d, '4.2 Kiểm tra tràn chính hiện trạng', 1)
     p('Tràn chính là công trình đang vận hành; đồ án sửa chữa không thiết kế lại hình thức, kích thước tràn mà kiểm tra các điều '
-      'kiện làm việc của tràn hiện có với lũ cập nhật (QTVH 2026), theo cách làm của hồ sơ kiểm định an toàn đập: khả năng xả lũ, '
-      'thủy lực dốc nước (tường bên, xói bề mặt), tiêu năng mũi phun – hố xói. Điều kiện không tràn đỉnh đập đã kiểm tra ở mục '
+      'kiện làm việc của tràn hiện có với lũ cập nhật (QTVH 2026): khả năng xả lũ, thủy lực dốc nước với 5 cấp lưu lượng (tường '
+      'bên, xói bề mặt), tiêu năng mũi phun – hố xói. Điều kiện không tràn đỉnh đập đã kiểm tra ở mục '
       '2.3, ổn định ngưỡng tràn ở mục 4.5. Các nội dung của thiết kế mới (chọn hình thức, bề rộng tràn, kênh dẫn, chiều dày bản '
       'đáy, kích thước công trình tiêu năng) không tính lại – Bảng %s.' % ('4.%d' % dem.b))
     bang(d, '%s Nội dung tính toán tràn chính trong đồ án sửa chữa' % dem.bg(),
-         ['Hạng mục', 'Thiết kế tràn mới (file mẫu)', 'Đồ án sửa chữa (theo hồ sơ kiểm định)', 'Mục'],
-         [['Hình thức, kích thước, bố trí', 'Chọn, tính toán', 'Không tính – mô tả hiện trạng', '4.2.1'],
-          ['Khả năng xả, điều tiết lũ', 'Chọn B; tính lại ε, m; điều tiết', 'Điều tiết với lũ QTVH 2026; quan hệ Q ~ Z', '4.1; 4.2.1'],
-          ['Lưu tốc tới gần', 'So Ω_{TL} với 4·Σb·H', 'Bỏ qua: Ω_{T} ≫ 4·H·b (hồ sơ kiểm định)', '4.2.1'],
-          ['Thủy lực dốc nước', '5 cấp lưu lượng: h_{k}, i_{k}, h_{0}, đường mặt nước',
-           'Đường mặt nước lũ thiết kế, lũ kiểm tra (và các cấp Q tính hố xói)', '4.2.2'],
-          ['Tường bên, bề mặt dốc', 'Thiết kế chiều cao tường, chiều dày bản đáy', 'Kiểm tra tường hiện có; kiểm tra xói; '
-           'sửa chữa bề mặt dốc', '4.2.2; 4.4'],
-          ['Tiêu năng', 'Chọn hình thức; thiết kế kênh hạ lưu, mũi phun', 'Kiểm tra mũi phun – hố xói hiện có (TCVN 8420:2010)',
-           '4.2.3'],
-          ['Không tràn đỉnh đập', '–', 'Cao trình đỉnh đập, tường chắn sóng', '2.3'],
-          ['Ổn định ngưỡng tràn', '–', 'Kiểm tra ổn định trượt, lật', '4.5']],
-         cot=[2300, 2500, 3200, 1071], co=10, cot_trai=(0, 1, 2))
+         ['Hạng mục', 'Nội dung tính toán', 'Mục'],
+         [['Hình thức, kích thước, bố trí', 'Không tính lại – mô tả hiện trạng (bình đồ, ảnh hiện trạng)', '4.2.1'],
+          ['Khả năng xả, điều tiết lũ', 'Điều tiết với lũ QTVH 2026; hệ số co hẹp theo hình dạng mố, trụ hiện có; quan hệ Q ~ Z',
+           '4.1; 4.2.1'],
+          ['Lưu tốc tới gần', 'Bỏ qua (H_{0} = H) – thiên an toàn', '4.2.1'],
+          ['Thủy lực dốc nước', '5 cấp lưu lượng 0,4Q; 0,6Q; 0,8Q; Q; lũ kiểm tra: h_{c}, h_{k}, i_{k}, h_{0}, đường mặt nước',
+           '4.2.2'],
+          ['Tường bên, bề mặt dốc', 'Kiểm tra tường hiện có với lũ thiết kế, lũ kiểm tra; kiểm tra xói; sửa chữa bề mặt dốc',
+           '4.2.2; 4.4'],
+          ['Tiêu năng', 'Kiểm tra mũi phun – hố xói hiện có với 5 cấp lưu lượng (TCVN 8420:2010)', '4.2.3'],
+          ['Không tràn đỉnh đập', 'Cao trình đỉnh đập, tường chắn sóng', '2.3'],
+          ['Ổn định ngưỡng tràn', 'Kiểm tra ổn định trượt, lật', '4.5']],
+         cot=[2600, 5300, 1171], co=10, cot_trai=(0, 1))
 
     # ================================================================ 4.2.1
     tieu_de(d, '4.2.1 Khả năng xả lũ của ngưỡng tràn', 2)
@@ -338,32 +344,28 @@ def main():
     p('Trong đó: σ_{n} = 1 – sau ngưỡng là dốc nước chảy xiết (i > i_{k}) nên chảy không ngập; m = %s – đập tràn thực dụng '
       'thấp; ξ_{mb} = %s – mố bên lượn tròn (bình đồ cửa vào: tường cánh thượng lưu cong, nối tiếp gần như tiếp tuyến với mố '
       'bên); Σξ = %d × %s + %d × %s = %s – cả 8 trụ pin có đầu phía thượng lưu lượn tròn (bình đồ hiện trạng; đuôi trụ phía hạ '
-      'lưu vuông hay bo tròn không ảnh hưởng vì chảy không ngập); khi H_{0}/b > 1 thì lấy H_{0}/b = 1 (như hồ sơ kiểm định). Theo hồ sơ kiểm định, diện '
-      'tích mặt cắt ướt ở thượng lưu cách ngưỡng '
-      '10 ÷ 30 m rất lớn so với 4·H·b nên không xét lưu tốc tới gần, H_{0} = H = Z − Z_{ngưỡng}. Đây cũng là công thức dùng khi '
-      'điều tiết lũ (mục 4.1), nên khả năng xả của ngưỡng không cần kiểm tra lại bằng một phép tính riêng. Bảng %s so sánh các '
-      'hệ số với hồ sơ kiểm định.' % (so(ts['TC_m']), s2(ts['TC_xmb']), ts['TC_n1'], s2(ts['TC_x1']), ts['TC_n2'],
-                                    s2(ts['TC_x2']), s2(ts['TC_sx']), '4.%d' % dem.b))
+      'lưu vuông hay bo tròn không ảnh hưởng vì chảy không ngập); khi H_{0}/b > 1 thì lấy H_{0}/b = 1. Bỏ qua lưu tốc tới gần, '
+      'H_{0} = H = Z − Z_{ngưỡng}: lưu tốc tới gần làm tăng cột nước toàn phần và khả năng xả nên bỏ qua là thiên an toàn (mực '
+      'nước lũ tính ra cao hơn). Đây cũng là công thức dùng khi điều tiết lũ (mục 4.1), nên khả năng xả của ngưỡng không cần kiểm '
+      'tra lại bằng một phép tính riêng. Các hệ số tổng hợp trong Bảng %s.' % (so(ts['TC_m']), s2(ts['TC_xmb']), ts['TC_n1'],
+                                                                       s2(ts['TC_x1']), ts['TC_n2'], s2(ts['TC_x2']),
+                                                                       s2(ts['TC_sx']), '4.%d' % dem.b))
     e_tk, e_kt = T.eps(tk['H'], ts), T.eps(kt['H'], ts)
     khoang = lambda a, b, f: f(a) if f(a) == f(b) else '%s ÷ %s' % (f(a), f(b))
-    E_KD = 0.895                                        # ε hồ sơ kiểm định
     e_lon = max(e_tk, e_kt)
-    nx_eps = ('Đồ án nhỏ hơn – thiên an toàn' if e_lon < E_KD - 0.005 else
-              'Tương đương (chênh %s %%)' % so(abs(e_lon / E_KD - 1) * 100, 0) if e_lon <= E_KD + 0.015 else 'Đồ án lớn hơn')
     bang(d, '%s Hệ số tính khả năng xả của tràn chính' % dem.bg(),
-         ['Đại lượng', 'Đồ án', 'Hồ sơ kiểm định', 'Nhận xét'],
-         [['Bề rộng tràn nước Σb (m)', so(Sb, 1) + ' (9 × 2,4)', '22', 'Tràn đã chia 9 khoang, lắp cửa van'],
-          ['Hệ số lưu lượng m', so(ts['TC_m'], 3), '0,445 (= 0,467/1,05)', 'Tương đương'],
-          ['Hệ số co hẹp bên ε', '%s (H_{0}/b ≥ 1, ξ_{1} = %s)' % (khoang(e_tk, e_kt, s3), s2(ts['TC_x1'])),
-           '0,895 (ξ_{mt} = 0,25; lấy H_{0}/b ≤ 1)', nx_eps],
-          ['m_{0} = σ_{n}·ε·m', khoang(e_tk * ts['TC_m'], e_kt * ts['TC_m'], s3), '0,40', ''],
-          ['Lưu tốc tới gần V_{0}', 'Bỏ qua', 'Bỏ qua (Ω_{T} ≫ 4·H·b)', '']],
-         cot=[2600, 2500, 2300, 1671], co=10, cot_trai=(0, 3))
-    p('Hồ sơ kiểm định ghi ngưỡng có P_{1} = 2,3 m, P = 3,3 m, δ = 2,7 m, mái thượng lưu 1,75, hạ lưu 3,00. Bình đồ hiện trạng '
-      '(mặt bằng nâng cấp cụm công trình đầu mối) cho cao độ sân lát đá trước ngưỡng +73,7 ÷ +74,2 m, ngưỡng +74,70 m, đáy ngay sau '
-      'ngưỡng +73,30 m (đường chân ngưỡng cách dãy trụ pin ≈ 4,0 m), tức P_{1} ≈ 0,7 m, P_{2} ≈ 1,4 m – phù hợp số liệu đồ án sử '
-      'dụng: P_{1} = %s m, P_{2} = %s m, δ = %s m, '
-      'mái thượng lưu 1:3,0, hạ lưu 1:1,75. Hệ số lưu lượng của hai bên tương đương (0,45 và 0,445).'
+         ['Đại lượng', 'Giá trị', 'Ghi chú'],
+         [['Bề rộng tràn nước Σb (m)', so(Sb, 1), '9 khoang × 2,4 m, có cửa van'],
+          ['Hệ số lưu lượng m', so(ts['TC_m'], 3), 'Đập tràn thực dụng thấp'],
+          ['Hệ số hình dạng mố bên ξ_{mb}', s2(ts['TC_xmb']), 'Mố bên lượn tròn (bình đồ cửa vào)'],
+          ['Hệ số hình dạng trụ pin ξ_{1} = ξ_{2}', s2(ts['TC_x1']), '8 trụ đầu tròn phía thượng lưu (bình đồ)'],
+          ['Hệ số co hẹp bên ε', khoang(e_tk, e_kt, s3), 'Khi xả lũ H_{0}/b > 1 → lấy H_{0}/b = 1'],
+          ['m_{0} = σ_{n}·ε·m', khoang(e_tk * ts['TC_m'], e_kt * ts['TC_m'], s3), 'σ_{n} = 1 – chảy không ngập'],
+          ['Lưu tốc tới gần V_{0}', 'Bỏ qua', 'H_{0} = H – thiên an toàn']],
+         cot=[3000, 1600, 4471], co=10, cot_trai=(0, 2))
+    p('Bình đồ hiện trạng (mặt bằng nâng cấp cụm công trình đầu mối) cho cao độ sân lát đá trước ngưỡng +73,7 ÷ +74,2 m, ngưỡng '
+      '+74,70 m, đáy ngay sau ngưỡng +73,30 m (đường chân ngưỡng cách dãy trụ pin ≈ 4,0 m; mái hạ lưu ngưỡng dài ≈ 3,0 m), tức '
+      'P_{1} ≈ 0,7 m, P_{2} ≈ 1,4 m. Đồ án dùng P_{1} = %s m, P_{2} = %s m, δ = %s m.'
       % (s2(TC['P1']), s2(TC['P2']), s2(TC['delta'])), truoc=6)
     qz = kq['qz']
     bang(d, '%s Quan hệ lưu lượng – mực nước của công trình tháo lũ' % dem.bg(),
@@ -371,47 +373,72 @@ def main():
           'q tràn sự cố (m^{3}/s)', 'q tổng – bình thường (m^{3}/s)'],
          [[s2(r['Z']), s2(r['H']), s3(r['eps']), s2(r['q9']), s2(r['q8']), s2(r['qsc']), s2(r['q_bt'])] for r in qz],
          cot=[1000, 1150, 1150, 1450, 1450, 1350, 1521], co=10, cot_trai=())
-    kd = {'1%': (77.87, 242.00, 159.54), '0,2%': (79.13, 399.79, 205.39)}
-    bang(d, '%s Kết quả điều tiết lũ – đồ án và hồ sơ kiểm định' % dem.bg(),
-         ['Trường hợp', 'Z_{max} đồ án (m)', 'q tràn chính đồ án (m^{3}/s)', 'q tràn sự cố đồ án (m^{3}/s)',
-          'MNL kiểm định (m)', 'q tràn chính kiểm định (m^{3}/s)', 'q tràn sự cố kiểm định (m^{3}/s)'],
-         [['P = 1%, bình thường', s2(tk['MNL']), s2(ts['P1_BinhThuong']['qtc']), s2(ts['P1_BinhThuong']['qsc']),
-           s2(kd['1%'][0]), s2(kd['1%'][1]), s2(kd['1%'][2])],
-          ['P = 1%, 1 cửa tràn chính không mở', s2(ts['P1_SuCo']['Z']), s2(ts['P1_SuCo']['qtc']), s2(ts['P1_SuCo']['qsc']),
-           '–', '–', '–'],
-          ['P = 0,2%, bình thường', s2(kt['MNL']), s2(ts['P02_BinhThuong']['qtc']), s2(ts['P02_BinhThuong']['qsc']),
-           s2(kd['0,2%'][0]), s2(kd['0,2%'][1]), s2(kd['0,2%'][2])],
-          ['P = 0,2%, 1 cửa tràn chính không mở', s2(ts['P02_SuCo']['Z']), s2(ts['P02_SuCo']['qtc']), s2(ts['P02_SuCo']['qsc']),
-           '–', '–', '–']],
-         cot=[2100, 1100, 1200, 1200, 1100, 1200, 1171], co=10)
-    p('Mực nước lũ của đồ án thấp hơn hồ sơ kiểm định vì đồ án dùng lũ QTVH 2026 (Q_{max} 1%% = 921 m^{3}/s, thu phóng trận lũ '
-      'trạm Đá Bàn) và quan hệ Z ~ F ~ W theo bình đồ lòng hồ 2022 – thực hiện kiến nghị của hồ sơ kiểm định (đo bình đồ từ +66 '
-      'đến +80 m); hồ sơ kiểm định dùng lũ Q_{max} 1%% = 1.051 m^{3}/s và quan hệ Z ~ W ngoại suy trên +66 m. Với cả hai bộ số '
-      'liệu, tràn chính tháo được lũ thiết kế và lũ kiểm tra; MNLTK = +%s m, MNLKT = +%s m thấp hơn đỉnh đập sau sửa chữa '
-      '+%s m (mục 2.3).' % (s2(tk['MNL']), s2(kt['MNL']), s2(ts['Z_dinh_SC'])), truoc=6)
+    tr = [('P = 1%, bình thường', 'P1_BinhThuong'), ('P = 1%, 1 cửa tràn chính không mở', 'P1_SuCo'),
+          ('P = 0,2%, bình thường', 'P02_BinhThuong'), ('P = 0,2%, 1 cửa tràn chính không mở', 'P02_SuCo')]
+    bang(d, '%s Kết quả điều tiết lũ (lũ QTVH 2026)' % dem.bg(),
+         ['Trường hợp', 'Z_{max} (m)', 'q tràn chính (m^{3}/s)', 'q tràn sự cố (m^{3}/s)', 'q tổng (m^{3}/s)',
+          'Đỉnh đập sau SC − Z_{max} (m)'],
+         [[ten, s2(ts[k]['Z']), s2(ts[k]['qtc']), s2(ts[k]['qsc']), s2(ts[k]['qtc'] + ts[k]['qsc']),
+           s2(ts['Z_dinh_SC'] - ts[k]['Z'])] for ten, k in tr],
+         cot=[2771, 1150, 1300, 1300, 1150, 1400], co=10)
+    p('Với lũ QTVH 2026 (Q_{max} 1%% = 921 m^{3}/s, thu phóng trận lũ trạm Đá Bàn) và quan hệ Z ~ F ~ W theo bình đồ lòng hồ '
+      '2022, tràn chính và tràn sự cố tháo được lũ thiết kế và lũ kiểm tra; MNLTK = +%s m, MNLKT = +%s m thấp hơn đỉnh đập sau '
+      'sửa chữa +%s m (mục 2.3).' % (s2(tk['MNL']), s2(kt['MNL']), s2(ts['Z_dinh_SC'])), truoc=6)
 
     # ================================================================ 4.2.2
     tieu_de(d, '4.2.2 Thủy lực dốc nước', 2)
+    p('Thủy lực dốc nước tính với 5 cấp lưu lượng như file mẫu: 0,4Q; 0,6Q; 0,8Q; Q và lưu lượng lũ kiểm tra, trong đó Q = %s '
+      'm^{3}/s là lưu lượng xả lớn nhất qua tràn chính khi lũ thiết kế. Mẫu lấy cấp lớn nhất 1,2Q; ở đây lưu lượng lũ kiểm tra '
+      'bằng %sQ, lớn hơn 1,2Q, nên lấy thay cấp 1,2Q để kiểm tra trường hợp bất lợi nhất. Cột nước trên ngưỡng H ứng với từng cấp '
+      'giải ngược từ (4-1), (4-2).' % (s2(tk['Q']), s2(kt['Q'] / tk['Q'])))
     p('Độ sâu co hẹp ở đầu dốc nước (chân bậc hạ sau ngưỡng) tính theo công thức tổng quát, giải bằng thử dần:')
     phuong_trinh(d, [t('Q = φ·'), sub(t('ω'), t('c')), t('·'), can([t('2g·'), ngoac([sub(t('E'), t('0')), t(' − '),
                                                                                        sub(t('h'), t('c'))])]),
                      t(' ;   '), sub(t('ω'), t('c')), t(' = '), sub(t('b'), t('c')), t('·'), sub(t('h'), t('c')), t(' ;   '),
                      sub(t('E'), t('0')), t(' = '), sub(t('P'), t('2')), t(' + H')], dem.c())
     kq['ct_hc'] = dem.ct - 1
-    p('với φ = %s; b_{c} = %s m (bề rộng đầu dốc); E_{0} = P_{2} + H (bỏ qua V_{0}). Đường mặt nước trên dốc tính bằng phương pháp '
-      'sai phân theo phương trình:' % (s2(T.PHI), so(TC['b_doc_dau'], 0)))
+    p('với φ = %s; b_{c} = %s m (bề rộng đầu dốc); E_{0} = P_{2} + H (bỏ qua V_{0}). Độ sâu phân giới, độ dốc phân giới và độ sâu '
+      'dòng đều tính cho đoạn lăng trụ B = %s m:' % (s2(T.PHI), so(TC['b_doc_dau'], 0), so(TC['b_doc_cuoi'], 0)))
+    phuong_trinh(d, [sub(t('h'), t('k')), t(' = '), can(phan_so([t('α·'), sup(t('q'), t('2'))], t('g')), t('3')), t(' ;   '),
+                     sub(t('i'), t('k')), t(' = '),
+                     phan_so(sup(t('Q'), t('2')), [sub_sup(t('ω'), t('k'), t('2')), t('·'), sub_sup(t('C'), t('k'), t('2')), t('·'),
+                                                   sub(t('R'), t('k'))]),
+                     t(' ;   Q = '), sub(t('ω'), t('0')), t('·'), sub(t('C'), t('0')), t('·'), can([sub(t('R'), t('0')), t('·i')])],
+                 dem.c())
+
+    def nhan(c):
+        if c['ten'].startswith('Lũ thiết kế'):
+            return 'Q (lũ thiết kế P = 1%)'
+        if c['ten'].startswith('Lũ kiểm tra'):
+            return 'Lũ kiểm tra P = 0,2%% (%sQ)' % s2(c['Q'] / tk['Q'])
+        return c['ten']
+    b_cap = dem.bg()
+    bang(d, '%s Các cấp lưu lượng và thông số dòng chảy trên dốc nước' % b_cap,
+         ['Cấp', 'Q (m^{3}/s)', 'H (m)', 'MNL (m)', 'h_{c} (m)', 'h_{k} (m)', 'i_{k}', 'h_{0} (m)', 'h cuối dốc (m)',
+          'v cuối dốc (m/s)'],
+         [[nhan(c), s2(c['Q']), s3(c['H']), s2(c['MNL']), s3(c['hc']), s3(c['ik']['hk']), so(c['ik']['ik'], 5), s3(c['h0']['h0']),
+           s3(c['bang'][-1]['h']), s2(c['bang'][-1]['v'])] for c in cap],
+         cot=[1871, 800, 700, 800, 700, 700, 850, 700, 850, 1100], co=10)
+    p('Ở mọi cấp lưu lượng i = %s %% lớn hơn nhiều i_{k} (%s ÷ %s) và h_{0} < h_{k}: dốc nước là dốc dốc, dòng chảy trên dốc là '
+      'dòng xiết; độ sâu đầu dốc h_{c} nhỏ hơn h_{k} của đầu dốc nên sau bậc hạ dòng chảy đã ở trạng thái xiết. Trên đoạn thu hẹp '
+      '%s → %s m độ sâu tăng do bề rộng giảm, trên đoạn lăng trụ độ sâu giảm dần về h_{0} (đường nước hạ b_{II}) nhưng chưa đạt '
+      'h_{0} ở cuối dốc. Đường mặt nước tính bằng phương pháp sai phân theo phương trình:'
+      % (so(TC['i_doc'] * 100, 0), so(min(c['ik']['ik'] for c in cap), 4), so(max(c['ik']['ik'] for c in cap), 4),
+         so(TC['b_doc_dau'], 0), so(TC['b_doc_cuoi'], 0)), truoc=6)
     phuong_trinh(d, [phan_so(t('ΔE'), t('Δl')), t(' = i − '), gach(t('J')), t(' ;   '), gach(t('J')), t(' = '),
                      phan_so([sub(t('J'), t('i')), t(' + '), sub(t('J'), t('i+1'))], t('2')), t(' ;   J = '),
                      sup(ngoac(phan_so(t('v'), [t('C'), can(t('R'))])), t('2')), t(' ;   C = '), phan_so(t('1'), t('n')), t('·'),
                      sup(t('R'), phan_so(t('1'), t('6')))], dem.c())
     kq['ct_dmn'] = dem.ct - 1
-    p('Dốc có bề rộng thay đổi nên giải như hồ sơ kiểm định: chia dốc thành các đoạn có chiều dài chọn trước (%s m trên đoạn thu '
-      'hẹp, %s m trên đoạn lăng trụ), giả thiết độ sâu cuối đoạn, tính lại Δl theo (4-%d) và thay đổi h tới khi Δl tính bằng Δl '
-      'chọn; n = %s (bê tông). Độ sâu có kể hàm khí:' % (so(TC['L_chuyen_tiep'] / T.N_BUOC_LT, 1),
-                                                      so((TC['L_doc'] - TC['L_chuyen_tiep']) / T.N_BUOC_LT, 0), dem.ct - 1,
-                                                      so(T.N_NHAM, 3)))
+    p('Dốc có bề rộng thay đổi nên chia dốc thành các đoạn có chiều dài chọn trước (%s m trên đoạn thu hẹp, %s m trên đoạn lăng '
+      'trụ), giả thiết độ sâu cuối đoạn, tính lại Δl theo (4-%d) và thay đổi h tới khi Δl tính bằng Δl chọn; n = %s (bê tông). Bảng '
+      'tính đường mặt nước của 5 cấp lưu lượng ở cuối mục. Độ sâu có kể hàm khí:'
+      % (so(TC['L_chuyen_tiep'] / T.N_BUOC_LT, 1), so((TC['L_doc'] - TC['L_chuyen_tiep']) / T.N_BUOC_LT, 0), dem.ct - 1,
+         so(T.N_NHAM, 3)))
     phuong_trinh(d, [sub(t('h'), t('hk', True)), t(' = h·'), ngoac([t('1 + '), phan_so(t('v'), t('100'))])], dem.c())
     kq['ct_hk'] = dem.ct - 1
+    p('Chiều cao tường bên kiểm tra với lũ thiết kế và lũ kiểm tra (Bảng %s); các cấp lưu lượng nhỏ hơn có mặt nước thấp hơn nên '
+      'không khống chế chiều cao tường.' % ('4.%d' % dem.b))
     b_doc = dem.bg()
     bang(d, '%s Kết quả kiểm tra thủy lực dốc nước (lũ thiết kế q = %s m^{3}/s; lũ kiểm tra q = %s m^{3}/s)'
          % (b_doc, s2(tk['Q']), s2(kt['Q'])),
@@ -420,17 +447,17 @@ def main():
          [[so(r['x'], 0), s2(r['B']), s3(r['h_tk']), s3(r['hhk_tk']), s2(r['v_tk']), s3(r['h_kt']), s3(r['hhk_kt']),
            s2(r['v_kt']), s2(r['ht']) + ('*' if r['gia_thiet'] else ''), s2(r['du_tk']), s2(r['du_kt']), s2(r['ht_can'])]
           for r in doc_], cot=[560, 680, 700, 760, 700, 700, 760, 700, 760, 880, 880, 991], co=9, le=40)
-    doan(d, '* Bảng 6-7 hồ sơ kiểm định ghi chiều cao tường bên đến x = 40 m; sau x = 40 m giả thiết 2,5 m như đoạn x = 10 ÷ 40 m. '
-            'Độ vượt cao = chiều cao tường − h_{hk}; tường cần = h_{hk} lớn nhất + a, a = %s m.' % s2(T.A_TUONG),
-         co=10, nghieng=True, can=WD_ALIGN_PARAGRAPH.LEFT, truoc=0)
+    doan(d, '* Chiều cao tường bên x = 0 ÷ 40 m theo tài liệu hiện trạng công trình; sau x = 40 m tạm lấy 2,5 m như đoạn '
+            'x = 10 ÷ 40 m (không có bản vẽ tràn). Độ vượt cao = chiều cao tường − h_{hk}; tường cần = h_{hk} lớn nhất + a, a = %s m.'
+            % s2(T.A_TUONG), co=10, nghieng=True, can=WD_ALIGN_PARAGRAPH.LEFT, truoc=0)
     du_min = min(doc_, key=lambda r: r['du_kt'])
-    v_max = max(r['v_kt'] for r in doc_)
+    v_max = max(max(r['v'] for r in c['bang']) for c in cap)
     p('Mặt nước có kể hàm khí thấp hơn đỉnh tường bên ở mọi mặt cắt; độ vượt cao nhỏ nhất %s m tại x = %s m với lũ kiểm tra '
-      '(lớn hơn 0,5 m) – tường bên dốc nước đủ chiều cao. Hồ sơ kiểm định cho độ vượt cao nhỏ nhất 0,21 m tại x = 10 m vì tính với '
-      'lưu lượng tràn chính 400 m^{3}/s của lũ kiểm định. Lưu tốc lớn nhất trên dốc %s m/s nhỏ hơn lưu tốc cho phép không xói của '
-      'dốc bê tông M200 theo hồ sơ kiểm định (%s ÷ 19,4 m/s) nên dốc nước bảo đảm điều kiện không xói theo lý thuyết; tuy vậy bề '
-      'mặt dốc không phẳng nhẵn, nước xả mang cát sạn nên nửa cuối dốc đã bị xói nhẹ (hồ sơ kiểm định, khảo sát hiện trạng) – '
-      'cần sửa chữa bề mặt dốc (mục 4.4). Hình %s thể hiện đường mặt nước; bảng tính chi tiết ở cuối mục.'
+      '(lớn hơn 0,5 m) – tường bên dốc nước đủ chiều cao. Lưu tốc lớn nhất trên dốc ở cả 5 cấp lưu lượng là %s m/s (cuối dốc, '
+      'lũ kiểm tra), nhỏ hơn lưu tốc cho phép không xói của dốc bê tông M200 – đồ án lấy [v]_{kx} = %s m/s, nhỏ hơn trị số '
+      '19,2 ÷ 21,1 m/s theo TCVN 4118:2012 (phụ lục I, Bảng I5) dùng trong file mẫu, thiên an toàn – nên dốc nước bảo đảm điều '
+      'kiện không xói theo lý thuyết; tuy vậy bề mặt dốc không phẳng nhẵn, nước xả mang cát sạn nên nửa cuối dốc đã bị xói nhẹ '
+      '(khảo sát hiện trạng) – cần sửa chữa bề mặt dốc (mục 4.4). Hình %s thể hiện đường mặt nước của 5 cấp lưu lượng.'
       % (s2(du_min['du_kt']), so(du_min['x'], 0), s2(v_max), so(K.V_KX, 1), '4.%d' % dem.h), truoc=6)
     gt = [r for r in doc_ if r['gia_thiet']]
     H_ANH = 2.0                                          # tường cuối dốc ước lượng theo ảnh hiện trạng (m)
@@ -447,19 +474,18 @@ def main():
          (', nhưng nếu đoạn x = %s ÷ %s m tường cũng chỉ cao khoảng %s m thì độ vượt cao còn %s ÷ %s m, thiếu vài cm'
           % (so(thieu[0]['x'], 0), so(thieu[-1]['x'], 0), so(H_ANH, 1), s2(min(H_ANH - r['hhk_kt'] for r in thieu)),
              s2(max(H_ANH - r['hhk_kt'] for r in thieu)))) if thieu else '', b_doc))
-    dn10 = K.do_nhay_doc(ts, 0.10)
     L_BD, Z_CUOI_BD = 61.87, 68.90                      # bình đồ: chân ngưỡng → cuối mũi phun (SV đo 09/11/2026); TP11
     i_tb = (TC['Z_nguong'] - TC['P2'] - Z_CUOI_BD) / L_BD
     dn_tb = K.do_nhay_doc(ts, i_tb)
     p('Trên bình đồ hiện trạng, từ chân ngưỡng (đầu dốc +73,30 m) đến cuối mũi phun (+68,90 m) theo tim tràn dài %s m: phù hợp '
       'dốc nước dài %s m với i = %s %% (QTVH; đáy cuối dốc +%s m) và mũi phun dài khoảng %s m nâng lên khoảng %s m. Nếu coi cả '
       'đoạn là dốc đều thì i = %s %%; tính lại với độ dốc này: lưu tốc cuối dốc lớn nhất %s m/s, độ vượt cao tường bên nhỏ nhất '
-      '%s m. Hồ sơ kiểm định ghi i = 10 %%: lưu tốc cuối dốc lớn nhất %s m/s, độ vượt cao nhỏ nhất %s m. Kết luận không đổi.'
+      '%s m – kết luận không đổi.'
       % (s2(L_BD), so(TC['L_doc'], 0), so(TC['i_doc'] * 100, 0), s2(TC['Z_nguong'] - TC['P2'] - TC['i_doc'] * TC['L_doc']),
          s1(L_BD - TC['L_doc']), s1(Z_CUOI_BD - (TC['Z_nguong'] - TC['P2'] - TC['i_doc'] * TC['L_doc'])), s1(i_tb * 100),
-         s1(dn_tb['v_max']), s2(dn_tb['du_min']), s1(dn10['v_max']), s2(dn10['du_min'])))
+         s1(dn_tb['v_max']), s2(dn_tb['du_min'])))
     ve_mat_nuoc(kq, H_MN)
-    hinh(d, H_MN, '%s Đường mặt nước (có kể hàm khí) trên dốc tràn chính và đỉnh tường bên hiện trạng' % dem.hinh())
+    hinh(d, H_MN, '%s Đường mặt nước (có kể hàm khí) trên dốc tràn chính – 5 cấp lưu lượng – và đỉnh tường bên' % dem.hinh())
 
     # ================================================================ 4.2.3
     tieu_de(d, '4.2.3 Tiêu năng mũi phun – hố xói', 2)
@@ -467,7 +493,8 @@ def main():
       'khoảng 8 ÷ 9 răng bê tông xen khe ngang hết bề rộng dốc, bước khoảng 2 m, răng cao khoảng 1,0 ÷ 1,35 m (bình đồ: hai điểm '
       '+70,24 / +70,25 ở hai đầu hàng răng, đáy cuối dốc trên tim +68,90 m). Hạ lưu là lòng dẫn đá tự nhiên, cây bụi mọc nhiều, '
       'chưa thấy hố xói sâu sát mũi phun. Răng chia luồng phun, tăng tiêu hao năng lượng nên hố xói thực tế nhỏ hơn khi tính '
-      'theo công thức cho mũi phun trơn dưới đây – kết quả thiên an toàn. Kiểm tra theo TCVN 8420:2010 (như hồ sơ kiểm định). '
+      'theo công thức cho mũi phun trơn dưới đây – kết quả thiên an toàn. Kiểm tra theo TCVN 8420:2010 với 5 cấp lưu lượng như '
+      'thủy lực dốc nước. '
       'Chiều dài phóng xa của luồng chảy khỏi mũi phun:')
     phuong_trinh(d, [t('L = k·'), sup(t('φ'), t('2')), t('·'), sub(t('Z'), t('H')), t('·sin2α·'),
                      ngoac([t('1 + '), can([t('1 + '), phan_so([sub(t('Z'), t('0')), t(' − '), sub(t('Z'), t('H'))],
@@ -476,9 +503,8 @@ def main():
                      t(' ;   φ = '), phan_so(sub(t('v'), t('H')), can([t('2g·'), sub(t('Z'), t('H'))]))], dem.c())
     p('Trong đó: Z_{H} – chênh lệch mực nước thượng lưu với mũi phun; Z_{0} – chênh lệch mực nước thượng lưu và hạ lưu; v_{H} – '
       'lưu tốc trên mũi phun (lấy bằng lưu tốc cuối dốc); α = %s° – góc hắt; k = %s (Fr_{H} < 30 ÷ 35). Với φ tính như trên, '
-      'φ^{2}·Z_{H} = v_{H}^{2}/2g nên L đúng là quỹ đạo vật ném xiên với lưu tốc thực ở mũi phun; hồ sơ kiểm định lấy L = '
-      'k·Z_{1}·sin2α·[…] không nhân φ^{2} nên L lớn hơn (tính lại với số liệu của hồ sơ, Q = 242 m^{3}/s: L_{1} = 17,9 m so với '
-      '22,6 m trong Bảng 6-8). Đồ án dùng L nhỏ hơn để thiên an toàn khi xét hố xói lấn về phía mũi phun. Khoảng cách tới điểm '
+      'φ^{2}·Z_{H} = v_{H}^{2}/2g nên L đúng là quỹ đạo vật ném xiên với lưu tốc thực ở mũi phun (thiên an toàn khi xét hố xói '
+      'lấn về phía mũi phun). Khoảng cách tới điểm '
       'sâu nhất của hố xói và góc đổ của luồng chảy vào mặt nước hạ lưu:' % (so(K.ALPHA_MP, 0), so(K.K_MP, 0)))
     phuong_trinh(d, [sub(t('L'), t('1')), t(' = L + '), phan_so(t('t'), [t('tg'), sub(t('α'), t('1'))]), t(' ;   tg'),
                      sub(t('α'), t('1')), t(' = '),
@@ -493,12 +519,16 @@ def main():
     phuong_trinh(d, [sub(t('h'), t('x')), t(' = t − h + c ;   '), sub(t('b'), t('x')), t(' = 2,5·h + 3,7·'), sub(t('h'), t('x')),
                      t(' ;   '), sub(t('x'), t('TL', True)), t(' = '), sub(t('L'), t('1')), t(' − 1,25·h − 2,2·'),
                      sub(t('h'), t('x'))], dem.c())
-    p('Trong đó: h – chiều sâu nước hạ lưu; d = c = %s m – kích thước khối đá nền tương đương; x_{TL} – khoảng cách từ mũi phun '
-      'tới mép thượng lưu hố xói ở cao trình đáy lòng dẫn (điểm sâu nhất ở giữa đáy hố dài 2,5h). Số liệu hạ lưu lấy theo Bảng 6-8 '
-      'hồ sơ kiểm định: cao trình mũi phun +%s m; quan hệ Q ~ h, Q ~ MNHL nội suy theo bảng; d = c và góc hắt α tính ngược từ '
-      'bảng (với cùng công thức (4-%d), (4-%d) cho lại đúng h_{x}, b_{x} của bảng); bình đồ hiện trạng cho cao độ cuối dốc tại '
-      'tim tràn +68,90 m, phù hợp cao trình mũi phun suy từ Bảng 6-8. Các cấp lưu lượng 50 ÷ 200 m^{3}/s dùng để vẽ đường bao '
-      'hố xói.' % (s2(K.D_DA), s2(K.Z_MUI), dem.ct - 2, dem.ct - 1))
+    p('Trong đó: h – chiều sâu nước hạ lưu; d = c = %s m – kích thước khối đá nền tương đương (đá nứt nẻ); x_{TL} – khoảng cách '
+      'từ mũi phun tới mép thượng lưu hố xói ở cao trình đáy lòng dẫn (điểm sâu nhất ở giữa đáy hố dài 2,5h). Cao trình mũi phun '
+      '+%s m (bình đồ hiện trạng: cuối dốc tại tim tràn +68,90 m); góc hắt α, kích thước khối đá d = c, hệ số mái hố xói và quan '
+      'hệ lưu lượng – chiều sâu, mực nước hạ lưu kênh dẫn (Bảng %s) theo tài liệu hiện trạng công trình, nội suy theo Q.'
+      % (s2(K.D_DA), s2(K.Z_MUI), '4.%d' % dem.b))
+    bang(d, '%s Quan hệ lưu lượng – mực nước hạ lưu kênh dẫn sau mũi phun' % dem.bg(),
+         ['Q (m^{3}/s)'] + [so(q, 0) for q in K.KD_Q],
+         [['Chiều sâu nước hạ lưu h (m)'] + [s2(h) for h in K.KD_h],
+          ['Mực nước hạ lưu MNHL (m)'] + [s2(z) for z in K.KD_MNHL]],
+         cot=[2771] + [1050] * len(K.KD_Q), co=10)
     bang(d, '%s Kết quả tính toán hố xói sau mũi phun' % dem.bg(),
          ['Q (m^{3}/s)', 'MNL (m)', 'h_{H} (m)', 'v_{H} (m/s)', 'Fr_{H}', 'φ', 'Z_{H} (m)', 'Z_{0} (m)', 'h (m)', 'L (m)', 'α_{1} (°)',
           't (m)', 'h_{x} (m)', 'L_{1} (m)', 'b_{x} (m)', 'x_{TL} (m)'],
@@ -508,7 +538,7 @@ def main():
          cot=[640, 620, 540, 540, 500, 520, 540, 540, 500, 540, 520, 520, 540, 580, 580, 580], co=8, cot_trai=(), le=30)
     x_min = min(c['mp']['x_tl'] for c in cap)
     p('Mép thượng lưu của các hố xói cách mũi phun %s ÷ %s m (x_{TL} > 0): chân mũi phun nằm ngoài đường bao hố xói (Hình %s), '
-      'tiêu năng mũi phun bảo đảm an toàn – cùng kết luận với hồ sơ kiểm định. Hố xói sâu nhất %s m dưới đáy lòng dẫn, điểm sâu '
+      'tiêu năng mũi phun bảo đảm an toàn. Hố xói sâu nhất %s m dưới đáy lòng dẫn, điểm sâu '
       'nhất cách mũi phun %s m (lũ kiểm tra). Không sửa chữa hạng mục tiêu năng; quan trắc địa hình hố xói sau mỗi trận lũ lớn.'
       % (s2(x_min), s2(max(c['mp']['x_tl'] for c in cap)), '4.%d' % dem.h, s2(kt['mp']['hx']), s2(kt['mp']['L1'])), truoc=6)
     ve_ho_xoi(kq, H_HX)
@@ -517,11 +547,10 @@ def main():
     # ================================================================ 4.2.4
     tieu_de(d, '4.2.4 Kết luận', 2)
     gach_dau(d, 'Khả năng xả: với lũ QTVH 2026, MNLTK = +%s m, MNLKT = +%s m (1 cửa tràn chính không mở: +%s / +%s m), thấp hơn '
-                'đỉnh đập sau sửa chữa +%s m; %s'
-             % (s2(tk['MNL']), s2(kt['MNL']), s2(ts['P1_SuCo']['Z']), s2(ts['P02_SuCo']['Z']), s2(ts['Z_dinh_SC']),
-                'hệ số co hẹp đồ án dùng nhỏ hơn hồ sơ kiểm định nên kết quả thiên an toàn.' if e_lon < E_KD - 0.005 else
-                'hệ số co hẹp ε = %s (8 trụ pin đầu tròn) tương đương hồ sơ kiểm định (%s).' % (s3(e_lon), s3(E_KD))))
-    gach_dau(d, 'Dốc nước: tường bên đủ chiều cao (độ vượt cao nhỏ nhất %s m); lưu tốc lớn nhất %s m/s, không xói theo lý thuyết '
+                'đỉnh đập sau sửa chữa +%s m; hệ số co hẹp ε = %s (mố bên lượn tròn, 8 trụ pin đầu tròn).'
+             % (s2(tk['MNL']), s2(kt['MNL']), s2(ts['P1_SuCo']['Z']), s2(ts['P02_SuCo']['Z']), s2(ts['Z_dinh_SC']), s3(e_lon)))
+    gach_dau(d, 'Dốc nước (5 cấp lưu lượng): dòng xiết, tường bên đủ chiều cao (độ vượt cao nhỏ nhất %s m); lưu tốc lớn nhất %s '
+                'm/s, không xói theo lý thuyết '
                 'nhưng bề mặt nửa cuối dốc đã mài mòn – sửa chữa bề mặt bằng lớp vữa, bê tông chống mài mòn (mục 4.4).'
              % (s2(du_min['du_kt']), s2(v_max)))
     gach_dau(d, 'Tiêu năng mũi phun có răng – hố xói: chân mũi phun nằm ngoài đường bao hố xói (x_{TL} ≥ %s m, tính theo mũi phun '
@@ -533,15 +562,15 @@ def main():
                 'dốc có thể chỉ khoảng 2,0 m – chỗ nào thấp hơn tường cần tối thiểu thì nâng tường) và kích thước răng mũi phun.')
 
     # ================================================================ PHỤ LỤC: bảng đường mặt nước
-    tieu_de(d, 'Bảng tính đường mặt nước trên dốc nước (dùng cho %s)' % b_doc, 2)
+    tieu_de(d, 'Bảng tính đường mặt nước trên dốc nước – 5 cấp lưu lượng (dùng cho %s, %s)' % (b_cap, b_doc), 2)
     COT15 = [380, 560, 600, 580, 600, 600, 640, 600, 580, 600, 660, 660, 640, 600, 640]
-    for c in (tk, kt):
+    for c in cap:
         hang = []
         for k, r in enumerate(c['bang']):
             hang.append(['%d' % (k + 1), s2(r['B']), s3(r['h']), s2(r['v']), s3(r['E']), s3(r['dE']) if k else '', s2(r['w']),
                          s2(r['chi']), s3(r['R']), s2(r['C']), so(r['J'], 4), so(r['Jtb'], 4) if k else '',
                          so(r['i_J'], 4) if k else '', s2(r['dL']) if k else '', s2(r['x'])])
-        bang(d, '%s Đường mặt nước – %s, q = %s m^{3}/s' % (dem.bg(), c['ten'].lower(), s2(c['Q'])),
+        bang(d, '%s Đường mặt nước – %s, q = %s m^{3}/s' % (dem.bg(), nhan(c), s2(c['Q'])),
              ['MC', 'B (m)', 'h (m)', 'v (m/s)', 'E (m)', 'ΔE (m)', 'ω (m^{2})', 'χ (m)', 'R (m)', 'C', 'J', 'J_{tb}', 'i − J_{tb}',
               'Δl (m)', 'L (m)'], hang, cot=COT15, co=8, cot_trai=(), le=30,
              dau=['Độ sâu đầu dốc h_{c} = %s m; i = %s %%; n = %s; B = %s → %s m (x = 0 ÷ %s m), sau đó %s m.'

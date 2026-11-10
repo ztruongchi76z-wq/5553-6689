@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-KIỂM TRA TRÀN CHÍNH HIỆN TRẠNG (ĐỒ ÁN SỬA CHỮA) THEO CÁCH LÀM CỦA HỒ SƠ KIỂM ĐỊNH AN TOÀN ĐẬP (QTVH, chương 6 – SV gửi trích
-05/11/2026), thay cho trình tự file mẫu thiết kế tràn mới:
-  1. Khả năng xả lũ của ngưỡng: Q = σn·ε·m·Σb·√(2g)·H₀^1,5; bỏ qua lưu tốc tới gần (hồ sơ kiểm định: Ω_T ≫ 4·H·b) nên H₀ = H
+KIỂM TRA TRÀN CHÍNH HIỆN TRẠNG (ĐỒ ÁN SỬA CHỮA). Bản 10/11/2026: thủy lực dốc nước, mũi phun tính với 5 cấp lưu lượng như
+file mẫu (0,4Q; 0,6Q; 0,8Q; Q lũ thiết kế; lũ kiểm tra thay cấp 1,2Q); tài liệu trình bày (Word, Excel) không nhắc hồ sơ
+kiểm định (SV yêu cầu) – các số liệu suy từ hồ sơ đó ghi nguồn "tài liệu hiện trạng công trình" (xem ghi chú dưới):
+  1. Khả năng xả lũ của ngưỡng: Q = σn·ε·m·Σb·√(2g)·H₀^1,5; bỏ qua lưu tốc tới gần (thiên an toàn) nên H₀ = H
      – cùng công thức với điều tiết lũ (file DieuTietLu_Potapov_f1f2); quan hệ Q ~ Z, kết quả điều tiết.
   2. Thủy lực dốc nước: độ sâu co hẹp đầu dốc (E₀ = P₂ + H), đường mặt nước bằng phương pháp sai phân, dốc có bề rộng thay
      đổi – chọn trước ΔL, thử dần h (như hồ sơ kiểm định); hàm khí h_hk = h(1 + v/100); độ vượt cao tường bên; không xói.
@@ -35,7 +36,8 @@ KD_MNHL = [66.91, 67.36, 67.70, 68.09, 68.37, 69.13]
 KD_BANG68 = [(50, 1.11, 0.37, 7.60, 8.9, 6.8, 1.12, 17.20, 1.28, 7.53), (100, 1.76, 0.59, 9.4, 9.1, 7.4, 1.73, 17.80, 1.83, 11.09),
              (150, 2.30, 0.82, 10.2, 9.3, 8.0, 2.23, 19.30, 2.19, 13.70), (200, 2.79, 1.04, 10.7, 9.4, 8.5, 2.67, 21.01, 2.48, 15.86),
              (242, 3.17, 1.22, 11.0, 9.5, 8.8, 3.01, 22.58, 2.68, 17.44), (400, 4.43, 1.88, 11.8, 10.0, 10.1, 4.11, 30.69, 3.27, 22.39)]
-Q_MUC = [50.0, 100.0, 150.0, 200.0]   # các cấp lưu lượng thêm để vẽ đường bao hố xói (như hồ sơ kiểm định)
+K_CAP = (0.4, 0.6, 0.8)              # cấp lưu lượng theo file mẫu: k·Q (Q – lưu lượng xả tràn chính lũ thiết kế)
+Q_MUC = None                         # nếu là danh sách Q (m³/s) cố định thì dùng thay cho K_CAP (bản trước: 50 ÷ 200 m³/s)
 
 
 def mui_phun(Q, MNL, hH, vH):
@@ -96,7 +98,9 @@ def do_nhay_doc(ts, i):
 def tinh(ts=None):
     ts = ts or T.doc_excel()
     Q_tk, Q_kt = ts['P1_BinhThuong']['qtc'], ts['P02_BinhThuong']['qtc']
-    cap = sorted([(q, 'Q = %g m³/s' % q) for q in Q_MUC] + [(Q_tk, 'Lũ thiết kế P = 1%'), (Q_kt, 'Lũ kiểm tra P = 0,2%')])
+    muc = ([(q, 'Q = %g m³/s' % q) for q in Q_MUC] if Q_MUC else
+           [(k * Q_tk, ('%gQ' % k).replace('.', ',')) for k in K_CAP])
+    cap = sorted(muc + [(Q_tk, 'Lũ thiết kế P = 1%'), (Q_kt, 'Lũ kiểm tra P = 0,2%')])
     ds = []
     for Q, ten in cap:
         H = T.H0_theo_Q(Q, ts)
@@ -105,6 +109,7 @@ def tinh(ts=None):
         c = bang[-1]
         MNL = ts['TC_Z'] + H
         ds.append(dict(ten=ten, Q=Q, H=H, MNL=MNL, E0=E0, hc=hc, hk_dau=T.h_k(Q, TC['b_doc_dau']), bang=bang,
+                       ik=T.i_k(Q, TC['b_doc_cuoi']), h0=T.h_0(Q, TC['b_doc_cuoi'], i=TC['i_doc']),
                        mp=mui_phun(Q, MNL, c['h'], c['v'])))
     tk = [c for c in ds if c['ten'].startswith('Lũ thiết kế')][0]
     kt = [c for c in ds if c['ten'].startswith('Lũ kiểm tra')][0]
