@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 XUẤT FILE EXCEL: KIỂM TRA TRÀN CHÍNH VÀ TRÀN SỰ CỐ HIỆN TRẠNG TRONG ĐỒ ÁN SỬA CHỮA (bản 10/11/2026:
-thủy lực dốc nước tính với 5 cấp lưu lượng như file mẫu; không nhắc hồ sơ kiểm định – SV yêu cầu). Cùng nội dung, cùng số với Word TAI_VE/KiemTra_TranChinh_SuaChua.docx (kiem_tra_tran_chinh.py, kiem_tra_tran_su_co.py
+thủy lực dốc nước tính với 5 cấp lưu lượng (0,4Q ÷ Q, Q_KT); không nhắc hồ sơ kiểm định – SV yêu cầu). Cùng nội dung, cùng số với Word TAI_VE/KiemTra_TranChinh_SuaChua.docx (kiem_tra_tran_chinh.py, kiem_tra_tran_su_co.py
 – sheet TSC_… do SV yêu cầu 08/11/2026). Mọi ô kết quả là công thức;
 ô nền vàng chữ xanh là số liệu nhập. Các bước thử dần (H theo Q, độ sâu co hẹp h_c, độ sâu cuối mỗi đoạn dốc) giải bằng phép
 lặp trong các cột phụ màu xám.
@@ -27,7 +27,7 @@ TC = T.TC
 N_B = T.N_BUOC_LT
 NR = 2 * N_B + 1                       # số mặt cắt trên dốc (hàng 6 ÷ 5 + NR)
 RC = 5 + NR                            # hàng mặt cắt cuối dốc
-# 5 cấp lưu lượng như file mẫu: 0,4Q; 0,6Q; 0,8Q; Q (lũ thiết kế); lũ kiểm tra thay cấp 1,2Q (nhãn, công thức hoặc giá trị, sheet)
+# 5 cấp lưu lượng: 0,4Q; 0,6Q; 0,8Q; Q (lũ thiết kế); Q_KT (lũ kiểm tra) – (nhãn, công thức hoặc giá trị, sheet)
 CAP = [('0,4Q', '0.4*SL_qTK', 'MN_04Q'), ('0,6Q', '0.6*SL_qTK', 'MN_06Q'), ('0,8Q', '0.8*SL_qTK', 'MN_08Q'),
        ('Lũ thiết kế P = 1%', 'SL_qTK', 'MN_P1'), ('Lũ kiểm tra P = 0,2%', 'SL_qKT', 'MN_P02')]
 
@@ -171,7 +171,7 @@ khoi('B. NGƯỠNG TRÀN, DỐC NƯỚC (QTVH Bảng 13, hồ sơ dự án, bìn
     ('Hệ số lưu tốc φ (độ sâu co hẹp)', T.PHI, '', 'SL_phi', 'Hệ số lưu tốc khi chảy qua ngưỡng xuống chân bậc', '0.00'),
     ('Hệ số động năng α', T.ALPHA, '', 'SL_a', '', '0.00'),
     ('Độ vượt cao yêu cầu của tường bên', T.A_TUONG, 'm', 'SL_at', '', '0.00'),
-    ('Lưu tốc không xói của dốc BT M200 [v]kx', K.V_KX, 'm/s', 'SL_vkx', 'Lấy thiên an toàn – nhỏ hơn 19,2 ÷ 21,1 m/s (TCVN 4118:2012, Bảng I5, như file mẫu)',
+    ('Lưu tốc không xói của dốc BT M200 [v]kx', K.V_KX, 'm/s', 'SL_vkx', 'Lấy thiên an toàn – nhỏ hơn 19,2 ÷ 21,1 m/s (TCVN 4118:2012, Bảng I5)',
      '0.0'),
     ('Gia tốc trọng trường g', 9.81, 'm/s²', 'SL_g', '', '0.00'),
 ])
@@ -281,9 +281,9 @@ in_an(kx)
 dd = wb.create_sheet('DauDoc')
 C_H, C_HC, C_H0 = 18, 26, 32                  # cột đầu của các phép lặp: H (8 vòng), h_c (6 vòng), h₀ (8 vòng)
 rong(dd, (22, 11, 9, 10, 9, 9, 10, 18, 10, 9, 9, 9, 9, 10, 9, 22, 3) + (9,) * 22)
-tieu_de_sheet(dd, 'CÁC CẤP LƯU LƯỢNG (5 cấp như file mẫu) – CỘT NƯỚC, MỰC NƯỚC HỒ, ĐỘ SÂU ĐẦU DỐC, h_k, i_k, h₀',
-              'Q = 0,4Q; 0,6Q; 0,8Q; Q; lũ kiểm tra (Q – lưu lượng xả tràn chính khi lũ thiết kế; lũ kiểm tra = %sQ lớn hơn cấp 1,2Q của '
-              'mẫu nên lấy thay). H giải ngược từ công thức khả năng xả, ε có H/b ≤ 1 (8 vòng lặp, cột R ÷ Y); h_c từ Q = φ·B_đ·h_c·'
+tieu_de_sheet(dd, 'CÁC CẤP LƯU LƯỢNG (5 cấp) – CỘT NƯỚC, MỰC NƯỚC HỒ, ĐỘ SÂU ĐẦU DỐC, h_k, i_k, h₀',
+              '0,4Q; 0,6Q; 0,8Q; Q; Q_KT (Q – lưu lượng xả lớn nhất qua tràn chính khi lũ thiết kế; Q_KT – khi lũ kiểm tra = %sQ; '
+              'tràn có cửa van nên lưu lượng qua tràn nhận mọi giá trị từ 0 đến Q_KT). H giải ngược từ công thức khả năng xả, ε có H/b ≤ 1 (8 vòng lặp, cột R ÷ Y); h_c từ Q = φ·B_đ·h_c·'
               '√(2g(E₀ − h_c)), E₀ = P₂ + H (6 vòng lặp, cột Z ÷ AE); h_k, i_k, h₀ tính cho đoạn lăng trụ B_c (h₀ lặp 8 vòng, cột AF ÷ '
               'AM).' % _vn_(ts['P02_BinhThuong']['qtc'] / ts['P1_BinhThuong']['qtc']))
 tieu_de_cot(dd, 4, 1, ['Cấp', 'Q (m³/s)', 'H (m)', 'MNL (m)', 'E₀ (m)', 'h_c (m)', 'h_k (B_đ) (m)', 'Trạng thái đầu dốc',
@@ -761,7 +761,7 @@ ND = [
     ('M', 'Nội dung tính toán'),
     ('-', 'Tràn chính đang vận hành: không chọn lại hình thức, bề rộng, kênh dẫn, chiều dày bản đáy, kích thước công trình tiêu '
           'năng. Đồ án kiểm tra công trình hiện có với lũ cập nhật (QTVH 2026): (1) khả năng xả lũ – điều tiết; (2) thủy lực dốc '
-          'nước với 5 cấp lưu lượng như file mẫu (0,4Q; 0,6Q; 0,8Q; Q; lũ kiểm tra) – h_k, i_k, h₀, đường mặt nước, tường bên, '
+          'nước với 5 cấp lưu lượng (0,4Q; 0,6Q; 0,8Q; Q; Q_KT lũ kiểm tra) – h_k, i_k, h₀, đường mặt nước, tường bên, '
           'xói; (3) tiêu năng mũi phun – hố xói với 5 cấp lưu lượng; (4) không tràn đỉnh đập (mục 2.3).'),
     ('-', 'Lưu tốc tới gần: bỏ qua, H₀ = H – V₀ làm tăng khả năng xả nên bỏ qua là thiên an toàn; khả năng xả của ngưỡng chính là '
           'công thức đã dùng khi điều tiết lũ, không cần kiểm tra riêng.'),
@@ -769,7 +769,7 @@ ND = [
     ('-', 'SoLieu: thông số tràn, dốc nước, kết quả điều tiết lũ (file f1f2), số liệu mũi phun, tường bên, quan hệ lưu lượng – mực '
           'nước hạ lưu (tài liệu hiện trạng công trình).'),
     ('-', 'KhaNangXa: quan hệ Q ~ Z (tràn chính 9 / 8 khoang, tràn sự cố) và kết quả điều tiết lũ.'),
-    ('-', 'DauDoc: 5 cấp lưu lượng (0,4Q; 0,6Q; 0,8Q; Q lũ thiết kế; lũ kiểm tra thay cấp 1,2Q của mẫu) – cột nước, mực nước hồ, '
+    ('-', 'DauDoc: 5 cấp lưu lượng (0,4Q; 0,6Q; 0,8Q; Q lũ thiết kế; Q_KT lũ kiểm tra) – cột nước, mực nước hồ, '
           'độ sâu co hẹp đầu dốc, h_k, i_k, h₀ của đoạn lăng trụ.'),
     ('-', 'MN_04Q, MN_06Q, MN_08Q, MN_P1, MN_P02: đường mặt nước trên dốc (sai phân, chọn trước Δl, thử dần h).'),
     ('-', 'DocNuoc: chiều sâu có kể hàm khí, độ vượt cao tường bên, lưu tốc so với [v]kx tại x = 0, 5, …, 60 m; biểu đồ.'),

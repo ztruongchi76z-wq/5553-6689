@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 XUẤT WORD: KIỂM TRA TRÀN CHÍNH (MỤC 4.2) VÀ TRÀN SỰ CỐ (MỤC 4.3) HIỆN TRẠNG TRONG ĐỒ ÁN SỬA CHỮA. Bản 10/11/2026: thủy lực
-dốc nước, mũi phun tính với 5 cấp lưu lượng như file mẫu; không nhắc hồ sơ kiểm định (SV yêu cầu – số liệu của đồ án đã độc
+dốc nước, mũi phun tính với 5 cấp lưu lượng (0,4Q; 0,6Q; 0,8Q; Q; Q_KT – 12/11 bỏ chữ "như file mẫu"); không nhắc hồ sơ kiểm định (SV yêu cầu – số liệu của đồ án đã độc
 lập; số liệu hiện trạng ghi nguồn chung "tài liệu hiện trạng công trình"). Tính ở
 kiem_tra_tran_chinh.py, kiem_tra_tran_su_co.py (tràn sự cố – SV yêu cầu 08/11/2026).
   python3 xuat_word_kiem_tra_tran_chinh.py [đường dẫn .docx ra]
@@ -303,7 +303,7 @@ def main():
     p = lambda txt, **kw: doan(d, txt, thut=1.0, **kw)
 
     doan(d, 'Ghi chú (xoá khi dán vào thuyết minh): mục 4.2 (tràn chính) và 4.3 (tràn sự cố); thủy lực dốc nước tính với 5 cấp '
-            'lưu lượng như file mẫu; thông số tràn và kết quả điều tiết lấy từ file DieuTietLu_Potapov_f1f2. '
+            'lưu lượng; thông số tràn và kết quả điều tiết lấy từ file DieuTietLu_Potapov_f1f2. '
             'Số hiệu công thức, bảng, hình đánh liên tục từ (4-1), Bảng 4.3, Hình 4.1 – sửa lại theo thuyết minh.', co=11,
          nghieng=True, can=WD_ALIGN_PARAGRAPH.LEFT)
     tieu_de(d, '4.2 Kiểm tra tràn chính hiện trạng', 1)
@@ -387,10 +387,12 @@ def main():
 
     # ================================================================ 4.2.2
     tieu_de(d, '4.2.2 Thủy lực dốc nước', 2)
-    p('Thủy lực dốc nước tính với 5 cấp lưu lượng như file mẫu: 0,4Q; 0,6Q; 0,8Q; Q và lưu lượng lũ kiểm tra, trong đó Q = %s '
-      'm^{3}/s là lưu lượng xả lớn nhất qua tràn chính khi lũ thiết kế. Mẫu lấy cấp lớn nhất 1,2Q; ở đây lưu lượng lũ kiểm tra '
-      'bằng %sQ, lớn hơn 1,2Q, nên lấy thay cấp 1,2Q để kiểm tra trường hợp bất lợi nhất. Cột nước trên ngưỡng H ứng với từng cấp '
-      'giải ngược từ (4-1), (4-2).' % (s2(tk['Q']), s2(kt['Q'] / tk['Q'])))
+    p('Thủy lực dốc nước được tính với 5 cấp lưu lượng: 0,4Q; 0,6Q; 0,8Q; Q và Q_{KT}, trong đó Q = %s m^{3}/s là lưu lượng '
+      'xả lớn nhất qua tràn chính khi lũ thiết kế (P = 1%%), Q_{KT} = %s m^{3}/s (= %sQ) là lưu lượng xả lớn nhất khi lũ kiểm '
+      'tra (P = 0,2%%). Tràn có cửa van nên khi vận hành, lưu lượng qua tràn có thể nhận mọi giá trị từ 0 đến Q_{KT}: các cấp '
+      'nhỏ dùng để kiểm tra trạng thái chảy trên dốc và tiêu năng (hố xói thường lấn gần mũi phun nhất khi lưu lượng nhỏ), cấp '
+      'lớn nhất dùng để kiểm tra chiều cao tường bên và lưu tốc lớn nhất. Cột nước trên ngưỡng H ứng với từng cấp giải ngược '
+      'từ (4-1), (4-2).' % (s2(tk['Q']), s2(kt['Q']), s2(kt['Q'] / tk['Q'])))
     p('Độ sâu co hẹp ở đầu dốc nước (chân bậc hạ sau ngưỡng) tính theo công thức tổng quát, giải bằng thử dần:')
     phuong_trinh(d, [t('Q = φ·'), sub(t('ω'), t('c')), t('·'), can([t('2g·'), ngoac([sub(t('E'), t('0')), t(' − '),
                                                                                        sub(t('h'), t('c'))])]),
@@ -455,7 +457,7 @@ def main():
     p('Mặt nước có kể hàm khí thấp hơn đỉnh tường bên ở mọi mặt cắt; độ vượt cao nhỏ nhất %s m tại x = %s m với lũ kiểm tra '
       '(lớn hơn 0,5 m) – tường bên dốc nước đủ chiều cao. Lưu tốc lớn nhất trên dốc ở cả 5 cấp lưu lượng là %s m/s (cuối dốc, '
       'lũ kiểm tra), nhỏ hơn lưu tốc cho phép không xói của dốc bê tông M200 – đồ án lấy [v]_{kx} = %s m/s, nhỏ hơn trị số '
-      '19,2 ÷ 21,1 m/s theo TCVN 4118:2012 (phụ lục I, Bảng I5) dùng trong file mẫu, thiên an toàn – nên dốc nước bảo đảm điều '
+      '19,2 ÷ 21,1 m/s theo TCVN 4118:2012 (phụ lục I, Bảng I5), thiên an toàn – nên dốc nước bảo đảm điều '
       'kiện không xói theo lý thuyết; tuy vậy bề mặt dốc không phẳng nhẵn, nước xả mang cát sạn nên nửa cuối dốc đã bị xói nhẹ '
       '(khảo sát hiện trạng) – cần sửa chữa bề mặt dốc (mục 4.4). Hình %s thể hiện đường mặt nước của 5 cấp lưu lượng.'
       % (s2(du_min['du_kt']), so(du_min['x'], 0), s2(v_max), so(K.V_KX, 1), '4.%d' % dem.h), truoc=6)
