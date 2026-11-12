@@ -1,0 +1,10 @@
+Gỡ mục lục cũ (219 dòng, 219 bookmark) để điền lại sau khi sửa.
+Danh mục viết tắt: MNLTK, MNLKT ghi thêm tên gọi theo TCVN 10778:2024 (mực nước lớn nhất thiết kế, kiểm tra).
+Bảng 2.1: thêm dòng 11 (TCVN 4116:2023 – cấp độ bền B, mác chống thấm W, lớp bảo vệ ≥ 60 mm) và dòng 12 (TCVN 10778:2024 – P = m/(n + 1), tổn thất thấm, dòng chảy tối thiểu Q_tt = 0,027 m³/s).
+Mục 2.2.1: kiểm tra MNC theo TCVN 10778:2024 mục 7.1 ÷ 7.3 – thêm điều kiện bồi lắng (bùn cát 70 năm ≈ 0,48 triệu m³ theo QTVH mục 3.5.4, nhỏ hơn dung tích dưới ngưỡng cống 3,52 triệu m³).
+Mục 2.2.2: phương pháp toàn chuỗi theo TCVN 10778:2024 mục 8.2.1.2; Wdùng và Q_tt theo công thức (6); tổn thất thấm đối chiếu Bảng 1; P = m/(n + 1) là công thức (14), điều kiện m ≥ 39 năm theo công thức (9).
+Mục 2.2.3: kết quả kể dòng chảy tối thiểu Q_tt = 0,027 m³/s (TCVN 10778:2024 công thức 6): P không đổi (40,0 / 86,7 / 82,2%), ΣW thiếu 159,7 / 8,9 / 14,6 triệu m³, MNDBT cần cho TH1A +74,62 → +74,68 m (< +74,70 m).
+Mục 2.3.1: điều tiết lũ dẫn TCVN 10778:2024 mục 10.1.2 (phương trình cân bằng nước), mục 10.2 (sai số lặp ≤ 5 cm).
+Bê tông ghi theo cấp độ bền chịu nén B (TCVN 4116:2023 mục 5.1.2), mác M kèm trong ngoặc: B20 (M250) mặt đập, gờ chắn bánh, đường quản lý; B15 (M200) rãnh – mục 3.2.1, 3.3, 5.1.3, 5.5.2, 6.3, Bảng 3.1, 3.2, 7.1 (9 ô bảng).
+Mục 4.x (sửa chữa đáy dốc tràn chính): vữa xi măng – polime ≥ 40 MPa, thêm yêu cầu W8 theo TCVN 4116:2023 mục 5.1.9.
+Mục 6.5, Bảng 6.4: lớp bê tông bảo vệ ≥ 60 mm (TCVN 4116:2023 mục 6.3.3) → a = 7 cm thay 5 cm; tính lại cốt thép (bo_sung_giai_tich.py): sau sửa chữa 8,4 ÷ 16,7 cm²/m (5Ø16 ÷ 6Ø20 mỗi mét), vẫn lớn hơn trước sửa chữa khoảng 4%.
