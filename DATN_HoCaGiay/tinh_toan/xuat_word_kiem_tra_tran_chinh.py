@@ -399,14 +399,29 @@ def main():
                      t(' ;   '), sub(t('ω'), t('c')), t(' = '), sub(t('b'), t('c')), t('·'), sub(t('h'), t('c')), t(' ;   '),
                      sub(t('E'), t('0')), t(' = '), sub(t('P'), t('2')), t(' + H')], dem.c())
     kq['ct_hc'] = dem.ct - 1
-    p('với φ = %s; b_{c} = %s m (bề rộng đầu dốc); E_{0} = P_{2} + H (bỏ qua V_{0}). Độ sâu phân giới, độ dốc phân giới và độ sâu '
-      'dòng đều tính cho đoạn lăng trụ B = %s m:' % (s2(T.PHI), so(TC['b_doc_dau'], 0), so(TC['b_doc_cuoi'], 0)))
+    p('Trong đó: Q – lưu lượng qua tràn chính ứng với cấp đang tính (m^{3}/s); h_{c} – độ sâu co hẹp ở đầu dốc (chân bậc hạ), '
+      'là ẩn số, giải bằng thử dần và lấy nghiệm nhỏ (dòng xiết); ω_{c} – diện tích mặt cắt ướt tại mặt cắt co hẹp (m^{2}); '
+      'b_{c} – bề rộng dốc tại mặt cắt co hẹp, lấy bằng bề rộng đầu dốc b_{c} = %s m; φ – hệ số lưu tốc, kể đến tổn thất năng '
+      'lượng khi nước chảy qua ngưỡng xuống chân bậc, φ = %s; E_{0} – năng lượng đơn vị của dòng chảy thượng lưu tính từ đáy đầu '
+      'dốc (m); P_{2} – chiều cao bậc hạ từ đỉnh ngưỡng xuống đáy đầu dốc, P_{2} = %s m; H – cột nước trên đỉnh ngưỡng ứng với '
+      'cấp lưu lượng đang tính (m), bỏ qua lưu tốc tới gần V_{0} nên H_{0} = H; g = 9,81 m/s^{2} – gia tốc trọng trường.'
+      % (so(TC['b_doc_dau'], 0), s2(T.PHI), s2(TC['P2'])))
+    p('Độ sâu phân giới, độ dốc phân giới và độ sâu dòng đều tính cho đoạn dốc có bề rộng không đổi B = %s m (đoạn lăng trụ, '
+      'x = %s ÷ %s m):' % (so(TC['b_doc_cuoi'], 0), so(TC['L_chuyen_tiep'], 0), so(TC['L_doc'], 0)))
     phuong_trinh(d, [sub(t('h'), t('k')), t(' = '), can(phan_so([t('α·'), sup(t('q'), t('2'))], t('g')), t('3')), t(' ;   '),
                      sub(t('i'), t('k')), t(' = '),
                      phan_so(sup(t('Q'), t('2')), [sub_sup(t('ω'), t('k'), t('2')), t('·'), sub_sup(t('C'), t('k'), t('2')), t('·'),
                                                    sub(t('R'), t('k'))]),
                      t(' ;   Q = '), sub(t('ω'), t('0')), t('·'), sub(t('C'), t('0')), t('·'), can([sub(t('R'), t('0')), t('·i')])],
                  dem.c())
+
+    p('Trong đó: h_{k} – độ sâu phân giới (m); α = %s – hệ số sửa chữa động năng; q = Q/B – lưu lượng đơn vị (m^{3}/s/m); '
+      'i_{k} – độ dốc phân giới; ω_{k} = B·h_{k}, χ_{k} = B + 2h_{k}, R_{k} = ω_{k}/χ_{k}, C_{k} = R_{k}^{1/6}/n – diện tích mặt '
+      'cắt ướt (m^{2}), chu vi ướt (m), bán kính thủy lực (m) và hệ số Sêdi (m^{0,5}/s) ứng với độ sâu phân giới; h_{0} – độ sâu '
+      'dòng đều (m), là ẩn số của phương trình Q = ω_{0}·C_{0}·√(R_{0}·i), giải bằng thử dần; ω_{0}, R_{0}, C_{0} – các đại '
+      'lượng như trên ứng với độ sâu h_{0}; i = %s – độ dốc đáy dốc nước; n = %s – hệ số nhám (bê tông). Nếu i > i_{k} thì dốc '
+      'nước là dốc dốc; h_{0} < h_{k} thì dòng chảy đều trên dốc là dòng xiết.'
+      % (so(T.ALPHA, 1), so(TC['i_doc'], 2), so(T.N_NHAM, 3)))
 
     def nhan(c):
         if c['ten'].startswith('Lũ thiết kế'):
@@ -432,6 +447,12 @@ def main():
                      sup(ngoac(phan_so(t('v'), [t('C'), can(t('R'))])), t('2')), t(' ;   C = '), phan_so(t('1'), t('n')), t('·'),
                      sup(t('R'), phan_so(t('1'), t('6')))], dem.c())
     kq['ct_dmn'] = dem.ct - 1
+    p('Trong đó: E = h + α·v^{2}/(2g) – năng lượng đơn vị của mặt cắt, tính từ đáy dốc (m); ΔE – chênh lệch năng lượng đơn vị '
+      'giữa mặt cắt cuối và mặt cắt đầu đoạn (m); Δl – chiều dài đoạn tính (m); J – độ dốc thủy lực (độ dốc ma sát) tại mặt cắt; '
+      'J̄ – độ dốc thủy lực trung bình của đoạn, J_{i}, J_{i+1} – tại mặt cắt đầu và cuối đoạn; v = Q/ω – lưu tốc trung bình '
+      'mặt cắt (m/s); h, ω = B·h, χ = B + 2h, R = ω/χ, C – độ sâu, diện tích mặt cắt ướt, chu vi ướt, bán kính thủy lực và hệ '
+      'số Sêdi tại mặt cắt; B – bề rộng dốc tại mặt cắt (giảm đều %s → %s m trên đoạn thu hẹp, %s m trên đoạn lăng trụ).'
+      % (so(TC['b_doc_dau'], 0), so(TC['b_doc_cuoi'], 0), so(TC['b_doc_cuoi'], 0)))
     p('Dốc có bề rộng thay đổi nên chia dốc thành các đoạn có chiều dài chọn trước (%s m trên đoạn thu hẹp, %s m trên đoạn lăng '
       'trụ), giả thiết độ sâu cuối đoạn, tính lại Δl theo (4-%d) và thay đổi h tới khi Δl tính bằng Δl chọn; n = %s (bê tông). Bảng '
       'tính đường mặt nước của 5 cấp lưu lượng ở cuối mục. Độ sâu có kể hàm khí:'
@@ -439,6 +460,8 @@ def main():
          so(T.N_NHAM, 3)))
     phuong_trinh(d, [sub(t('h'), t('hk', True)), t(' = h·'), ngoac([t('1 + '), phan_so(t('v'), t('100'))])], dem.c())
     kq['ct_hk'] = dem.ct - 1
+    p('Trong đó: h_{hk} – độ sâu dòng chảy có kể hàm khí (m); h, v – độ sâu (m) và lưu tốc (m/s) tại mặt cắt khi chưa kể hàm '
+      'khí (công thức kinh nghiệm, v tính bằng m/s).')
     p('Chiều cao tường bên kiểm tra với lũ thiết kế và lũ kiểm tra (Bảng %s); các cấp lưu lượng nhỏ hơn có mặt nước thấp hơn nên '
       'không khống chế chiều cao tường.' % ('4.%d' % dem.b))
     b_doc = dem.bg()
