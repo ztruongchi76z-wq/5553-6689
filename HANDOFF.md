@@ -166,3 +166,16 @@ nên chuẩn là: giữ mọi luận điểm của bản 15/11, chỉ bỏ câu 
   mô tả của bản 15/11. Khi rút gọn, chỉ dùng câu có trong bản gốc hoặc phụ lục.
 - Nếu người dùng muốn dựng thẳng trên văn bản 11/11 (thay vì hợp 11/11 + 15/11), các ID tệp Word 11/11 ở
   NOTES_vong2.md; đọc bằng Drive MCP read_file_content (tệp không công khai).
+
+## 9. Thư mục so sánh FULL – MA TRẬN (17/11/2026)
+
+- Nguồn: Drive “canh bac cuoc doi / Đơn tháng 11-2026 / SO SANH PHU LUC - FULL va MA TRAN - 17-11-2026”
+  (01 FULL ChatGPT, 02 MA TRẬN ChatGPT, 03 Bảng 18 điểm từ ZIP, 04 trống để hợp nhất). 01 và 02 trùng kích thước
+  từng tệp với thư mục 91 đã dùng – cùng nguồn.
+- Đối chiếu tự động mã ma trận ↔ bản đầy đủ (build/pairs.py); mã không thấy nguyên văn là do bản đầy đủ đánh số
+  theo phần (I.n = điểm n Phần I; N.x = dòng x Phần N…), đã kiểm tay.
+- Phát hiện: ma trận 07.6 của mình chỉ có Phần N, trong khi đơn dẫn R.x, A.x, C.4, D.14–D.15, F. Đã hợp nhất: Bảng 1
+  Phần N + Bảng 2 mục lục R, A, B, C, D, Đ, E, K, M, F–H theo tên mục bản đầy đủ (3 trang). Bộ in: 120 trang + 3 photo.
+- 07.7 (PL III) không lập ma trận: bản đầy đủ tự ghi là bảng con trỏ sang PL4 (07.3).
+- Đã tải lên thư mục 04: 14 tệp “…_MA_TRAN_HOP_NHAT_va_FULL.pdf” (ma trận hợp nhất + bản đầy đủ nguyên trạng),
+  00_SO_SANH_VA_HOP_NHAT.pdf, thư mục Word_ma_tran_hop_nhat (13 docx). Không sửa, không xóa tệp nguồn.
