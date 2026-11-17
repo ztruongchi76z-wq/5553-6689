@@ -144,3 +144,25 @@ Mã nguồn nằm trong ZIP, thư mục `_ma_nguon_dung_bo_in/build/`:
 `pb26.py`, `pb78.py` (đơn) · `covers.py`, `assemble.py`, `finalize.py` (bìa, ghép, ZIP).
 Cần LibreOffice, python-docx, qrcode, pypdf. Thứ tự chạy: phụ lục → đơn → `assemble.py` → `finalize.py`.
 Đường dẫn trong mã trỏ tới thư mục nháp của phiên này; sửa biến `SP`/`SRC` khi chạy nơi khác.
+
+## 8. Vòng 2 (17/11/2026) – phản hồi “Bộ 11/11 chuẩn. Chỉ thiếu ít luận điểm & pl ma trận”
+
+Diễn giải: giữ khuôn (bìa 1 trang có danh mục, QR, số tệp, số trang; đơn kiểu con trỏ), nhưng đơn phải chứa
+HỢP luận điểm của bản 11/11 và bản 15/11. Đối chiếu PB7, PB8 cho thấy bản 15/11 đã bao trọn luận điểm bản 11/11,
+nên chuẩn là: giữ mọi luận điểm của bản 15/11, chỉ bỏ câu lặp, chữ thừa; bảng chỉ dùng nơi bảng rõ hơn văn xuôi.
+
+### Đã làm
+- Khôi phục luận điểm bị cắt ở vòng 1 cho cả bảy đơn (danh sách theo đơn: NOTES_vong2.md trong scratchpad).
+  Mục III của PB7, PB8, PB2, PB3 viết lại thành các điểm a), b)… có mã trỏ phụ lục ở cuối mỗi điểm.
+- Số trang đơn: PB2 7, PB3 8, PB4 3, PB5 5, PB6 6, PB7 10, PB8 9 (bộ 16/11: 9, 12, 3, 6, 7, 13, 10).
+- Thêm phụ lục ma trận in kèm: PB2 +07.10; PB3 +07.10; PB6 +07.6; PB7 +07.5; PB8 +07.1, +07.3.
+  07.1, 07.3, 07.10 dựng từ ma trận Astra; đã bỏ các câu ghi chú soạn thảo còn sót (“giữ mạch… trong full”…),
+  sửa cột trang (mã con như 2.2.a lấy trang của mục cha 2.2).
+- Bìa PB8 (8 dòng bản giấy) thu cỡ chữ, QR để vừa 1 trang; PB4 ép mục IV sang trang 3 để khối ký không đứng một mình.
+- Tổng in: 117 trang + 3 trang tự photo (vòng 1: 86 + 3; bộ 16/11: 254 + 3). Không trang cuối nào chỉ còn khối ký.
+
+### Lưu ý cho phiên sau
+- Đã sửa một mô tả không có trong bản 15/11 (vòng 1 viết “xương sống” chịu lực trong bảng PB2) – nay dùng đúng
+  mô tả của bản 15/11. Khi rút gọn, chỉ dùng câu có trong bản gốc hoặc phụ lục.
+- Nếu người dùng muốn dựng thẳng trên văn bản 11/11 (thay vì hợp 11/11 + 15/11), các ID tệp Word 11/11 ở
+  NOTES_vong2.md; đọc bằng Drive MCP read_file_content (tệp không công khai).
