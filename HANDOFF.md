@@ -195,3 +195,9 @@ nên chuẩn là: giữ mọi luận điểm của bản 15/11, chỉ bỏ câu 
 - Phần II giữ 2.1 – 2.4; Phần III giữ 3.1 – 3.9, thêm 3.10 (hậu quả vượt ra ngoài một tiết dạy, chuyển từ Phần V).
 - Trỏ chéo trong PL1 và con trỏ ở đơn PB3, PB8 đã đổi sang số mới. Ma trận 07.1 dựng lại (2 trang, ghi kèm số điểm cũ).
 - Script: build/pl1_restructure.py (chạy sau pl1_upgrade.py), build/pm071.py (trang mục). PL1 bản tái cấu trúc: 38 trang.
+
+## 12. Vòng 3c – áp dụng trả lời của chủ hồ sơ (17/11/2026)
+- Đơn gửi Đoàn ĐBQH là bản 29/9 (bản 22/9 không gửi). 17.17a thêm trang 5 – Phần VII (Điều 17, 26 NQ 116; các đơn ở Mục III đơn 29/9 mà Giấy báo tin 592 không nhắc). Script build/b1717a.py.
+- PL1: sửa chức danh giáo viên dự giờ (năm học 2025–2026 là Nhóm trưởng Toán khối 6); dẫn trang bài giảng 06.09 “Điểm trượt cần thiết”; bỏ con số sai số lỗ khoan chưa thống nhất; kéo các hiệu chỉnh sự kiện, điều luật của bản 16/11 sang bản tái cấu trúc. Script build/pl1_fix3c.py (chạy sau pl1_restructure.py). PL1 39 trang.
+- Còn chờ xác nhận: ngày buổi họp ở mục 2.2.f (đang giữ 27/11/2024 theo ghi chú của chủ hồ sơ).
+- finalize.py: bản in kèm (out/mx) ghi đè bản số hóa cùng tên khi gom _Phu_luc_tom_luoc.
