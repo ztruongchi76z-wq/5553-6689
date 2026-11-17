@@ -189,3 +189,9 @@ nên chuẩn là: giữ mọi luận điểm của bản 15/11, chỉ bỏ câu 
 - 12.10: báo cáo F0 4809–6689 người dùng tải lên trùng 12.10 (chỉ khác tiêu đề) – không có gì để hợp nhất.
 - 17.17a: có HAI đơn gửi Đoàn ĐBQH (22/9 và 29/9); Giấy báo tin 592 trả lời đơn 29/9; bản F0 592 mới của người dùng
   đối chiếu đơn 22/9. Chờ người dùng cho biết đơn 22/9 đã gửi Đoàn chưa trước khi hợp nhất. Chi tiết: scratchpad NOTES_vong3_PL1.md.
+
+## 11. Vòng 3b – PL1 tái cấu trúc theo Trình – Tâm – Tầm (17/11/2026)
+- Phần I: 14 điểm sắp theo ba trục (nói và làm: điểm 1–6; minh bạch và xác minh: 7–10; công bằng: 11–13 + bảng bốn thời điểm) và điểm khép lại 14. Đổi số so với bản 07/7: 1→1, 2→2, 5→3, 8→4, 6→5, 7→6, 3→7, 4→8, 12→9, 13→10, 9→11, 10→12, 11→13, 14→14 (bảng đối chiếu in ở trang 1 PL1).
+- Phần II giữ 2.1 – 2.4; Phần III giữ 3.1 – 3.9, thêm 3.10 (hậu quả vượt ra ngoài một tiết dạy, chuyển từ Phần V).
+- Trỏ chéo trong PL1 và con trỏ ở đơn PB3, PB8 đã đổi sang số mới. Ma trận 07.1 dựng lại (2 trang, ghi kèm số điểm cũ).
+- Script: build/pl1_restructure.py (chạy sau pl1_upgrade.py), build/pm071.py (trang mục). PL1 bản tái cấu trúc: 38 trang.
