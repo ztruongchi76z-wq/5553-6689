@@ -179,3 +179,13 @@ nên chuẩn là: giữ mọi luận điểm của bản 15/11, chỉ bỏ câu 
 - 07.7 (PL III) không lập ma trận: bản đầy đủ tự ghi là bảng con trỏ sang PL4 (07.3).
 - Đã tải lên thư mục 04: 14 tệp “…_MA_TRAN_HOP_NHAT_va_FULL.pdf” (ma trận hợp nhất + bản đầy đủ nguyên trạng),
   00_SO_SANH_VA_HOP_NHAT.pdf, thư mục Word_ma_tran_hop_nhat (13 docx). Không sửa, không xóa tệp nguồn.
+
+## 10. Vòng 3 (17/11/2026) – nâng cấp phụ lục full theo luận điểm mới
+- PL1 (07.1) đã nâng cấp: gốc là bản F3 đã nộp UBND phường 07/7/2026 (Drive "Usb Phuong (fixed)"), chèn luận điểm
+  bổ sung từ thư mục Drive "Tai lieu cv87-5553" (ghi chú của người dùng + các bản luận điểm). Giữ nguyên mã mục để đơn
+  trỏ không đổi; 39 trang; tải lên 91/01 (tệp mới, bản 16/11 cũ để nguyên). Ma trận PL1 dựng lại (matrices.m071).
+  Bộ in dựng lại: 120 trang + 3 photo. Script: build/pl1_upgrade.py; nhật ký: out/pl1/nhat_ky_nang_cap.txt.
+- Cần người dùng xác nhận: năm buổi họp 27/11/2024 (F3 ghi 2025); sai số lỗ khoan <1 mm hay <0,1 mm; giữ “Nhóm trưởng Toán 8”.
+- 12.10: báo cáo F0 4809–6689 người dùng tải lên trùng 12.10 (chỉ khác tiêu đề) – không có gì để hợp nhất.
+- 17.17a: có HAI đơn gửi Đoàn ĐBQH (22/9 và 29/9); Giấy báo tin 592 trả lời đơn 29/9; bản F0 592 mới của người dùng
+  đối chiếu đơn 22/9. Chờ người dùng cho biết đơn 22/9 đã gửi Đoàn chưa trước khi hợp nhất. Chi tiết: scratchpad NOTES_vong3_PL1.md.
